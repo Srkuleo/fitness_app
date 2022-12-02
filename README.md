@@ -5,3 +5,4 @@ It should be able to track, store and access workouts previously done for better
 
 Stay tuned for future updates!
 
+### developed on T3 stack.
