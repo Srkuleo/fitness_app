@@ -51,11 +51,11 @@ const Wrapper = ({ children }: WrapperChild) => {
 const SignIn = () => {
   return (
     <div className="mt-80 flex flex-col text-left">
-      <div className="mx-32 rounded-2xl bg-slate-900 bg-opacity-80 px-10">
-        <h3 className="mb-4 mt-10 text-2xl text-yellow-50">
+      <div className="mx-32 rounded-2xl bg-slate-900 bg-opacity-80 px-10 shadow-lg shadow-green-400">
+        <h3 className="mb-5 mt-10 text-2xl text-yellow-50">
           Sign in and start your workout.
         </h3>
-        <div className="mb-4 w-24 border border-green-500"></div>
+        <div className="mb-5 w-24 border border-green-500"></div>
         <div className="pr-7">
           <form action="#" className="flex flex-col">
             <input
@@ -72,14 +72,21 @@ const SignIn = () => {
               id="password"
               placeholder="Password"
               required
-              className="mb-2 rounded-2xl p-3"
+              className=" rounded-2xl p-3"
             />
             <button className="mb-10 mt-5 rounded-3xl bg-green-500 p-3 text-yellow-50">
               Sign In
             </button>
           </form>
         </div>
-        <p className="mb-20 mt-2 text-yellow-50">
+        <p className=" text-yellow-50">
+          Forgot your{" "}
+          <Link className="font-semibold text-green-500" href="/">
+            password
+          </Link>
+          ?
+        </p>
+        <p className="mb-16 mt-1 text-yellow-50">
           New to Noteset? Sign up{" "}
           <Link className="font-semibold text-green-500" href="/sign-up">
             here
