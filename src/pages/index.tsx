@@ -1,8 +1,8 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { MainWrapper, LeftWrapper, RightWrapper } from "../components/wrappers";
-import { SignInForm } from "../components/sign-in-page-ls";
-import { AppIntroduction } from "../components/sign-in-page-rs";
+import { SignInForm } from "../components/sign-in/sign-in-page-ls";
+import { AppIntroduction } from "../components/sign-in/sign-in-page-rs";
 
 const Home: NextPage = () => {
   return (

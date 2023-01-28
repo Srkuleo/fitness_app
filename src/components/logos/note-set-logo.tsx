@@ -1,15 +1,19 @@
 import { LogoWrapper } from "../wrappers";
-import { type LogoProp } from "../../types/types";
+import { NoteSetLogoSvg } from "../svg";
 
-const Logo = ({ svgPlace }: LogoProp) => {
+const NoteSetLogo = () => {
   return (
     <LogoWrapper>
-      {svgPlace}
-      <p className="text-2xl text-slate-600">
-        <span className="text-2xl font-bold text-green-500">Note</span>Set
-      </p>
+      {NoteSetLogoSvg}
+      {NoteSet}
     </LogoWrapper>
   );
 };
 
-export default Logo;
+const NoteSet = (
+  <p className="text-2xl text-slate-600">
+    <span className="text-2xl font-bold text-green-500">Note</span>Set
+  </p>
+);
+
+export default NoteSetLogo;
