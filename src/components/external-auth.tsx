@@ -1,19 +1,18 @@
 import ExternalAuthButton from "./buttons/external-auth-button";
 import { type ExternalAuthProps } from "../types/types";
 
-const ExternalAuth = ({
-  google,
-  twitter,
-  discord,
-  googleText,
-  twitterTexT,
-  discordText,
-}: ExternalAuthProps) => {
+const ExternalAuth = ({ buttons }: ExternalAuthProps) => {
   return (
     <>
-      <ExternalAuthButton jsx={google} text={googleText} />
-      <ExternalAuthButton jsx={twitter} text={twitterTexT} />
-      <ExternalAuthButton jsx={discord} text={discordText} />
+      {buttons.map((button) => {
+        return (
+          <ExternalAuthButton
+            key={button.buttonText}
+            buttonSvg={button.buttonSvg}
+            buttonText={button.buttonText}
+          />
+        );
+      })}
       <Separator />
     </>
   );
