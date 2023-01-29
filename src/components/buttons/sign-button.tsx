@@ -1,8 +1,8 @@
 import { SignButtonWrapper } from "../wrappers";
-import { type StringProp } from "../../types/types";
+import { type SignButtonProp } from "../../types/types";
 
-const SignButton = ({ text }: StringProp) => {
-  return <SignButtonWrapper>{text}</SignButtonWrapper>;
+const SignButton = ({ buttonText }: SignButtonProp) => {
+  return <SignButtonWrapper>{buttonText}</SignButtonWrapper>;
 };
 
 export default SignButton;
