@@ -10,7 +10,14 @@ import {
   SignFormWrapper,
 } from "../components/wrappers";
 import ExternalAuth from "../components/external-auth";
+import Form from "../components/form";
 import * as svg from "../components/svg";
+import {
+  type FormProps,
+  inputClass,
+  type ExternalAuthProps,
+  type SignProps,
+} from "../types/types";
 
 const SignUpPage: NextPage = () => {
   return (
@@ -23,7 +30,11 @@ const SignUpPage: NextPage = () => {
         <MainWrapper>
           <LeftWrapper>
             <SignFormWrapper>
-              <SignUp />
+              <SignUp
+                buttons={signUpButtons.buttons}
+                inputs={signUpForm.inputs}
+                buttonText={signUpForm.buttonText}
+              />
             </SignFormWrapper>
           </LeftWrapper>
           <RightWrapper>
@@ -35,7 +46,7 @@ const SignUpPage: NextPage = () => {
   );
 };
 
-const SignUp = () => {
+const SignUp = ({ inputs, buttonText, buttons }: SignProps) => {
   return (
     <div>
       <LogoWrapper>
@@ -44,14 +55,8 @@ const SignUp = () => {
       </LogoWrapper>
 
       <p className="text-xl font-semibold">Create an account.</p>
-      <ExternalAuth
-        google={svg.GoogleSvg}
-        twitter={svg.TwitterSvg}
-        discord={svg.DiscordSvg}
-        googleText="Sign up with Google"
-        twitterTexT="Sign up with Twitter"
-        discordText="Sign up with Discord"
-      />
+      <ExternalAuth buttons={buttons} />
+      <Form inputs={inputs} buttonText={buttonText} />
       <p>
         Already have an acount?{" "}
         <Link href="/" className="text-green-500">
@@ -60,6 +65,44 @@ const SignUp = () => {
       </p>
     </div>
   );
+};
+
+const signUpButtons: ExternalAuthProps = {
+  buttons: [
+    { buttonSvg: svg.GoogleSvg, buttonText: "Sign up with Google" },
+    { buttonSvg: svg.TwitterSvg, buttonText: "Sign up with Twitter" },
+    { buttonSvg: svg.DiscordSvg, buttonText: "Sign up with Discord" },
+  ],
+};
+
+const signUpForm: FormProps = {
+  inputs: [
+    {
+      _name: "username",
+      placeholder: "Username",
+      type: "text",
+      className: inputClass,
+    },
+    {
+      _name: "email",
+      placeholder: "Email",
+      type: "email",
+      className: inputClass,
+    },
+    {
+      _name: "password",
+      placeholder: "Password",
+      type: "password",
+      className: inputClass,
+    },
+    {
+      _name: "password",
+      placeholder: "Confirm password",
+      type: "password",
+      className: inputClass,
+    },
+  ],
+  buttonText: "Sign Up",
 };
 
 export default SignUpPage;
