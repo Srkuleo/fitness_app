@@ -2,28 +2,33 @@ export interface WrapperChild {
   children?: React.ReactNode;
 }
 
-export interface StringProp {
-  text: string;
-}
-
 export interface ClassNameProps {
-  className: string;
+  className: string | undefined;
   altClassName?: string;
 }
 
-export interface ExternalAuthButtonProps {
-  text: string;
-  jsx: JSX.Element;
+export interface SignButtonProp {
+  buttonText: string | undefined;
+}
+export interface ExternalAuthButtonProps extends SignButtonProp {
+  buttonSvg: JSX.Element | undefined;
 }
 
 export interface ExternalAuthProps {
-  google: JSX.Element;
-  twitter: JSX.Element;
-  discord: JSX.Element;
-  googleText: string;
-  twitterTexT: string;
-  discordText: string;
+  buttons: ExternalAuthButtonProps[];
 }
+
+export type InputProps = {
+  _name: string | undefined;
+  placeholder: string | undefined;
+  type: string | undefined;
+} & Pick<ClassNameProps, "className">;
+
+export interface FormProps extends SignButtonProp {
+  inputs: InputProps[];
+}
+
+export type SignProps = FormProps & ExternalAuthProps;
 
 //Variables
 export const inputClass =
@@ -32,5 +37,3 @@ export const inputClass =
 export const linkClassColored = "font-semibold text-green-500 underline";
 
 export const linkClassGrey = "text-sm text-slate-600";
-
-export const signHeaderTextClass = "mt-8 text-lg font-medium text-slate-600";
