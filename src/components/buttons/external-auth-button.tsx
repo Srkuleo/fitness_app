@@ -1,11 +1,14 @@
 import { ExternalAuthButtonWrapper } from "../wrappers";
 import { type ExternalAuthButtonProps } from "../../types/types";
 
-const ExternalAuthButton = ({ text, jsx }: ExternalAuthButtonProps) => {
+const ExternalAuthButton = ({
+  buttonSvg,
+  buttonText,
+}: ExternalAuthButtonProps) => {
   return (
     <ExternalAuthButtonWrapper>
-      {jsx}
-      {text}
+      {buttonSvg}
+      {buttonText}
     </ExternalAuthButtonWrapper>
   );
 };
