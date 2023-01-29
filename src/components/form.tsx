@@ -1,38 +1,36 @@
-// const Form = ({ className }: ClassNameProps) => {
-//     return (
-//       <form action="#" className="flex flex-col ">
-//         <input
-//           type="email"
-//           name="email"
-//           id="email"
-//           placeholder="Email or Username"
-//           required
-//           className={`mb-2 ${className}`}
-//         />
-//         <input
-//           type="password"
-//           name="password"
-//           id="password"
-//           placeholder="Password"
-//           required
-//           className={className}
-//         />
-//         <SignButton text="Sign In" />
-//       </form>
-//     );
-//   };
+import { type InputProps, type FormProps } from "../types/types";
+import SignButton from "./buttons/sign-button";
 
-//   const InputField = () => {
-//     return (
-//         <input
-//         type="email"
-//         name="email"
-//         id="email"
-//         placeholder="Email or Username"
-//         required
-//         className={`mb-2 ${className}`}
-//       />
-//     )
-//   }
+const Form = ({ inputs, buttonText }: FormProps) => {
+  return (
+    <form action="#" className="flex flex-col">
+      {inputs.map((input) => {
+        return (
+          <InputField
+            key={input._name}
+            _name={input._name}
+            placeholder={input.placeholder}
+            type={input.type}
+            className={input.className}
+          />
+        );
+      })}
+      <SignButton buttonText={buttonText} />
+    </form>
+  );
+};
 
-export {};
+const InputField = ({ _name, placeholder, className, type }: InputProps) => {
+  return (
+    <input
+      type={type}
+      name={_name}
+      id={_name}
+      placeholder={placeholder}
+      required
+      className={`mb-2 ${className}`}
+    />
+  );
+};
+
+export default Form;
