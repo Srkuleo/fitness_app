@@ -5,6 +5,13 @@ It should be able to track, store and access workouts previously done for better
 
 Stay tuned for future updates!
 
-### made using T3 stack.
+## Future updates and plans:
 
-_Za uraditi: 1/4 2/4 1/4 sredina je app, sa strane crop slika i blur efekat. Ovo je za signed in page_
+- _Signed in page design: 1/4 2/4 1/4 middle is place for interactive UI, left and right are cropped image with blur or gradient effect._
+- _Fix prop drilling in index.tsx and sign-up.tsx using Zustand._
+
+---
+
+For any questions or suggestions you can chat with me on [Twitter](https://twitter.com/Srkuleo)
+
+**made using T3 stack.**
