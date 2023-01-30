@@ -1,14 +1,10 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { MainWrapper, LeftWrapper, RightWrapper } from "../components/wrappers";
-import { SignInForm } from "../components/sign-in/sign-in-page-ls";
-import { AppIntroduction } from "../components/sign-in/sign-in-page-rs";
-import {
-  type ExternalAuthProps,
-  type FormProps,
-  inputClass,
-} from "../types/types";
+import { type SignProps, inputClass } from "../types/types";
 import * as svg from "../components/svg";
+import SignIn from "../components/sign-in/sign-in-page-ls";
+import { AppIntroduction } from "../components/sign-in/sign-in-page-rs";
 
 const Home: NextPage = () => {
   return (
@@ -21,10 +17,11 @@ const Home: NextPage = () => {
       <main>
         <MainWrapper>
           <LeftWrapper>
-            <SignInForm
-              buttons={signInButtons.buttons}
-              inputs={signInFormProps.inputs}
-              buttonText={signInFormProps.buttonText}
+            <SignIn
+              buttons={signInProps.buttons}
+              inputs={signInProps.inputs}
+              checkBox={signInProps.checkBox}
+              buttonText={signInProps.buttonText}
             />
           </LeftWrapper>
           <RightWrapper>
@@ -36,15 +33,12 @@ const Home: NextPage = () => {
   );
 };
 
-const signInButtons: ExternalAuthProps = {
+const signInProps: SignProps = {
   buttons: [
     { buttonSvg: svg.GoogleSvg, buttonText: "Google" },
     { buttonSvg: svg.TwitterSvg, buttonText: "Twitter" },
     { buttonSvg: svg.DiscordSvg, buttonText: "Discord" },
   ],
-};
-
-const signInFormProps: FormProps = {
   inputs: [
     {
       _name: "email",
@@ -59,6 +53,10 @@ const signInFormProps: FormProps = {
       className: inputClass,
     },
   ],
+  checkBox: {
+    _name: "remember",
+    type: "checkbox",
+  },
   buttonText: "Sign in",
 };
 
