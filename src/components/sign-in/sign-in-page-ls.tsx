@@ -1,25 +1,26 @@
 import Link from "next/link";
 import NoteSetLogo from "../logos/note-set-logo";
 import { SignFormWrapper } from "../wrappers";
-import Form from "../form";
+import Form from "../reusable-sign-components/form";
 import {
-  type ClassNameProps,
-  linkClassColored,
-  linkClassGrey,
   type SignProps,
+  type ClassNameProps,
+  coloredLinkClass,
+  greyLinkClass,
+  externalAuthHeaderClass,
 } from "../../types/types";
-import ExternalAuth from "../external-auth";
+import ExternalAuth from "../reusable-sign-components/external-auth";
 
-export const SignInForm = ({ buttons, inputs, buttonText }: SignProps) => {
+const SignIn = ({ buttons, inputs, checkBox, buttonText }: SignProps) => {
   return (
     <SignFormWrapper>
       <NoteSetLogo />
       <SignInHeadingText />
       <ExternalAuth buttons={buttons} />
-      <Form inputs={inputs} buttonText={buttonText} />
+      <Form inputs={inputs} checkBox={checkBox} buttonText={buttonText} />
       <LinkQuestions
-        className={linkClassColored}
-        altClassName={linkClassGrey}
+        className={coloredLinkClass}
+        altClassName={greyLinkClass}
       />
     </SignFormWrapper>
   );
@@ -34,7 +35,7 @@ const LinkQuestions = ({ className, altClassName }: ClassNameProps) => {
           password?
         </Link>
       </p>
-      <p className={`mt-1 ${altClassName}`}>
+      <p className={altClassName}>
         New to Noteset?{" "}
         <Link className={className} href="/sign-up">
           Sign up here.
@@ -47,10 +48,10 @@ const LinkQuestions = ({ className, altClassName }: ClassNameProps) => {
 const SignInHeadingText = () => {
   return (
     <>
-      <p className="mt-8 text-lg font-medium text-slate-600">
-        Sign in and start your workout.
-      </p>
+      <p className={externalAuthHeaderClass}>Sign in and start your workout.</p>
       <p className="mt-4 text-sm italic text-slate-600">continue with</p>
     </>
   );
 };
+
+export default SignIn;
