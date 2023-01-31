@@ -3,8 +3,8 @@ import Head from "next/head";
 import { MainWrapper, LeftWrapper, RightWrapper } from "../components/wrappers";
 import { type SignProps, inputClass } from "../types/types";
 import * as svg from "../components/svg";
-import SignIn from "../components/sign-in/sign-in-page-ls";
-import { AppIntroduction } from "../components/sign-in/sign-in-page-rs";
+import SignIn from "../components/sign-in-page-ls";
+import { ImageLoaderDiv } from "../components/reusable/image-loader";
 
 const Home: NextPage = () => {
   return (
@@ -25,7 +25,7 @@ const Home: NextPage = () => {
             />
           </LeftWrapper>
           <RightWrapper>
-            <AppIntroduction />
+            <ImageLoaderDiv img={signInProps.img} />
           </RightWrapper>
         </MainWrapper>
       </main>
@@ -58,6 +58,10 @@ const signInProps: SignProps = {
     type: "checkbox",
   },
   buttonText: "Sign in",
+  img: {
+    src: "/images/deadlift.jpg",
+    alt: "deadlift",
+  },
 };
 
 export default Home;

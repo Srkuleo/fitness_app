@@ -1,23 +1,15 @@
 import { type NextPage } from "next";
-import Link from "next/link";
 import Head from "next/head";
-import NoteSetLogo from "../components/logos/note-set-logo";
 import {
   LeftWrapper,
   RightWrapper,
-  LogoWrapper,
   MainWrapper,
   SignFormWrapper,
 } from "../components/wrappers";
-import ExternalAuth from "../components/external-auth";
-import Form from "../components/form";
+import { type SignProps, inputClass } from "../types/types";
 import * as svg from "../components/svg";
-import {
-  type FormProps,
-  inputClass,
-  type ExternalAuthProps,
-  type SignProps,
-} from "../types/types";
+import SignUp from "../components/sign-up-page-ls";
+import { ImageLoaderDiv } from "../components/reusable/image-loader";
 
 const SignUpPage: NextPage = () => {
   return (
@@ -31,14 +23,15 @@ const SignUpPage: NextPage = () => {
           <LeftWrapper>
             <SignFormWrapper>
               <SignUp
-                buttons={signUpButtons.buttons}
-                inputs={signUpForm.inputs}
-                buttonText={signUpForm.buttonText}
+                buttons={signUpProps.buttons}
+                inputs={signUpProps.inputs}
+                checkBox={signUpProps.checkBox}
+                buttonText={signUpProps.buttonText}
               />
             </SignFormWrapper>
           </LeftWrapper>
           <RightWrapper>
-            <p>Hi!</p>
+            <ImageLoaderDiv img={signUpProps.img} />
           </RightWrapper>
         </MainWrapper>
       </main>
@@ -46,47 +39,23 @@ const SignUpPage: NextPage = () => {
   );
 };
 
-const SignUp = ({ inputs, buttonText, buttons }: SignProps) => {
-  return (
-    <div>
-      <LogoWrapper>
-        <p className="text-2xl">Welcome to</p>
-        <NoteSetLogo />
-      </LogoWrapper>
-
-      <p className="text-xl font-semibold">Create an account.</p>
-      <ExternalAuth buttons={buttons} />
-      <Form inputs={inputs} buttonText={buttonText} />
-      <p>
-        Already have an acount?{" "}
-        <Link href="/" className="text-green-500">
-          Sign in here.
-        </Link>
-      </p>
-    </div>
-  );
-};
-
-const signUpButtons: ExternalAuthProps = {
+const signUpProps: SignProps = {
   buttons: [
     { buttonSvg: svg.GoogleSvg, buttonText: "Sign up with Google" },
     { buttonSvg: svg.TwitterSvg, buttonText: "Sign up with Twitter" },
     { buttonSvg: svg.DiscordSvg, buttonText: "Sign up with Discord" },
   ],
-};
-
-const signUpForm: FormProps = {
   inputs: [
-    {
-      _name: "username",
-      placeholder: "Username",
-      type: "text",
-      className: inputClass,
-    },
     {
       _name: "email",
       placeholder: "Email",
       type: "email",
+      className: inputClass,
+    },
+    {
+      _name: "username",
+      placeholder: "Username",
+      type: "text",
       className: inputClass,
     },
     {
@@ -102,7 +71,15 @@ const signUpForm: FormProps = {
       className: inputClass,
     },
   ],
+  checkBox: {
+    _name: "agreeToSandPP",
+    type: "checkbox",
+  },
   buttonText: "Sign Up",
+  img: {
+    src: "/images/squat.jpg",
+    alt: "squat",
+  },
 };
 
 export default SignUpPage;
