@@ -37,7 +37,7 @@ export const ExternalAuthButtonWrapper = ({ children }: WrapperChild) => {
 
 export const SignButtonWrapper = ({ children }: WrapperChild) => {
   return (
-    <button className="mt-4 mb-6 rounded-3xl bg-green-500 from-green-500 to-emerald-600 p-3 text-yellow-50 hover:bg-gradient-to-r">
+    <button className="mt-4 mb-6 rounded-3xl border-2 border-green-500 bg-green-500 p-10px font-semibold text-yellow-50 hover:bg-green-100 hover:text-green-500 ">
       {children}
     </button>
   );
