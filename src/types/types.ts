@@ -10,6 +10,11 @@ export interface ClassNameProps {
 export interface SignButtonProp {
   buttonText: string | undefined;
 }
+
+export interface ImageProps {
+  src: string;
+  alt: string;
+}
 export interface ExternalAuthButtonProps extends SignButtonProp {
   buttonSvg: JSX.Element | undefined;
 }
@@ -24,6 +29,7 @@ export interface SignProps extends SignButtonProp {
   buttons: ExternalAuthButtonProps[];
   inputs: InputProps[];
   checkBox: Pick<InputProps, "_name" | "type">;
+  img: ImageProps;
 }
 
 //Variables
