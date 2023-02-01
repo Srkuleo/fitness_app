@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { MainWrapper, LeftWrapper, RightWrapper } from "../components/wrappers";
-import { type SignProps, inputClass } from "../types/types";
+import { type SignProps } from "../types/types";
 import * as svg from "../components/svg";
 import SignIn from "../components/sign-in-page-ls";
 import { ImageLoaderDiv } from "../components/reusable/image-loader";
@@ -12,16 +12,19 @@ const Home: NextPage = () => {
       <Head>
         <link rel="icon" href="/noteset.ico" />
         <title>Noteset - Sign In</title>
-        <meta name="description" content="Personalized workout tracker" />
+        <meta
+          name="description"
+          content="Personalized workout tracker - sign in"
+        />
       </Head>
       <main>
         <MainWrapper>
           <LeftWrapper>
             <SignIn
-              buttons={signInProps.buttons}
+              authButtons={signInProps.authButtons}
               inputs={signInProps.inputs}
               checkBox={signInProps.checkBox}
-              buttonText={signInProps.buttonText}
+              signButton={signInProps.signButton}
             />
           </LeftWrapper>
           <RightWrapper>
@@ -34,7 +37,7 @@ const Home: NextPage = () => {
 };
 
 const signInProps: SignProps = {
-  buttons: [
+  authButtons: [
     { buttonSvg: svg.GoogleSvg, buttonText: "Google" },
     { buttonSvg: svg.TwitterSvg, buttonText: "Twitter" },
     { buttonSvg: svg.DiscordSvg, buttonText: "Discord" },
@@ -44,23 +47,24 @@ const signInProps: SignProps = {
       _name: "email",
       placeholder: "Email",
       type: "email",
-      className: inputClass,
     },
     {
       _name: "password",
       placeholder: "Password",
       type: "password",
-      className: inputClass,
     },
   ],
   checkBox: {
     _name: "remember",
     type: "checkbox",
   },
-  buttonText: "Sign in",
+  signButton: {
+    buttonText: "Sign In",
+    href: "/signed-in",
+    onClick: () => console.log("Signed in"),
+  },
   img: {
-    src: "/images/deadlift.jpg",
-    alt: "deadlift",
+    altTag: "deadlift",
   },
 };
 

@@ -1,12 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import {
-  LeftWrapper,
-  RightWrapper,
-  MainWrapper,
-  SignFormWrapper,
-} from "../components/wrappers";
-import { type SignProps, inputClass } from "../types/types";
+import { LeftWrapper, RightWrapper, MainWrapper } from "../components/wrappers";
+import { type SignProps } from "../types/types";
 import * as svg from "../components/svg";
 import SignUp from "../components/sign-up-page-ls";
 import { ImageLoaderDiv } from "../components/reusable/image-loader";
@@ -15,20 +10,22 @@ const SignUpPage: NextPage = () => {
   return (
     <>
       <Head>
+        <link rel="icon" href="/noteset.ico" />
         <title>Noteset - Sign Up</title>
-        <meta name="description" content="Personalized workout tracker" />
+        <meta
+          name="description"
+          content="Personalized workout tracker - sign up"
+        />
       </Head>
       <main>
         <MainWrapper>
           <LeftWrapper>
-            <SignFormWrapper>
-              <SignUp
-                buttons={signUpProps.buttons}
-                inputs={signUpProps.inputs}
-                checkBox={signUpProps.checkBox}
-                buttonText={signUpProps.buttonText}
-              />
-            </SignFormWrapper>
+            <SignUp
+              authButtons={signUpProps.authButtons}
+              inputs={signUpProps.inputs}
+              checkBox={signUpProps.checkBox}
+              signButton={signUpProps.signButton}
+            />
           </LeftWrapper>
           <RightWrapper>
             <ImageLoaderDiv img={signUpProps.img} />
@@ -40,7 +37,7 @@ const SignUpPage: NextPage = () => {
 };
 
 const signUpProps: SignProps = {
-  buttons: [
+  authButtons: [
     { buttonSvg: svg.GoogleSvg, buttonText: "Sign up with Google" },
     { buttonSvg: svg.TwitterSvg, buttonText: "Sign up with Twitter" },
     { buttonSvg: svg.DiscordSvg, buttonText: "Sign up with Discord" },
@@ -50,35 +47,34 @@ const signUpProps: SignProps = {
       _name: "email",
       placeholder: "Email",
       type: "email",
-      className: inputClass,
     },
     {
       _name: "username",
       placeholder: "Username",
       type: "text",
-      className: inputClass,
     },
     {
       _name: "password",
       placeholder: "Password",
       type: "password",
-      className: inputClass,
     },
     {
-      _name: "password",
+      _name: "confPassword",
       placeholder: "Confirm password",
       type: "password",
-      className: inputClass,
     },
   ],
   checkBox: {
     _name: "agreeToSandPP",
     type: "checkbox",
   },
-  buttonText: "Sign Up",
+  signButton: {
+    buttonText: "Sign Up",
+    href: undefined,
+    onClick: () => console.log("You have signed up."),
+  },
   img: {
-    src: "/images/squat.jpg",
-    alt: "squat",
+    altTag: "squat",
   },
 };
 
