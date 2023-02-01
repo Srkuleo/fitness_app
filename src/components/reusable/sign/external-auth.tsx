@@ -1,15 +1,15 @@
 import ExternalAuthButton from "./external-auth-button";
 import { type SignProps } from "../../../types/types";
 
-const ExternalAuth = ({ buttons }: Pick<SignProps, "buttons">) => {
+const ExternalAuth = ({ authButtons }: Pick<SignProps, "authButtons">) => {
   return (
     <>
-      {buttons.map((button) => {
+      {authButtons.map((aB) => {
         return (
           <ExternalAuthButton
-            key={button.buttonText}
-            buttonSvg={button.buttonSvg}
-            buttonText={button.buttonText}
+            key={aB.buttonText}
+            buttonSvg={aB.buttonSvg}
+            buttonText={aB.buttonText}
           />
         );
       })}
@@ -18,7 +18,7 @@ const ExternalAuth = ({ buttons }: Pick<SignProps, "buttons">) => {
   );
 };
 
-export const Separator = () => {
+const Separator = () => {
   return (
     <div className="m-3 flex items-center justify-around">
       <div className="w-32 border border-green-300"></div>
