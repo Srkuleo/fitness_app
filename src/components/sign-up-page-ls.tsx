@@ -1,37 +1,46 @@
-import {
-  type SignProps,
-  greyLinkClass,
-  coloredLinkClass,
-  externalAuthHeaderClass,
-} from "../types/types";
-import { LogoWrapper } from "./wrappers";
+import { type SignProps } from "../types/types";
+import { LogoWrapper, SignFormWrapper } from "./wrappers";
 import NoteSetLogo from "./logos/note-set-logo";
 import ExternalAuth from "./reusable/sign/external-auth";
 import Form from "./reusable/sign/form";
 import Link from "next/link";
 
 const SignUp = ({
-  buttons,
+  authButtons,
   inputs,
   checkBox,
-  buttonText,
+  signButton,
 }: Omit<SignProps, "img">) => {
   return (
-    <div>
+    <SignFormWrapper>
       <LogoWrapper>
         <p className="text-2xl">Welcome to</p>
         <NoteSetLogo />
       </LogoWrapper>
-      <p className={externalAuthHeaderClass}>Create an account.</p>
-      <ExternalAuth buttons={buttons} />
-      <Form inputs={inputs} buttonText={buttonText} checkBox={checkBox} />
-      <p className={greyLinkClass}>
-        Already have an acount?{" "}
-        <Link href="/" className={coloredLinkClass}>
-          Sign in here.
-        </Link>
-      </p>
-    </div>
+      <HeadingText />
+      <ExternalAuth authButtons={authButtons} />
+      <Form inputs={inputs} checkBox={checkBox} signButton={signButton} />
+      <LinkQuestion />
+    </SignFormWrapper>
+  );
+};
+
+const HeadingText = () => {
+  return (
+    <p className="mt-8 text-lg font-medium text-slate-600">
+      Create an account.
+    </p>
+  );
+};
+
+const LinkQuestion = () => {
+  return (
+    <p className="text-xs text-slate-600">
+      Already have an acount?{" "}
+      <Link href="/" className="py-1 font-semibold text-green-500 underline">
+        Sign in here.
+      </Link>
+    </p>
   );
 };
 
