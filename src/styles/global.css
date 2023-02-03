@@ -13,6 +13,6 @@
 
 @layer components {
   .sign-btn {
-    @apply mt-4 mb-6 rounded-3xl border-2 border-green-500 bg-green-500 p-10px text-center font-semibold text-yellow-50 outline-green-700 hover:bg-green-100 hover:text-green-500 focus:outline-1;
+    @apply mt-4 mb-6 rounded-3xl border-2 border-green-500 bg-green-500 p-10px text-center font-semibold text-yellow-50 outline-green-700 transition-all ease-in hover:bg-green-100 hover:text-green-500 focus:outline-1;
   }
 }
