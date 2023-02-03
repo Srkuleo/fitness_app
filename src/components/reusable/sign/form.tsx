@@ -1,6 +1,6 @@
 import { type SignProps, type InputProps } from "../../../types/types";
 import SignButton from "./sign-button";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect /*useState*/ } from "react";
 import Link from "next/link";
 
 const Form = ({
@@ -32,10 +32,17 @@ const Form = ({
 
 const InputField = ({ _name, placeholder, type }: InputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
+  // const passRef = useRef<HTMLInputElement>(null);
+  // const [isValid, setIsValid] = useState(true);
 
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
+
+  // function handleInput() {
+  //   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  //   setIsValid(passRef.current!.validity.valid);
+  // }
 
   if (type === "email") {
     return (
@@ -49,18 +56,40 @@ const InputField = ({ _name, placeholder, type }: InputProps) => {
         ref={inputRef}
       />
     );
-  } else {
+  } else if (type === "password") {
     return (
-      <input
-        type={type}
-        name={_name}
-        id={_name}
-        placeholder={placeholder}
-        required
-        className="placeholder-italic mb-2 rounded-xl p-3 text-sm text-slate-600 placeholder-gray-600 outline-green-500 focus:text-sm focus:placeholder-gray-200 focus:outline-1"
-      />
+      <>
+        <input
+          // ref={passRef}
+          // onInput={handleInput}
+          type={type}
+          name={_name}
+          id={_name}
+          placeholder={placeholder}
+          required
+          pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$"
+          className="placeholder-italic mb-2 rounded-xl p-3 text-sm text-slate-600 placeholder-gray-600 outline-green-500 focus:text-sm focus:placeholder-gray-200 focus:outline-1"
+        />
+        {/* {!isValid && (
+          <div>
+            Must be 8 characters or longer with at least 1 numberic, 1
+            uppercase and 1 lowercase.
+          </div>
+        )} */}
+      </>
     );
   }
+
+  return (
+    <input
+      type={type}
+      name={_name}
+      id={_name}
+      placeholder={placeholder}
+      required
+      className="placeholder-italic mb-2 rounded-xl p-3 text-sm text-slate-600 placeholder-gray-600 outline-green-500 focus:text-sm focus:placeholder-gray-200 focus:outline-1"
+    />
+  );
 };
 
 const CheckBox = ({ _name, type }: Pick<InputProps, "_name" | "type">) => {
