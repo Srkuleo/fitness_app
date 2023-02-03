@@ -11,7 +11,7 @@ Stay tuned for future updates!
 - _Add dropdown menu with option to edit, view logs and sign out (potentially dark mode and user profile) and list menu with choosable workouts._
 - _Polish signed in page._
 - _Fix prop drilling in index.tsx and sign-up.tsx using Zustand._
-
+- _Add responsiveness to the UI._
 ---
 
 For any questions or suggestions you can chat with me on [Twitter](https://twitter.com/Srkuleo)
