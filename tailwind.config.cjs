@@ -6,6 +6,9 @@ module.exports = {
       padding: {
         "10px": "10px",
       },
+      backgroundImage: {
+        ohp: "url('/ohp.jpg')",
+      },
     },
   },
   plugins: [],
