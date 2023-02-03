@@ -12,9 +12,7 @@ export const LeftWrapper = ({ children }: WrapperChild) => {
 };
 
 export const RightWrapper = ({ children }: WrapperChild) => {
-  return (
-    <div className="relative w-4/6 overflow-hidden">{children}</div>
-  );
+  return <div className="relative w-4/6 overflow-hidden">{children}</div>;
 };
 
 export const LogoWrapper = ({ children }: WrapperChild) => {
@@ -31,7 +29,7 @@ export const SignFormWrapper = ({ children }: WrapperChild) => {
 
 export const ExternalAuthButtonWrapper = ({ children }: WrapperChild) => {
   return (
-    <button className="mt-2 flex w-full flex-row items-center justify-center gap-3 rounded-xl border-2 border-green-300 py-2 text-sm font-semibold text-slate-600 outline-green-700 transition-all hover:-translate-x-1 hover:bg-slate-200 hover:bg-opacity-50 focus:outline-1">
+    <button className="mt-2 flex w-full flex-row items-center justify-center gap-3 rounded-xl border-2 border-green-300 py-2 text-sm font-semibold text-slate-600 outline-green-700 transition-all ease-in hover:translate-x-1 hover:bg-slate-200/50 hover:font-bold focus:outline-1">
       {children}
     </button>
   );
