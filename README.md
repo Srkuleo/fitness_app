@@ -7,7 +7,9 @@ Stay tuned for future updates!
 
 ## Future updates and plans:
 
-- _Signed in page design: 1/4 2/4 1/4 middle is place for interactive UI, left and right are cropped image with blur or gradient effect._
+- _Add blur or gradient effect over bg image on signed in page._
+- _Add dropdown menu with option to edit, view logs and sign out (potentially dark mode and user profile) and list menu with choosable workouts._
+- _Polish signed in page._
 - _Fix prop drilling in index.tsx and sign-up.tsx using Zustand._
 
 ---
