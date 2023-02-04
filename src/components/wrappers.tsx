@@ -29,7 +29,7 @@ export const SignFormWrapper = ({ children }: WrapperChild) => {
 
 export const ExternalAuthButtonWrapper = ({ children }: WrapperChild) => {
   return (
-    <button className="mt-2 flex w-full flex-row items-center justify-center gap-3 rounded-xl border-2 border-green-300 py-2 text-sm font-semibold text-slate-600 outline-green-700 transition-all ease-in hover:translate-x-1 hover:bg-slate-200/50 hover:font-bold focus:outline-1">
+    <button className="mt-2 flex w-full flex-row items-center justify-center gap-3 rounded-xl border-2 border-green-300 py-2 text-sm font-semibold text-slate-600 outline-green-700 transition-all ease-in hover:translate-x-1 hover:bg-slate-200/70 focus:outline-1">
       {children}
     </button>
   );
