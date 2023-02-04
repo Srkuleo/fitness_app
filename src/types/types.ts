@@ -27,5 +27,5 @@ export interface SignProps {
   inputs: InputProps[];
   checkBox: Pick<InputProps, "_name" | "type">;
   signButton: SignButtonProps;
-  img: ImageProps;
+  pageImg: ImageProps;
 }
