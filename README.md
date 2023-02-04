@@ -1,13 +1,12 @@
 # NoteSet - personalized fitness app
 
-This is an early stage of development for personalized fitness tracker.
-It should be able to track, store and access workouts previously done for better exercising experience.
+This is still work in progress, updating everyday (I try to), aiming to go in production in spring 2023. Application is dedicated to **tracking**, **updating**, **checking**, **editing** and **storing** your workout sessions, something like personalized, easy to maneuver in notebook.
+Aimed to make tracking your fitness progress easy.
 
 Stay tuned for future updates!
 
 ## Future updates and plans:
 
-- _Add blur or gradient effect over bg image on signed in page._
 - _Add dropdown menu with option to edit, view logs and sign out (potentially dark mode and user profile) and list menu with choosable workouts._
 - _Polish signed in page._
 - _Fix prop drilling in index.tsx and sign-up.tsx using Zustand._
