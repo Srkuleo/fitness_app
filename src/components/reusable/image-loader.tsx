@@ -42,13 +42,13 @@ const ImageLoader = ({ altTag }: ImageProps) => {
 
 const ImageFilter = () => {
   return (
-    <div className="z-10 h-full w-full bg-gradient-to-tl from-black via-slate-900 to-slate-400 opacity-30"></div>
+    <div className="absolute top-0 left-0 z-10 h-full w-full bg-gradient-to-tl from-black via-black/60 to-slate-100/5"></div>
   );
 };
 
 const ImageIntroductionText = () => {
   return (
-    <p className="absolute bottom-64 right-28 w-5/12 text-right text-xl text-yellow-50">
+    <p className="absolute bottom-64 right-28 z-20 w-5/12 text-right text-xl text-yellow-50">
       <span className="text-3xl font-bold text-green-500">Note</span>
       <span className="text-3xl text-slate-400">Set</span> is highly
       personalized, flexible workout tracker and planner, aiming to replace
