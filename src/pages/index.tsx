@@ -4,7 +4,7 @@ import { MainWrapper, LeftWrapper, RightWrapper } from "../components/wrappers";
 import { type SignProps } from "../types/types";
 import * as svg from "../components/svg";
 import SignIn from "../components/sign-in-page-ls";
-import { ImageLoaderDiv } from "../components/reusable/image-loader";
+import { ImageLoaderDiv } from "../components/image-loader";
 
 const Home: NextPage = () => {
   return (
@@ -28,7 +28,7 @@ const Home: NextPage = () => {
             />
           </LeftWrapper>
           <RightWrapper>
-            <ImageLoaderDiv img={signInProps.img} />
+            <ImageLoaderDiv pageImg={signInProps.pageImg} />
           </RightWrapper>
         </MainWrapper>
       </main>
@@ -63,7 +63,7 @@ const signInProps: SignProps = {
     href: "/signed-in",
     onClick: () => console.log("Signed in"),
   },
-  img: {
+  pageImg: {
     altTag: "deadlift",
   },
 };

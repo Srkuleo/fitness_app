@@ -7,7 +7,7 @@ const Form = ({
   inputs,
   checkBox,
   signButton,
-}: Omit<SignProps, "authButtons" | "img">) => {
+}: Omit<SignProps, "authButtons" | "pageImg">) => {
   return (
     <form action="#" className="flex flex-col">
       {inputs.map((input) => {
