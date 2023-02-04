@@ -17,7 +17,7 @@ const SignUp = ({
         <p className="text-2xl">Welcome to</p>
         <NoteSetLogo />
       </LogoWrapper>
-      <HeadingText />
+      <SignUpHeadingText />
       <ExternalAuth authButtons={authButtons} />
       <Form inputs={inputs} checkBox={checkBox} signButton={signButton} />
       <LinkQuestion />
@@ -25,12 +25,8 @@ const SignUp = ({
   );
 };
 
-const HeadingText = () => {
-  return (
-    <p className="mt-8 text-lg font-medium text-slate-600">
-      Create an account.
-    </p>
-  );
+const SignUpHeadingText = () => {
+  return <p className="mt-4 text-sm italic text-slate-600">continue with</p>;
 };
 
 const LinkQuestion = () => {
