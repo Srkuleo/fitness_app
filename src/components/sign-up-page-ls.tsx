@@ -10,7 +10,7 @@ const SignUp = ({
   inputs,
   checkBox,
   signButton,
-}: Omit<SignProps, "img">) => {
+}: Omit<SignProps, "pageImg">) => {
   return (
     <SignFormWrapper>
       <LogoWrapper>
