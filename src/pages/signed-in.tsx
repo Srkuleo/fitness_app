@@ -1,8 +1,14 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import { Tab, Menu, Transition } from "@headlessui/react";
-import { Fragment } from "react";
+import {
+  ArrowDownIcon,
+  UserIcon,
+  EditIcon,
+  LogsIcon,
+  DarkModeIcon,
+  SignOutIcon,
+} from "../components/svg";
 
 const SignedIn: NextPage = () => {
   return (
@@ -14,88 +20,56 @@ const SignedIn: NextPage = () => {
       </Head>
       <main>
         <div className="flex h-screen w-screen flex-col">
-          <div className="relative flex h-3/5 flex-col items-center gap-10 bg-gradient-to-br from-slate-900 to-gray-400">
+          <div className="flex h-3/5 flex-col items-center gap-10 bg-gradient-to-tr from-gray-600 to-slate-900">
+            <div className="fixed top-6 right-18 flex h-14 w-56 flex-col items-end gap-2">
+              <button className="m-0 flex flex-row items-center gap-3 rounded-md border-2 bg-slate-50 px-3 py-1 font-bold text-green-600 transition-all ease-out hover:border-yellow-50 hover:bg-green-600/90 hover:text-yellow-50">
+                Options
+                {ArrowDownIcon}
+              </button>
+              <div className="flex flex-col rounded-md bg-slate-50 p-1 text-green-600">
+                <Link
+                  className="flex flex-row items-center gap-1 py-1 pr-24 pl-2 text-left font-medium transition-all ease-out hover:rounded-lg hover:bg-green-600/90 hover:text-yellow-50"
+                  href="/"
+                >
+                  {UserIcon}
+                  Srkuleo
+                </Link>
+                <button className="flex flex-row items-center gap-1 py-1 pr-24 pl-2 text-left font-medium transition-all ease-out hover:rounded-lg hover:bg-green-600/90 hover:text-yellow-50">
+                  {EditIcon}
+                  Edit
+                </button>
+                <button className="flex flex-row items-center gap-1 py-1 pr-24 pl-2 text-left font-medium transition-all ease-out hover:rounded-lg hover:bg-green-600/90 hover:text-yellow-50">
+                  {LogsIcon}
+                  View logs
+                </button>
+                <button className="flex flex-row items-center gap-1 py-1 pr-24 pl-2 text-left font-medium transition-all ease-out hover:rounded-lg hover:bg-green-600/90 hover:text-yellow-50">
+                  {DarkModeIcon}
+                  Dark mode
+                </button>
+                <div className="my-1 border-b border-green-600/30"></div>
+                <Link
+                  className="flex flex-row items-center gap-2 py-1 pr-24 pl-2 text-left font-medium transition-all ease-out hover:rounded-lg hover:bg-green-600/90 hover:text-yellow-50"
+                  href="/"
+                >
+                  {SignOutIcon}
+                  Sign out
+                </Link>
+              </div>
+            </div>
             <div className="text-center">
-              <p className="mt-28 mb-10 text-4xl text-yellow-50">
-                Welcome to NoteSet, you are signed in!
+              <p className="mt-28 mb-10 bg-gradient-to-tl from-cyan-400 via-teal-500 to-green-500 bg-clip-text text-4xl font-bold uppercase leading-normal text-transparent">
+                Welcome to NoteSet, you are signed in.
               </p>
-              <p className="text-xl text-yellow-50">
+              <p className="mb-10 text-xl text-yellow-50">
                 Choose your workout for today:
               </p>
             </div>
-            <MyTabs />
-            <MyDropdown />
           </div>
-          <div className="h-2/5 bg-slate-100"></div>
+          <div className="h-2/5 bg-slate-50"></div>
         </div>
       </main>
     </>
   );
 };
-
-function MyTabs() {
-  return (
-    <Tab.Group>
-      <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
-        <Tab className="w-full rounded-lg py-2.5 text-sm font-medium leading-5 text-blue-700 ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2">
-          Tab 1
-        </Tab>
-        <Tab>Tab 2</Tab>
-        <Tab>Tab 3</Tab>
-      </Tab.List>
-      <Tab.Panels>
-        <Tab.Panel>Content 1</Tab.Panel>
-        <Tab.Panel>Content 2</Tab.Panel>
-        <Tab.Panel>Content 3</Tab.Panel>
-      </Tab.Panels>
-    </Tab.Group>
-  );
-}
-
-function MyDropdown() {
-  return (
-    <Menu>
-      <Menu.Button className="absolute right-36 top-6 rounded-lg bg-green-500 py-2 px-7 font-semibold text-yellow-50 transition-all duration-200 ease-in hover:bg-green-700/90">
-        Options
-      </Menu.Button>
-      <Transition
-        as={Fragment}
-        enter="transition ease-out duration-100"
-        enterFrom="transform opacity-0 scale-95"
-        enterTo="transform opacity-100 scale-100"
-        leave="transition ease-in duration-75"
-        leaveFrom="transform opacity-100 scale-100"
-        leaveTo="transform opacity-0 scale-95"
-      >
-        <Menu.Items className=" absolute top-18 right-36 flex flex-col rounded-lg bg-green-500 text-yellow-50">
-          <Menu.Item>
-            <Link
-              className="bg-blue-500 px-10 py-1 transition-all duration-150 ease-in hover:bg-blue-700"
-              href="/"
-            >
-              Edit
-            </Link>
-          </Menu.Item>
-          <Menu.Item>
-            <Link
-              className="bg-blue-500 px-10 py-1 transition-all duration-150 ease-in hover:bg-blue-700"
-              href="/"
-            >
-              View logs
-            </Link>
-          </Menu.Item>
-          <Menu.Item>
-            <Link
-              className="bg-blue-500 px-10 py-1 transition-all duration-150 ease-in hover:bg-blue-700"
-              href="/"
-            >
-              Sign out
-            </Link>
-          </Menu.Item>
-        </Menu.Items>
-      </Transition>
-    </Menu>
-  );
-}
 
 export default SignedIn;
