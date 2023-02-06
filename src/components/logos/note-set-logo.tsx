@@ -12,7 +12,7 @@ const NoteSetLogo = () => {
 
 const NoteSet = (
   <p className="text-2xl text-slate-600">
-    <span className="text-2xl font-bold text-green-500">Note</span>Set
+    <span className="font-bold text-green-500">Note</span>Set
   </p>
 );
 
