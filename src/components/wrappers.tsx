@@ -2,15 +2,15 @@ import { type WrapperChild } from "../types/types";
 
 //Wrappers on sign-in page
 export const MainWrapper = ({ children }: WrapperChild) => {
-  return <div className="flex h-screen w-screen">{children}</div>;
+  return <div className="flex h-screen w-screen bg-slate-50">{children}</div>;
 };
 
 export const LeftWrapper = ({ children }: WrapperChild) => {
-  return <div className="w-2/6 bg-slate-100/70 pt-44">{children}</div>;
+  return <div className="w-2/6 pt-44">{children}</div>;
 };
 
 export const RightWrapper = ({ children }: WrapperChild) => {
-  return <div className="w-4/6 bg-slate-100/70 p-3">{children}</div>;
+  return <div className="w-4/6 p-3">{children}</div>;
 };
 
 export const LogoWrapper = ({ children }: WrapperChild) => {
