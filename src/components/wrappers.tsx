@@ -2,7 +2,9 @@ import { type WrapperChild } from "../types/types";
 
 //Wrappers on sign-in page
 export const MainWrapper = ({ children }: WrapperChild) => {
-  return <div className="flex h-screen w-screen bg-slate-50">{children}</div>;
+  return (
+    <div className="flex h-screen w-screen bg-slate-light50">{children}</div>
+  );
 };
 
 export const LeftWrapper = ({ children }: WrapperChild) => {
@@ -27,7 +29,7 @@ export const SignFormWrapper = ({ children }: WrapperChild) => {
 
 export const ExternalAuthButtonWrapper = ({ children }: WrapperChild) => {
   return (
-    <button className="mt-2 flex w-full flex-row items-center justify-center gap-3 rounded-xl border-2 border-green-300 py-2 text-sm font-semibold text-slate-600 outline-green-700 transition-all ease-in hover:translate-x-1 hover:bg-slate-200/70 focus:outline-1">
+    <button className="mt-2 flex flex-row items-center justify-center gap-3 rounded-xl border-2 border-green-light400/90 py-2 text-sm font-semibold text-slate-main600 transition-all ease-in hover:translate-x-1 hover:bg-slate-light200/60">
       {children}
     </button>
   );
@@ -35,7 +37,7 @@ export const ExternalAuthButtonWrapper = ({ children }: WrapperChild) => {
 
 export const TextWrapper = ({ children }: WrapperChild) => {
   return (
-    <p className="absolute bottom-52 right-28 w-5/12 text-right text-xl text-yellow-50">
+    <p className="absolute bottom-52 right-28 w-5/12 text-right text-xl text-yellow-text50">
       {children}
     </p>
   );
