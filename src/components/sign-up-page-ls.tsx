@@ -26,14 +26,19 @@ const SignUp = ({
 };
 
 const SignUpHeadingText = () => {
-  return <p className="mt-4 text-sm italic text-slate-600">continue with</p>;
+  return (
+    <p className="mt-4 text-sm italic text-slate-main600">continue with</p>
+  );
 };
 
 const LinkQuestion = () => {
   return (
-    <p className="text-xs text-slate-600">
+    <p className="text-xs text-slate-main600">
       Already have an acount?{" "}
-      <Link href="/" className="py-1 font-semibold text-green-500 underline">
+      <Link
+        href="/"
+        className="py-1 font-semibold text-green-main500 underline"
+      >
         Sign in here.
       </Link>
     </p>
