@@ -25,16 +25,19 @@ const SignIn = ({
 const LinkQuestions = () => {
   return (
     <>
-      <p className="mb-2 text-xs text-slate-600">
+      <p className="mb-2 text-xs text-slate-main600">
         Forgot your{" "}
-        <Link className="py-1 font-semibold text-green-500 underline" href="/">
+        <Link
+          className="py-1 font-semibold text-green-main500 underline"
+          href="/"
+        >
           password?
         </Link>
       </p>
-      <p className="text-xs text-slate-600">
+      <p className="text-xs text-slate-main600">
         New to Noteset?{" "}
         <Link
-          className="py-1 font-semibold text-green-500 underline"
+          className="py-1 font-semibold text-green-main500 underline"
           href="/sign-up"
         >
           Sign up here.
@@ -47,10 +50,10 @@ const LinkQuestions = () => {
 const SignInHeadingText = () => {
   return (
     <>
-      <p className="mt-8 text-lg font-medium text-slate-600">
+      <p className="mt-8 text-lg font-medium text-slate-main600">
         Sign in and start your workout.
       </p>
-      <p className="mt-4 text-sm italic text-slate-600">continue with</p>
+      <p className="mt-4 text-sm italic text-slate-main600">continue with</p>
     </>
   );
 };
