@@ -9,12 +9,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "jotai": "^2.0.1",
     "next": "13.1.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "zod": "^3.20.2"
   },
   "devDependencies": {
+    "@swc-jotai/react-refresh": "^0.0.4",
     "@types/node": "^18.11.18",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
