@@ -7,12 +7,12 @@
     font-style: italic;
   }
   .shadow-outline {
-    box-shadow: 0 0 0 3px rgb(255, 255, 255);
+    box-shadow: 0 0 0 3px #7dd3fc;
   }
 }
 
 @layer components {
   .sign-btn {
-    @apply mt-4 mb-6 rounded-3xl border-2 border-green-500 bg-green-500 p-10px text-center font-semibold text-yellow-50 outline-green-700 transition-all duration-200 ease-in hover:bg-green-100 hover:text-green-500 focus:outline-1;
+    @apply mt-4 mb-6 rounded-3xl border-2 border-green-main500 bg-green-main500 p-2.5 text-center font-semibold text-yellow-text50 transition-all duration-200 ease-in hover:bg-green-light100/80 hover:text-green-main500;
   }
 }
