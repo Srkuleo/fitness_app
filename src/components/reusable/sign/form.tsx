@@ -52,7 +52,7 @@ const InputField = ({ _name, placeholder, type }: InputProps) => {
         id={_name}
         placeholder={placeholder}
         required
-        className="placeholder-italic mb-2 rounded-xl p-3 text-sm text-slate-600 placeholder-gray-600 outline-green-500 focus:text-sm focus:placeholder-gray-200 focus:outline-1"
+        className="placeholder-italic mb-2 rounded-xl p-3 text-sm text-slate-main600 placeholder-slate-main600 outline-green-main500 focus:placeholder-slate-light300 focus:outline-1"
         ref={inputRef}
       />
     );
@@ -68,7 +68,7 @@ const InputField = ({ _name, placeholder, type }: InputProps) => {
           placeholder={placeholder}
           required
           pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$"
-          className="placeholder-italic mb-2 rounded-xl p-3 text-sm text-slate-600 placeholder-gray-600 outline-green-500 focus:text-sm focus:placeholder-gray-200 focus:outline-1"
+          className="placeholder-italic mb-2 rounded-xl p-3 text-sm text-slate-main600 placeholder-slate-main600 outline-green-main500 focus:placeholder-slate-light300 focus:outline-1"
         />
         {/* {!isValid && (
           <div>
@@ -87,22 +87,22 @@ const InputField = ({ _name, placeholder, type }: InputProps) => {
       id={_name}
       placeholder={placeholder}
       required
-      className="placeholder-italic mb-2 rounded-xl p-3 text-sm text-slate-600 placeholder-gray-600 outline-green-500 focus:text-sm focus:placeholder-gray-200 focus:outline-1"
+      className="placeholder-italic mb-2 rounded-xl p-3 text-sm text-slate-main600 placeholder-slate-main600 outline-green-main500 focus:placeholder-slate-light300 focus:outline-1"
     />
   );
 };
 
 const CheckBox = ({ _name, type }: Pick<InputProps, "_name" | "type">) => {
   return (
-    <div className="mt-2 flex items-center gap-1">
+    <div className="mt-2 flex gap-1 ">
       <input
         type={type}
         id={_name}
         name={_name}
-        className="cursor-pointer accent-green-300"
+        className="cursor-pointer accent-green-light400"
         required
       />
-      <label htmlFor={_name} className="text-xs text-slate-600">
+      <label htmlFor={_name} className="text-xs text-slate-main600">
         {_name === "remember" ? "Remember me" : terms}
       </label>
     </div>
@@ -112,11 +112,11 @@ const CheckBox = ({ _name, type }: Pick<InputProps, "_name" | "type">) => {
 const terms = (
   <span>
     Creating an account means you agree to the{" "}
-    <Link href="/" className="py-1 font-semibold text-green-500 underline">
+    <Link href="/" className="py-1 font-semibold text-green-main500 underline">
       Terms of Service
     </Link>{" "}
     and{" "}
-    <Link href="/" className="py-1 font-semibold text-green-500 underline">
+    <Link href="/" className="py-1 font-semibold text-green-main500 underline">
       Privacy Policy
     </Link>
     .
