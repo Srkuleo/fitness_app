@@ -37,7 +37,7 @@ const LinkQuestion = () => {
       Already have an acount?{" "}
       <Link
         href="/"
-        className="py-1 font-semibold text-green-main500 underline"
+        className="font-semibold text-green-main500 border-b"
       >
         Sign in here.
       </Link>
