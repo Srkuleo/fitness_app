@@ -28,7 +28,7 @@ const LinkQuestions = () => {
       <p className="mb-2 text-xs text-slate-main600">
         Forgot your{" "}
         <Link
-          className="py-1 font-semibold text-green-main500 underline"
+          className=" font-semibold text-green-main500 border-b"
           href="/"
         >
           password?
@@ -37,7 +37,7 @@ const LinkQuestions = () => {
       <p className="text-xs text-slate-main600">
         New to Noteset?{" "}
         <Link
-          className="py-1 font-semibold text-green-main500 underline"
+          className="font-semibold text-green-main500 border-b"
           href="/sign-up"
         >
           Sign up here.
