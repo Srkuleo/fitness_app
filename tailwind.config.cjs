@@ -19,6 +19,7 @@ module.exports = {
         light400: "#4ade80",
         dark600: "#16a34a",
         dark700: "#15803d",
+        dark800: "#166534",
       },
       yellow: {
         text50: "#fefce8",
