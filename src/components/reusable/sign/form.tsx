@@ -112,11 +112,11 @@ const CheckBox = ({ _name, type }: Pick<InputProps, "_name" | "type">) => {
 const terms = (
   <span>
     Creating an account means you agree to the{" "}
-    <Link href="/" className="py-1 font-semibold text-green-main500 underline">
+    <Link href="/" className="border-b font-semibold text-green-main500">
       Terms of Service
     </Link>{" "}
     and{" "}
-    <Link href="/" className="py-1 font-semibold text-green-main500 underline">
+    <Link href="/" className="border-b font-semibold text-green-main500">
       Privacy Policy
     </Link>
     .
