@@ -1,6 +1,6 @@
 import { type WrapperChild } from "../types/types";
 
-//Wrappers on sign-in page
+//Wrappers for sign-in and sign-up pages
 export const MainWrapper = ({ children }: WrapperChild) => {
   return (
     <div className="flex h-screen w-screen bg-slate-light50">{children}</div>
@@ -40,5 +40,14 @@ export const TextWrapper = ({ children }: WrapperChild) => {
     <p className="absolute bottom-52 right-28 w-5/12 text-right text-xl text-yellow-text50">
       {children}
     </p>
+  );
+};
+
+//Wrapper for signed-in page
+export const SignedInPageWrapper = ({ children }: WrapperChild) => {
+  return (
+    <div className="flex h-screen flex-col items-center gap-28 bg-wavey bg-cover">
+      {children}
+    </div>
   );
 };
