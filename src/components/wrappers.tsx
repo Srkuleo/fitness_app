@@ -51,3 +51,15 @@ export const SignedInPageWrapper = ({ children }: WrapperChild) => {
     </div>
   );
 };
+
+export const FixedLogoWrapper = ({ children }: WrapperChild) => {
+  return <div className="fixed top-7 left-18">{children}</div>;
+};
+
+export const HeadingTextWrapper = ({ children }: WrapperChild) => {
+  return (
+    <h1 className="mt-28 bg-gradient-to-r from-orange-button500 to-red-button500 bg-clip-text text-5xl font-bold text-tp">
+      {children}
+    </h1>
+  );
+};
