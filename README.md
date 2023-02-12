@@ -7,10 +7,10 @@ Stay tuned for future updates!
 
 ## Future updates and plans:
 
-- _Add dropdown menu with option to edit, view logs and sign out (potentially dark mode and user profile) and list menu with choosable workouts._
+- _Fix prop drilling in index.tsx and sign-up.tsx using Jotai._
 - _Polish signed in page._
-- _Fix prop drilling in index.tsx and sign-up.tsx using Zustand._
-- _Add responsiveness to the UI._
+- _useState for UI State in signed in page. Radio buttons and dropdown menu._
+- _Add responsiveness to the UI later on._
 
 ---
 
