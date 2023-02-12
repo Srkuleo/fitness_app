@@ -1,7 +1,12 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
-import { SignedInPageWrapper } from "../components/wrappers";
+import NoteSetLogo from "../components/logos/note-set-logo";
+import {
+  SignedInPageWrapper,
+  FixedLogoWrapper,
+  HeadingTextWrapper,
+} from "../components/wrappers";
 import {
   ArrowDownIcon,
   UserIcon,
@@ -12,9 +17,6 @@ import {
   StartIcon,
   SelectedIcon,
 } from "../components/svg";
-import NoteSetLogo from "../components/logos/note-set-logo";
-
-const user = "{User}";
 
 const SignedIn: NextPage = () => {
   return (
@@ -26,23 +28,15 @@ const SignedIn: NextPage = () => {
       </Head>
       <main>
         <SignedInPageWrapper>
-          <div className="fixed top-7 left-18">
+          <FixedLogoWrapper>
             <NoteSetLogo />
-          </div>
-          <HeadingText />
+          </FixedLogoWrapper>
+          <HeadingTextWrapper>Welcome, Srkuleo!</HeadingTextWrapper>
           <OptionsMenu />
           <WorkoutRadioButtons />
         </SignedInPageWrapper>
       </main>
     </>
-  );
-};
-
-const HeadingText = () => {
-  return (
-    <h1 className="mt-28 bg-gradient-to-b from-orange-button600 to-slate-light200 bg-clip-text text-4xl font-bold text-tp">
-      Welcome, {user}!
-    </h1>
   );
 };
 
