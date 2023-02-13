@@ -17,6 +17,7 @@ import {
   StartIcon,
   SelectedIcon,
 } from "../components/svg";
+import { useState } from "react";
 
 const SignedIn: NextPage = () => {
   return (
@@ -41,41 +42,52 @@ const SignedIn: NextPage = () => {
 };
 
 const OptionsMenu = () => {
+  const [showDropDown, setShowDropDown] = useState(false);
+
+  function toggleDropDown() {
+    setShowDropDown(!showDropDown);
+  }
+
   return (
     <div className="fixed top-7 right-18 flex flex-col items-end gap-2">
-      <button className="m-0 flex items-center gap-3 rounded-lg bg-green-dark700 px-3 py-1 font-medium text-yellow-text50 transition-all ease-out hover:bg-green-light400/60">
+      <button
+        onClick={toggleDropDown}
+        className="m-0 flex items-center gap-3 rounded-lg bg-green-dark700 px-3 py-1 font-medium text-yellow-text50 transition-all ease-out hover:bg-green-light400/70"
+      >
         Options
         {ArrowDownIcon}
       </button>
-      <div className="flex flex-col rounded-lg bg-slate-light50 p-1 text-green-dark700">
-        <Link
-          className="flex items-center gap-2 from-green-main500 to-green-dark700 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50"
-          href="/"
-        >
-          {UserIcon}
-          Srkuleo
-        </Link>
-        <button className="flex items-center gap-2 from-green-main500 to-green-dark700 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50">
-          {EditIcon}
-          Edit
-        </button>
-        <button className="flex items-center gap-2 from-green-main500 to-green-dark700 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50">
-          {LogsIcon}
-          View logs
-        </button>
-        <button className="flex items-center gap-2 from-green-main500 to-green-dark700 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50">
-          {DarkModeIcon}
-          Dark mode
-        </button>
-        <div className="my-1 border-b border-green-main500/20"></div>
-        <Link
-          className="flex items-center gap-2 from-green-main500 to-green-dark700 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50"
-          href="/"
-        >
-          {SignOutIcon}
-          Sign out
-        </Link>
-      </div>
+      {showDropDown && (
+        <div className="flex flex-col rounded-lg bg-slate-light50 p-1 text-green-dark700">
+          <Link
+            className="flex items-center gap-2 from-green-main500 to-green-dark700 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50"
+            href="/"
+          >
+            {UserIcon}
+            Srkuleo
+          </Link>
+          <button className="flex items-center gap-2 from-green-main500 to-green-dark700 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50">
+            {EditIcon}
+            Edit
+          </button>
+          <button className="flex items-center gap-2 from-green-main500 to-green-dark700 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50">
+            {LogsIcon}
+            View logs
+          </button>
+          <button className="flex items-center gap-2 from-green-main500 to-green-dark700 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50">
+            {DarkModeIcon}
+            Dark mode
+          </button>
+          <div className="my-1 border-b border-green-main500/20"></div>
+          <Link
+            className="flex items-center gap-2 from-green-main500 to-green-dark700 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50"
+            href="/"
+          >
+            {SignOutIcon}
+            Sign out
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
@@ -120,5 +132,39 @@ const WorkoutRadioButtons = () => {
     </div>
   );
 };
+
+// const workouts: RadioButtonProps[] = [
+//   {
+//     id: 1,
+//     workout: "Upper1",
+//     tooltip: "Mix profile day, both chest and back highly activated.",
+//     selected: false,
+//   },
+//   {
+//     id: 2,
+//     workout: "Lower1",
+//     tooltip: "Quad heavy day, with few glute/hamstrings exercises.",
+//     selected: false,
+//   },
+//   {
+//     id: 3,
+//     workout: "Upper2",
+//     tooltip: "Heavy back day, with complementary chest exercises.",
+//     selected: false,
+//   },
+//   {
+//     id: 4,
+//     workout: "Lower2",
+//     tooltip: "All arounder. Leg press + DL, heavy compound day.",
+//     selected: false,
+//   },
+// ];
+
+// type RadioButtonProps = {
+//   id: number;
+//   workout: string;
+//   tooltip: string;
+//   selected: boolean;
+// };
 
 export default SignedIn;
