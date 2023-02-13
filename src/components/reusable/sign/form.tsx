@@ -1,6 +1,6 @@
 import { type SignProps, type InputProps } from "../../../types/types";
 import SignButton from "./sign-button";
-import React, { useRef, useEffect /*useState*/ } from "react";
+import React, { /*useState*/ } from "react";
 import Link from "next/link";
 
 const Form = ({
@@ -31,13 +31,8 @@ const Form = ({
 };
 
 const InputField = ({ _name, placeholder, type }: InputProps) => {
-  const inputRef = useRef<HTMLInputElement>(null);
   // const passRef = useRef<HTMLInputElement>(null);
   // const [isValid, setIsValid] = useState(true);
-
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
 
   // function handleInput() {
   //   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -53,7 +48,7 @@ const InputField = ({ _name, placeholder, type }: InputProps) => {
         placeholder={placeholder}
         required
         className="placeholder-italic mb-2 rounded-xl p-3 text-sm text-slate-main600 placeholder-slate-main600 outline-green-main500 focus:placeholder-slate-light300 focus:outline-1"
-        ref={inputRef}
+        autoFocus
       />
     );
   } else if (type === "password") {
