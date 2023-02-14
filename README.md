@@ -14,6 +14,6 @@ Stay tuned for future updates!
 
 ---
 
-For any questions or suggestions you can chat with me on [Twitter](https://twitter.com/Srkuleo)
+For any questions or suggestions you can chat with me on [Twitter](https://twitter.com/Srkuleo). 
 
 **made using T3 stack.**
