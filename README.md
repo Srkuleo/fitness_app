@@ -11,6 +11,7 @@ Stay tuned for future updates!
 - _Polish signed in page (implement dark mode changes using state and try out new layout design for clarity)._
 - _useState for UI State in signed in page. Radio buttons and dropdown menu._
 - _Add responsiveness to the UI later on._
+- _Add active workout page, with proper structure._
 
 ---
 
