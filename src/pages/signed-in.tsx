@@ -13,11 +13,16 @@ import {
   EditIcon,
   LogsIcon,
   DarkModeIcon,
+  LightModeIcon,
   SignOutIcon,
   StartIcon,
   SelectedIcon,
 } from "../components/svg";
 import { useState } from "react";
+import { atom, Provider as JotaiProvider } from "jotai";
+import { useAtom } from "jotai/react";
+
+export const darkModeAtom = atom(false);
 
 const SignedIn: NextPage = () => {
   return (
@@ -28,14 +33,16 @@ const SignedIn: NextPage = () => {
         <meta name="description" content="Personalized workout tracker" />
       </Head>
       <main>
-        <SignedInPageWrapper>
-          <FixedLogoWrapper>
-            <NoteSetLogo />
-          </FixedLogoWrapper>
-          <HeadingTextWrapper>Welcome, Srkuleo!</HeadingTextWrapper>
-          <OptionsMenu />
-          <WorkoutRadioButtons />
-        </SignedInPageWrapper>
+        <JotaiProvider>
+          <SignedInPageWrapper>
+            <FixedLogoWrapper>
+              <NoteSetLogo />
+            </FixedLogoWrapper>
+            <HeadingTextWrapper>Welcome, Srkuleo!</HeadingTextWrapper>
+            <OptionsMenu />
+            <WorkoutRadioButtons />
+          </SignedInPageWrapper>
+        </JotaiProvider>
       </main>
     </>
   );
@@ -43,9 +50,14 @@ const SignedIn: NextPage = () => {
 
 const OptionsMenu = () => {
   const [showDropDown, setShowDropDown] = useState(false);
+  const [isDark, setIsDark] = useAtom(darkModeAtom);
 
   function toggleDropDown() {
     setShowDropDown(!showDropDown);
+  }
+
+  function toggleDarkMode() {
+    setIsDark(!isDark);
   }
 
   return (
@@ -74,9 +86,12 @@ const OptionsMenu = () => {
             {LogsIcon}
             View logs
           </button>
-          <button className="flex items-center gap-2 from-green-main500 to-green-dark700 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50">
-            {DarkModeIcon}
-            Dark mode
+          <button
+            onClick={toggleDarkMode}
+            className="flex items-center gap-2 from-green-main500 to-green-dark700 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50"
+          >
+            {isDark ? LightModeIcon : DarkModeIcon}
+            {isDark ? "Light mode" : "Dark mode"}
           </button>
           <div className="my-1 border-b border-green-main500/20"></div>
           <Link
@@ -93,32 +108,37 @@ const OptionsMenu = () => {
 };
 
 const WorkoutRadioButtons = () => {
+  const [isDark] = useAtom(darkModeAtom);
   return (
     <div className="flex flex-col items-center gap-2">
-      <h3 className="mb-2 text-xl text-yellow-text50">
+      <h3
+        className={`mb-2 text-xl ${
+          isDark ? "text-yellow-text50" : "text-slate-main600"
+        }`}
+      >
         Choose your workout for today:
       </h3>
       <div className="flex flex-col gap-2 rounded-xl">
-        <button className="focus:shadow-outline flex items-center gap-10 rounded-lg bg-slate-light100 from-green-dark800 to-green-main500 p-3 text-xl text-slate-main600 focus:bg-gradient-to-r focus:text-yellow-text50">
+        <button className={`${isDark ? "bg-slate-light50 text-slate-main600 focus:shadow-outline-blue "}`}>
           <div className="pr-48 text-left">
             <p className="font-semibold">Upper 1</p>
             <p className="text-sm italic">workout tooltip</p>
           </div>
           {SelectedIcon}
         </button>
-        <button className="focus:shadow-outline flex items-center gap-10 rounded-lg bg-slate-light100 from-green-dark800 to-green-main500 p-3 text-xl text-slate-main600 focus:bg-gradient-to-r focus:text-yellow-text50">
+        <button className="focus:shadow-outline-blue flex items-center gap-10 rounded-lg bg-gradient-to-r from-sky-light300 to-slate-light300 p-3 text-xl text-slate-main600 focus:bg-gradient-to-r focus:text-yellow-text50">
           <div className="pr-48 text-left">
             <p className="font-semibold">Lower 1</p>
             <p className="text-sm italic">workout tooltip</p>
           </div>
         </button>
-        <button className="focus:shadow-outline flex items-center gap-10 rounded-lg bg-slate-light100 from-green-dark800 to-green-main500 p-3 text-xl text-slate-main600 focus:bg-gradient-to-r focus:text-yellow-text50">
+        <button className="focus:shadow-outline-blue flex items-center gap-10 rounded-lg bg-gradient-to-r from-sky-light300 to-slate-light300 p-3 text-xl text-slate-main600 focus:bg-gradient-to-r focus:text-yellow-text50">
           <div className="pr-48 text-left">
             <p className="font-semibold">Upper 2</p>
             <p className="text-sm italic">workout tooltip</p>
           </div>
         </button>
-        <button className="focus:shadow-outline flex items-center gap-10 rounded-lg bg-slate-light100 from-green-dark800 to-green-main500 p-3 text-xl text-slate-main600 focus:bg-gradient-to-r focus:text-yellow-text50">
+        <button className="focus:shadow-outline-blue flex items-center gap-10 rounded-lg bg-gradient-to-r from-sky-light300 to-slate-light300 p-3 text-xl text-slate-main600 focus:bg-gradient-to-r focus:text-yellow-text50">
           <div className="pr-48 text-left">
             <p className="font-semibold">Lower 2</p>
             <p className="text-sm italic">workout tooltip</p>
