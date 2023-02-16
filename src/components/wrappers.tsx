@@ -1,4 +1,6 @@
 import { type WrapperChild } from "../types/types";
+import { useAtom } from "jotai/react";
+import { darkModeAtom } from "../pages/signed-in";
 
 //Wrappers for sign-in and sign-up pages
 export const MainWrapper = ({ children }: WrapperChild) => {
@@ -45,8 +47,16 @@ export const TextWrapper = ({ children }: WrapperChild) => {
 
 //Wrapper for signed-in page
 export const SignedInPageWrapper = ({ children }: WrapperChild) => {
+  const [isDark] = useAtom(darkModeAtom);
+  if (isDark) {
+    return (
+      <div className="flex h-screen flex-col items-center gap-28 bg-dark bg-cover">
+        {children}
+      </div>
+    );
+  }
   return (
-    <div className="flex h-screen flex-col items-center gap-28 bg-wavey bg-cover">
+    <div className="flex h-screen flex-col items-center gap-28 bg-light bg-cover">
       {children}
     </div>
   );
