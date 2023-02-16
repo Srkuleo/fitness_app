@@ -26,6 +26,7 @@ module.exports = {
       },
       sky: {
         heading500: "#0ea5e9",
+        light200: "#bae6fd",
         light300: "#7dd3fc",
         dark700: "#0369a1",
       },
@@ -43,7 +44,8 @@ module.exports = {
         ohp: "url('/ohp.jpg')",
         deadlift: "url('/deadlift.jpg')",
         squat: "url('/squat.jpg')",
-        wavey: "url('/images/wavey.jpg')",
+        dark: "url('/images/dark_mode_bg.jpg')",
+        light: "url('/images/light_mode_bg.jpg')",
       },
       spacing: {
         5.5: "1.375rem",
