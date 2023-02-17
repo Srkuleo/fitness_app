@@ -11,11 +11,12 @@ Stay tuned for future updates!
 
 - _Fix prop drilling in index.tsx and sign-up.tsx using Jotai._
 - _Need to update radio button when selected, polish colors for both dark and light mode and abstract few components._
+- _Add a clickable transparent div with full width and height for closing options menu._
 
 #### Later on
 
 - _Add responsiveness to the UI._
-- _Add active workout page, with proper structure._
+- _Add an active workout page, with proper structure._
 
 ---
 
