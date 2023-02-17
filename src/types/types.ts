@@ -29,3 +29,10 @@ export interface SignProps {
   signButton: SignButtonProps;
   pageImg: ImageProps;
 }
+
+export type RadioButtonProps = {
+  id: number;
+  workout: string;
+  tooltip: string;
+  selected: boolean;
+};
