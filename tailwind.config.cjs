@@ -12,6 +12,7 @@ module.exports = {
         light100: "#f1f5f9",
         light200: "#e2e8f0",
         light300: "#cbd5e1",
+        light400: "#94a3b8",
       },
       green: {
         main500: "#22c55e",
