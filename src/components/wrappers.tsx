@@ -48,15 +48,13 @@ export const TextWrapper = ({ children }: WrapperChild) => {
 //Wrapper for signed-in page
 export const SignedInPageWrapper = ({ children }: WrapperChild) => {
   const [isDark] = useAtom(darkModeAtom);
-  if (isDark) {
-    return (
-      <div className="flex h-screen flex-col items-center gap-28 bg-dark bg-cover">
-        {children}
-      </div>
-    );
-  }
+
   return (
-    <div className="flex h-screen flex-col items-center gap-28 bg-light bg-cover">
+    <div
+      className={`${
+        isDark ? "bg-dark" : "bg-light"
+      } flex h-screen flex-col items-center gap-28 bg-cover`}
+    >
       {children}
     </div>
   );
