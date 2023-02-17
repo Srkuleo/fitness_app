@@ -18,6 +18,7 @@ import {
   StartIcon,
   SelectedIcon,
 } from "../components/svg";
+import { type RadioButtonProps } from "../types/types";
 import { useState } from "react";
 import { atom, Provider as JotaiProvider } from "jotai";
 import { useAtom } from "jotai/react";
@@ -64,7 +65,9 @@ const OptionsMenu = () => {
     <div className="fixed top-7 right-18 flex flex-col items-end gap-2">
       <button
         onClick={toggleDropDown}
-        className="m-0 flex items-center gap-3 rounded-lg bg-green-dark700 px-3 py-1 font-medium text-yellow-text50 transition-all ease-out hover:bg-green-light400/70"
+        className={`${
+          isDark ? "hover:bg-green-light400/70" : "hover:bg-green-dark600"
+        } m-0 flex items-center gap-3 rounded-lg bg-green-dark700 px-3 py-1 font-medium text-yellow-text50 transition-all ease-out`}
       >
         Options
         {ArrowDownIcon}
@@ -109,41 +112,62 @@ const OptionsMenu = () => {
 
 const WorkoutRadioButtons = () => {
   const [isDark] = useAtom(darkModeAtom);
+  const [workouts, setWorkouts] = useState(initialWorkouts);
+
+  function toggleIsSelected(id: number) {
+    const newWorkouts = workouts.map((workout) => {
+      if (workout.id === id) {
+        return {
+          ...workout,
+          selected: true,
+        };
+      } else {
+        return {
+          ...workout,
+          selected: false,
+        };
+      }
+    });
+    setWorkouts(newWorkouts);
+  }
+
   return (
     <div className="flex flex-col items-center gap-2">
       <h3
-        className={`mb-2 text-xl ${
+        className={`mb-2 text-xl font-semibold ${
           isDark ? "text-yellow-text50" : "text-slate-main600"
         }`}
       >
         Choose your workout for today:
       </h3>
       <div className="flex flex-col gap-2 rounded-xl">
-        <button className={`${isDark ? "bg-slate-light50 text-slate-main600 focus:shadow-outline-blue "}`}>
-          <div className="pr-48 text-left">
-            <p className="font-semibold">Upper 1</p>
-            <p className="text-sm italic">workout tooltip</p>
-          </div>
-          {SelectedIcon}
-        </button>
-        <button className="focus:shadow-outline-blue flex items-center gap-10 rounded-lg bg-gradient-to-r from-sky-light300 to-slate-light300 p-3 text-xl text-slate-main600 focus:bg-gradient-to-r focus:text-yellow-text50">
-          <div className="pr-48 text-left">
-            <p className="font-semibold">Lower 1</p>
-            <p className="text-sm italic">workout tooltip</p>
-          </div>
-        </button>
-        <button className="focus:shadow-outline-blue flex items-center gap-10 rounded-lg bg-gradient-to-r from-sky-light300 to-slate-light300 p-3 text-xl text-slate-main600 focus:bg-gradient-to-r focus:text-yellow-text50">
-          <div className="pr-48 text-left">
-            <p className="font-semibold">Upper 2</p>
-            <p className="text-sm italic">workout tooltip</p>
-          </div>
-        </button>
-        <button className="focus:shadow-outline-blue flex items-center gap-10 rounded-lg bg-gradient-to-r from-sky-light300 to-slate-light300 p-3 text-xl text-slate-main600 focus:bg-gradient-to-r focus:text-yellow-text50">
-          <div className="pr-48 text-left">
-            <p className="font-semibold">Lower 2</p>
-            <p className="text-sm italic">workout tooltip</p>
-          </div>
-        </button>
+        {workouts.map((workout) => {
+          return (
+            <button
+              onClick={() => {
+                toggleIsSelected(workout.id);
+              }}
+              key={workout.id}
+              className={`${
+                isDark
+                  ? "focus:shadow-outline-blue bg-slate-light50 from-green-dark800 to-green-main500 focus:bg-gradient-to-r  "
+                  : "focus:shadow-outline-green bg-gradient-to-r from-sky-light300 to-slate-light300 focus:from-sky-dark700 focus:to-slate-light400 "
+              } rounded-lg p-3 text-xl text-slate-main600 focus:text-yellow-text50`}
+            >
+              <div className="flex items-center gap-18">
+                <div className="w-[30ch] text-left">
+                  <p className="font-semibold">{workout.workout}</p>
+                  <p className="text-sm italic">{workout.tooltip}</p>
+                </div>
+                {workout.selected ? (
+                  <SelectedIcon stroke="#0369a1" fill="#7dd3fc" />
+                ) : (
+                  <SelectedIcon />
+                )}
+              </div>
+            </button>
+          );
+        })}
       </div>
       <button className="mt-12 flex items-center gap-1 rounded-xl bg-gradient-to-r from-orange-button500 to-red-button500 px-8 py-2 text-lg font-semibold uppercase text-yellow-text50 hover:from-orange-button600 hover:to-red-button700">
         Start
@@ -153,38 +177,31 @@ const WorkoutRadioButtons = () => {
   );
 };
 
-// const workouts: RadioButtonProps[] = [
-//   {
-//     id: 1,
-//     workout: "Upper1",
-//     tooltip: "Mix profile day, both chest and back highly activated.",
-//     selected: false,
-//   },
-//   {
-//     id: 2,
-//     workout: "Lower1",
-//     tooltip: "Quad heavy day, with few glute/hamstrings exercises.",
-//     selected: false,
-//   },
-//   {
-//     id: 3,
-//     workout: "Upper2",
-//     tooltip: "Heavy back day, with complementary chest exercises.",
-//     selected: false,
-//   },
-//   {
-//     id: 4,
-//     workout: "Lower2",
-//     tooltip: "All arounder. Leg press + DL, heavy compound day.",
-//     selected: false,
-//   },
-// ];
-
-// type RadioButtonProps = {
-//   id: number;
-//   workout: string;
-//   tooltip: string;
-//   selected: boolean;
-// };
+const initialWorkouts: RadioButtonProps[] = [
+  {
+    id: 1,
+    workout: "Upper 1",
+    tooltip: "Mix profile day, both chest and back highly activated.",
+    selected: false,
+  },
+  {
+    id: 2,
+    workout: "Lower 1",
+    tooltip: "Quad heavy day, with few glute/hamstrings exercises.",
+    selected: false,
+  },
+  {
+    id: 3,
+    workout: "Upper 2",
+    tooltip: "Heavy back day, with complementary chest exercises.",
+    selected: false,
+  },
+  {
+    id: 4,
+    workout: "Lower 2",
+    tooltip: "All arounder. Leg press + DL, heavy compound day.",
+    selected: false,
+  },
+];
 
 export default SignedIn;
