@@ -1,13 +1,8 @@
-import { type SignProps, type InputProps } from "../../../types/types";
+import { type FormProps, type InputProps } from "../../../types/types";
 import SignButton from "./sign-button";
-import React, { /*useState*/ } from "react";
 import Link from "next/link";
 
-const Form = ({
-  inputs,
-  checkBox,
-  signButton,
-}: Omit<SignProps, "authButtons" | "pageImg">) => {
+const Form = ({ inputs, checkBox, signButton }: FormProps) => {
   return (
     <form action="#" className="flex flex-col">
       {inputs.map((input) => {
@@ -20,7 +15,7 @@ const Form = ({
           />
         );
       })}
-      <CheckBox _name={checkBox._name} type={checkBox.type} />
+      <CheckBox checkBox={checkBox} />
       <SignButton
         buttonText={signButton.buttonText}
         href={signButton.href}
@@ -31,14 +26,6 @@ const Form = ({
 };
 
 const InputField = ({ _name, placeholder, type }: InputProps) => {
-  // const passRef = useRef<HTMLInputElement>(null);
-  // const [isValid, setIsValid] = useState(true);
-
-  // function handleInput() {
-  //   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  //   setIsValid(passRef.current!.validity.valid);
-  // }
-
   if (type === "email") {
     return (
       <input
@@ -55,8 +42,6 @@ const InputField = ({ _name, placeholder, type }: InputProps) => {
     return (
       <>
         <input
-          // ref={passRef}
-          // onInput={handleInput}
           type={type}
           name={_name}
           id={_name}
@@ -65,12 +50,6 @@ const InputField = ({ _name, placeholder, type }: InputProps) => {
           pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$"
           className="placeholder-italic mb-2 rounded-xl p-3 text-sm text-slate-main600 placeholder-slate-main600 outline-green-main500 focus:placeholder-slate-light300 focus:outline-1"
         />
-        {/* {!isValid && (
-          <div>
-            Must be 8 characters or longer with at least 1 numberic, 1
-            uppercase and 1 lowercase.
-          </div>
-        )} */}
       </>
     );
   }
@@ -87,18 +66,18 @@ const InputField = ({ _name, placeholder, type }: InputProps) => {
   );
 };
 
-const CheckBox = ({ _name, type }: Pick<InputProps, "_name" | "type">) => {
+const CheckBox = ({ checkBox }: Pick<FormProps, "checkBox">) => {
   return (
     <div className="mt-2 flex gap-1 ">
       <input
-        type={type}
-        id={_name}
-        name={_name}
+        type={checkBox.type}
+        id={checkBox._name}
+        name={checkBox._name}
         className="cursor-pointer accent-green-light400"
         required
       />
-      <label htmlFor={_name} className="text-xs text-slate-main600">
-        {_name === "remember" ? "Remember me" : terms}
+      <label htmlFor={checkBox._name} className="text-xs text-slate-main600">
+        {checkBox._name === "remember" ? "Remember me" : terms}
       </label>
     </div>
   );
