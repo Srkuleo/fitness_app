@@ -1,8 +1,7 @@
-import { type SignProps } from "../types/types";
 import { TextWrapper } from "./wrappers";
 
-export const ImageLoaderDiv = ({ pageImg }: Pick<SignProps, "pageImg">) => {
-  if (pageImg.altTag === "deadlift") {
+export const ImageLoaderDiv = ({ altTag }: { altTag?: string }) => {
+  if (altTag === "deadlift") {
     return (
       <div className="relative h-full rounded-2xl bg-deadlift bg-cover">
         <ImageFilter />
