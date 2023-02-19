@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { NavBarWrapper } from "./wrappers";
 import NoteSetLogo from "./logos/note-set-logo";
 import {
   ArrowDownIcon,
@@ -10,33 +9,47 @@ import {
   LightModeIcon,
   SignOutIcon,
 } from "./svg";
-import { darkModeAtom } from "../pages/signed-in";
+import { darkModeAtom, dropDownAtom } from "../pages/signed-in";
 import { useAtom } from "jotai";
-import { useState } from "react";
 
 const NavBar = () => {
+  const [isOpen, setIsOpen] = useAtom(dropDownAtom);
+
+  function toggleDropDown() {
+    setIsOpen(!isOpen);
+  }
+
   return (
-    <NavBarWrapper>
-      <NoteSetLogo />
+    <>
+      {isOpen && (
+        <div
+          role="button"
+          onClick={toggleDropDown}
+          className="fixed top-0 z-10 h-screen w-screen cursor-default"
+        ></div>
+      )}
+      <div className="fixed top-9 left-18 z-10">
+        <NoteSetLogo />
+      </div>
       <OptionsMenu />
-    </NavBarWrapper>
+    </>
   );
 };
 
 const OptionsMenu = () => {
   const [isDark, setIsDark] = useAtom(darkModeAtom);
-  const [showDropDown, setShowDropDown] = useState(false);
+  const [isOpen, setIsOpen] = useAtom(dropDownAtom);
 
   function toggleDarkMode() {
     setIsDark(!isDark);
   }
 
   function toggleDropDown() {
-    setShowDropDown(!showDropDown);
+    setIsOpen(!isOpen);
   }
 
   return (
-    <div className="flex flex-col items-end gap-2 pt-2">
+    <div className="fixed top-9 right-18 z-10 flex flex-col items-end gap-2 pt-2">
       <button
         onClick={toggleDropDown}
         className={`${
@@ -46,7 +59,7 @@ const OptionsMenu = () => {
         Options
         {ArrowDownIcon}
       </button>
-      {showDropDown && (
+      {isOpen && (
         <div
           className={`${
             isDark ? "border-slate-light50" : "border-green-dark700/30"
