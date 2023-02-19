@@ -13,6 +13,7 @@ module.exports = {
         light200: "#e2e8f0",
         light300: "#cbd5e1",
         light400: "#94a3b8",
+        dark900: "#0f172a",
       },
       green: {
         main500: "#22c55e",
@@ -42,11 +43,9 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        ohp: "url('/ohp.jpg')",
         deadlift: "url('/deadlift.jpg')",
         squat: "url('/squat.jpg')",
-        dark: "url('/images/dark_mode_bg.jpg')",
-        light: "url('/images/light_mode_bg.jpg')",
+        pattern: "url('/SVG/pattern.svg')",
       },
       spacing: {
         5.5: "1.375rem",
