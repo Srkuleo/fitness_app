@@ -9,8 +9,7 @@ Stay tuned for future updates!
 
 #### Priority
 
-- _Fix prop drilling in index.tsx and sign-up.tsx using Jotai._
-- _Need to update radio button when selected, polish colors for both dark and light mode and abstract few components._
+- _Need to update radio button when selected._
 - _Add a clickable transparent div with full width and height for closing options menu._
 
 #### Later on
