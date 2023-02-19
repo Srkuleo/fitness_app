@@ -1,6 +1,4 @@
 import { type WrapperChild } from "../types/types";
-import { useAtom } from "jotai/react";
-import { darkModeAtom } from "../pages/signed-in";
 
 //Wrappers for sign-in and sign-up pages
 export const MainWrapper = ({ children }: WrapperChild) => {
@@ -46,28 +44,10 @@ export const TextWrapper = ({ children }: WrapperChild) => {
 };
 
 //Wrapper for signed-in page
-export const SignedInPageWrapper = ({ children }: WrapperChild) => {
-  const [isDark] = useAtom(darkModeAtom);
-
+export const NavBarWrapper = ({ children }: WrapperChild) => {
   return (
-    <div
-      className={`${
-        isDark ? "bg-dark" : "bg-light"
-      } flex h-screen flex-col items-center gap-28 bg-cover`}
-    >
+    <div className="fixed top-9 left-18 right-18 z-10 flex items-start justify-between">
       {children}
     </div>
-  );
-};
-
-export const FixedLogoWrapper = ({ children }: WrapperChild) => {
-  return <div className="fixed top-7 left-18">{children}</div>;
-};
-
-export const HeadingTextWrapper = ({ children }: WrapperChild) => {
-  return (
-    <h1 className="mt-28 bg-gradient-to-r from-orange-button500 to-red-button500 bg-clip-text text-5xl font-bold text-tp">
-      {children}
-    </h1>
   );
 };
