@@ -40,33 +40,43 @@ const RadioButtonsContent = () => {
         fill
         priority
         style={{ objectFit: "cover" }}
+        className="relative z-0"
       />
-      <h1 className="z-10 mt-36 mb-24 bg-gradient-to-r from-orange-button500 to-red-button500 bg-clip-text text-5xl font-bold text-tp">
+      <h1 className="relative z-0 mt-36 mb-24 bg-gradient-to-r from-orange-button500 to-red-button500 bg-clip-text text-5xl font-bold text-tp">
         Welcome, Srkuleo.
       </h1>
       <h3
-        className={`z-10 mb-6 text-xl font-semibold ${
+        className={`relative z-0 mb-6 text-xl font-semibold ${
           isDark ? "text-yellow-text50" : "text-slate-main600"
         }`}
       >
         Choose your workout for today:
       </h3>
-      <div className="z-10 flex flex-col gap-2 rounded-xl">
+      <div className="relative z-0 flex flex-col gap-2 rounded-xl">
         {workouts.map((workout) => {
+          let buttonClass = "";
+
+          if (workout.selected && isDark) {
+            buttonClass =
+              "shadow-outline-blue bg-gradient-to-r from-green-dark800 to-green-main500 text-yellow-text50";
+          } else if (workout.selected && !isDark) {
+            buttonClass =
+              "shadow-outline-green bg-gradient-to-r from-sky-dark700 to-slate-light400 text-yellow-text50";
+          } else if (isDark) {
+            buttonClass = "bg-slate-light50 text-slate-main600";
+          } else {
+            buttonClass = "bg-sky-light200 text-slate-main600";
+          }
           return (
             <button
               onClick={() => {
                 toggleIsSelected(workout.id);
               }}
               key={workout.id}
-              className={`${
-                isDark
-                  ? "focus:shadow-outline-blue bg-slate-light50 from-green-dark800 to-green-main500 focus:bg-gradient-to-r  "
-                  : "focus:shadow-outline-green bg-gradient-to-r from-sky-light200 to-slate-light300 focus:from-sky-dark700 focus:to-slate-light400 "
-              } rounded-lg p-3 text-xl text-slate-main600 focus:text-yellow-text50`}
+              className={`${buttonClass} rounded-lg p-3 text-xl`}
             >
-              <div className="flex items-center gap-18">
-                <div className="w-[30ch] text-left">
+              <div className="flex items-center justify-between gap-14">
+                <div className="text-left">
                   <p className="font-semibold">{workout.workout}</p>
                   <p className="text-sm italic">{workout.tooltip}</p>
                 </div>
@@ -80,7 +90,7 @@ const RadioButtonsContent = () => {
           );
         })}
       </div>
-      <button className="z-10 mt-12 flex items-center gap-1 rounded-xl bg-gradient-to-r from-orange-button500 to-red-button500 px-8 py-2 text-lg font-semibold uppercase text-yellow-text50 hover:from-orange-button600 hover:to-red-button700">
+      <button className="relative z-0 mt-12 flex items-center gap-1 rounded-xl bg-gradient-to-r from-orange-button500 to-red-button500 px-8 py-2 text-lg font-semibold uppercase text-yellow-text50 hover:from-orange-button600 hover:to-red-button700">
         Start
         {StartIcon}
       </button>
