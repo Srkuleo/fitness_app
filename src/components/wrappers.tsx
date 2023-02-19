@@ -42,12 +42,3 @@ export const TextWrapper = ({ children }: WrapperChild) => {
     </p>
   );
 };
-
-//Wrapper for signed-in page
-export const NavBarWrapper = ({ children }: WrapperChild) => {
-  return (
-    <div className="fixed top-9 left-18 right-18 z-10 flex items-start justify-between">
-      {children}
-    </div>
-  );
-};
