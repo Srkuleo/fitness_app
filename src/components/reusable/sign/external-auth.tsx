@@ -1,7 +1,11 @@
 import ExternalAuthButton from "./external-auth-button";
-import { type SignProps } from "../../../types/types";
+import { type ExternalAuthButtonProps } from "../../../types/types";
 
-const ExternalAuth = ({ authButtons }: Pick<SignProps, "authButtons">) => {
+const ExternalAuth = ({
+  authButtons,
+}: {
+  authButtons: ExternalAuthButtonProps[];
+}) => {
   return (
     <>
       {authButtons.map((aB) => {
