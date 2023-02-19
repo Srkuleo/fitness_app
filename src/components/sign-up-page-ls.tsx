@@ -1,16 +1,11 @@
-import { type SignProps } from "../types/types";
+import Link from "next/link";
 import { LogoWrapper, SignFormWrapper } from "./wrappers";
 import NoteSetLogo from "./logos/note-set-logo";
 import ExternalAuth from "./reusable/sign/external-auth";
 import Form from "./reusable/sign/form";
-import Link from "next/link";
+import { authButtons, signUpFormProps } from "../types/types";
 
-const SignUp = ({
-  authButtons,
-  inputs,
-  checkBox,
-  signButton,
-}: Omit<SignProps, "pageImg">) => {
+const SignUp = () => {
   return (
     <SignFormWrapper>
       <LogoWrapper>
@@ -19,7 +14,11 @@ const SignUp = ({
       </LogoWrapper>
       <SignUpHeadingText />
       <ExternalAuth authButtons={authButtons} />
-      <Form inputs={inputs} checkBox={checkBox} signButton={signButton} />
+      <Form
+        inputs={signUpFormProps.inputs}
+        checkBox={signUpFormProps.checkBox}
+        signButton={signUpFormProps.signButton}
+      />
       <LinkQuestion />
     </SignFormWrapper>
   );
@@ -35,10 +34,7 @@ const LinkQuestion = () => {
   return (
     <p className="text-xs text-slate-main600">
       Already have an acount?{" "}
-      <Link
-        href="/"
-        className="font-semibold text-green-main500 border-b"
-      >
+      <Link href="/" className="border-b font-semibold text-green-main500">
         Sign in here.
       </Link>
     </p>
