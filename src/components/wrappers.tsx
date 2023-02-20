@@ -12,7 +12,7 @@ export const LeftWrapper = ({ children }: WrapperChild) => {
 };
 
 export const RightWrapper = ({ children }: WrapperChild) => {
-  return <div className="w-4/6 p-3">{children}</div>;
+  return <div className="relative m-3 w-4/6">{children}</div>;
 };
 
 export const LogoWrapper = ({ children }: WrapperChild) => {
