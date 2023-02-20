@@ -28,17 +28,17 @@ const RadioButtonsContent = () => {
 
   return (
     <div
-      className={`relative flex h-screen flex-col items-center ${
+      className={`${
         isDark
           ? "bg-gradient-to-br from-slate-dark900 to-slate-main600"
-          : "bg-gradient-to-br from-slate-light100 to-slate-light50"
-      }`}
+          : "bg-gradient-to-tl from-slate-light300 via-slate-light300 to-slate-light50"
+      } relative flex h-screen flex-col items-center `}
     >
       <Image
         src="/SVG/pattern.svg"
         alt="pattern"
-        fill
-        priority
+        fill={true}
+        priority={true}
         style={{ objectFit: "cover" }}
         className="relative z-0"
       />
@@ -46,42 +46,45 @@ const RadioButtonsContent = () => {
         Welcome, Srkuleo.
       </h1>
       <h3
-        className={`relative z-0 mb-6 text-xl font-semibold ${
+        className={`${
           isDark ? "text-yellow-text50" : "text-slate-main600"
-        }`}
+        } relative z-0 mb-6 text-xl font-semibold `}
       >
         Choose your workout for today:
       </h3>
       <div className="relative z-0 flex flex-col gap-2 rounded-xl">
         {workouts.map((workout) => {
-          let buttonClass = "";
-
-          if (workout.selected && isDark) {
-            buttonClass =
-              "shadow-outline-blue bg-gradient-to-r from-green-dark800 to-green-main500 text-yellow-text50";
-          } else if (workout.selected && !isDark) {
-            buttonClass =
-              "shadow-outline-green bg-gradient-to-r from-sky-dark700 to-slate-light400 text-yellow-text50";
-          } else if (isDark) {
-            buttonClass = "bg-slate-light50 text-slate-main600";
-          } else {
-            buttonClass = "bg-sky-light200 text-slate-main600";
-          }
           return (
             <button
               onClick={() => {
                 toggleIsSelected(workout.id);
               }}
               key={workout.id}
-              className={`${buttonClass} rounded-lg p-3 text-xl`}
+              className={`${
+                workout.selected
+                  ? "bg-gradient-to-r from-sky-dark800 to-sky-dark700 text-yellow-text50"
+                  : "bg-slate-light50"
+              } rounded-lg px-6 py-4`}
             >
               <div className="flex items-center justify-between gap-14">
                 <div className="text-left">
-                  <p className="font-semibold">{workout.workout}</p>
-                  <p className="text-sm italic">{workout.tooltip}</p>
+                  <p
+                    className={`${
+                      !workout.selected && "text-slate-main600"
+                    } text-xl font-medium`}
+                  >
+                    {workout.workout}
+                  </p>
+                  <p
+                    className={`${
+                      !workout.selected && "text-slate-light400"
+                    } text-sm`}
+                  >
+                    {workout.tooltip}
+                  </p>
                 </div>
                 {workout.selected ? (
-                  <SelectedIcon stroke="#0369a1" fill="#7dd3fc" />
+                  <SelectedIcon stroke="#fefce8" />
                 ) : (
                   <SelectedIcon />
                 )}
