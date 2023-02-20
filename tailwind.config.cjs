@@ -31,6 +31,7 @@ module.exports = {
         light200: "#bae6fd",
         light300: "#7dd3fc",
         dark700: "#0369a1",
+        dark800: "#075985",
       },
       orange: {
         button500: "#f97316",
@@ -42,11 +43,6 @@ module.exports = {
       },
     },
     extend: {
-      backgroundImage: {
-        deadlift: "url('/deadlift.jpg')",
-        squat: "url('/squat.jpg')",
-        pattern: "url('/SVG/pattern.svg')",
-      },
       spacing: {
         5.5: "1.375rem",
         18: "4.5rem",
