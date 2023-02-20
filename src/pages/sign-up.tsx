@@ -1,8 +1,8 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { LeftWrapper, RightWrapper, MainWrapper } from "../components/wrappers";
+import { MainWrapper, LeftWrapper, RightWrapper } from "../components/wrappers";
 import SignUp from "../components/sign-up-page-ls";
-import { ImageLoaderDiv } from "../components/image-loader";
+import { LandingPageImage } from "../components/image-loader";
 
 const SignUpPage: NextPage = () => {
   return (
@@ -21,7 +21,7 @@ const SignUpPage: NextPage = () => {
             <SignUp />
           </LeftWrapper>
           <RightWrapper>
-            <ImageLoaderDiv />
+            <LandingPageImage />
           </RightWrapper>
         </MainWrapper>
       </main>
