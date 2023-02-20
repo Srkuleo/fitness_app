@@ -60,11 +60,7 @@ const OptionsMenu = () => {
         {ArrowDownIcon}
       </button>
       {isOpen && (
-        <div
-          className={`${
-            isDark ? "border-slate-light50" : "border-green-dark700/30"
-          } flex flex-col rounded-lg border-2 bg-slate-light50 p-1 text-green-dark700`}
-        >
+        <div className="flex flex-col rounded-lg bg-slate-light50 p-1 text-green-dark700">
           <Link
             className="flex items-center gap-2 from-green-main500 to-green-dark700 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50"
             href="/"
