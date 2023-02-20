@@ -1,25 +1,20 @@
+import Image from "next/image";
 import { TextWrapper } from "./wrappers";
 
-export const ImageLoaderDiv = ({ altTag }: { altTag?: string }) => {
-  if (altTag === "deadlift") {
-    return (
-      <div className="relative h-full rounded-2xl bg-deadlift bg-cover">
-        <ImageFilter />
-        <SignInText />
+export const LandingPageImage = ({ altTag }: { altTag?: string }) => {
+  return (
+    <>
+      <Image
+        src={altTag === "deadlift" ? "/deadlift.jpg" : "/squat.jpg"}
+        alt={altTag === "deadlift" ? "deadlift" : "squat"}
+        priority={true}
+        fill={true}
+        className="rounded-2xl"
+      />
+      <div className="relative z-10 h-full rounded-2xl bg-gradient-to-tl from-black via-black/60 to-tp">
+        {altTag === "deadlift" ? <SignInText /> : <SignUpText />}
       </div>
-    );
-  }
-  return (
-    <div className="relative h-full rounded-2xl bg-squat bg-cover">
-      <ImageFilter />
-      <SignUpText />
-    </div>
-  );
-};
-
-const ImageFilter = () => {
-  return (
-    <div className="h-full w-full rounded-2xl bg-gradient-to-tl from-black via-black/60 to-tp"></div>
+    </>
   );
 };
 
