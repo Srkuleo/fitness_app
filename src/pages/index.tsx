@@ -2,7 +2,7 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import { MainWrapper, LeftWrapper, RightWrapper } from "../components/wrappers";
 import SignIn from "../components/sign-in-page-ls";
-import { ImageLoaderDiv } from "../components/image-loader";
+import { LandingPageImage } from "../components/image-loader";
 
 const Home: NextPage = () => {
   return (
@@ -21,7 +21,7 @@ const Home: NextPage = () => {
             <SignIn />
           </LeftWrapper>
           <RightWrapper>
-            <ImageLoaderDiv altTag="deadlift" />
+            <LandingPageImage altTag="deadlift" />
           </RightWrapper>
         </MainWrapper>
       </main>
