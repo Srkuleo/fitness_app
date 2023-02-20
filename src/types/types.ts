@@ -97,25 +97,25 @@ export const signUpFormProps: FormProps = {
 export const initialWorkouts: RadioButtonProps[] = [
   {
     id: 1,
-    workout: "UPPER 1",
+    workout: "Upper 1",
     tooltip: "Mix profile day, both chest and back highly activated.",
     selected: false,
   },
   {
     id: 2,
-    workout: "LOWER 1",
+    workout: "Lower 1",
     tooltip: "Quad heavy day, with few glute/hamstrings exercises.",
     selected: false,
   },
   {
     id: 3,
-    workout: "UPPER 2",
+    workout: "Upper 2",
     tooltip: "Heavy back day, with complementary chest exercises.",
     selected: false,
   },
   {
     id: 4,
-    workout: "LOWER 2",
+    workout: "Lower 2",
     tooltip: "All arounder. Leg press + DL, heavy compound day.",
     selected: false,
   },
