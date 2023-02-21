@@ -1,4 +1,4 @@
-import * as svg from "../components/svg";
+import * as svg from "../components/icons/svg";
 
 export interface WrapperChild {
   children: React.ReactNode;
@@ -32,7 +32,10 @@ export type RadioButtonProps = {
 };
 
 export interface FormProps {
-  inputs: InputProps[];
+  form: {
+    id: string;
+    inputs: InputProps[];
+  };
   checkBox: Pick<InputProps, "_name" | "type">;
   signButton: SignButtonProps;
 }
@@ -45,10 +48,13 @@ export const authButtons: ExternalAuthButtonProps[] = [
 ];
 
 export const signInFormProps: FormProps = {
-  inputs: [
-    { _name: "email", placeholder: "Email", type: "email" },
-    { _name: "password", placeholder: "Password", type: "password" },
-  ],
+  form: {
+    id: "sign-in",
+    inputs: [
+      { _name: "email", placeholder: "Email", type: "email" },
+      { _name: "password", placeholder: "Password", type: "password" },
+    ],
+  },
   checkBox: {
     _name: "remember",
     type: "checkbox",
@@ -61,28 +67,31 @@ export const signInFormProps: FormProps = {
 };
 
 export const signUpFormProps: FormProps = {
-  inputs: [
-    {
-      _name: "email",
-      placeholder: "Email",
-      type: "email",
-    },
-    {
-      _name: "username",
-      placeholder: "Username",
-      type: "text",
-    },
-    {
-      _name: "password",
-      placeholder: "Password",
-      type: "password",
-    },
-    {
-      _name: "confPassword",
-      placeholder: "Confirm password",
-      type: "password",
-    },
-  ],
+  form: {
+    id: "sign-up",
+    inputs: [
+      {
+        _name: "email",
+        placeholder: "Email",
+        type: "email",
+      },
+      {
+        _name: "username",
+        placeholder: "Username",
+        type: "text",
+      },
+      {
+        _name: "password",
+        placeholder: "Password",
+        type: "password",
+      },
+      {
+        _name: "confPassword",
+        placeholder: "Confirm password",
+        type: "password",
+      },
+    ],
+  },
   checkBox: {
     _name: "terms and policy",
     type: "checkbox",
