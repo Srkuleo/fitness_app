@@ -1,32 +1,31 @@
 import Link from "next/link";
-import { LogoWrapper, SignFormWrapper } from "./wrappers";
-import NoteSetLogo from "./logos/note-set-logo";
 import ExternalAuth from "./reusable/sign/external-auth";
 import Form from "./reusable/sign/form";
 import { authButtons, signUpFormProps } from "../types/types";
+import { Separator } from "./reusable/sign/separator";
 
 const SignUp = () => {
   return (
-    <SignFormWrapper>
-      <LogoWrapper>
-        <p className="text-2xl">Welcome to</p>
-        <NoteSetLogo />
-      </LogoWrapper>
+    <div>
       <SignUpHeadingText />
       <ExternalAuth authButtons={authButtons} />
+      <Separator />
       <Form
-        inputs={signUpFormProps.inputs}
+        form={signUpFormProps.form}
         checkBox={signUpFormProps.checkBox}
         signButton={signUpFormProps.signButton}
       />
       <LinkQuestion />
-    </SignFormWrapper>
+    </div>
   );
 };
 
 const SignUpHeadingText = () => {
   return (
-    <p className="mt-4 text-sm italic text-slate-main600">continue with</p>
+    <div>
+      <p className="text-lg font-semibold leading-6 text-yellow-text50">A minimalistic approach to tracking your workout progress</p>
+      <p className="mt-4 text-sm italic text-slate-main600">continue with</p>
+    </div>
   );
 };
 
