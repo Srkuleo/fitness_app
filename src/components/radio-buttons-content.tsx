@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { initialWorkouts } from "../types/types";
-import { StartIcon, SelectedIcon } from "../components/svg";
+import { StartIcon, SelectedIcon } from "./icons/svg";
 import { darkModeAtom } from "../pages/signed-in";
 import { useAtom } from "jotai/react";
 import { useState } from "react";
