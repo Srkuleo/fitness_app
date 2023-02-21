@@ -1,23 +1,22 @@
 import Link from "next/link";
-import NoteSetLogo from "./logos/note-set-logo";
-import { SignFormWrapper } from "./wrappers";
 import Form from "./reusable/sign/form";
 import ExternalAuth from "./reusable/sign/external-auth";
 import { authButtons, signInFormProps } from "../types/types";
+import { Separator } from "./reusable/sign/separator";
 
 const SignIn = () => {
   return (
-    <SignFormWrapper>
-      <NoteSetLogo />
+    <div className="flex flex-col">
       <SignInHeadingText />
       <ExternalAuth authButtons={authButtons} />
+      <Separator />
       <Form
-        inputs={signInFormProps.inputs}
+        form={signInFormProps.form}
         checkBox={signInFormProps.checkBox}
         signButton={signInFormProps.signButton}
       />
       <LinkQuestions />
-    </SignFormWrapper>
+    </div>
   );
 };
 
