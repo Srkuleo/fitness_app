@@ -1,9 +1,9 @@
 import Image from "next/image";
-import { TextWrapper } from "./wrappers";
+import { ImageWrapper, TextWrapper } from "./wrappers";
 
 export const LandingPageImage = ({ altTag }: { altTag?: string }) => {
   return (
-    <>
+    <ImageWrapper>
       <Image
         src={altTag === "deadlift" ? "/deadlift.jpg" : "/squat.jpg"}
         alt={altTag === "deadlift" ? "deadlift" : "squat"}
@@ -14,7 +14,7 @@ export const LandingPageImage = ({ altTag }: { altTag?: string }) => {
       <div className="relative z-10 h-full rounded-2xl bg-gradient-to-tl from-black via-black/60 to-tp">
         {altTag === "deadlift" ? <SignInText /> : <SignUpText />}
       </div>
-    </>
+    </ImageWrapper>
   );
 };
 
