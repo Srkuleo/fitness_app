@@ -1,8 +1,9 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { MainWrapper, LeftWrapper, RightWrapper } from "../components/wrappers";
+import { MainWrapper, SignFormWrapper } from "../components/wrappers";
 import SignUp from "../components/sign-up-page-ls";
 import { LandingPageImage } from "../components/image-loader";
+import { Header } from ".";
 
 const SignUpPage: NextPage = () => {
   return (
@@ -17,12 +18,11 @@ const SignUpPage: NextPage = () => {
       </Head>
       <main>
         <MainWrapper>
-          <LeftWrapper>
+          <SignFormWrapper>
+            <Header />
             <SignUp />
-          </LeftWrapper>
-          <RightWrapper>
-            <LandingPageImage />
-          </RightWrapper>
+          </SignFormWrapper>
+          <LandingPageImage />
         </MainWrapper>
       </main>
     </>
