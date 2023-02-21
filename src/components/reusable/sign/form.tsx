@@ -2,10 +2,10 @@ import { type FormProps, type InputProps } from "../../../types/types";
 import SignButton from "./sign-button";
 import Link from "next/link";
 
-const Form = ({ inputs, checkBox, signButton }: FormProps) => {
+const Form = ({ form, checkBox, signButton }: FormProps) => {
   return (
-    <form action="#" className="flex flex-col">
-      {inputs.map((input) => {
+    <form action="#" className="flex flex-col" id={form.id}>
+      {form.inputs.map((input) => {
         return (
           <InputField
             key={input._name}
@@ -68,7 +68,7 @@ const InputField = ({ _name, placeholder, type }: InputProps) => {
 
 const CheckBox = ({ checkBox }: Pick<FormProps, "checkBox">) => {
   return (
-    <div className="mt-2 flex gap-1 ">
+    <div className="my-3 flex gap-1 ">
       <input
         type={checkBox.type}
         id={checkBox._name}
