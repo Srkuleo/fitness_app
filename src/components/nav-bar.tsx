@@ -1,5 +1,5 @@
 import Link from "next/link";
-import NoteSetLogo from "./logos/note-set-logo";
+import NoteSetLogo from "./icons/note-set-logo";
 import {
   ArrowDownIcon,
   UserIcon,
@@ -8,7 +8,7 @@ import {
   DarkModeIcon,
   LightModeIcon,
   SignOutIcon,
-} from "./svg";
+} from "./icons/svg";
 import { darkModeAtom, dropDownAtom } from "../pages/signed-in";
 import { useAtom } from "jotai";
 
