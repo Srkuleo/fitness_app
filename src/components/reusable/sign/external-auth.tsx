@@ -7,7 +7,7 @@ const ExternalAuth = ({
   authButtons: ExternalAuthButtonProps[];
 }) => {
   return (
-    <>
+    <div className="flex flex-col gap-2">
       {authButtons.map((aB) => {
         return (
           <ExternalAuthButton
@@ -17,17 +17,6 @@ const ExternalAuth = ({
           />
         );
       })}
-      <Separator />
-    </>
-  );
-};
-
-const Separator = () => {
-  return (
-    <div className="m-3 flex items-center justify-around">
-      <div className="w-32 border border-green-light400/90"></div>
-      <p className="text-sm italic text-slate-main600">or</p>
-      <div className="w-32 border border-green-light400/90"></div>
     </div>
   );
 };
