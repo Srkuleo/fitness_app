@@ -1,12 +1,9 @@
 import Image from "next/image";
 import { initialWorkouts } from "../types/types";
 import { StartIcon, SelectedIcon } from "./icons/svg";
-import { darkModeAtom } from "../pages/signed-in";
-import { useAtom } from "jotai/react";
 import { useState } from "react";
 
 const RadioButtonsContent = () => {
-  const [isDark] = useAtom(darkModeAtom);
   const [workouts, setWorkouts] = useState(initialWorkouts);
 
   function toggleIsSelected(id: number) {
@@ -27,13 +24,7 @@ const RadioButtonsContent = () => {
   }
 
   return (
-    <div
-      className={`${
-        isDark
-          ? "bg-gradient-to-br from-slate-dark900 to-slate-main600"
-          : "bg-gradient-to-tl from-slate-light300 via-slate-light300 to-slate-light50"
-      } relative flex h-screen flex-col items-center `}
-    >
+    <div className="light-bg dark:dark-bg relative flex h-screen flex-col items-center">
       <Image
         src="/SVG/pattern.svg"
         alt="pattern"
@@ -45,11 +36,7 @@ const RadioButtonsContent = () => {
       <h1 className="relative z-0 mt-36 mb-24 bg-gradient-to-r from-orange-button500 to-red-button500 bg-clip-text text-5xl font-bold text-tp">
         Welcome, Srkuleo.
       </h1>
-      <h3
-        className={`${
-          isDark ? "text-yellow-text50" : "text-slate-main600"
-        } relative z-0 mb-6 text-xl font-semibold `}
-      >
+      <h3 className="relative z-0 mb-6 text-xl font-semibold text-slate-main600 dark:text-yellow-text50">
         Choose your workout for today:
       </h3>
       <div className="relative z-0 flex flex-col gap-2 rounded-xl">
