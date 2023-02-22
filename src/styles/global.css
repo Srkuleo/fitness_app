@@ -16,12 +16,12 @@
 
 @layer components {
   .sign-btn {
-    @apply rounded-3xl border-2 border-green-main500 bg-green-main500 p-2.5 text-center font-semibold text-yellow-text50 transition-all ease-in hover:bg-green-light100/80 hover:text-green-main500 dark:hover:border-green-dark700 dark:hover:bg-green-dark700 dark:hover:text-yellow-text50;
+    @apply mb-3 rounded-3xl border-2 border-green-main500 bg-green-main500 p-2.5 text-center font-semibold text-yellow-text50 transition-all ease-in hover:bg-green-light100/80 hover:text-green-main500 dark:hover:border-green-dark700 dark:hover:bg-green-dark700 dark:hover:text-yellow-text50;
   }
   .dark-bg {
-    @apply bg-gradient-to-br from-slate-dark900 via-slate-dark900 to-slate-dark700;
+    @apply bg-gradient-to-br from-slate-dark900 to-slate-dark800;
   }
   .light-bg {
-    @apply bg-gradient-to-br from-slate-light50 via-slate-light100 to-slate-light100;
+    @apply bg-gradient-to-br from-slate-light200 to-slate-light50;
   }
 }
