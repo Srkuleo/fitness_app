@@ -23,7 +23,9 @@ const SignUp = () => {
 const SignUpHeadingText = () => {
   return (
     <div>
-      <p className="text-lg font-semibold leading-6 text-yellow-text50">A minimalistic approach to tracking your workout progress</p>
+      <p className="text-lg font-semibold leading-6 text-slate-main600 dark:text-yellow-text50">
+        A minimalistic approach to tracking your workout progress
+      </p>
       <p className="mt-4 text-sm italic text-slate-main600">continue with</p>
     </div>
   );
