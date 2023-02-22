@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { ImageWrapper, TextWrapper } from "./wrappers";
 
-export const LandingPageImage = ({ altTag }: { altTag?: string }) => {
+const LandingPageImage = ({ altTag }: { altTag?: string }) => {
   return (
     <ImageWrapper>
       <Image
@@ -47,3 +47,5 @@ const SignUpText = () => {
     </TextWrapper>
   );
 };
+
+export default LandingPageImage;
