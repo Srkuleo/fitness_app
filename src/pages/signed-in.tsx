@@ -4,7 +4,6 @@ import NavBar from "../components/nav-bar";
 import RadioButtonsContent from "../components/radio-buttons-content";
 import { atom, Provider as JotaiProvider } from "jotai";
 
-export const darkModeAtom = atom(false);
 export const dropDownAtom = atom(false);
 
 const SignedIn: NextPage = () => {
