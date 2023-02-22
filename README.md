@@ -9,9 +9,9 @@ Stay tuned for future updates!
 
 #### Priority
 
+- _Refactor classNames on elements to utilize dark: tailwind class._
 - _Add an active workout page, with proper structure._
 - _Make start button a link component that leads to new page with workout details (radiobutton component)._
-- _Fix UI problem with flex, add buttons for toggling theme and git repo, implement dark mode using useTheme and refactor classNames on elements to utilize dark: tailwind class._
 
 #### Later on
 
