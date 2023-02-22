@@ -23,10 +23,12 @@ const SignIn = () => {
 const SignInHeadingText = () => {
   return (
     <>
-      <p className="mt-8 text-lg font-medium text-slate-main600">
+      <p className="text-lg font-medium text-slate-main600 dark:text-yellow-text50">
         Sign in and start your workout.
       </p>
-      <p className="mt-4 text-sm italic text-slate-main600">continue with</p>
+      <p className="mt-4 mb-3 text-sm italic text-slate-main600">
+        continue with
+      </p>
     </>
   );
 };
