@@ -1,7 +1,81 @@
+export const GitHub = ({ color }: { color: string }) => {
+  return (
+    <a
+      href="https://github.com/Srkuleo/noteset"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <svg
+        width={26}
+        height={26}
+        aria-hidden="true"
+        version="1.1"
+        viewBox="0 0 16 16"
+        fill={color}
+      >
+        <path
+          fill-rule="evenodd"
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+        ></path>
+      </svg>
+    </a>
+  );
+};
+
+export const DarkModeIcon = ({
+  size,
+  color = "#64748b",
+}: {
+  size: number;
+  color?: string;
+}) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      fill={color}
+      width={size}
+      height={size}
+    >
+      <path
+        fillRule="evenodd"
+        d="M7.455 2.004a.75.75 0 01.26.77 7 7 0 009.958 7.967.75.75 0 011.067.853A8.5 8.5 0 116.647 1.921a.75.75 0 01.808.083z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+};
+
+export const LightModeIcon = ({
+  size,
+  stroke = "#fefce8",
+}: {
+  size: number;
+  stroke?: string;
+}) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={2}
+      stroke={stroke}
+      width={size}
+      height={size}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+      />
+    </svg>
+  );
+};
+
 export const GoogleSvg = (
   <svg
-    width="26px"
-    height="26px"
+    width={26}
+    height={26}
     viewBox="-0.5 0 48 48"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -67,8 +141,8 @@ export const GoogleSvg = (
 
 export const TwitterSvg = (
   <svg
-    width="26px"
-    height="26px"
+    width={26}
+    height={26}
     viewBox="0 0 16 16"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -90,8 +164,8 @@ export const TwitterSvg = (
 
 export const DiscordSvg = (
   <svg
-    width="26px"
-    height="26px"
+    width={26}
+    height={26}
     viewBox="0 0 1024 1024"
     xmlns="http://www.w3.org/2000/svg"
     fill="#f8fafc"
@@ -115,8 +189,8 @@ export const DiscordSvg = (
 
 export const NoteSetLogoSvg = (
   <svg
-    width="48px"
-    height="48px"
+    width={48}
+    height={48}
     viewBox="-2.4 -2.4 28.80 28.80"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -189,7 +263,8 @@ export const ArrowDownIcon = (
     viewBox="0 0 24 24"
     strokeWidth={2}
     stroke="currentColor"
-    className="h-4 w-4"
+    width={16}
+    height={16}
   >
     <path
       strokeLinecap="round"
@@ -206,7 +281,8 @@ export const UserIcon = (
     viewBox="0 0 24 24"
     strokeWidth={2}
     stroke="currentColor"
-    className="h-5.5 w-5.5"
+    width={22}
+    height={22}
   >
     <path
       strokeLinecap="round"
@@ -223,7 +299,8 @@ export const EditIcon = (
     viewBox="0 0 24 24"
     strokeWidth={2}
     stroke="currentColor"
-    className="h-5.5 w-5.5"
+    width={22}
+    height={22}
   >
     <path
       strokeLinecap="round"
@@ -240,44 +317,13 @@ export const LogsIcon = (
     viewBox="0 0 24 24"
     strokeWidth={2}
     stroke="currentColor"
-    className="h-5.5 w-5.5"
+    width={22}
+    height={22}
   >
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
       d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"
-    />
-  </svg>
-);
-
-export const DarkModeIcon = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 20 20"
-    fill="#64748b"
-    className="h-5.5 w-5.5"
-  >
-    <path
-      fillRule="evenodd"
-      d="M7.455 2.004a.75.75 0 01.26.77 7 7 0 009.958 7.967.75.75 0 011.067.853A8.5 8.5 0 116.647 1.921a.75.75 0 01.808.083z"
-      clipRule="evenodd"
-    />
-  </svg>
-);
-
-export const LightModeIcon = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth={2}
-    stroke="currentColor"
-    className="h-5.5 w-5.5"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
     />
   </svg>
 );
@@ -289,7 +335,8 @@ export const SignOutIcon = (
     viewBox="0 0 24 24"
     strokeWidth={2}
     stroke="currentColor"
-    className="h-5.5 w-5.5"
+    width={22}
+    height={22}
   >
     <path
       strokeLinecap="round"
@@ -306,7 +353,8 @@ export const StartIcon = (
     viewBox="0 0 24 24"
     strokeWidth={2}
     stroke="currentColor"
-    className="h-5.5 w-5.5"
+    width={22}
+    height={22}
   >
     <path
       strokeLinecap="round"
@@ -330,7 +378,8 @@ export const SelectedIcon = ({
       viewBox="0 0 24 24"
       strokeWidth={2}
       stroke={stroke}
-      className="h-8 w-8"
+      width={32}
+      height={32}
     >
       <path
         strokeLinecap="round"
