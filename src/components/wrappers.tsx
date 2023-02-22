@@ -11,7 +11,7 @@ export const MainWrapper = ({ children }: WrapperChild) => {
 
 export const SignFormWrapper = ({ children }: WrapperChild) => {
   return (
-    <div className="flex w-2/6 flex-col gap-32 rounded-2xl px-44">
+    <div className="flex w-2/6 flex-col rounded-2xl px-44">
       {children}
     </div>
   );
