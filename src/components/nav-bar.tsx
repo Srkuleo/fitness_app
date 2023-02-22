@@ -1,16 +1,18 @@
 import Link from "next/link";
 import NoteSetLogo from "./icons/note-set-logo";
 import {
+  LightModeIcon,
+  DarkModeIcon,
   ArrowDownIcon,
   UserIcon,
   EditIcon,
   LogsIcon,
-  DarkModeIcon,
-  LightModeIcon,
   SignOutIcon,
 } from "./icons/svg";
-import { darkModeAtom, dropDownAtom } from "../pages/signed-in";
+import { dropDownAtom } from "../pages/signed-in";
 import { useAtom } from "jotai";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useAtom(dropDownAtom);
@@ -37,11 +39,18 @@ const NavBar = () => {
 };
 
 const OptionsMenu = () => {
-  const [isDark, setIsDark] = useAtom(darkModeAtom);
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
   const [isOpen, setIsOpen] = useAtom(dropDownAtom);
 
-  function toggleDarkMode() {
-    setIsDark(!isDark);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return <></>;
+
+  function toggleMode() {
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
   }
 
   function toggleDropDown() {
@@ -52,9 +61,7 @@ const OptionsMenu = () => {
     <div className="fixed top-9 right-18 z-10 flex flex-col items-end gap-2 pt-2">
       <button
         onClick={toggleDropDown}
-        className={`${
-          isDark ? "hover:bg-green-light400/70" : "hover:bg-green-dark600"
-        } m-0 flex items-center gap-3 rounded-lg bg-green-dark700 px-3 py-1 font-medium text-yellow-text50 transition-all ease-out`}
+        className="m-0 flex items-center gap-3 rounded-lg bg-green-dark700 px-3 py-1 font-medium text-yellow-text50 transition-all ease-out"
       >
         Options
         {ArrowDownIcon}
@@ -77,11 +84,20 @@ const OptionsMenu = () => {
             View logs
           </button>
           <button
-            onClick={toggleDarkMode}
-            className="flex items-center gap-2 from-green-main500 to-green-dark700 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50"
+            onClick={toggleMode}
+            className="flex items-center gap-2 rounded-md from-green-main500 to-green-dark700 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:bg-gradient-to-r hover:text-yellow-text50"
           >
-            {isDark ? LightModeIcon : DarkModeIcon}
-            {isDark ? "Light mode" : "Dark mode"}
+            {resolvedTheme === "dark" ? (
+              <>
+                <LightModeIcon size={22} stroke="currentColor" />
+                Light mode
+              </>
+            ) : (
+              <>
+                <DarkModeIcon size={22} />
+                Dark mode
+              </>
+            )}
           </button>
           <div className="my-1 border-b border-green-main500/30"></div>
           <Link
