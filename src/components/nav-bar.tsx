@@ -9,13 +9,12 @@ import {
   LogsIcon,
   SignOutIcon,
 } from "./icons/svg";
-import { dropDownAtom } from "../pages/signed-in";
-import { useAtom } from "jotai";
+import { type OptionMenuProps } from "../types/types";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 const NavBar = () => {
-  const [isOpen, setIsOpen] = useAtom(dropDownAtom);
+  const [isOpen, setIsOpen] = useState(false);
 
   function toggleDropDown() {
     setIsOpen(!isOpen);
@@ -26,22 +25,22 @@ const NavBar = () => {
       {isOpen && (
         <div
           role="button"
-          onClick={toggleDropDown}
+          onMouseEnter={toggleDropDown}
           className="fixed top-0 z-10 h-screen w-screen cursor-default"
         ></div>
       )}
       <div className="fixed top-9 left-18 z-10">
         <NoteSetLogo />
       </div>
-      <OptionsMenu />
+      <OptionsMenu isOpen={isOpen} toggleDropDown={toggleDropDown} />
     </>
   );
 };
 
-const OptionsMenu = () => {
+const OptionsMenu = ({ toggleDropDown, isOpen }: OptionMenuProps) => {
   const [mounted, setMounted] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
-  const [isOpen, setIsOpen] = useAtom(dropDownAtom);
 
   useEffect(() => {
     setMounted(true);
@@ -53,39 +52,41 @@ const OptionsMenu = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
   }
 
-  function toggleDropDown() {
-    setIsOpen(!isOpen);
+  function toggleHover() {
+    setIsHovered(!isHovered);
   }
 
   return (
     <div className="fixed top-9 right-18 z-10 flex flex-col items-end gap-2 pt-2">
       <button
         onClick={toggleDropDown}
-        className="m-0 flex items-center gap-3 rounded-lg bg-green-dark700 px-3 py-1 font-medium text-yellow-text50 transition-all ease-out"
+        className="m-0 flex items-center gap-3 rounded-lg bg-green-dark700 px-3 py-1 font-medium text-yellow-text50 transition-all ease-out hover:bg-green-dark600 dark:hover:bg-green-main500"
       >
         Options
         {ArrowDownIcon}
       </button>
       {isOpen && (
-        <div className="flex flex-col rounded-lg bg-slate-light50 p-1 text-green-dark700">
+        <div className="flex flex-col rounded-lg border border-green-dark700 bg-slate-light50 p-2 text-green-dark700">
           <Link
-            className="flex items-center gap-2 from-green-main500 to-green-dark700 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50"
+            className="flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50"
             href="/"
           >
             {UserIcon}
             Srkuleo
           </Link>
-          <button className="flex items-center gap-2 from-green-main500 to-green-dark700 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50">
+          <button className="flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50">
             {EditIcon}
             Edit
           </button>
-          <button className="flex items-center gap-2 from-green-main500 to-green-dark700 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50">
+          <button className="flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50">
             {LogsIcon}
             View logs
           </button>
           <button
             onClick={toggleMode}
-            className="flex items-center gap-2 rounded-md from-green-main500 to-green-dark700 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:bg-gradient-to-r hover:text-yellow-text50"
+            onMouseEnter={toggleHover}
+            onMouseLeave={toggleHover}
+            className="flex items-center gap-2 rounded-md from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:bg-gradient-to-r hover:text-yellow-text50"
           >
             {resolvedTheme === "dark" ? (
               <>
@@ -94,14 +95,18 @@ const OptionsMenu = () => {
               </>
             ) : (
               <>
-                <DarkModeIcon size={22} />
+                {isHovered ? (
+                  <DarkModeIcon size={22} color="#cbd5e1" />
+                ) : (
+                  <DarkModeIcon size={22} />
+                )}
                 Dark mode
               </>
             )}
           </button>
-          <div className="my-1 border-b border-green-main500/30"></div>
+          <div className="my-1 border-b border-green-dark700/20"></div>
           <Link
-            className="flex items-center gap-2 from-green-main500 to-green-dark700 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50"
+            className="flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50"
             href="/"
           >
             {SignOutIcon}
