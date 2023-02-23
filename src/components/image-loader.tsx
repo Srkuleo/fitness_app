@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { ImageWrapper, TextWrapper } from "./wrappers";
+import { NoteSetText } from "./icons/note-set-logo";
 
 const LandingPageImage = ({ altTag }: { altTag?: string }) => {
   return (
@@ -21,10 +22,8 @@ const LandingPageImage = ({ altTag }: { altTag?: string }) => {
 const SignInText = () => {
   return (
     <TextWrapper>
-      <span className="text-3xl font-bold text-green-main500">Note</span>
-      <span className="text-3xl text-slate-light300/80">Set</span> is highly
-      personalized, flexible workout tracker and planner, aiming to replace
-      conventional use of a notebook.
+      <NoteSetText /> is highly personalized, flexible workout tracker and
+      planner, aiming to replace conventional use of a notebook.
       <br />
       Sign up now{" "}
       <span className="font-bold italic text-green-main500">for free</span> to
@@ -37,13 +36,11 @@ const SignUpText = () => {
   return (
     <TextWrapper>
       Listening to your favorite playlist or podcast while writting down every
-      session in a gym. Never easier, just install{" "}
-      <span className="text-3xl font-bold text-green-main500">Note</span>
-      <span className="text-3xl text-slate-light300/80">Set</span> and get all
-      the benefits of a digital, personalized notebook. <br />
+      session in a gym. Never easier, with <NoteSetText /> your free, digital,
+      personalized notebook. <br />
       <br />
       Sign up{" "}
-      <span className="font-bold italic text-green-main500">for free</span>!
+      <span className="font-bold italic text-green-main500">right away!</span>
     </TextWrapper>
   );
 };
