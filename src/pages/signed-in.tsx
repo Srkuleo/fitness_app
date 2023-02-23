@@ -2,9 +2,6 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import NavBar from "../components/nav-bar";
 import RadioButtonsContent from "../components/radio-buttons-content";
-import { atom, Provider as JotaiProvider } from "jotai";
-
-export const dropDownAtom = atom(false);
 
 const SignedIn: NextPage = () => {
   return (
@@ -15,10 +12,8 @@ const SignedIn: NextPage = () => {
         <meta name="description" content="Personalized workout tracker" />
       </Head>
       <main>
-        <JotaiProvider>
-          <NavBar />
-          <RadioButtonsContent />
-        </JotaiProvider>
+        <NavBar />
+        <RadioButtonsContent />
       </main>
     </>
   );
