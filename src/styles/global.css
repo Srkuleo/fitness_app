@@ -16,7 +16,10 @@
 
 @layer components {
   .sign-btn {
-    @apply mb-3 rounded-3xl border-2 border-green-main500 bg-green-main500 p-2.5 text-center font-semibold text-yellow-text50 transition-all ease-in hover:bg-green-light100/80 hover:text-green-main500 dark:hover:border-green-dark700 dark:hover:bg-green-dark700 dark:hover:text-yellow-text50;
+    @apply my-3 rounded-3xl border-2 border-green-main500 bg-green-main500 p-2.5 text-center font-semibold text-yellow-text50 transition-all ease-in hover:bg-slate-light50 hover:text-green-main500 dark:hover:border-green-main500 dark:hover:bg-green-main500/50 dark:hover:text-yellow-text50;
+  }
+  .input-field {
+    @apply placeholder-italic mb-2 rounded-xl border-2 border-slate-light200 p-3 text-sm text-slate-main600 placeholder-slate-main600 focus:border-green-main500 focus:placeholder-slate-light300 focus:outline-0 dark:border-slate-dark900 dark:text-yellow-text50 dark:placeholder-slate-light300 dark:focus:border-green-main500 dark:focus:placeholder-slate-light500;
   }
   .dark-bg {
     @apply bg-gradient-to-br from-slate-dark900 to-slate-dark800;
