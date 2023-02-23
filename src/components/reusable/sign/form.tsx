@@ -34,7 +34,7 @@ const InputField = ({ _name, placeholder, type }: InputProps) => {
         id={_name}
         placeholder={placeholder}
         required
-        className="placeholder-italic mb-2 rounded-xl p-3 text-sm text-slate-main600 placeholder-slate-main600 outline-green-main500 focus:placeholder-slate-light300 focus:outline-1"
+        className="input-field"
         autoFocus
       />
     );
@@ -48,7 +48,7 @@ const InputField = ({ _name, placeholder, type }: InputProps) => {
           placeholder={placeholder}
           required
           pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$"
-          className="placeholder-italic mb-2 rounded-xl p-3 text-sm text-slate-main600 placeholder-slate-main600 outline-green-main500 focus:placeholder-slate-light300 focus:outline-1"
+          className="input-field"
         />
       </>
     );
@@ -61,7 +61,7 @@ const InputField = ({ _name, placeholder, type }: InputProps) => {
       id={_name}
       placeholder={placeholder}
       required
-      className="placeholder-italic mb-2 rounded-xl p-3 text-sm text-slate-main600 placeholder-slate-main600 outline-green-main500 focus:placeholder-slate-light300 focus:outline-1"
+      className="input-field"
     />
   );
 };
@@ -76,7 +76,7 @@ const CheckBox = ({ checkBox }: Pick<FormProps, "checkBox">) => {
         className="cursor-pointer accent-green-light400"
         required
       />
-      <label htmlFor={checkBox._name} className="text-xs text-slate-main600">
+      <label htmlFor={checkBox._name} className="text-xs text-slate-main600 dark:text-slate-light300">
         {checkBox._name === "remember" ? "Remember me" : terms}
       </label>
     </div>
