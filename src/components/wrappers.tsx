@@ -11,9 +11,7 @@ export const MainWrapper = ({ children }: WrapperChild) => {
 
 export const SignFormWrapper = ({ children }: WrapperChild) => {
   return (
-    <div className="flex w-2/6 flex-col rounded-2xl px-44">
-      {children}
-    </div>
+    <div className="flex w-2/6 flex-col rounded-2xl px-44">{children}</div>
   );
 };
 
@@ -27,7 +25,7 @@ export const LogoWrapper = ({ children }: WrapperChild) => {
 
 export const ExternalAuthButtonWrapper = ({ children }: WrapperChild) => {
   return (
-    <button className="flex items-center justify-center gap-3 rounded-xl border-2 border-green-light400/90 py-2 text-sm font-semibold text-slate-main600 transition-all ease-in hover:translate-x-1 hover:bg-slate-light200/60 dark:hover:bg-slate-light200">
+    <button className="flex items-center justify-center gap-3 rounded-xl border-2 border-green-main500 py-2 text-sm font-semibold text-slate-main600 transition-all ease-in hover:translate-x-1 hover:bg-slate-light50 dark:text-yellow-text50 dark:hover:bg-slate-light500/50">
       {children}
     </button>
   );
