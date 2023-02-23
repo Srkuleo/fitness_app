@@ -40,6 +40,17 @@ export interface FormProps {
   signButton: SignButtonProps;
 }
 
+export interface ToggleModeProps {
+  size: number;
+  theme: string | undefined;
+  toggleMode: () => void;
+}
+
+export interface OptionMenuProps {
+  isOpen: boolean;
+  toggleDropDown: () => void;
+}
+
 //Variables
 export const authButtons: ExternalAuthButtonProps[] = [
   { buttonSvg: svg.GoogleSvg, buttonText: "Google" },
