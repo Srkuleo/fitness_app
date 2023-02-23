@@ -5,16 +5,16 @@ const NoteSetLogo = () => {
   return (
     <LogoWrapper>
       {NoteSetLogoSvg}
-      <NoteSet />
+      <NoteSetText />
     </LogoWrapper>
   );
 };
 
-const NoteSet = () => {
+export const NoteSetText = () => {
   return (
-    <p className="text-2xl text-slate-main600 dark:text-slate-light400">
+    <span className="text-2xl font-medium text-slate-light500 dark:text-slate-light400">
       <span className="font-bold text-green-main500">Note</span>Set
-    </p>
+    </span>
   );
 };
 
