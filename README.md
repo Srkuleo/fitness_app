@@ -9,7 +9,6 @@ Stay tuned for future updates!
 
 #### Priority
 
-- _Work on z-index(img loader and radio button components)._
 - _Add an active workout page, with proper structure._
 - _Make start button a link component that leads to new page with workout details (radiobutton component)._
 
