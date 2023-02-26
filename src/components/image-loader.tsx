@@ -10,7 +10,7 @@ const LandingPageImage = ({ altTag }: { altTag?: string }) => {
         alt={altTag === "deadlift" ? "deadlift" : "squat"}
         priority={true}
         fill={true}
-        className="rounded-2xl"
+        className="relative z-0 rounded-2xl"
       />
       <div className="relative z-10 h-full rounded-2xl bg-gradient-to-tl from-black via-black/60 to-tp">
         {altTag === "deadlift" ? <SignInText /> : <SignUpText />}
