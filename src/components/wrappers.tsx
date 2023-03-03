@@ -1,22 +1,10 @@
 import { type WrapperChild } from "../types/types";
 
 //Wrappers for sign-in and sign-up pages
-export const MainWrapper = ({ children }: WrapperChild) => {
+export const ContentWrapper = ({ children }: WrapperChild) => {
   return (
-    <div className="light-bg dark:dark-bg flex h-screen w-screen">
-      {children}
-    </div>
+    <div className="relative z-10 mx-auto flex w-3/6 flex-col">{children}</div>
   );
-};
-
-export const SignFormWrapper = ({ children }: WrapperChild) => {
-  return (
-    <div className="flex w-2/6 flex-col rounded-2xl px-44">{children}</div>
-  );
-};
-
-export const ImageWrapper = ({ children }: WrapperChild) => {
-  return <div className="relative m-3 w-4/6">{children}</div>;
 };
 
 export const LogoWrapper = ({ children }: WrapperChild) => {
@@ -25,16 +13,8 @@ export const LogoWrapper = ({ children }: WrapperChild) => {
 
 export const ExternalAuthButtonWrapper = ({ children }: WrapperChild) => {
   return (
-    <button className="flex items-center justify-center gap-3 rounded-xl border-2 border-green-main500 py-2 text-sm font-semibold text-slate-main600 transition-all ease-in hover:translate-x-1 hover:bg-slate-light50 dark:text-yellow-text50 dark:hover:bg-slate-light500/50">
+    <button className="flex items-center justify-center gap-3 rounded-xl border-2 border-green-main500 bg-slate-light50 py-2 text-sm font-semibold text-slate-main600 transition-all ease-in hover:translate-x-1 hover:bg-slate-light200/90 dark:bg-slate-dark800 dark:text-yellow-text50 dark:hover:bg-slate-light500/50">
       {children}
     </button>
-  );
-};
-
-export const TextWrapper = ({ children }: WrapperChild) => {
-  return (
-    <p className="absolute bottom-52 right-28 w-5/12 text-right text-xl text-yellow-text50">
-      {children}
-    </p>
   );
 };
