@@ -1,5 +1,3 @@
-import * as svg from "../components/icons/svg";
-
 export interface WrapperChild {
   children: React.ReactNode;
 }
@@ -10,9 +8,6 @@ export interface SignButtonProps {
   onClick: () => void | undefined;
 }
 
-export interface ImageProps {
-  altTag: string;
-}
 export interface ExternalAuthButtonProps
   extends Pick<SignButtonProps, "buttonText"> {
   buttonSvg: JSX.Element | undefined;
@@ -52,13 +47,7 @@ export interface OptionMenuProps {
 }
 
 //Variables
-export const authButtons: ExternalAuthButtonProps[] = [
-  { buttonSvg: svg.GoogleSvg, buttonText: "Google" },
-  { buttonSvg: svg.TwitterSvg, buttonText: "Twitter" },
-  { buttonSvg: svg.DiscordSvg, buttonText: "Discord" },
-];
-
-export const signInFormProps: FormProps = {
+export const signIn: FormProps = {
   form: {
     id: "sign-in",
     inputs: [
@@ -77,7 +66,7 @@ export const signInFormProps: FormProps = {
   },
 };
 
-export const signUpFormProps: FormProps = {
+export const signUp: FormProps = {
   form: {
     id: "sign-up",
     inputs: [
