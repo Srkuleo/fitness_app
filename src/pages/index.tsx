@@ -1,9 +1,10 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { MainWrapper, SignFormWrapper } from "../components/wrappers";
-import Header from "../components/reusable/sign/header";
-import SignIn from "../components/sign-in-page-ls";
-import LandingPageImage from "../components/image-loader";
+import { Pattern } from "../components/svg-components/circle-pattern";
+import { Curve } from "../components/svg-components/curve-pattern";
+import { ContentWrapper } from "../components/wrappers";
+import NavBar from "../components/sign-components/nav-bar";
+import SignContent from "../components/sign-components/sign-content";
 
 const Home: NextPage = () => {
   return (
@@ -17,13 +18,12 @@ const Home: NextPage = () => {
         />
       </Head>
       <main>
-        <MainWrapper>
-          <SignFormWrapper>
-            <Header />
-            <SignIn />
-          </SignFormWrapper>
-          <LandingPageImage altTag="deadlift" />
-        </MainWrapper>
+        <Pattern />
+        <Curve />
+        <ContentWrapper>
+          <NavBar />
+          <SignContent page="sign in" />
+        </ContentWrapper>
       </main>
     </>
   );
