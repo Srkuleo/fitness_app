@@ -1,5 +1,5 @@
 import Link from "next/link";
-import NoteSetLogo from "./icons/note-set-logo";
+import NoteSetLogo from "./svg-components/note-set-logo";
 import {
   LightModeIcon,
   DarkModeIcon,
@@ -8,7 +8,7 @@ import {
   EditIcon,
   LogsIcon,
   SignOutIcon,
-} from "./icons/svg";
+} from "./svg-components/svg";
 import { type OptionMenuProps } from "../types/types";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
@@ -60,19 +60,19 @@ const OptionsMenu = ({ toggleDropDown, isOpen }: OptionMenuProps) => {
     <div className="fixed top-9 right-18 z-10 flex flex-col items-end gap-2 pt-2">
       <button
         onClick={toggleDropDown}
-        className="m-0 flex items-center gap-3 rounded-lg bg-green-dark700 px-3 py-1 font-medium text-yellow-text50 transition-all ease-out hover:bg-green-dark600 dark:hover:bg-green-main500"
+        className="m-0 flex items-center gap-3 rounded-lg px-3 py-1 text-lg uppercase font-medium text-slate-light50 transition-all ease-out"
       >
-        Options
+        srkuleo
         {ArrowDownIcon}
       </button>
       {isOpen && (
-        <div className="flex flex-col rounded-lg border border-green-dark700 bg-slate-light50 p-2 text-green-dark700">
+        <div className="flex flex-col rounded-lg bg-slate-light50 p-2 text-green-dark700">
           <Link
             className="flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50"
             href="/"
           >
             {UserIcon}
-            Srkuleo
+            Profile
           </Link>
           <button className="flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50">
             {EditIcon}
