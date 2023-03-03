@@ -30,13 +30,6 @@ module.exports = {
       yellow: {
         text50: "#fefce8",
       },
-      sky: {
-        heading500: "#0ea5e9",
-        light200: "#bae6fd",
-        light300: "#7dd3fc",
-        dark700: "#0369a1",
-        dark800: "#075985",
-      },
       orange: {
         button500: "#f97316",
         button600: "#ea580c",
