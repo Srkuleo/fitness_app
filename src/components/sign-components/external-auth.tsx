@@ -8,7 +8,7 @@ import { ExternalAuthButtonWrapper } from "../wrappers";
 
 const ExternalAuth = () => {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="space-y-2">
       {authButtons.map((aB) => {
         return (
           <ExternalAuthButtonWrapper key={aB.buttonText}>
