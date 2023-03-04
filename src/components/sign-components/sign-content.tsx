@@ -4,11 +4,9 @@ import Separator from "./separator";
 import Form from "./form";
 import LinkQuestions from "./link-questions";
 
-//pitati gabrića za width na sign-in divu
-
 const SignContent = ({ page }: { page: string }) => {
   return (
-    <div className="mx-auto max-w-[295px]">
+    <div className="mx-auto w-[305px]">
       <HeadingText page={page} />
       <ExternalAuth />
       <Separator />
