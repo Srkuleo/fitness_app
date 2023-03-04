@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 
 const NavBar = () => {
   return (
-    <div className="mt-3 mb-36 flex justify-between border-b-2 border-slate-light400 pb-2 dark:border-slate-light500">
+    <div className="mt-4 mb-36 flex justify-between border-b-2 border-slate-light400 pb-2 dark:border-slate-light500">
       <NoteSetLogo />
       <NavBarButtons />
     </div>
