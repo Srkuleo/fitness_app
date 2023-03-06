@@ -1,6 +1,5 @@
-import { type ToggleModeProps } from "../../types/types";
 import NoteSetLogo from "../svg-components/note-set-logo";
-import { GitHub, LightModeIcon, DarkModeIcon } from "../svg-components/svg";
+import { GitHubButton, ModeButton } from "../buttons";
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 
@@ -30,27 +29,12 @@ const NavBarButtons = () => {
   return (
     <div className="flex items-center">
       {resolvedTheme === "dark" ? (
-        <GitHub color="#fefce8" />
+        <GitHubButton color="#fefce8" />
       ) : (
-        <GitHub color="#475569" />
+        <GitHubButton color="#475569" />
       )}
-      <ToggleMode size={28} theme={resolvedTheme} toggleMode={toggleMode} />
+      <ModeButton size={28} theme={resolvedTheme} toggleMode={toggleMode} />
     </div>
-  );
-};
-
-const ToggleMode = ({ size, theme, toggleMode }: ToggleModeProps) => {
-  return (
-    <button
-      onClick={toggleMode}
-      className="rounded-full p-[6px] hover:bg-slate-light300 dark:hover:bg-slate-light500/50"
-    >
-      {theme === "dark" ? (
-        <LightModeIcon size={size} />
-      ) : (
-        <DarkModeIcon size={size} color="#475569" />
-      )}
-    </button>
   );
 };
 
