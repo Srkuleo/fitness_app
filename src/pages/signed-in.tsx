@@ -4,8 +4,15 @@ import { Pattern } from "../components/svg-components/circle-pattern";
 import { Curve } from "../components/svg-components/curve-pattern";
 import NavBar from "../components/signed-in-components/nav-bar";
 import RadioButtonsContent from "../components/signed-in-components/radio-buttons-content";
+import { useState } from "react";
 
 const SignedIn: NextPage = () => {
+  const [isAdding, setIsAdding] = useState(false);
+
+  function toggleAdding() {
+    setIsAdding(!isAdding);
+  }
+
   return (
     <>
       <Head>
@@ -16,8 +23,8 @@ const SignedIn: NextPage = () => {
       <main>
         <Pattern />
         <Curve />
-        <NavBar />
-        <RadioButtonsContent />
+        <NavBar toggleAdding={toggleAdding} />
+        <RadioButtonsContent isAdding={isAdding} toggleAdding={toggleAdding} />
       </main>
     </>
   );
