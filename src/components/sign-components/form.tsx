@@ -1,7 +1,7 @@
+import Link from "next/link";
 import { type FormProps, type InputProps } from "../../types/types";
 import { signUp, signIn } from "../../types/types";
-import SignButton from "./sign-button";
-import Link from "next/link";
+import { SignButton } from "../buttons";
 
 const Form = ({ page }: { page: string }) => {
   if (page === "sign in") {
