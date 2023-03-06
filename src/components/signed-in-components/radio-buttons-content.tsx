@@ -1,82 +1,153 @@
-import { initialWorkouts } from "../../types/types";
-import { StartIcon, SelectedIcon } from "../svg-components/svg";
 import { useState } from "react";
+import { type RadioButtonProps } from "../../types/types";
+import { RadioButtonHeading } from "../headings";
+import RadioButtons from "./radiobuttons";
+import { StartButton } from "../buttons";
 
-const RadioButtonsContent = () => {
-  const [workouts, setWorkouts] = useState(initialWorkouts);
+const initialWorkout: RadioButtonProps = {
+  id: 0,
+  name: "",
+  tooltip: "",
+  selected: false,
+};
+
+const RadioButtonsContent = ({
+  isAdding,
+  toggleAdding,
+}: {
+  isAdding: boolean;
+  toggleAdding: () => void;
+}) => {
+  const [workouts, setWorkouts] = useState<RadioButtonProps[]>([]);
+  const [newWorkout, setNewWorkout] =
+    useState<RadioButtonProps>(initialWorkout);
+  const [currentId, setCurrentId] = useState(0);
 
   function toggleIsSelected(id: number) {
-    const newWorkouts = workouts.map((workout) => {
-      if (workout.id === id) {
-        return {
-          ...workout,
-          selected: true,
-        };
-      } else {
-        return {
-          ...workout,
-          selected: false,
-        };
-      }
-    });
-    setWorkouts(newWorkouts);
+    if (workouts) {
+      const newWorkouts = workouts.map((workout) => {
+        if (workout.id === id) {
+          return {
+            ...workout,
+            selected: true,
+          };
+        } else {
+          return {
+            ...workout,
+            selected: false,
+          };
+        }
+      });
+      setWorkouts(newWorkouts);
+    }
+  }
+
+  function handleValue(e: React.ChangeEvent<HTMLInputElement>) {
+    e.stopPropagation();
+    setNewWorkout({ ...newWorkout, [e.target.name]: e.target.value });
+  }
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setWorkouts([...workouts, { ...newWorkout, id: currentId + 1 }]);
+    setCurrentId(currentId + 1);
+    console.log(currentId, workouts[0]?.id);
+    setNewWorkout(initialWorkout);
   }
 
   return (
-    <div className="relative z-10 mx-auto flex flex-col items-center">
-      <h1 className="mt-36 mb-24 text-5xl font-bold text-orange-button500">
-        Welcome, Srkuleo.
-      </h1>
-      <h3 className="mb-6 text-2xl font-semibold text-slate-main600 dark:text-yellow-text50">
-        Choose your workout for today:
-      </h3>
-      <div className="flex flex-col gap-2 rounded-xl">
-        {workouts.map((workout) => {
-          return (
-            <button
-              onClick={() => {
-                toggleIsSelected(workout.id);
-              }}
-              key={workout.id}
-              className={`${
-                workout.selected
-                  ? "bg-gradient-to-r from-green-dark600/90 to-green-dark700 text-yellow-text50"
-                  : "bg-slate-light50"
-              } rounded-lg px-6 py-4`}
+    <div className="relative z-0 mx-auto flex flex-col items-center">
+      <RadioButtonHeading />
+      {workouts.length === 0 ? (
+        <div className="space-y-2 rounded-lg bg-slate-light50 py-32 px-16 text-center text-lg font-semibold text-slate-main600">
+          <p>You don`t have any existing workout available.</p>
+          <button
+            className="rounded-lg bg-slate-main600 px-8 py-2 text-base text-slate-light50 hover:bg-slate-main600/80"
+            onClick={toggleAdding}
+          >
+            Add a workout
+          </button>
+        </div>
+      ) : (
+        <>
+          <RadioButtons
+            workouts={workouts}
+            toggleIsSelected={toggleIsSelected}
+          />
+          <StartButton />
+        </>
+      )}
+      {isAdding && (
+        <div
+          role="button"
+          onClick={toggleAdding}
+          className="fixed top-0 z-20 h-screen w-screen cursor-default bg-black/70"
+        >
+          <div className="center absolute top-[50%] left-[50%] m-auto flex flex-col items-center gap-10 rounded-lg bg-slate-light50 p-20">
+            <form
+              onSubmit={handleSubmit}
+              className="space-x-10"
+              onClick={(e: React.MouseEvent<HTMLFormElement>) =>
+                e.stopPropagation()
+              }
             >
-              <div className="flex items-center justify-between gap-14">
-                <div className="text-left">
-                  <p
-                    className={`${
-                      !workout.selected && "text-slate-main600"
-                    } text-xl font-medium`}
-                  >
-                    {workout.workout}
-                  </p>
-                  <p
-                    className={`${
-                      !workout.selected && "text-slate-light400"
-                    } text-sm`}
-                  >
-                    {workout.tooltip}
-                  </p>
-                </div>
-                {workout.selected ? (
-                  <SelectedIcon stroke="#fefce8" />
-                ) : (
-                  <SelectedIcon />
-                )}
-              </div>
-            </button>
-          );
-        })}
-      </div>
-      <button className="mt-12 flex items-center gap-1 rounded-xl bg-gradient-to-r from-orange-button500 via-orange-button500 to-red-button500 px-8 py-2 text-lg font-semibold uppercase text-yellow-text50 hover:from-orange-button600 hover:to-red-button700">
-        Start
-        {StartIcon}
-      </button>
+              <input
+                required
+                className="input-field"
+                type="text"
+                placeholder="Workout"
+                name="name"
+                value={newWorkout.name}
+                onChange={handleValue}
+              />
+              <input
+                required
+                className="input-field"
+                type="text"
+                placeholder="Tooltip"
+                name="tooltip"
+                value={newWorkout.tooltip}
+                onChange={handleValue}
+              />
+              <button
+                type="submit"
+                className="rounded-lg bg-slate-main600 px-8 py-2 text-slate-light50 hover:bg-slate-main600/80"
+              >
+                Add
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
+
+// const initialWorkouts: RadioButtonProps[] = [
+//   {
+//     id: 1,
+//     workout: "Upper1",
+//     tooltip: "Balanced upperback/chest day with complementary arms exercises.",
+//     selected: false,
+//   },
+//   {
+//     id: 2,
+//     workout: "Lower 1",
+//     tooltip: "Quad heavy day, with few glute/hamstrings exercises.",
+//     selected: false,
+//   },
+//   {
+//     id: 3,
+//     workout: "Upper 2",
+//     tooltip: "Heavy back/chest day with good shoulder activation.",
+//     selected: false,
+//   },
+//   {
+//     id: 4,
+//     workout: "Lower 2",
+//     tooltip: "All arounder. Leg press + DL, heavy compound day.",
+//     selected: false,
+//   },
+// ];
 
 export default RadioButtonsContent;
