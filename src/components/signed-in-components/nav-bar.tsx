@@ -9,11 +9,11 @@ import {
   LogsIcon,
   SignOutIcon,
 } from "../svg-components/svg";
-import { type OptionMenuProps } from "../../types/types";
+import { type OptionMenuProps, type EditingProps } from "../../types/types";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-const NavBar = () => {
+const NavBar = ({ isAdding, toggleAdding }: EditingProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   function toggleDropDown() {
@@ -32,12 +32,21 @@ const NavBar = () => {
       <div className="fixed top-9 left-18 z-10">
         <NoteSetLogo />
       </div>
-      <OptionsMenu isOpen={isOpen} toggleDropDown={toggleDropDown} />
+      <OptionsMenu
+        isOpen={isOpen}
+        toggleDropDown={toggleDropDown}
+        isAdding={isAdding}
+        toggleAdding={toggleAdding}
+      />
     </>
   );
 };
 
-const OptionsMenu = ({ toggleDropDown, isOpen }: OptionMenuProps) => {
+const OptionsMenu = ({
+  toggleDropDown,
+  isOpen,
+  toggleAdding,
+}: OptionMenuProps) => {
   const [mounted, setMounted] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
@@ -74,7 +83,10 @@ const OptionsMenu = ({ toggleDropDown, isOpen }: OptionMenuProps) => {
             {UserIcon}
             Profile
           </Link>
-          <button className="flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50">
+          <button
+            onClick={toggleAdding}
+            className="flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50"
+          >
             {EditIcon}
             Edit
           </button>
