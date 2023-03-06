@@ -34,6 +34,9 @@
       #cbd5e1 100%
     );
   }
+  .center {
+    transform: translate(-50%, -50%);
+  }
 }
 
 @layer components {
