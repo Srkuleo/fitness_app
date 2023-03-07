@@ -1,7 +1,7 @@
 export const Curve = () => {
   return (
     <svg
-      className="absolute top-0 right-0 z-0"
+      className="absolute top-0 right-0"
       width="480"
       height="1080"
       viewBox="0 0 480 1080"
