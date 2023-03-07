@@ -7,35 +7,29 @@ import {
   UserIcon,
   EditIcon,
   LogsIcon,
-  SignOutIcon,
+  SignOutIcon
 } from "../svg-components/svg";
-import { type OptionMenuProps, type EditingProps } from "../../types/types";
+import { type EditingProps, type OptionMenuProps } from "../../types/types";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-const NavBar = ({ isAdding, toggleAdding }: EditingProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  function toggleDropDown() {
-    setIsOpen(!isOpen);
-  }
-
+const NavBar = (props: OptionMenuProps & Pick<EditingProps, "toggleAdding">) => {
+  const { isOpen, toggleAdding, toggleDropDown } = props;
   return (
     <>
       {isOpen && (
         <div
-          role="button"
+          role='button'
           onMouseEnter={toggleDropDown}
-          className="fixed top-0 z-10 h-screen w-screen cursor-default"
+          className='fixed top-0 z-10 h-screen w-screen cursor-default'
         ></div>
       )}
-      <div className="fixed top-9 left-18 z-10">
+      <div className='fixed top-9 left-18 z-0'>
         <NoteSetLogo />
       </div>
       <OptionsMenu
         isOpen={isOpen}
         toggleDropDown={toggleDropDown}
-        isAdding={isAdding}
         toggleAdding={toggleAdding}
       />
     </>
@@ -43,10 +37,10 @@ const NavBar = ({ isAdding, toggleAdding }: EditingProps) => {
 };
 
 const OptionsMenu = ({
-  toggleDropDown,
   isOpen,
   toggleAdding,
-}: OptionMenuProps) => {
+  toggleDropDown
+}: OptionMenuProps & Pick<EditingProps, "toggleAdding">) => {
   const [mounted, setMounted] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
@@ -66,31 +60,31 @@ const OptionsMenu = ({
   }
 
   return (
-    <div className="fixed top-9 right-18 z-10 flex flex-col items-end gap-2 pt-2">
+    <div className='fixed top-9 right-18 z-10 flex flex-col items-end gap-2 pt-2'>
       <button
         onClick={toggleDropDown}
-        className="m-0 flex items-center gap-3 rounded-lg px-3 py-1 text-lg font-medium uppercase text-slate-light50 transition-all ease-out"
+        className='m-0 flex items-center gap-3 rounded-lg px-3 py-1 text-lg font-medium uppercase text-slate-light50 transition-all ease-out'
       >
         srkuleo
         {ArrowDownIcon}
       </button>
       {isOpen && (
-        <div className="flex flex-col rounded-lg bg-slate-light50 p-2 text-green-dark700">
+        <div className='flex flex-col rounded-lg bg-slate-light50 p-2 text-green-dark700'>
           <Link
-            className="flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50"
-            href="/"
+            className='flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50'
+            href='/'
           >
             {UserIcon}
             Profile
           </Link>
           <button
             onClick={toggleAdding}
-            className="flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50"
+            className='flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50'
           >
             {EditIcon}
             Edit
           </button>
-          <button className="flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50">
+          <button className='flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50'>
             {LogsIcon}
             View logs
           </button>
@@ -98,17 +92,17 @@ const OptionsMenu = ({
             onClick={toggleMode}
             onMouseEnter={toggleHover}
             onMouseLeave={toggleHover}
-            className="flex items-center gap-2 rounded-md from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:bg-gradient-to-r hover:text-yellow-text50"
+            className='flex items-center gap-2 rounded-md from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:bg-gradient-to-r hover:text-yellow-text50'
           >
             {resolvedTheme === "dark" ? (
               <>
-                <LightModeIcon size={22} stroke="currentColor" />
+                <LightModeIcon size={22} stroke='currentColor' />
                 Light mode
               </>
             ) : (
               <>
                 {isHovered ? (
-                  <DarkModeIcon size={22} color="#cbd5e1" />
+                  <DarkModeIcon size={22} color='#cbd5e1' />
                 ) : (
                   <DarkModeIcon size={22} />
                 )}
@@ -116,10 +110,10 @@ const OptionsMenu = ({
               </>
             )}
           </button>
-          <div className="my-1 border-b border-green-dark700/20"></div>
+          <div className='my-1 border-b border-green-dark700/20'></div>
           <Link
-            className="flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50"
-            href="/"
+            className='flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50'
+            href='/'
           >
             {SignOutIcon}
             Sign out
