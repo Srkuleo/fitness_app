@@ -21,7 +21,7 @@ export interface InputProps {
 
 export type RadioButtonProps = {
   id: number;
-  workout: string;
+  name: string;
   tooltip: string;
   selected: boolean;
 };
@@ -35,15 +35,20 @@ export interface FormProps {
   signButton: SignButtonProps;
 }
 
-export interface ToggleModeProps {
+export interface ModeButtonProps {
   size: number;
   theme: string | undefined;
   toggleMode: () => void;
 }
 
-export interface OptionMenuProps {
+export interface OptionMenuProps extends EditingProps {
   isOpen: boolean;
   toggleDropDown: () => void;
+}
+
+export interface EditingProps {
+  isAdding: boolean;
+  toggleAdding: () => void;
 }
 
 //Variables
@@ -102,30 +107,3 @@ export const signUp: FormProps = {
     onClick: () => console.log("You have signed up."),
   },
 };
-
-export const initialWorkouts: RadioButtonProps[] = [
-  {
-    id: 1,
-    workout: "Upper 1",
-    tooltip: "Mix profile day, both chest and back highly activated.",
-    selected: false,
-  },
-  {
-    id: 2,
-    workout: "Lower 1",
-    tooltip: "Quad heavy day, with few glute/hamstrings exercises.",
-    selected: false,
-  },
-  {
-    id: 3,
-    workout: "Upper 2",
-    tooltip: "Heavy back day, with complementary chest exercises.",
-    selected: false,
-  },
-  {
-    id: 4,
-    workout: "Lower 2",
-    tooltip: "All arounder. Leg press + DL, heavy compound day.",
-    selected: false,
-  },
-];
