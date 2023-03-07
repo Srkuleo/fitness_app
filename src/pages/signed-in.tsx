@@ -8,23 +8,40 @@ import { useState } from "react";
 
 const SignedIn: NextPage = () => {
   const [isAdding, setIsAdding] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   function toggleAdding() {
     setIsAdding(!isAdding);
   }
 
+  function toggleDropDown() {
+    setIsOpen(!isOpen);
+  }
+
+  function closeDropDown() {
+    setIsOpen(false);
+  }
+
   return (
     <>
       <Head>
-        <link rel="icon" href="/noteset.ico" />
+        <link rel='icon' href='/noteset.ico' />
         <title>NoteSet</title>
-        <meta name="description" content="Personalized workout tracker" />
+        <meta name='description' content='Personalized workout tracker' />
       </Head>
       <main>
         <Pattern />
         <Curve />
-        <NavBar toggleAdding={toggleAdding} />
-        <RadioButtonsContent isAdding={isAdding} toggleAdding={toggleAdding} />
+        <NavBar
+          toggleAdding={toggleAdding}
+          isOpen={isOpen}
+          toggleDropDown={toggleDropDown}
+        />
+        <RadioButtonsContent
+          isAdding={isAdding}
+          toggleAdding={toggleAdding}
+          closeDropDown={closeDropDown}
+        />
       </main>
     </>
   );
