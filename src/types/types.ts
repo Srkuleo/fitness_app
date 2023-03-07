@@ -41,7 +41,7 @@ export interface ModeButtonProps {
   toggleMode: () => void;
 }
 
-export interface OptionMenuProps extends EditingProps {
+export interface OptionMenuProps {
   isOpen: boolean;
   toggleDropDown: () => void;
 }
