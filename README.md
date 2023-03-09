@@ -10,10 +10,11 @@ Stay tuned for future updates!
 
 #### Priority
 
-- _Work around setting planetscale db and prisma schema._
-- _Add an active workout page, with proper structure._
+- _Set useReducer for editing options and abstract few components for readability. Refactor whole radiobuttons component._
 - _Make start button a link component that leads to new page with workout details (radiobutton component)._
-- _Add state to radiobutton component so that edit button can add, remove or edit new and existing workouts. Conditionali render radiobutton content depending on whether user has any existing workout. Push newly added workouts from state to db._
+- _Work around setting planetscale db and prisma schema._
+- _Push newly added workouts from state to db._
+- _Add an active workout page, with proper structure._
 
 #### Later on
 
