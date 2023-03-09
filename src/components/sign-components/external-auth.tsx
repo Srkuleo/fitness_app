@@ -1,9 +1,4 @@
-import {
-  GoogleSvg,
-  TwitterSvg,
-  DiscordSvg,
-} from "../../components/svg-components/svg";
-import { type ExternalAuthButtonProps } from "../../types/types";
+import { authButtons } from "../../functions and variables/variables";
 import { ExternalAuthButtonWrapper } from "../wrappers";
 
 const ExternalAuth = () => {
@@ -20,11 +15,5 @@ const ExternalAuth = () => {
     </div>
   );
 };
-
-const authButtons: ExternalAuthButtonProps[] = [
-  { buttonSvg: GoogleSvg, buttonText: "Google" },
-  { buttonSvg: TwitterSvg, buttonText: "Twitter" },
-  { buttonSvg: DiscordSvg, buttonText: "Discord" },
-];
 
 export default ExternalAuth;
