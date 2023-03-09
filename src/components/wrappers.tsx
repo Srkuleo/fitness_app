@@ -25,3 +25,11 @@ export const ExternalAuthButtonWrapper = ({ children }: WrapperChild) => {
     </button>
   );
 };
+
+export const RadioButtonContentWrapper = ({ children }: WrapperChild) => {
+  return (
+    <div className="relative z-10 mx-auto flex flex-col items-center">
+      {children}
+    </div>
+  );
+};
