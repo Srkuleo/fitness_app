@@ -1,7 +1,7 @@
 import type {
   FormProps,
   ExternalAuthButtonProps,
-  RadioButtonProps,
+  WorkoutProps,
 } from "../types/types";
 import {
   GoogleSvg,
@@ -69,7 +69,8 @@ export const authButtons: ExternalAuthButtonProps[] = [
   { buttonSvg: DiscordSvg, buttonText: "Discord" },
 ];
 
-export const initialWorkout: Pick<RadioButtonProps, "name" | "tooltip"> = {
+export const initialWorkout: WorkoutProps = {
+  id: -1,
   name: "",
   tooltip: "",
 };
