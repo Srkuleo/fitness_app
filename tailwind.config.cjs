@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const tailwindScrollbar = require("tailwind-scrollbar");
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
@@ -22,6 +24,7 @@ module.exports = {
       green: {
         main500: "#22c55e",
         light100: "#dcfce7",
+        light300: "#86efac",
         light400: "#4ade80",
         dark600: "#16a34a",
         dark700: "#15803d",
@@ -35,6 +38,7 @@ module.exports = {
         button600: "#ea580c",
       },
       red: {
+        button400: "#fca5a5",
         button500: "#ef4444",
         button700: "#b91c1c",
       },
@@ -42,8 +46,10 @@ module.exports = {
     extend: {
       spacing: {
         18: "4.5rem",
+        smallButton: "6px",
+        mediumButton: "10px",
       },
     },
   },
-  plugins: [],
+  plugins: [tailwindScrollbar({ nocompatible: true })],
 };
