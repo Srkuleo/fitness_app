@@ -1,8 +1,20 @@
 import Link from "next/link";
-import { type ModeButtonProps, type SignButtonProps } from "../types/types";
-import { StartIcon, DarkModeIcon, LightModeIcon } from "./svg-components/svg";
+import type {
+  EditingButtonsProps,
+  ModeButtonProps,
+  SignButtonProps,
+} from "../types/types";
+import {
+  StartIcon,
+  DarkModeIcon,
+  LightModeIcon,
+  EditIcon,
+  DeleteIcon,
+  AddIcon,
+  DoneIcon,
+} from "./svg-components/svg";
 
-export const GitHubButton = ({ color }: Record<"color", string>) => {
+export const GitHubButton = ({ color }: { color: string }) => {
   return (
     <a
       href="https://github.com/Srkuleo/noteset"
@@ -31,7 +43,7 @@ export const ModeButton = ({ size, theme, toggleMode }: ModeButtonProps) => {
   return (
     <button
       onClick={toggleMode}
-      className="rounded-full p-[6px] hover:bg-slate-light300 dark:hover:bg-slate-light500/50"
+      className="rounded-full p-smallButton hover:bg-slate-light300 dark:hover:bg-slate-light500/50"
     >
       {theme === "dark" ? (
         <LightModeIcon size={size} />
@@ -42,7 +54,7 @@ export const ModeButton = ({ size, theme, toggleMode }: ModeButtonProps) => {
   );
 };
 
-export const SignButton = ({ buttonText, href, onClick }: SignButtonProps) => {
+export const SignButton = ({ buttonText, href }: SignButtonProps) => {
   if (href) {
     return (
       <Link href={href} className="sign-btn">
@@ -50,11 +62,7 @@ export const SignButton = ({ buttonText, href, onClick }: SignButtonProps) => {
       </Link>
     );
   }
-  return (
-    <button onClick={onClick} className="sign-btn">
-      {buttonText}
-    </button>
-  );
+  return <button className="sign-btn">{buttonText}</button>;
 };
 
 export const StartButton = () => {
@@ -62,6 +70,66 @@ export const StartButton = () => {
     <button className="mt-12 flex items-center gap-1 rounded-xl bg-gradient-to-r from-orange-button500 via-orange-button500 to-red-button500 px-8 py-2 text-lg font-semibold uppercase text-yellow-text50 hover:from-orange-button600 hover:to-red-button700">
       Start
       {StartIcon}
+    </button>
+  );
+};
+
+export const EditingButtons = ({
+  workout,
+  modifyTempWorkout,
+  toggleChanging,
+  handleDeleteWorkout,
+}: EditingButtonsProps) => {
+  return (
+    <div className="min-w-[82px] space-x-2">
+      <button
+        className="rounded-full bg-green-light300 p-smallButton text-slate-main600 transition-all duration-200 ease-in hover:translate-y-1"
+        onClick={() => {
+          modifyTempWorkout(workout);
+          toggleChanging();
+        }}
+      >
+        {EditIcon}
+      </button>
+      <button
+        className="rounded-full bg-red-button400 p-smallButton text-slate-main600 transition-all duration-200 ease-in hover:translate-y-1"
+        onClick={() => handleDeleteWorkout(workout)}
+      >
+        {DeleteIcon}
+      </button>
+    </div>
+  );
+};
+
+export const AddButton = ({ toggleAdding }: { toggleAdding: () => void }) => {
+  return (
+    <button
+      className="rounded-full bg-slate-light400 p-mediumButton text-slate-light50 transition-all ease-out hover:bg-slate-main600"
+      onClick={toggleAdding}
+    >
+      {AddIcon}
+    </button>
+  );
+};
+
+export const DoneButton = ({ toggleEdit }: { toggleEdit: () => void }) => {
+  return (
+    <button
+      className="rounded-full bg-slate-light400 p-mediumButton text-slate-light50 transition-all ease-out hover:bg-slate-main600"
+      onClick={toggleEdit}
+    >
+      {DoneIcon}
+    </button>
+  );
+};
+
+export const SubmitWorkoutButton = () => {
+  return (
+    <button
+      type="submit"
+      className="col-start-3 mx-auto max-w-fit rounded-full bg-slate-light400 p-mediumButton text-slate-light50 transition-all ease-out hover:bg-slate-main600"
+    >
+      {DoneIcon}
     </button>
   );
 };
