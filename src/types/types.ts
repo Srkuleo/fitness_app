@@ -77,7 +77,6 @@ export interface AddingFormProps {
   modifyTempWorkout: (tempWorkout: WorkoutProps) => void;
   handleAddWorkout: (workout: WorkoutProps) => void;
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  clearInput: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 export interface ChangingFormProps {
