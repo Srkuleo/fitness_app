@@ -53,6 +53,13 @@ const RBComponent = ({
     });
   }
 
+  function clearInput(e: React.FocusEvent<HTMLInputElement>) {
+    setTempWorkout({
+      ...tempWorkout,
+      [e.target.name]: "",
+    });
+  }
+
   if (workouts.length === 0) {
     return (
       <div>
@@ -65,6 +72,7 @@ const RBComponent = ({
             tempWorkout={tempWorkout}
             handleInput={handleInput}
             modifyTempWorkout={modifyTempWorkout}
+            clearInput={clearInput}
           />
         )}
       </div>
@@ -113,6 +121,7 @@ const RBComponent = ({
           tempWorkout={tempWorkout}
           handleInput={handleInput}
           modifyTempWorkout={modifyTempWorkout}
+          clearInput={clearInput}
         />
       )}
       {isChanging && (
@@ -122,6 +131,7 @@ const RBComponent = ({
           handleChangeWorkout={handleChangeWorkout}
           modifyTempWorkout={modifyTempWorkout}
           handleInput={handleInput}
+          clearInput={clearInput}
         />
       )}
     </div>
@@ -177,6 +187,7 @@ const AddingForm = ({
   tempWorkout,
   modifyTempWorkout,
   handleInput,
+  clearInput,
 }: AddingFormProps) => {
   return (
     <>
@@ -206,7 +217,8 @@ const AddingForm = ({
             value={tempWorkout.name}
             placeholder="Workout Name"
             required
-            onChange={(e) => handleInput(e)}
+            onChange={handleInput}
+            onFocus={clearInput}
             className="workout-input-field col-span-2"
           />
           <input
@@ -216,7 +228,7 @@ const AddingForm = ({
             value={tempWorkout.tooltip}
             placeholder="Tooltip"
             required
-            onChange={(e) => handleInput(e)}
+            onChange={handleInput}
             className="workout-input-field col-span-2 col-start-4"
           />
           <SubmitWorkoutButton />
@@ -232,6 +244,7 @@ const ChangingForm = ({
   modifyTempWorkout,
   handleChangeWorkout,
   handleInput,
+  clearInput,
 }: ChangingFormProps) => {
   return (
     <>
@@ -264,6 +277,7 @@ const ChangingForm = ({
             placeholder="Workout Name"
             required
             onChange={handleInput}
+            onFocus={clearInput}
             className="workout-input-field col-span-2"
           />
           <input
