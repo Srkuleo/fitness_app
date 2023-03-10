@@ -46,4 +46,7 @@
   .input-field {
     @apply placeholder-italic mb-2 rounded-xl border-2 border-slate-light200/50 p-3 text-sm text-slate-main600 placeholder-slate-main600 focus:border-green-main500 focus:placeholder-slate-light300 focus:outline-0 dark:border-slate-dark800 dark:text-yellow-text50 dark:placeholder-slate-light300 dark:focus:border-green-main500 dark:focus:placeholder-slate-light500;
   }
+  .workout-input-field {
+    @apply placeholder-italic rounded-xl border-2 border-slate-light300 p-3 text-sm focus:placeholder-slate-light200 text-slate-main600 focus:border-green-main500 focus:outline-0 dark:border-slate-main600/10 dark:bg-slate-main600 dark:text-slate-light50 dark:placeholder-slate-light50 dark:focus:border-orange-button500 dark:focus:placeholder-slate-light200/30;
+  }
 }
