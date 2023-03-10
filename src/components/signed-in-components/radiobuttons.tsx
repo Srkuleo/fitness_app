@@ -263,7 +263,7 @@ const ChangingForm = ({
             value={tempWorkout.name}
             placeholder="Workout Name"
             required
-            onChange={(e) => handleInput(e)}
+            onChange={handleInput}
             className="workout-input-field col-span-2"
           />
           <input
@@ -273,7 +273,7 @@ const ChangingForm = ({
             value={tempWorkout.tooltip}
             placeholder="Tooltip"
             required
-            onChange={(e) => handleInput(e)}
+            onChange={handleInput}
             className="workout-input-field col-span-2 col-start-4"
           />
           <SubmitWorkoutButton />
