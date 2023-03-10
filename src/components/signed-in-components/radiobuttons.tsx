@@ -1,207 +1,286 @@
+import { useState } from "react";
 import { initialWorkout } from "../../functions and variables/variables";
-import { type RadioButtonProps } from "../../types/types";
-import { Fragment, useState } from "react";
-import { SelectedIcon } from "../svg-components/svg";
+import type {
+  WorkoutProps,
+  RBComponentProps,
+  RadioButtonProps,
+  AddingFormProps,
+  ChangingFormProps,
+} from "../../types/types";
+import {
+  AddingWorkoutIcon,
+  ChangingWorkoutIcon,
+  SelectedIcon,
+} from "../svg-components/svg";
+import {
+  AddButton,
+  DoneButton,
+  EditingButtons,
+  SubmitWorkoutButton,
+} from "../buttons";
+import { WorkoutFormWrapper } from "../wrappers";
 
-const RadioButtons = (props: {
-  workouts: RadioButtonProps[];
-  isEditing: boolean;
-  handleAddWorkout: ({
-    name,
-    tooltip,
-  }: Pick<RadioButtonProps, "name" | "tooltip">) => void;
-  handleChangeWorkout: (workout: RadioButtonProps) => void;
-  handeDeleteWorkout: (workout: RadioButtonProps) => void;
-}) => {
-  const {
-    workouts,
-    isEditing,
-    handleAddWorkout,
-    handleChangeWorkout,
-    handeDeleteWorkout,
-  } = props;
-  const [selectedId, setSelectedId] = useState<number | null>(null);
+const RBComponent = ({
+  workouts,
+  isEditing,
+  toggleEdit,
+  handleAddWorkout,
+  handleChangeWorkout,
+  handleDeleteWorkout,
+  selectedId,
+  handleId,
+}: RBComponentProps) => {
   const [isAdding, setIsAdding] = useState(false);
   const [isChanging, setIsChanging] = useState(false);
-  const [newWorkout, setNewWorkout] = useState(initialWorkout);
-  const [tempWorkout, setTempWorkout] = useState<RadioButtonProps>();
+  const [tempWorkout, setTempWorkout] = useState(initialWorkout);
+
+  function toggleAdding() {
+    setIsAdding(!isAdding);
+  }
+
+  function toggleChanging() {
+    setIsChanging(!isChanging);
+  }
+
+  function modifyTempWorkout(selectedWorkout: WorkoutProps) {
+    setTempWorkout(selectedWorkout);
+  }
 
   function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
-    if (isAdding) {
-      setNewWorkout({
-        ...newWorkout,
-        [e.target.name]: e.target.value,
-      });
-    } else if (isChanging && tempWorkout) {
-      setTempWorkout({
-        ...tempWorkout,
-        [e.target.name]: e.target.value,
-      });
-    }
+    setTempWorkout({
+      ...tempWorkout,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  if (workouts.length === 0) {
+    return (
+      <div>
+        <p>You {"don't"} have any existing workout.</p>
+        <AddButton toggleAdding={toggleAdding} />
+        {isAdding && (
+          <AddingForm
+            toggleAdding={toggleAdding}
+            handleAddWorkout={handleAddWorkout}
+            tempWorkout={tempWorkout}
+            handleInput={handleInput}
+            modifyTempWorkout={modifyTempWorkout}
+          />
+        )}
+      </div>
+    );
   }
 
   return (
-    <div className="flex flex-col gap-2">
+    <div
+      className={`${
+        isEditing
+          ? "min-w-[480px] max-w-[500px]"
+          : "min-w-[430px] max-w-[450px]"
+      } flex max-h-[295px] flex-col gap-2 overflow-y-auto scroll-smooth pr-4 scrollbar-thin scrollbar-track-slate-light50/50 scrollbar-thumb-slate-light300 scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg dark:scrollbar-track-slate-dark700/30 dark:scrollbar-thumb-slate-dark700`}
+    >
       {workouts.map((workout) => {
         return (
           <div key={workout.id} className="flex items-center gap-4">
-            <div className="flex">
-              <button
-                onClick={() => {
-                  setSelectedId(workout.id);
-                }}
-                className={`${
-                  workout.id === selectedId
-                    ? "bg-gradient-to-r from-green-dark600/90 to-green-dark700 text-yellow-text50"
-                    : "bg-slate-light50"
-                } w-[350px] rounded-lg px-6 py-4`}
-              >
-                <div className="flex items-center justify-between">
-                  <div className="text-left">
-                    <p
-                      className={`${
-                        workout.id !== selectedId && "text-slate-main600"
-                      } text-xl font-medium`}
-                    >
-                      {workout.name}
-                    </p>
-                    <p
-                      className={`${
-                        workout.id !== selectedId && "text-slate-light400"
-                      } text-sm`}
-                    >
-                      {workout.tooltip}
-                    </p>
-                  </div>
-                  {workout.id === selectedId ? (
-                    <SelectedIcon stroke="#fefce8" />
-                  ) : (
-                    <SelectedIcon />
-                  )}
-                </div>
-              </button>
-            </div>
+            <RadioButton
+              id={workout.id}
+              name={workout.name}
+              tooltip={workout.tooltip}
+              selectedId={selectedId}
+              handleId={handleId}
+            />
             {isEditing && (
-              <div className="space-x-2">
-                <button
-                  className="input-field bg-slate-light50 font-semibold text-slate-main600 dark:text-slate-main600"
-                  onClick={() => {
-                    setTempWorkout(workout);
-                    setIsChanging(true);
-                  }}
-                >
-                  Change
-                </button>
-                <button
-                  className="input-field bg-slate-light50 font-semibold text-slate-main600 dark:text-slate-main600"
-                  onClick={() => handeDeleteWorkout(workout)}
-                >
-                  Delete
-                </button>
-              </div>
-            )}
-            {isChanging && tempWorkout && (
-              <>
-                <div
-                  className="fixed top-0 left-0 h-screen w-screen bg-black/50"
-                  onClick={() => setIsChanging(false)}
-                ></div>
-                <form
-                  className="center fixed top-[50%] left-[50%] z-10 space-x-10 bg-slate-light200 p-20 text-slate-main600"
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    handleChangeWorkout(tempWorkout);
-                    setIsChanging(false);
-                  }}
-                >
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    value={tempWorkout.name}
-                    placeholder="Workout Name"
-                    required
-                    onChange={(e) => handleInput(e)}
-                    className="input-field"
-                  />
-                  <input
-                    type="text"
-                    name="tooltip"
-                    id="tooltip"
-                    value={tempWorkout.tooltip}
-                    placeholder="Tooltip"
-                    required
-                    onChange={(e) => handleInput(e)}
-                    className="input-field"
-                  />
-                  <button
-                    type="submit"
-                    className="input-field bg-slate-light50 dark:text-slate-main600"
-                  >
-                    Add
-                  </button>
-                </form>
-              </>
+              <EditingButtons
+                workout={workout}
+                modifyTempWorkout={modifyTempWorkout}
+                toggleChanging={toggleChanging}
+                handleDeleteWorkout={handleDeleteWorkout}
+              />
             )}
           </div>
         );
       })}
       {isEditing && (
-        <button
-          className="input-field bg-slate-light50 text-base font-semibold transition-all duration-200 ease-in hover:translate-x-3 hover:bg-slate-light400 hover:text-yellow-text50 dark:text-slate-main600 dark:hover:text-yellow-text50"
-          onClick={() => setIsAdding(true)}
-        >
-          Add a new workout
-        </button>
+        <div className="mt-2 flex gap-4">
+          <AddButton toggleAdding={toggleAdding} />
+          <DoneButton toggleEdit={toggleEdit} />
+        </div>
       )}
       {isAdding && (
-        <>
-          <div
-            className="fixed top-0 left-0 h-screen w-screen bg-black/50"
-            onClick={() => setIsAdding(false)}
-          ></div>
-
-          <form
-            className="center fixed top-[50%] left-[50%] z-10 space-x-10 bg-slate-light200 p-20 text-slate-main600"
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleAddWorkout(newWorkout);
-              setNewWorkout(initialWorkout);
-              setIsAdding(false);
-            }}
-          >
-
-            <input
-              type="text"
-              name="name"
-              id="tooltip"
-              value={newWorkout.name}
-              placeholder="Workout Name"
-              required
-              onChange={(e) => handleInput(e)}
-              className="input-field"
-            />
-            <input
-              type="text"
-              name="tooltip"
-              id="tooltip"
-              value={newWorkout.tooltip}
-              placeholder="Tooltip"
-              required
-              onChange={(e) => handleInput(e)}
-              className="input-field"
-            />
-            <button
-              type="submit"
-              className="input-field bg-slate-light50 dark:text-slate-main600"
-            >
-              Add
-            </button>
-          </form>
-        </>
+        <AddingForm
+          toggleAdding={toggleAdding}
+          handleAddWorkout={handleAddWorkout}
+          tempWorkout={tempWorkout}
+          handleInput={handleInput}
+          modifyTempWorkout={modifyTempWorkout}
+        />
+      )}
+      {isChanging && (
+        <ChangingForm
+          toggleChanging={toggleChanging}
+          tempWorkout={tempWorkout}
+          handleChangeWorkout={handleChangeWorkout}
+          modifyTempWorkout={modifyTempWorkout}
+          handleInput={handleInput}
+        />
       )}
     </div>
   );
 };
 
-export default RadioButtons;
+const RadioButton = ({
+  id,
+  name,
+  tooltip,
+  selectedId,
+  handleId,
+}: RadioButtonProps) => {
+  return (
+    <button
+      onClick={() => {
+        handleId(id);
+      }}
+      className={`${
+        id === selectedId
+          ? "bg-gradient-to-r from-green-dark600/90 to-green-dark700 text-yellow-text50"
+          : "bg-slate-light50"
+      } w-full overflow-hidden rounded-lg px-6 py-4`}
+    >
+      <div className="flex items-center justify-between">
+        <div className="text-left">
+          <p
+            className={`${
+              id !== selectedId && "text-slate-main600"
+            } text-xl font-medium`}
+          >
+            {name}
+          </p>
+          <p
+            className={`${id !== selectedId && "text-slate-light400"} text-sm`}
+          >
+            {tooltip}
+          </p>
+        </div>
+        {id === selectedId ? (
+          <SelectedIcon stroke="#fefce8" />
+        ) : (
+          <SelectedIcon />
+        )}
+      </div>
+    </button>
+  );
+};
+
+const AddingForm = ({
+  toggleAdding,
+  handleAddWorkout,
+  tempWorkout,
+  modifyTempWorkout,
+  handleInput,
+}: AddingFormProps) => {
+  return (
+    <>
+      <div
+        className="fixed top-0 left-0 h-screen w-screen bg-black/70"
+        onClick={toggleAdding}
+      ></div>
+      <WorkoutFormWrapper>
+        <p className="flex items-center gap-2 text-xl font-semibold text-slate-main600 dark:text-slate-light50">
+          Adding new workout
+          {AddingWorkoutIcon}
+        </p>
+        <form
+          className="grid max-w-[550px] grid-cols-5 items-center gap-4"
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleAddWorkout(tempWorkout);
+            modifyTempWorkout(initialWorkout);
+            toggleAdding();
+          }}
+        >
+          <input
+            autoFocus
+            type="text"
+            name="name"
+            id="tooltip"
+            value={tempWorkout.name}
+            placeholder="Workout Name"
+            required
+            onChange={(e) => handleInput(e)}
+            className="workout-input-field col-span-2"
+          />
+          <input
+            type="text"
+            name="tooltip"
+            id="tooltip"
+            value={tempWorkout.tooltip}
+            placeholder="Tooltip"
+            required
+            onChange={(e) => handleInput(e)}
+            className="workout-input-field col-span-2 col-start-4"
+          />
+          <SubmitWorkoutButton />
+        </form>
+      </WorkoutFormWrapper>
+    </>
+  );
+};
+
+const ChangingForm = ({
+  toggleChanging,
+  tempWorkout,
+  modifyTempWorkout,
+  handleChangeWorkout,
+  handleInput,
+}: ChangingFormProps) => {
+  return (
+    <>
+      <div
+        className="fixed top-0 left-0 h-screen w-screen bg-black/70"
+        onClick={() => {
+          modifyTempWorkout(initialWorkout);
+          toggleChanging();
+        }}
+      ></div>
+      <WorkoutFormWrapper>
+        <p className="flex items-center gap-2 text-xl font-semibold text-slate-main600 dark:text-slate-light50">
+          Changing {tempWorkout.name} workout
+          {ChangingWorkoutIcon}
+        </p>
+        <form
+          className="grid max-w-[550px] grid-cols-5 items-center gap-4"
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleChangeWorkout(tempWorkout);
+            modifyTempWorkout(initialWorkout);
+            toggleChanging();
+          }}
+        >
+          <input
+            type="text"
+            name="name"
+            id="tooltip"
+            value={tempWorkout.name}
+            placeholder="Workout Name"
+            required
+            onChange={(e) => handleInput(e)}
+            className="workout-input-field col-span-2"
+          />
+          <input
+            type="text"
+            name="tooltip"
+            id="tooltip"
+            value={tempWorkout.tooltip}
+            placeholder="Tooltip"
+            required
+            onChange={(e) => handleInput(e)}
+            className="workout-input-field col-span-2 col-start-4"
+          />
+          <SubmitWorkoutButton />
+        </form>
+      </WorkoutFormWrapper>
+    </>
+  );
+};
+
+export default RBComponent;
