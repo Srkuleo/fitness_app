@@ -5,15 +5,15 @@ import { Curve } from "../components/svg-components/curve-pattern";
 import NavBar from "../components/signed-in-components/nav-bar";
 import { RadioButtonContentWrapper } from "../components/wrappers";
 import { RadioButtonHeading } from "../components/headings";
-import RadioButtons from "../components/signed-in-components/radiobuttons";
+import RBComponent from "../components/signed-in-components/radiobuttons";
 import { StartButton } from "../components/buttons";
-import { type RadioButtonProps } from "../types/types";
 import { useReducer, useState } from "react";
 import { workoutsReducer } from "../functions and variables/functions";
+import type { WorkoutProps } from "../types/types";
 
 let nextId = 0;
 
-const initialWorkouts: RadioButtonProps[] = [
+const initialWorkouts: WorkoutProps[] = [
   { id: nextId++, name: "Upper 1", tooltip: "Good one, could be better." },
   { id: nextId++, name: "Upper 2", tooltip: "A little bit better, imo." },
   { id: nextId++, name: "Lower 1", tooltip: "The best one so far!" },
@@ -23,19 +23,12 @@ const SignedIn: NextPage = () => {
   const [workouts, dispatch] = useReducer(workoutsReducer, initialWorkouts);
   const [isOpen, setIsOpen] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-
-  function toggleDropDown() {
-    setIsOpen(!isOpen);
-  }
-
-  function toggleEdit() {
-    setIsEditing(!isEditing);
-  }
+  const [selectedId, setSelectedId] = useState<number | undefined>(undefined);
 
   function handleAddWorkout({
     name,
     tooltip,
-  }: Pick<RadioButtonProps, "name" | "tooltip">) {
+  }: Pick<WorkoutProps, "name" | "tooltip">) {
     dispatch({
       type: "added",
       workout: {
@@ -46,18 +39,34 @@ const SignedIn: NextPage = () => {
     });
   }
 
-  function handleChangeWorkout(workout: RadioButtonProps) {
+  function handleChangeWorkout(workout: WorkoutProps) {
     dispatch({
       type: "edited",
       workout: workout,
     });
   }
 
-  function handleDeleteWorkout(workout: RadioButtonProps) {
+  function handleDeleteWorkout(workout: WorkoutProps) {
     dispatch({
       type: "deleted",
       workout: workout,
     });
+  }
+
+  function toggleDropDown() {
+    setIsOpen(!isOpen);
+  }
+
+  function toggleEdit() {
+    setIsEditing(!isEditing);
+  }
+
+  function handleId(id: number) {
+    setSelectedId(id);
+  }
+
+  function removeSelectedID() {
+    setSelectedId(undefined);
   }
 
   return (
@@ -74,15 +83,19 @@ const SignedIn: NextPage = () => {
           isOpen={isOpen}
           toggleDropDown={toggleDropDown}
           toggleEdit={toggleEdit}
+          removeSelectedId={removeSelectedID}
         />
         <RadioButtonContentWrapper>
           <RadioButtonHeading />
-          <RadioButtons
+          <RBComponent
             workouts={workouts}
             isEditing={isEditing}
+            toggleEdit={toggleEdit}
             handleAddWorkout={handleAddWorkout}
             handleChangeWorkout={handleChangeWorkout}
-            handeDeleteWorkout={handleDeleteWorkout}
+            handleDeleteWorkout={handleDeleteWorkout}
+            selectedId={selectedId}
+            handleId={handleId}
           />
           <StartButton />
         </RadioButtonContentWrapper>
