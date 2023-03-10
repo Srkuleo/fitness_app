@@ -21,7 +21,6 @@ const Form = ({ page }: { page: string }) => {
         <SignButton
           buttonText={signIn.signButton.buttonText}
           href={signIn.signButton.href}
-          onClick={signIn.signButton.onClick}
         />
       </form>
     );
@@ -42,7 +41,6 @@ const Form = ({ page }: { page: string }) => {
         <SignButton
           buttonText={signUp.signButton.buttonText}
           href={signUp.signButton.href}
-          onClick={signUp.signButton.onClick}
         />
       </form>
     );
