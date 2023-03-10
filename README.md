@@ -10,6 +10,9 @@ Stay tuned for future updates!
 
 #### Priority
 
+- _Custom hooks for nav-bar, radiobuttons i signed in. Make handleSubmit event handler._
+- _Refactor radiobutton to be single slide per workout._
+- _Add alert before deleting w/o._
 - _Make start button a link component that leads to new page with workout details (radiobutton component)._
 - _Work around setting planetscale db and prisma schema._
 - _Push newly added workouts from state to db._
