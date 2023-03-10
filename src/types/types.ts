@@ -4,7 +4,7 @@ export interface WrapperChild {
 
 export interface ModeButtonProps {
   size: number;
-  theme: string;
+  theme: string | undefined;
   toggleMode: () => void;
 }
 
@@ -77,6 +77,7 @@ export interface AddingFormProps {
   modifyTempWorkout: (tempWorkout: WorkoutProps) => void;
   handleAddWorkout: (workout: WorkoutProps) => void;
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  clearInput: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 export interface ChangingFormProps {
@@ -85,6 +86,7 @@ export interface ChangingFormProps {
   modifyTempWorkout: (workout: WorkoutProps) => void;
   handleChangeWorkout: (workout: WorkoutProps) => void;
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  clearInput: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 export interface EditingButtonsProps {
