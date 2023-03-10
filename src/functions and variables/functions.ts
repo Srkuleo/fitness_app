@@ -1,23 +1,25 @@
-import type { RadioButtonProps, WorkoutsAction } from "../types/types";
+import type { WorkoutProps, WorkoutsAction } from "../types/types";
 
 export const workoutsReducer = (
-  workouts: RadioButtonProps[],
+  workouts: WorkoutProps[],
   action: WorkoutsAction
 ) => {
   switch (action.type) {
     case "added": {
+      const { id, name, tooltip } = action.workout;
       return [
         ...workouts,
         {
-          id: action.workout?.id,
-          name: action.workout?.name,
-          tooltip: action.workout?.tooltip,
+          id: id,
+          name: name,
+          tooltip: tooltip,
         },
       ];
     }
     case "edited": {
+      const { id } = action.workout;
       return workouts.map((w) => {
-        if (w.id === action.workout?.id) {
+        if (w.id === id) {
           return action.workout;
         } else {
           return w;
@@ -25,7 +27,8 @@ export const workoutsReducer = (
       });
     }
     case "deleted": {
-      return workouts.filter((w) => w.id !== action.workout?.id);
+      const { id } = action.workout;
+      return workouts.filter((w) => w.id !== id);
     }
     default: {
       throw Error(`Unknown action: ${action.type}`);
