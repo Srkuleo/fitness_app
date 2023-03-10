@@ -33,3 +33,17 @@ export const RadioButtonContentWrapper = ({ children }: WrapperChild) => {
     </div>
   );
 };
+
+//Wrappers for signed-in page
+export const WorkoutFormWrapper = ({ children }: WrapperChild) => {
+  return (
+    <div
+      className="center fixed top-[50%] left-[50%] z-10 flex 
+    flex-col items-center gap-8 rounded-lg bg-gradient-to-tr 
+    from-slate-light300 to-slate-light50 p-12 text-slate-main600 
+    dark:from-slate-dark900 dark:to-slate-dark800"
+    >
+      {children}
+    </div>
+  );
+};
