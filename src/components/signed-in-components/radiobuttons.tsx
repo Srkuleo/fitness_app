@@ -72,7 +72,6 @@ const RBComponent = ({
             tempWorkout={tempWorkout}
             handleInput={handleInput}
             modifyTempWorkout={modifyTempWorkout}
-            clearInput={clearInput}
           />
         )}
       </div>
@@ -121,7 +120,6 @@ const RBComponent = ({
           tempWorkout={tempWorkout}
           handleInput={handleInput}
           modifyTempWorkout={modifyTempWorkout}
-          clearInput={clearInput}
         />
       )}
       {isChanging && (
@@ -187,7 +185,6 @@ const AddingForm = ({
   tempWorkout,
   modifyTempWorkout,
   handleInput,
-  clearInput,
 }: AddingFormProps) => {
   return (
     <>
@@ -218,7 +215,6 @@ const AddingForm = ({
             placeholder="Workout Name"
             required
             onChange={handleInput}
-            onFocus={clearInput}
             className="workout-input-field col-span-2"
           />
           <input
@@ -288,6 +284,7 @@ const ChangingForm = ({
             placeholder="Tooltip"
             required
             onChange={handleInput}
+            onFocus={clearInput}
             className="workout-input-field col-span-2 col-start-4"
           />
           <SubmitWorkoutButton />
