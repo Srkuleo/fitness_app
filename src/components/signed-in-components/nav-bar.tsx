@@ -14,7 +14,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 const NavBar = (props: OptionMenuProps) => {
-  const { isOpen, toggleDropDown, toggleEdit } = props;
+  const { isOpen, toggleDropDown, toggleEdit, removeSelectedId } = props;
   return (
     <>
       {isOpen && (
@@ -31,16 +31,14 @@ const NavBar = (props: OptionMenuProps) => {
         isOpen={isOpen}
         toggleDropDown={toggleDropDown}
         toggleEdit={toggleEdit}
+        removeSelectedId={removeSelectedId}
       />
     </>
   );
 };
 
-const OptionsMenu = ({
-  isOpen,
-  toggleDropDown,
-  toggleEdit,
-}: OptionMenuProps) => {
+const OptionsMenu = (props: OptionMenuProps) => {
+  const { isOpen, toggleDropDown, toggleEdit, removeSelectedId } = props;
   const [mounted, setMounted] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
@@ -63,7 +61,7 @@ const OptionsMenu = ({
     <div className="fixed top-9 right-18 z-10 flex flex-col items-end gap-2 pt-2">
       <button
         onClick={toggleDropDown}
-        className="m-0 flex items-center gap-3 rounded-lg px-3 py-1 text-lg font-medium uppercase text-slate-light50 transition-all ease-out"
+        className="flex items-center gap-3 text-lg font-medium uppercase text-slate-light50"
       >
         srkuleo
         {ArrowDownIcon}
@@ -78,7 +76,10 @@ const OptionsMenu = ({
             Profile
           </Link>
           <button
-            onClick={toggleEdit}
+            onClick={() => {
+              toggleEdit();
+              removeSelectedId();
+            }}
             className="flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50"
           >
             {EditIcon}
