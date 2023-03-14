@@ -31,7 +31,7 @@ export const OptionsMenu = ({
   const { resolvedTheme, setTheme } = useTheme();
   const { isOpen, toggleDropDown } = useOpen();
   const { isHovered, toggleHover } = useHover();
-  
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -48,10 +48,10 @@ export const OptionsMenu = ({
         <div
           role="button"
           onMouseEnter={toggleDropDown}
-          className="fixed top-0 z-10 h-screen w-screen cursor-default"
+          className="fixed top-0 z-0 h-screen w-screen cursor-default"
         ></div>
       )}
-      <div className="fixed top-9 right-18 z-10 flex flex-col items-end gap-2 pt-2">
+      <div className="fixed top-9 right-18 z-0 flex flex-col items-end gap-2 pt-2">
         <button
           onClick={toggleDropDown}
           className="flex items-center gap-3 text-lg font-medium uppercase text-slate-light50"
