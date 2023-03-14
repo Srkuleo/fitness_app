@@ -70,9 +70,9 @@ export const StartButton = ({ workouts }: { workouts: WorkoutProps[] }) => {
   return (
     <button
       disabled={workouts.length === 0 ? true : false}
-      className={`mt-12 flex items-center gap-1 rounded-xl bg-gradient-to-r from-orange-button500 via-orange-button500 to-red-button500 px-8 py-2 text-lg font-semibold uppercase text-yellow-text50 ${
+      className={`relative mt-12 flex items-center gap-1 rounded-xl bg-gradient-to-r from-orange-button500 via-orange-button500 to-red-button500 px-8 py-2 text-lg font-semibold uppercase text-yellow-text50 ${
         workouts.length === 0
-          ? "cursor-not-allowed opacity-50"
+          ? "-z-10 cursor-not-allowed opacity-50"
           : "hover:from-orange-button600 hover:to-red-button700"
       }`}
     >
