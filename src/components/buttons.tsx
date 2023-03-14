@@ -3,6 +3,7 @@ import type {
   EditingButtonsProps,
   ModeButtonProps,
   SignButtonProps,
+  WorkoutProps,
 } from "../types/types";
 import {
   StartIcon,
@@ -65,9 +66,16 @@ export const SignButton = ({ buttonText, href }: SignButtonProps) => {
   return <button className="sign-btn">{buttonText}</button>;
 };
 
-export const StartButton = () => {
+export const StartButton = ({ workouts }: { workouts: WorkoutProps[] }) => {
   return (
-    <button className="mt-12 flex items-center gap-1 rounded-xl bg-gradient-to-r from-orange-button500 via-orange-button500 to-red-button500 px-8 py-2 text-lg font-semibold uppercase text-yellow-text50 hover:from-orange-button600 hover:to-red-button700">
+    <button
+      disabled={workouts.length === 0 ? true : false}
+      className={`mt-12 flex items-center gap-1 rounded-xl bg-gradient-to-r from-orange-button500 via-orange-button500 to-red-button500 px-8 py-2 text-lg font-semibold uppercase text-yellow-text50 ${
+        workouts.length === 0
+          ? "cursor-not-allowed opacity-50"
+          : "hover:from-orange-button600 hover:to-red-button700"
+      }`}
+    >
       Start
       {StartIcon}
     </button>
@@ -77,8 +85,8 @@ export const StartButton = () => {
 export const EditingButtons = ({
   workout,
   modifyTempWorkout,
-  toggleChanging,
-  handleDeleteWorkout,
+  initChangingForm,
+  handleRemoveWorkout,
 }: EditingButtonsProps) => {
   return (
     <div className="min-w-[82px] space-x-2">
@@ -86,14 +94,14 @@ export const EditingButtons = ({
         className="rounded-full bg-green-light300 p-smallButton text-slate-main600 transition-all duration-200 ease-in hover:translate-y-1"
         onClick={() => {
           modifyTempWorkout(workout);
-          toggleChanging();
+          initChangingForm();
         }}
       >
         {EditIcon}
       </button>
       <button
         className="rounded-full bg-red-button400 p-smallButton text-slate-main600 transition-all duration-200 ease-in hover:translate-y-1"
-        onClick={() => handleDeleteWorkout(workout)}
+        onClick={() => handleRemoveWorkout(workout.id)}
       >
         {DeleteIcon}
       </button>
@@ -101,11 +109,15 @@ export const EditingButtons = ({
   );
 };
 
-export const AddButton = ({ toggleAdding }: { toggleAdding: () => void }) => {
+export const AddButton = ({
+  initAddingForm,
+}: {
+  initAddingForm: () => void;
+}) => {
   return (
     <button
       className="rounded-full bg-slate-light400 p-mediumButton text-slate-light50 transition-all ease-out hover:bg-slate-main600"
-      onClick={toggleAdding}
+      onClick={initAddingForm}
     >
       {AddIcon}
     </button>
