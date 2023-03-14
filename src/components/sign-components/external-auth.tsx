@@ -1,4 +1,4 @@
-import { authButtons } from "../../functions and variables/variables";
+import { authButtons } from "../../utils/variables";
 import { ExternalAuthButtonWrapper } from "../wrappers";
 
 const ExternalAuth = () => {
