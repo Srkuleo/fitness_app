@@ -34,8 +34,6 @@ export interface FormProps {
 }
 
 export interface OptionMenuProps {
-  isOpen: boolean;
-  toggleDropDown: () => void;
   toggleEdit: () => void;
   removeSelectedId: () => void;
 }
@@ -47,50 +45,47 @@ export interface WorkoutProps {
 }
 export interface RBComponentProps {
   workouts: WorkoutProps[];
+  addWorkout: (name: string, tooltip: string) => void;
+  changeWorkout: (workout: WorkoutProps) => void;
+  removeWorkout: (id: number) => void;
   isEditing: boolean;
   toggleEdit: () => void;
-  handleAddWorkout: ({
-    name,
-    tooltip,
-  }: Pick<WorkoutProps, "name" | "tooltip">) => void;
-  handleChangeWorkout: (workout: WorkoutProps) => void;
-  handleDeleteWorkout: (workout: WorkoutProps) => void;
   selectedId: number | undefined;
-  handleId: (id: number) => void;
+  addSelectedId: (id: number) => void;
 }
 
-type DispatchTuple = "added" | "edited" | "deleted";
-
-export interface WorkoutsAction {
-  type: DispatchTuple;
-  workout: WorkoutProps;
-}
+export type WorkoutsAction =
+  | { type: "adding"; workout: WorkoutProps }
+  | { type: "editing"; workout: WorkoutProps }
+  | { type: "removing"; id: number };
 
 export type RadioButtonProps = WorkoutProps & {
   selectedId: number | undefined;
-  handleId: (id: number) => void;
+  addSelectedId: (id: number) => void;
 };
 
 export interface AddingFormProps {
-  toggleAdding: () => void;
+  defaultEditUi: () => void;
   tempWorkout: WorkoutProps;
   modifyTempWorkout: (tempWorkout: WorkoutProps) => void;
-  handleAddWorkout: (workout: WorkoutProps) => void;
-  handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleAddWorkout: (name: string, tooltip: string) => void;
+  modifyTempWorkoutProp: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface ChangingFormProps {
-  toggleChanging: () => void;
+  defaultEditUi: () => void;
   tempWorkout: WorkoutProps;
   modifyTempWorkout: (workout: WorkoutProps) => void;
   handleChangeWorkout: (workout: WorkoutProps) => void;
-  handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  clearInput: (e: React.FocusEvent<HTMLInputElement>) => void;
+  modifyTempWorkoutProp: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  clearField: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 export interface EditingButtonsProps {
   workout: WorkoutProps;
   modifyTempWorkout: (workout: WorkoutProps) => void;
-  toggleChanging: () => void;
-  handleDeleteWorkout: (workout: WorkoutProps) => void;
+  initChangingForm: () => void;
+  handleRemoveWorkout: (id: number) => void;
 }
+
+export type EditOptionsTuple = "defaultUI" | "adding" | "changing";
