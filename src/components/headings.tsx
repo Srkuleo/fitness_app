@@ -20,7 +20,7 @@ export const RadioButtonHeading = () => {
         Welcome, Srkuleo.
       </h1>
       <h3 className="mb-6 text-2xl font-semibold text-slate-main600 dark:text-yellow-text50">
-        Choose your workout for today:
+        Select your workout for today:
       </h3>
     </>
   );
