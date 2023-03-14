@@ -11,7 +11,7 @@ import {
 } from "../components/signed-in-components/fixed-components";
 import { RadioButtonContentWrapper } from "../components/wrappers";
 import { RadioButtonHeading } from "../components/headings";
-import RBComponent from "../components/signed-in-components/radiobuttons";
+import RBComponent from "../components/signed-in-components/rb-component";
 import { StartButton } from "../components/buttons";
 
 const initialWorkouts: WorkoutProps[] = [
