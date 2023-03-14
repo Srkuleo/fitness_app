@@ -1,7 +1,5 @@
-import { useState } from "react";
-import { initialWorkout } from "../../functions and variables/variables";
+import { initialWorkout } from "../../utils/variables";
 import type {
-  WorkoutProps,
   RBComponentProps,
   RadioButtonProps,
   AddingFormProps,
@@ -19,59 +17,41 @@ import {
   SubmitWorkoutButton,
 } from "../buttons";
 import { WorkoutFormWrapper } from "../wrappers";
+import { useTempWorkout } from "../../hooks/useTempWorkout";
+import { useEditOptions } from "../../hooks/useEditOptions";
 
 const RBComponent = ({
   workouts,
+  addWorkout,
+  changeWorkout,
+  removeWorkout,
   isEditing,
   toggleEdit,
-  handleAddWorkout,
-  handleChangeWorkout,
-  handleDeleteWorkout,
   selectedId,
-  handleId,
+  addSelectedId,
 }: RBComponentProps) => {
-  const [isAdding, setIsAdding] = useState(false);
-  const [isChanging, setIsChanging] = useState(false);
-  const [tempWorkout, setTempWorkout] = useState(initialWorkout);
-
-  function toggleAdding() {
-    setIsAdding(!isAdding);
-  }
-
-  function toggleChanging() {
-    setIsChanging(!isChanging);
-  }
-
-  function modifyTempWorkout(selectedWorkout: WorkoutProps) {
-    setTempWorkout(selectedWorkout);
-  }
-
-  function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
-    setTempWorkout({
-      ...tempWorkout,
-      [e.target.name]: e.target.value,
-    });
-  }
-
-  function clearInput(e: React.FocusEvent<HTMLInputElement>) {
-    setTempWorkout({
-      ...tempWorkout,
-      [e.target.name]: "",
-    });
-  }
+  const { tempWorkout, modifyTempWorkout, modifyTempWorkoutProp, clearField } =
+    useTempWorkout(initialWorkout);
+  const { editOption, initAddingForm, initChangingForm, defaultEditUi } =
+    useEditOptions();
 
   if (workouts.length === 0) {
     return (
-      <div>
-        <p>You {"don't"} have any existing workout.</p>
-        <AddButton toggleAdding={toggleAdding} />
-        {isAdding && (
+      <div className="flex flex-col items-center rounded-xl bg-slate-light50 px-8 py-12">
+        <p className="mb-12 text-xl font-semibold text-slate-light400">
+          You {"don't"} have any existing workout.
+        </p>
+        <p className="mb-2 text-sm italic text-slate-light400">
+          Click to add a new workout
+        </p>
+        <AddButton initAddingForm={initAddingForm} />
+        {editOption === "adding" && (
           <AddingForm
-            toggleAdding={toggleAdding}
-            handleAddWorkout={handleAddWorkout}
+            defaultEditUi={defaultEditUi}
+            handleAddWorkout={addWorkout}
             tempWorkout={tempWorkout}
-            handleInput={handleInput}
             modifyTempWorkout={modifyTempWorkout}
+            modifyTempWorkoutProp={modifyTempWorkoutProp}
           />
         )}
       </div>
@@ -94,14 +74,14 @@ const RBComponent = ({
               name={workout.name}
               tooltip={workout.tooltip}
               selectedId={selectedId}
-              handleId={handleId}
+              addSelectedId={addSelectedId}
             />
             {isEditing && (
               <EditingButtons
                 workout={workout}
                 modifyTempWorkout={modifyTempWorkout}
-                toggleChanging={toggleChanging}
-                handleDeleteWorkout={handleDeleteWorkout}
+                initChangingForm={initChangingForm}
+                handleRemoveWorkout={removeWorkout}
               />
             )}
           </div>
@@ -109,27 +89,27 @@ const RBComponent = ({
       })}
       {isEditing && (
         <div className="mt-2 flex gap-4">
-          <AddButton toggleAdding={toggleAdding} />
+          <AddButton initAddingForm={initAddingForm} />
           <DoneButton toggleEdit={toggleEdit} />
         </div>
       )}
-      {isAdding && (
+      {editOption === "adding" && (
         <AddingForm
-          toggleAdding={toggleAdding}
-          handleAddWorkout={handleAddWorkout}
+          defaultEditUi={defaultEditUi}
+          handleAddWorkout={addWorkout}
           tempWorkout={tempWorkout}
-          handleInput={handleInput}
           modifyTempWorkout={modifyTempWorkout}
+          modifyTempWorkoutProp={modifyTempWorkoutProp}
         />
       )}
-      {isChanging && (
+      {editOption === "changing" && (
         <ChangingForm
-          toggleChanging={toggleChanging}
+          defaultEditUi={defaultEditUi}
           tempWorkout={tempWorkout}
-          handleChangeWorkout={handleChangeWorkout}
+          handleChangeWorkout={changeWorkout}
           modifyTempWorkout={modifyTempWorkout}
-          handleInput={handleInput}
-          clearInput={clearInput}
+          modifyTempWorkoutProp={modifyTempWorkoutProp}
+          clearField={clearField}
         />
       )}
     </div>
@@ -141,12 +121,12 @@ const RadioButton = ({
   name,
   tooltip,
   selectedId,
-  handleId,
+  addSelectedId,
 }: RadioButtonProps) => {
   return (
     <button
       onClick={() => {
-        handleId(id);
+        addSelectedId(id);
       }}
       className={`${
         id === selectedId
@@ -180,17 +160,20 @@ const RadioButton = ({
 };
 
 const AddingForm = ({
-  toggleAdding,
+  defaultEditUi,
   handleAddWorkout,
   tempWorkout,
   modifyTempWorkout,
-  handleInput,
+  modifyTempWorkoutProp,
 }: AddingFormProps) => {
   return (
     <>
       <div
         className="fixed top-0 left-0 h-screen w-screen bg-black/70"
-        onClick={toggleAdding}
+        onClick={() => {
+          modifyTempWorkout(initialWorkout);
+          defaultEditUi();
+        }}
       ></div>
       <WorkoutFormWrapper>
         <p className="flex items-center gap-2 text-xl font-semibold text-slate-main600 dark:text-slate-light50">
@@ -201,9 +184,9 @@ const AddingForm = ({
           className="grid max-w-[550px] grid-cols-5 items-center gap-4"
           onSubmit={(e) => {
             e.preventDefault();
-            handleAddWorkout(tempWorkout);
+            handleAddWorkout(tempWorkout.name, tempWorkout.tooltip);
             modifyTempWorkout(initialWorkout);
-            toggleAdding();
+            defaultEditUi();
           }}
         >
           <input
@@ -214,7 +197,7 @@ const AddingForm = ({
             value={tempWorkout.name}
             placeholder="Workout Name"
             required
-            onChange={handleInput}
+            onChange={modifyTempWorkoutProp}
             className="workout-input-field col-span-2"
           />
           <input
@@ -224,7 +207,7 @@ const AddingForm = ({
             value={tempWorkout.tooltip}
             placeholder="Tooltip"
             required
-            onChange={handleInput}
+            onChange={modifyTempWorkoutProp}
             className="workout-input-field col-span-2 col-start-4"
           />
           <SubmitWorkoutButton />
@@ -235,12 +218,12 @@ const AddingForm = ({
 };
 
 const ChangingForm = ({
-  toggleChanging,
+  defaultEditUi,
   tempWorkout,
   modifyTempWorkout,
   handleChangeWorkout,
-  handleInput,
-  clearInput,
+  modifyTempWorkoutProp,
+  clearField,
 }: ChangingFormProps) => {
   return (
     <>
@@ -248,7 +231,7 @@ const ChangingForm = ({
         className="fixed top-0 left-0 h-screen w-screen bg-black/70"
         onClick={() => {
           modifyTempWorkout(initialWorkout);
-          toggleChanging();
+          defaultEditUi();
         }}
       ></div>
       <WorkoutFormWrapper>
@@ -262,7 +245,7 @@ const ChangingForm = ({
             e.preventDefault();
             handleChangeWorkout(tempWorkout);
             modifyTempWorkout(initialWorkout);
-            toggleChanging();
+            defaultEditUi();
           }}
         >
           <input
@@ -272,8 +255,8 @@ const ChangingForm = ({
             value={tempWorkout.name}
             placeholder="Workout Name"
             required
-            onChange={handleInput}
-            onFocus={clearInput}
+            onChange={modifyTempWorkoutProp}
+            onFocus={clearField}
             className="workout-input-field col-span-2"
           />
           <input
@@ -283,8 +266,8 @@ const ChangingForm = ({
             value={tempWorkout.tooltip}
             placeholder="Tooltip"
             required
-            onChange={handleInput}
-            onFocus={clearInput}
+            onChange={modifyTempWorkoutProp}
+            onFocus={clearField}
             className="workout-input-field col-span-2 col-start-4"
           />
           <SubmitWorkoutButton />
