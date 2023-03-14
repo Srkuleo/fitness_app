@@ -15,13 +15,13 @@ export const SignContentHeading = ({ page }: Record<"page", string>) => {
 
 export const RadioButtonHeading = () => {
   return (
-    <>
+    <div className="relative z-0 text-center">
       <h1 className="mt-36 mb-24 text-5xl font-bold text-orange-button500">
         Welcome, Srkuleo.
       </h1>
       <h3 className="mb-6 text-2xl font-semibold text-slate-main600 dark:text-yellow-text50">
         Select your workout for today:
       </h3>
-    </>
+    </div>
   );
 };
