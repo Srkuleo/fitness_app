@@ -10,8 +10,9 @@ Stay tuned for future updates!
 
 #### Priority
 
+- _Figure out problem with z-index on signed in page (start button)._
 - _Refactor radiobutton to be single slide per workout._
-- _Add alert before deleting w/o._
+- _Add alert before deleting w/o and message for clicking edit button without having any w/o to edit._
 - _Make start button a link component that leads to new page with workout details (radiobutton component)._
 - _Work around setting planetscale db and prisma schema._
 - _Push newly added workouts from state to db._
