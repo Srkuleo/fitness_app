@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { type FormProps, type InputProps } from "../../types/types";
-import { signUp, signIn } from "../../functions and variables/variables";
+import { signUp, signIn } from "../../utils/variables";
 import { SignButton } from "../buttons";
 
 const Form = ({ page }: { page: string }) => {
