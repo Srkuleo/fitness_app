@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const LinkQuestions = ({ page }: { page: string }) => {
+const LinkQuestions = ({ page }: { page: "sign in" | "sign up" }) => {
   return page === "sign in" ? (
     <>
       <p className="mb-2 text-xs text-slate-main600 dark:text-slate-light300">
