@@ -37,14 +37,18 @@ const RBComponent = ({
 
   if (workouts.length === 0) {
     return (
-      <div className="relative z-0 flex flex-col items-center rounded-xl bg-slate-light50 px-8 py-12">
-        <p className="mb-12 text-xl font-semibold text-slate-light400">
-          You {"don't"} have any existing workout.
-        </p>
-        <p className="mb-2 text-sm italic text-slate-light400">
-          Click to add a new workout
-        </p>
-        <AddButton initAddingForm={initAddingForm} />
+      <>
+        <div className="flex min-h-[450px] min-w-[340px] flex-col items-center justify-end gap-[154px] rounded-xl bg-gradient-to-tr from-slate-light50 via-slate-light50 to-orange-button500 px-4">
+          <p className="text-lg font-semibold text-slate-light400">
+            You {"don't"} have any existing workout.
+          </p>
+          <div className="mb-4 flex items-center gap-2">
+            <AddButton initAddingForm={initAddingForm} />
+            <p className="text-xs italic text-slate-light400">
+              Add a new workout
+            </p>
+          </div>
+        </div>
         {editOption === "adding" && (
           <AddingForm
             defaultEditUi={defaultEditUi}
@@ -54,7 +58,7 @@ const RBComponent = ({
             modifyTempWorkoutProp={modifyTempWorkoutProp}
           />
         )}
-      </div>
+      </>
     );
   }
 
@@ -62,9 +66,7 @@ const RBComponent = ({
     <div
       className={`${
         isEditing
-          ? "min-w-[480px] max-w-[500px]"
-          : "min-w-[430px] max-w-[450px]"
-      } flex max-h-[295px] flex-col gap-2 overflow-y-auto scroll-smooth pr-4 scrollbar-thin scrollbar-track-slate-light50/50 scrollbar-thumb-slate-light300 scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg dark:scrollbar-track-slate-dark700/30 dark:scrollbar-thumb-slate-dark700`}
+      } flex gap-2 overflow-y-auto scroll-smooth pr-4 scrollbar-thin scrollbar-track-slate-light50/50 scrollbar-thumb-slate-light300 scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg dark:scrollbar-track-slate-dark700/30 dark:scrollbar-thumb-slate-dark700`}
     >
       {workouts.map((workout) => {
         return (
@@ -132,7 +134,7 @@ const RadioButton = ({
         id === selectedId
           ? "bg-gradient-to-r from-green-dark600/90 to-green-dark700 text-yellow-text50"
           : "bg-slate-light50"
-      } w-full overflow-hidden rounded-lg px-6 py-4`}
+      } flex min-h-[450px] min-w-[340px] flex-col items-center gap-[154px] rounded-xl px-4`}
     >
       <div className="flex items-center justify-between">
         <div className="text-left">
@@ -169,7 +171,7 @@ const AddingForm = ({
   return (
     <>
       <div
-        className="fixed top-0 left-0 z-10 h-screen w-screen bg-black/70"
+        className="fixed top-0 left-0 h-screen w-screen bg-black/70"
         onClick={() => {
           modifyTempWorkout(initialWorkout);
           defaultEditUi();
@@ -228,7 +230,7 @@ const ChangingForm = ({
   return (
     <>
       <div
-        className="fixed top-0 left-0 z-10 h-screen w-screen bg-black/70"
+        className="fixed top-0 left-0 h-screen w-screen bg-black/70"
         onClick={() => {
           modifyTempWorkout(initialWorkout);
           defaultEditUi();
