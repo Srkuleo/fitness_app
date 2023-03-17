@@ -15,9 +15,9 @@ import RBComponent from "../components/signed-in-components/rb-component";
 import { StartButton } from "../components/buttons";
 
 const initialWorkouts: WorkoutProps[] = [
-  // { id: 1, name: "Upper 1", tooltip: "Good one, could be better." },
-  // { id: 2, name: "Upper 2", tooltip: "A little bit better, imo." },
-  // { id: 3, name: "Lower 1", tooltip: "The best one so far!" },
+  { id: 1, name: "Upper 1", tooltip: "Good one, could be better." },
+  { id: 2, name: "Upper 2", tooltip: "A little bit better, imo." },
+  { id: 3, name: "Lower 1", tooltip: "The best one so far!" },
 ];
 
 const SignedIn: NextPage = () => {
@@ -52,7 +52,7 @@ const SignedIn: NextPage = () => {
             selectedId={selectedId}
             addSelectedId={addSelectedId}
           />
-          <StartButton workouts={workouts} />
+          {workouts.length > 0 && <StartButton />}
         </RadioButtonContentWrapper>
       </main>
     </>
