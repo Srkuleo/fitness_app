@@ -1,7 +1,7 @@
 export const Pattern = () => {
   return (
     <svg
-      className="absolute top-0 left-0 z-0"
+      className="absolute top-0 left-0"
       width="1810"
       height="1080"
       viewBox="0 0 1810 1080"
