@@ -1,6 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const tailwindScrollbar = require("tailwind-scrollbar");
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
@@ -51,5 +49,4 @@ module.exports = {
       },
     },
   },
-  plugins: [tailwindScrollbar({ nocompatible: true })],
 };
