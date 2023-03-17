@@ -27,11 +27,7 @@ export const OAuthBtnWrapper = ({ children }: WrapperChild) => {
 };
 
 export const RadioButtonContentWrapper = ({ children }: WrapperChild) => {
-  return (
-    <div className="relative z-0 mx-auto flex flex-col items-center">
-      {children}
-    </div>
-  );
+  return <div className="mx-auto flex flex-col items-center">{children}</div>;
 };
 
 //Wrappers for signed-in page
