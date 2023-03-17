@@ -15,7 +15,7 @@ export const SignContentHeading = ({ page }: Record<"page", string>) => {
 
 export const RadioButtonHeading = () => {
   return (
-    <div className="text-center">
+    <div className="relative z-0 text-center">
       <h1 className="mt-36 mb-18 text-5xl font-bold text-orange-button500">
         Welcome, Srkuleo.
       </h1>
