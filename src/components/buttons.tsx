@@ -1,10 +1,5 @@
 import Link from "next/link";
-import type {
-  EditingButtonsProps,
-  ModeButtonProps,
-  SignButtonProps,
-  WorkoutProps,
-} from "../types/types";
+import type { EditingButtonsProps, ModeButtonProps } from "../types/types";
 import {
   StartIcon,
   DarkModeIcon,
@@ -55,26 +50,20 @@ export const ModeButton = ({ size, theme, toggleMode }: ModeButtonProps) => {
   );
 };
 
-export const SignButton = ({ buttonText, href }: SignButtonProps) => {
-  if (href) {
-    return (
-      <Link href={href} className="sign-btn">
-        {buttonText}
-      </Link>
-    );
-  }
-  return <button className="sign-btn">{buttonText}</button>;
+export const SignButton = ({ page }: { page: "sign in" | "sign up" }) => {
+  return (
+    <Link href={page === "sign in" ? "/signed-in" : "/"} className="sign-btn">
+      {page === "sign in" ? "Sign in" : "Sign up"}
+    </Link>
+  );
 };
 
-export const StartButton = ({ workouts }: { workouts: WorkoutProps[] }) => {
+export const StartButton = () => {
   return (
     <button
-      disabled={workouts.length === 0 ? true : false}
-      className={`relative mt-12 flex items-center gap-1 rounded-xl bg-gradient-to-r from-orange-button500 via-orange-button500 to-red-button500 px-8 py-2 text-lg font-semibold uppercase text-yellow-text50 ${
-        workouts.length === 0
-          ? "-z-10 cursor-not-allowed opacity-50"
-          : "hover:from-orange-button600 hover:to-red-button700"
-      }`}
+      className="mt-12 flex items-center gap-1 rounded-xl bg-gradient-to-r 
+      from-orange-button500 via-orange-button500 to-red-button500 px-8 py-2 
+      text-lg font-semibold uppercase text-yellow-text50 hover:from-orange-button600 hover:to-red-button700"
     >
       Start
       {StartIcon}
