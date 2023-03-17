@@ -1,14 +1,14 @@
 import { SignContentHeading } from "../headings";
-import ExternalAuth from "./external-auth";
+import OAuth from "./oAuth";
 import Separator from "./separator";
 import Form from "./form";
 import LinkQuestions from "./link-questions";
 
-const SignContent = ({ page }: { page: string }) => {
+const SignContent = ({ page }: { page: "sign in" | "sign up" }) => {
   return (
     <div className="mx-auto w-[305px]">
       <SignContentHeading page={page} />
-      <ExternalAuth />
+      <OAuth />
       <Separator />
       <Form page={page} />
       <LinkQuestions page={page} />
