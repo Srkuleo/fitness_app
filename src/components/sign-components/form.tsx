@@ -1,108 +1,72 @@
 import Link from "next/link";
-import { type FormProps, type InputProps } from "../../types/types";
-import { signUp, signIn } from "../../utils/variables";
 import { SignButton } from "../buttons";
 
-const Form = ({ page }: { page: string }) => {
-  if (page === "sign in") {
-    return (
-      <form action="#" className="flex flex-col" id={signIn.form.id}>
-        {signIn.form.inputs.map((input) => {
-          return (
-            <InputField
-              key={input._name}
-              _name={input._name}
-              placeholder={input.placeholder}
-              type={input.type}
-            />
-          );
-        })}
-        <CheckBox checkBox={signIn.checkBox} />
-        <SignButton
-          buttonText={signIn.signButton.buttonText}
-          href={signIn.signButton.href}
-        />
-      </form>
-    );
-  } else {
-    return (
-      <form action="#" className="flex flex-col" id={signUp.form.id}>
-        {signUp.form.inputs.map((input) => {
-          return (
-            <InputField
-              key={input._name}
-              _name={input._name}
-              placeholder={input.placeholder}
-              type={input.type}
-            />
-          );
-        })}
-        <CheckBox checkBox={signUp.checkBox} />
-        <SignButton
-          buttonText={signUp.signButton.buttonText}
-          href={signUp.signButton.href}
-        />
-      </form>
-    );
-  }
-};
-
-const InputField = ({ _name, placeholder, type }: InputProps) => {
-  if (type === "email") {
-    return (
-      <input
-        type={type}
-        name={_name}
-        id={_name}
-        placeholder={placeholder}
-        required
-        className="input-field"
-        autoFocus
-      />
-    );
-  } else if (type === "password") {
-    return (
-      <>
+const Form = ({ page }: { page: "sign in" | "sign up" }) => {
+  return (
+    <form
+      action="#"
+      className="flex flex-col"
+      id={page === "sign in" ? "sign-in" : "sign-up"}
+    >
+      {page === "sign up" && (
         <input
-          type={type}
-          name={_name}
-          id={_name}
-          placeholder={placeholder}
+          type="text"
+          name="username"
+          id="username"
+          placeholder="Username"
+          autoFocus
           required
-          pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$"
           className="input-field"
         />
-      </>
-    );
-  }
-
-  return (
-    <input
-      type={type}
-      name={_name}
-      id={_name}
-      placeholder={placeholder}
-      required
-      className="input-field"
-    />
+      )}
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Email"
+        autoFocus={page === "sign in" && true}
+        required
+        className="input-field"
+      />
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Password"
+        required
+        className="input-field"
+      />
+      {page === "sign up" && (
+        <input
+          type="password"
+          name="confirm"
+          id="confirm"
+          placeholder="Confirm password"
+          required
+          className="input-field"
+        />
+      )}
+      <CheckBox page={page} />
+      <SignButton page={page} />
+    </form>
   );
 };
 
-const CheckBox = ({ checkBox }: Pick<FormProps, "checkBox">) => {
+const CheckBox = ({ page }: { page: "sign in" | "sign up" }) => {
   return (
     <div className="my-3 flex gap-1 ">
       <input
-        type={checkBox.type}
-        id={checkBox._name}
-        name={checkBox._name}
+        type="checkbox"
+        id={page === "sign in" ? "remember-me" : "tos"}
+        name={page === "sign in" ? "remember-me" : "tos"}
         className="cursor-pointer accent-green-light400"
-        required
+        required={page === "sign in" ? false : true}
       />
       <label
-        htmlFor={checkBox._name}
+        htmlFor={page === "sign in" ? "remember-me" : "tos"}
         className="text-xs text-slate-main600 dark:text-slate-light300"
       >
-        {checkBox._name === "remember" ? "Remember me" : terms}
+        {page === "sign in" ? "Remember me" : terms}
       </label>
     </div>
   );
