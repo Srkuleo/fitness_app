@@ -8,29 +8,9 @@ export interface ModeButtonProps {
   toggleMode: () => void;
 }
 
-export interface ExternalAuthButtonProps
-  extends Pick<SignButtonProps, "buttonText"> {
-  buttonSvg: JSX.Element;
-}
-
-export interface InputProps {
-  _name: string;
-  placeholder: string;
-  type: string;
-}
-
-export interface SignButtonProps {
+export interface OAuthBtnProps {
   buttonText: string;
-  href: string;
-}
-
-export interface FormProps {
-  form: {
-    id: string;
-    inputs: InputProps[];
-  };
-  checkBox: Pick<InputProps, "_name" | "type">;
-  signButton: SignButtonProps;
+  buttonSvg: JSX.Element;
 }
 
 export interface OptionMenuProps {
