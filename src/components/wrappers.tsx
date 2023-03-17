@@ -11,7 +11,7 @@ export const LogoWrapper = ({ children }: WrapperChild) => {
   return <div className="flex items-center gap-1">{children}</div>;
 };
 
-export const ExternalAuthButtonWrapper = ({ children }: WrapperChild) => {
+export const OAuthBtnWrapper = ({ children }: WrapperChild) => {
   return (
     <button
       className="flex w-full items-center justify-center gap-3 
@@ -28,7 +28,7 @@ export const ExternalAuthButtonWrapper = ({ children }: WrapperChild) => {
 
 export const RadioButtonContentWrapper = ({ children }: WrapperChild) => {
   return (
-    <div className="relative z-10 mx-auto flex flex-col items-center">
+    <div className="relative z-0 mx-auto flex flex-col items-center">
       {children}
     </div>
   );
