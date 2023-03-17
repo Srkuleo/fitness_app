@@ -61,7 +61,7 @@ export const SignButton = ({ page }: { page: "sign in" | "sign up" }) => {
 export const StartButton = () => {
   return (
     <button
-      className="mt-12 flex items-center gap-1 rounded-xl bg-gradient-to-r 
+      className="relative z-0 mt-12 flex items-center gap-1 rounded-xl bg-gradient-to-r 
       from-orange-button500 via-orange-button500 to-red-button500 px-8 py-2 
       text-lg font-semibold uppercase text-yellow-text50 hover:from-orange-button600 hover:to-red-button700"
     >
@@ -78,7 +78,7 @@ export const EditingButtons = ({
   handleRemoveWorkout,
 }: EditingButtonsProps) => {
   return (
-    <div className="min-w-[82px] space-x-2">
+    <div className="relative z-0 grid gap-4">
       <button
         className="rounded-full bg-green-light300 p-smallButton text-slate-main600 transition-all duration-200 ease-in hover:translate-y-1"
         onClick={() => {
