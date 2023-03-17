@@ -63,11 +63,7 @@ const RBComponent = ({
   }
 
   return (
-    <div
-      className={`${
-        isEditing
-      } flex gap-2 overflow-y-auto scroll-smooth pr-4 scrollbar-thin scrollbar-track-slate-light50/50 scrollbar-thumb-slate-light300 scrollbar-track-rounded-lg scrollbar-thumb-rounded-lg dark:scrollbar-track-slate-dark700/30 dark:scrollbar-thumb-slate-dark700`}
-    >
+    <div className="flex gap-2">
       {workouts.map((workout) => {
         return (
           <div key={workout.id} className="flex items-center gap-4">
@@ -90,7 +86,7 @@ const RBComponent = ({
         );
       })}
       {isEditing && (
-        <div className="mt-2 flex gap-4">
+        <div className="relative z-0 mt-2 flex flex-col gap-4">
           <AddButton initAddingForm={initAddingForm} />
           <DoneButton toggleEdit={toggleEdit} />
         </div>
@@ -132,31 +128,30 @@ const RadioButton = ({
       }}
       className={`${
         id === selectedId
-          ? "bg-gradient-to-r from-green-dark600/90 to-green-dark700 text-yellow-text50"
-          : "bg-slate-light50"
-      } flex min-h-[450px] min-w-[340px] flex-col items-center gap-[154px] rounded-xl px-4`}
+          ? "dark:bg-orange-button600/80 bg-orange-button500/90 text-yellow-text50"
+          : "bg-slate-light50 dark:bg-slate-light200"
+      } relative z-0 flex h-[450px] w-[340px] flex-col overflow-hidden rounded-[24px] p-4`}
     >
-      <div className="flex items-center justify-between">
-        <div className="text-left">
-          <p
-            className={`${
-              id !== selectedId && "text-slate-main600"
-            } text-xl font-medium`}
-          >
-            {name}
-          </p>
-          <p
-            className={`${id !== selectedId && "text-slate-light400"} text-sm`}
-          >
-            {tooltip}
-          </p>
-        </div>
+      <div className="mx-auto flex flex-col items-center gap-4">
+        <p
+          className={`${
+            id !== selectedId && "text-slate-main600"
+          } text-2xl font-medium`}
+        >
+          {name}
+        </p>
+        <p className={`${id !== selectedId && "text-slate-light400"} text-sm`}>
+          {tooltip}
+        </p>
+
         {id === selectedId ? (
           <SelectedIcon stroke="#fefce8" />
         ) : (
           <SelectedIcon />
         )}
       </div>
+      <div className="absolute -left-[100px] top-[220px] h-[280px] w-[280px] rounded-full bg-[#87BF92]"></div>
+      <div className="absolute left-[230px] top-[330px] h-[160px] w-[160px] rounded-full bg-[#709A69]"></div>
     </button>
   );
 };
@@ -171,7 +166,7 @@ const AddingForm = ({
   return (
     <>
       <div
-        className="fixed top-0 left-0 h-screen w-screen bg-black/70"
+        className="fixed top-0 left-0 z-10 h-screen w-screen bg-black/70"
         onClick={() => {
           modifyTempWorkout(initialWorkout);
           defaultEditUi();
@@ -230,7 +225,7 @@ const ChangingForm = ({
   return (
     <>
       <div
-        className="fixed top-0 left-0 h-screen w-screen bg-black/70"
+        className="fixed top-0 left-0 z-10 h-screen w-screen bg-black/70"
         onClick={() => {
           modifyTempWorkout(initialWorkout);
           defaultEditUi();
