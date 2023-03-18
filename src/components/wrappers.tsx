@@ -26,7 +26,7 @@ export const OAuthBtnWrapper = ({ children }: WrapperChild) => {
   );
 };
 
-export const RadioButtonContentWrapper = ({ children }: WrapperChild) => {
+export const CardsContentWrapper = ({ children }: WrapperChild) => {
   return <div className="mx-auto flex flex-col items-center">{children}</div>;
 };
 
