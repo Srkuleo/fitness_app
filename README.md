@@ -10,8 +10,7 @@ Stay tuned for future updates!
 
 #### Priority
 
-- _Refactor radiobutton to be single slide per workout and add 3 dots in card without workouts. Set radiobutton card to position relative
-._
+- _Finish refactoring workout card._
 - _Add alert before deleting w/o and message for clicking edit button without having any w/o to edit. Also add alert message before closing add or change form._
 - _Make start button a link component that leads to new page with workout details (radiobutton component)._
 - _Work around setting planetscale db and prisma schema._
