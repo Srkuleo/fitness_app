@@ -9,15 +9,15 @@ import {
   FixedLogo,
   OptionsMenu,
 } from "../components/signed-in-components/fixed-components";
-import { RadioButtonContentWrapper } from "../components/wrappers";
-import { RadioButtonHeading } from "../components/headings";
-import RBComponent from "../components/signed-in-components/rb-component";
+import { CardsContentWrapper } from "../components/wrappers";
+import { CardsContainerHeading } from "../components/headings";
+import CardsContainer from "../components/signed-in-components/cards-container";
 import { StartButton } from "../components/buttons";
 
 const initialWorkouts: WorkoutProps[] = [
-  { id: 1, name: "Upper 1", tooltip: "Good one, could be better." },
-  { id: 2, name: "Upper 2", tooltip: "A little bit better, imo." },
-  { id: 3, name: "Lower 1", tooltip: "The best one so far!" },
+  // { id: 1, name: "Upper 1", tooltip: "Good one, could be better." },
+  // { id: 2, name: "Upper 2", tooltip: "A little bit better, imo." },
+  // { id: 3, name: "Lower 1", tooltip: "The best one so far!" },
 ];
 
 const SignedIn: NextPage = () => {
@@ -40,9 +40,9 @@ const SignedIn: NextPage = () => {
           toggleEdit={toggleEdit}
           removeSelectedId={removeSelectedId}
         />
-        <RadioButtonContentWrapper>
-          <RadioButtonHeading />
-          <RBComponent
+        <CardsContentWrapper>
+          <CardsContainerHeading workouts={workouts} />
+          <CardsContainer
             workouts={workouts}
             addWorkout={addWorkout}
             changeWorkout={changeWorkout}
@@ -53,7 +53,7 @@ const SignedIn: NextPage = () => {
             addSelectedId={addSelectedId}
           />
           {workouts.length > 0 && <StartButton />}
-        </RadioButtonContentWrapper>
+        </CardsContentWrapper>
       </main>
     </>
   );
