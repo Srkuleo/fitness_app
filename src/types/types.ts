@@ -23,7 +23,7 @@ export interface WorkoutProps {
   name: string;
   tooltip: string;
 }
-export interface RBComponentProps {
+export interface CardsContainerProps {
   workouts: WorkoutProps[];
   addWorkout: (name: string, tooltip: string) => void;
   changeWorkout: (workout: WorkoutProps) => void;
@@ -39,7 +39,7 @@ export type WorkoutsAction =
   | { type: "editing"; workout: WorkoutProps }
   | { type: "removing"; id: number };
 
-export type RadioButtonProps = WorkoutProps & {
+export type WorkoutCardProps = WorkoutProps & {
   selectedId: number | undefined;
   addSelectedId: (id: number) => void;
 };
