@@ -1,3 +1,5 @@
+import type { WorkoutProps } from "../types/types";
+
 export const SignContentHeading = ({ page }: Record<"page", string>) => {
   return (
     <div>
@@ -13,14 +15,20 @@ export const SignContentHeading = ({ page }: Record<"page", string>) => {
   );
 };
 
-export const RadioButtonHeading = () => {
+export const CardsContainerHeading = ({
+  workouts,
+}: {
+  workouts: WorkoutProps[];
+}) => {
   return (
     <div className="relative z-0 text-center">
       <h1 className="mt-36 mb-18 text-5xl font-bold text-orange-button500">
         Welcome, Srkuleo.
       </h1>
       <h3 className="mb-6 text-2xl font-semibold text-slate-main600 dark:text-yellow-text50">
-        Slide left or right to choose a workout
+        {workouts.length > 0
+          ? "Slide left or right to choose a workout"
+          : "You don't have any existing workout"}
       </h3>
     </div>
   );
