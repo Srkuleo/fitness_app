@@ -113,6 +113,22 @@ export const AddButton = ({
   );
 };
 
+export const NewWorkoutBtn = ({
+  initAddingForm,
+}: {
+  initAddingForm: () => void;
+}) => {
+  return (
+    <button
+      className="flex items-center gap-2 rounded-lg bg-green-dark700 hover:bg-green-dark600 p-2 text-xs italic text-slate-light200"
+      onClick={initAddingForm}
+    >
+      {AddIcon}
+      Add a new workout
+    </button>
+  );
+};
+
 export const DoneButton = ({ toggleEdit }: { toggleEdit: () => void }) => {
   return (
     <button
