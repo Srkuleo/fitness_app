@@ -20,7 +20,7 @@ import {
 } from "../buttons";
 import { WorkoutFormWrapper } from "../wrappers";
 import { useTempWorkout } from "../../hooks/useTempWorkout";
-import { useEditOptions } from "../../hooks/useEditOptions";
+import { useFormState } from "../../hooks/useFormState";
 
 const CardsContainer = ({
   workouts,
@@ -34,19 +34,21 @@ const CardsContainer = ({
 }: CardsContainerProps) => {
   const { tempWorkout, modifyTempWorkout, modifyTempWorkoutProp, clearField } =
     useTempWorkout(initialWorkout);
-  const { editOption, initAddingForm, initChangingForm, defaultEditUi } =
-    useEditOptions();
+  const { formState, addingState, changingState, idleState } = useFormState();
 
   if (workouts.length === 0) {
     return (
       <>
         <div className="relative z-0 flex min-h-[450px] min-w-[340px] flex-col items-center justify-center rounded-xl border-4 border-dashed border-orange-button500 bg-slate-light100 px-4 dark:bg-slate-dark800">
-          <div className="pb-4">{DbIcon}</div>
-          <NewWorkoutBtn initAddingForm={initAddingForm} />
+          <p className="font-medium italic text-slate-light400">
+            You {"don't"} have any existing workout.
+          </p>
+          <div className="py-4">{DbIcon}</div>
+          <NewWorkoutBtn addingState={addingState} />
         </div>
-        {editOption === "adding" && (
+        {formState === "adding" && (
           <AddingForm
-            defaultEditUi={defaultEditUi}
+            idleState={idleState}
             handleAddWorkout={addWorkout}
             tempWorkout={tempWorkout}
             modifyTempWorkout={modifyTempWorkout}
@@ -73,7 +75,7 @@ const CardsContainer = ({
               <EditingButtons
                 workout={workout}
                 modifyTempWorkout={modifyTempWorkout}
-                initChangingForm={initChangingForm}
+                changingState={changingState}
                 handleRemoveWorkout={removeWorkout}
               />
             )}
@@ -82,22 +84,22 @@ const CardsContainer = ({
       })}
       {isEditing && (
         <div className="relative z-0 mt-2 flex flex-col gap-4">
-          <AddButton initAddingForm={initAddingForm} />
+          <AddButton addingState={addingState} />
           <DoneButton toggleEdit={toggleEdit} />
         </div>
       )}
-      {editOption === "adding" && (
+      {formState === "adding" && (
         <AddingForm
-          defaultEditUi={defaultEditUi}
+          idleState={idleState}
           handleAddWorkout={addWorkout}
           tempWorkout={tempWorkout}
           modifyTempWorkout={modifyTempWorkout}
           modifyTempWorkoutProp={modifyTempWorkoutProp}
         />
       )}
-      {editOption === "changing" && (
+      {formState === "changing" && (
         <ChangingForm
-          defaultEditUi={defaultEditUi}
+          idleState={idleState}
           tempWorkout={tempWorkout}
           handleChangeWorkout={changeWorkout}
           modifyTempWorkout={modifyTempWorkout}
@@ -155,7 +157,7 @@ const WorkoutCard = ({
 };
 
 const AddingForm = ({
-  defaultEditUi,
+  idleState,
   handleAddWorkout,
   tempWorkout,
   modifyTempWorkout,
@@ -167,7 +169,7 @@ const AddingForm = ({
         className="fixed top-0 left-0 z-10 h-screen w-screen bg-black/70"
         onClick={() => {
           modifyTempWorkout(initialWorkout);
-          defaultEditUi();
+          idleState();
         }}
       ></div>
       <WorkoutFormWrapper>
@@ -181,7 +183,7 @@ const AddingForm = ({
             e.preventDefault();
             handleAddWorkout(tempWorkout.name, tempWorkout.tooltip);
             modifyTempWorkout(initialWorkout);
-            defaultEditUi();
+            idleState();
           }}
         >
           <input
@@ -213,7 +215,7 @@ const AddingForm = ({
 };
 
 const ChangingForm = ({
-  defaultEditUi,
+  idleState,
   tempWorkout,
   modifyTempWorkout,
   handleChangeWorkout,
@@ -226,7 +228,7 @@ const ChangingForm = ({
         className="fixed top-0 left-0 z-10 h-screen w-screen bg-black/70"
         onClick={() => {
           modifyTempWorkout(initialWorkout);
-          defaultEditUi();
+          idleState();
         }}
       ></div>
       <WorkoutFormWrapper>
@@ -240,7 +242,7 @@ const ChangingForm = ({
             e.preventDefault();
             handleChangeWorkout(tempWorkout);
             modifyTempWorkout(initialWorkout);
-            defaultEditUi();
+            idleState();
           }}
         >
           <input
