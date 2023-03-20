@@ -28,7 +28,7 @@ export const CardsContainerHeading = ({
       <h3 className="mb-6 text-2xl font-semibold text-slate-main600 dark:text-yellow-text50">
         {workouts.length > 0
           ? "Slide left or right to choose a workout"
-          : "You don't have any existing workout"}
+          : ""}
       </h3>
     </div>
   );
