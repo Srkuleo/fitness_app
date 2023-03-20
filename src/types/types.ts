@@ -45,7 +45,7 @@ export type WorkoutCardProps = WorkoutProps & {
 };
 
 export interface AddingFormProps {
-  defaultEditUi: () => void;
+  idleState: () => void;
   tempWorkout: WorkoutProps;
   modifyTempWorkout: (tempWorkout: WorkoutProps) => void;
   handleAddWorkout: (name: string, tooltip: string) => void;
@@ -53,7 +53,7 @@ export interface AddingFormProps {
 }
 
 export interface ChangingFormProps {
-  defaultEditUi: () => void;
+  idleState: () => void;
   tempWorkout: WorkoutProps;
   modifyTempWorkout: (workout: WorkoutProps) => void;
   handleChangeWorkout: (workout: WorkoutProps) => void;
@@ -64,8 +64,8 @@ export interface ChangingFormProps {
 export interface EditingButtonsProps {
   workout: WorkoutProps;
   modifyTempWorkout: (workout: WorkoutProps) => void;
-  initChangingForm: () => void;
+  changingState: () => void;
   handleRemoveWorkout: (id: number) => void;
 }
 
-export type EditOptionsTuple = "defaultUI" | "adding" | "changing";
+export type FormStateTuple = "idle" | "adding" | "changing";
