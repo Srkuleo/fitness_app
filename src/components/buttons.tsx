@@ -74,7 +74,7 @@ export const StartButton = () => {
 export const EditingButtons = ({
   workout,
   modifyTempWorkout,
-  initChangingForm,
+  changingState,
   handleRemoveWorkout,
 }: EditingButtonsProps) => {
   return (
@@ -83,7 +83,7 @@ export const EditingButtons = ({
         className="rounded-full bg-green-light300 p-smallButton text-slate-main600 transition-all duration-200 ease-in hover:translate-y-1"
         onClick={() => {
           modifyTempWorkout(workout);
-          initChangingForm();
+          changingState();
         }}
       >
         {EditIcon}
@@ -98,30 +98,22 @@ export const EditingButtons = ({
   );
 };
 
-export const AddButton = ({
-  initAddingForm,
-}: {
-  initAddingForm: () => void;
-}) => {
+export const AddButton = ({ addingState }: { addingState: () => void }) => {
   return (
     <button
       className="rounded-full bg-slate-light400 p-mediumButton text-slate-light50 transition-all ease-out hover:bg-slate-main600"
-      onClick={initAddingForm}
+      onClick={addingState}
     >
       {AddIcon}
     </button>
   );
 };
 
-export const NewWorkoutBtn = ({
-  initAddingForm,
-}: {
-  initAddingForm: () => void;
-}) => {
+export const NewWorkoutBtn = ({ addingState }: { addingState: () => void }) => {
   return (
     <button
-      className="flex items-center gap-2 rounded-lg bg-green-dark700 hover:bg-green-dark600 p-2 text-xs italic text-slate-light200"
-      onClick={initAddingForm}
+      className="flex items-center gap-2 rounded-lg bg-green-dark700 p-2 text-xs italic text-slate-light200 hover:bg-green-dark600"
+      onClick={addingState}
     >
       {AddIcon}
       Add a new workout
