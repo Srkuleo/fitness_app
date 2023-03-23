@@ -13,11 +13,6 @@ export interface OAuthBtnProps {
   buttonSvg: JSX.Element;
 }
 
-export interface OptionMenuProps {
-  toggleEdit: () => void;
-  removeSelectedId: () => void;
-}
-
 export interface WorkoutProps {
   id: number;
   name: string;
@@ -30,8 +25,6 @@ export interface CardsContainerProps {
   removeWorkout: (id: number) => void;
   isEditing: boolean;
   toggleEdit: () => void;
-  selectedId: number | undefined;
-  addSelectedId: (id: number) => void;
 }
 
 export type WorkoutsAction =
@@ -39,16 +32,12 @@ export type WorkoutsAction =
   | { type: "editing"; workout: WorkoutProps }
   | { type: "removing"; id: number };
 
-export type WorkoutCardProps = WorkoutProps & {
-  selectedId: number | undefined;
-  addSelectedId: (id: number) => void;
-};
 
 export interface AddingFormProps {
   idleState: () => void;
   tempWorkout: WorkoutProps;
   modifyTempWorkout: (tempWorkout: WorkoutProps) => void;
-  handleAddWorkout: (name: string, tooltip: string) => void;
+  addWorkout: (name: string, tooltip: string) => void;
   modifyTempWorkoutProp: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -56,16 +45,19 @@ export interface ChangingFormProps {
   idleState: () => void;
   tempWorkout: WorkoutProps;
   modifyTempWorkout: (workout: WorkoutProps) => void;
-  handleChangeWorkout: (workout: WorkoutProps) => void;
+  changeWorkout: (workout: WorkoutProps) => void;
   modifyTempWorkoutProp: (e: React.ChangeEvent<HTMLInputElement>) => void;
   clearField: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
-export interface EditingButtonsProps {
+export interface EditBarProps {
   workout: WorkoutProps;
   modifyTempWorkout: (workout: WorkoutProps) => void;
   changingState: () => void;
-  handleRemoveWorkout: (id: number) => void;
+  removeWorkout: (id: number) => void;
+  switchOnRemove: () => void;
+  addingState: () => void;
+  toggleEdit: () => void;
 }
 
 export type FormStateTuple = "idle" | "adding" | "changing";
