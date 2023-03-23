@@ -9,7 +9,6 @@ import {
   LogsIcon,
   SignOutIcon,
 } from "../svg-components/svg";
-import { type OptionMenuProps } from "../../types/types";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { useOpen } from "../../hooks/useOpen";
@@ -23,10 +22,7 @@ export const FixedLogo = () => {
   );
 };
 
-export const OptionsMenu = ({
-  toggleEdit,
-  removeSelectedId,
-}: OptionMenuProps) => {
+export const OptionsMenu = ({ toggleEdit }: { toggleEdit: () => void }) => {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
   const { isOpen, toggleDropDown } = useOpen();
@@ -74,7 +70,6 @@ export const OptionsMenu = ({
           <button
             onClick={() => {
               toggleEdit();
-              removeSelectedId();
               toggleDropDown();
             }}
             className="flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50"
