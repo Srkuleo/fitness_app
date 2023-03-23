@@ -1,11 +1,9 @@
 import Link from "next/link";
-import type { EditingButtonsProps, ModeButtonProps } from "../types/types";
+import type { ModeButtonProps } from "../types/types";
 import {
   StartIcon,
   DarkModeIcon,
   LightModeIcon,
-  EditIcon,
-  DeleteIcon,
   AddIcon,
   DoneIcon,
 } from "./svg-components/svg";
@@ -61,50 +59,12 @@ export const SignButton = ({ page }: { page: "sign in" | "sign up" }) => {
 export const StartButton = () => {
   return (
     <button
-      className="relative z-0 mt-12 flex items-center gap-1 rounded-xl bg-gradient-to-r 
-      from-orange-button500 via-orange-button500 to-red-button500 px-8 py-2 
-      text-lg font-semibold uppercase text-yellow-text50 hover:from-orange-button600 hover:to-red-button700"
+      className="flex items-center gap-1 rounded-xl bg-gradient-to-r 
+      from-orange-button500 via-orange-button500 to-red-button500 px-4 py-2 
+      font-semibold uppercase text-yellow-text50 hover:from-orange-button600 hover:to-red-button700"
     >
       Start
       {StartIcon}
-    </button>
-  );
-};
-
-export const EditingButtons = ({
-  workout,
-  modifyTempWorkout,
-  changingState,
-  handleRemoveWorkout,
-}: EditingButtonsProps) => {
-  return (
-    <div className="relative z-0 grid gap-4">
-      <button
-        className="rounded-full bg-green-light300 p-smallButton text-slate-main600 transition-all duration-200 ease-in hover:translate-y-1"
-        onClick={() => {
-          modifyTempWorkout(workout);
-          changingState();
-        }}
-      >
-        {EditIcon}
-      </button>
-      <button
-        className="rounded-full bg-red-button400 p-smallButton text-slate-main600 transition-all duration-200 ease-in hover:translate-y-1"
-        onClick={() => handleRemoveWorkout(workout.id)}
-      >
-        {DeleteIcon}
-      </button>
-    </div>
-  );
-};
-
-export const AddButton = ({ addingState }: { addingState: () => void }) => {
-  return (
-    <button
-      className="rounded-full bg-slate-light400 p-mediumButton text-slate-light50 transition-all ease-out hover:bg-slate-main600"
-      onClick={addingState}
-    >
-      {AddIcon}
     </button>
   );
 };
@@ -117,17 +77,6 @@ export const NewWorkoutBtn = ({ addingState }: { addingState: () => void }) => {
     >
       {AddIcon}
       Add a new workout
-    </button>
-  );
-};
-
-export const DoneButton = ({ toggleEdit }: { toggleEdit: () => void }) => {
-  return (
-    <button
-      className="rounded-full bg-slate-light400 p-mediumButton text-slate-light50 transition-all ease-out hover:bg-slate-main600"
-      onClick={toggleEdit}
-    >
-      {DoneIcon}
     </button>
   );
 };
