@@ -2,25 +2,20 @@ import { initialWorkout } from "../../utils/variables";
 import type {
   AddingFormProps,
   ChangingFormProps,
-  WorkoutCardProps,
   CardsContainerProps,
+  WorkoutProps,
 } from "../../types/types";
 import {
   AddingWorkoutIcon,
   ChangingWorkoutIcon,
-  SelectedIcon,
   DbIcon,
 } from "../svg-components/svg";
-import {
-  AddButton,
-  DoneButton,
-  EditingButtons,
-  SubmitWorkoutButton,
-  NewWorkoutBtn,
-} from "../buttons";
+import { SubmitWorkoutButton, NewWorkoutBtn, StartButton } from "../buttons";
 import { WorkoutFormWrapper } from "../wrappers";
+import { EditBar } from "./edit-bar";
 import { useTempWorkout } from "../../hooks/useTempWorkout";
 import { useFormState } from "../../hooks/useFormState";
+import { useCurrIndex } from "../../hooks/useCurrIndex";
 
 const CardsContainer = ({
   workouts,
@@ -29,136 +24,119 @@ const CardsContainer = ({
   removeWorkout,
   isEditing,
   toggleEdit,
-  selectedId,
-  addSelectedId,
 }: CardsContainerProps) => {
   const { tempWorkout, modifyTempWorkout, modifyTempWorkoutProp, clearField } =
     useTempWorkout(initialWorkout);
   const { formState, addingState, changingState, idleState } = useFormState();
+  const { currIndex, handleNextIndex, handlePrevIndex, switchOnRemove } =
+    useCurrIndex(workouts);
 
-  if (workouts.length === 0) {
+  const currWorkout = workouts[currIndex];
+
+  if (currWorkout) {
     return (
-      <>
-        <div className="relative z-0 flex min-h-[450px] min-w-[340px] flex-col items-center justify-center rounded-xl border-4 border-dashed border-orange-button500 bg-slate-light100 px-4 dark:bg-slate-dark800">
-          <p className="font-medium italic text-slate-light400">
-            You {"don't"} have any existing workout.
-          </p>
-          <div className="py-4">{DbIcon}</div>
-          <NewWorkoutBtn addingState={addingState} />
+      <div className="relative flex flex-col gap-2">
+        <div className="flex items-center gap-4">
+          <button
+            className="rounded-full border-2 border-orange-button600 bg-slate-light100 p-3 text-slate-main600 hover:bg-green-light300/30 disabled:pointer-events-none disabled:opacity-40"
+            onClick={handlePrevIndex}
+            disabled={workouts.length < 2}
+          >
+            Prev
+          </button>
+
+          <WorkoutCard
+            id={currWorkout.id}
+            name={currWorkout.name}
+            tooltip={currWorkout.tooltip}
+          />
+
+          <button
+            className="rounded-full border-2 border-orange-button600 bg-slate-light100 p-3 text-slate-main600 hover:bg-green-light300/30 disabled:pointer-events-none disabled:opacity-40"
+            onClick={handleNextIndex}
+            disabled={workouts.length < 2}
+          >
+            Next
+          </button>
         </div>
+        {isEditing && (
+          <EditBar
+            workout={currWorkout}
+            changingState={changingState}
+            removeWorkout={removeWorkout}
+            switchOnRemove={switchOnRemove}
+            addingState={addingState}
+            modifyTempWorkout={modifyTempWorkout}
+            toggleEdit={toggleEdit}
+          />
+        )}
         {formState === "adding" && (
           <AddingForm
             idleState={idleState}
-            handleAddWorkout={addWorkout}
+            addWorkout={addWorkout}
             tempWorkout={tempWorkout}
             modifyTempWorkout={modifyTempWorkout}
             modifyTempWorkoutProp={modifyTempWorkoutProp}
           />
         )}
-      </>
+        {formState === "changing" && (
+          <ChangingForm
+            idleState={idleState}
+            tempWorkout={tempWorkout}
+            changeWorkout={changeWorkout}
+            modifyTempWorkout={modifyTempWorkout}
+            modifyTempWorkoutProp={modifyTempWorkoutProp}
+            clearField={clearField}
+          />
+        )}
+      </div>
     );
   }
 
   return (
-    <div className="flex gap-2">
-      {workouts.map((workout) => {
-        return (
-          <div key={workout.id} className="flex items-center gap-4">
-            <WorkoutCard
-              id={workout.id}
-              name={workout.name}
-              tooltip={workout.tooltip}
-              selectedId={selectedId}
-              addSelectedId={addSelectedId}
-            />
-            {isEditing && (
-              <EditingButtons
-                workout={workout}
-                modifyTempWorkout={modifyTempWorkout}
-                changingState={changingState}
-                handleRemoveWorkout={removeWorkout}
-              />
-            )}
-          </div>
-        );
-      })}
-      {isEditing && (
-        <div className="relative z-0 mt-2 flex flex-col gap-4">
-          <AddButton addingState={addingState} />
-          <DoneButton toggleEdit={toggleEdit} />
-        </div>
-      )}
+    <>
+      <div className="relative z-0 flex min-h-[450px] min-w-[340px] flex-col items-center justify-center rounded-xl border-4 border-dashed border-orange-button500 bg-slate-light100 px-4 dark:bg-slate-dark800">
+        <p className="font-medium italic text-slate-light400">
+          You {"don't"} have any existing workout.
+        </p>
+        <div className="py-4">{DbIcon}</div>
+        <NewWorkoutBtn addingState={addingState} />
+      </div>
       {formState === "adding" && (
         <AddingForm
           idleState={idleState}
-          handleAddWorkout={addWorkout}
+          addWorkout={addWorkout}
           tempWorkout={tempWorkout}
           modifyTempWorkout={modifyTempWorkout}
           modifyTempWorkoutProp={modifyTempWorkoutProp}
         />
       )}
-      {formState === "changing" && (
-        <ChangingForm
-          idleState={idleState}
-          tempWorkout={tempWorkout}
-          handleChangeWorkout={changeWorkout}
-          modifyTempWorkout={modifyTempWorkout}
-          modifyTempWorkoutProp={modifyTempWorkoutProp}
-          clearField={clearField}
-        />
-      )}
-    </div>
+    </>
   );
 };
 
-const WorkoutCard = ({
-  id,
-  name,
-  tooltip,
-  selectedId,
-  addSelectedId,
-}: WorkoutCardProps) => {
+const WorkoutCard = ({ id, name, tooltip }: WorkoutProps) => {
   return (
-    <button
-      onClick={() => {
-        addSelectedId(id);
-      }}
-      className={`${
-        id === selectedId
-          ? "bg-orange-button500/90 text-yellow-text50 dark:bg-orange-button600/80"
-          : "bg-slate-light50 dark:bg-gradient-to-tr dark:from-slate-dark700 dark:to-slate-dark800"
-      } relative z-0 flex h-[450px] w-[340px] flex-col overflow-hidden rounded-[24px] border-4 border-orange-button600 p-4 dark:border-orange-button500`}
+    <div
+      className="relative flex h-[450px] w-[340px] flex-col items-center overflow-hidden rounded-[24px] border-4 border-orange-button600 bg-slate-light50
+      p-4 dark:border-orange-button500 dark:bg-gradient-to-tr dark:from-slate-dark700 dark:to-slate-dark800"
     >
-      <div className="mx-auto flex flex-col items-center gap-4">
-        <p
-          className={`${
-            id === selectedId
-              ? "text-slate-light50"
-              : "text-slate-main600 dark:text-slate-light200"
-          } text-2xl font-medium`}
-        >
+      <div key={id} className="mx-auto flex flex-col items-center gap-4">
+        <p className="text-2xl font-medium text-slate-main600 dark:text-slate-light200">
           {name}
         </p>
-        <p
-          className={`${
-            id === selectedId ? "text-slate-light300" : "text-slate-light400"
-          } text-sm text-slate-light400`}
-        >
-          {tooltip}
-        </p>
-        <div className="absolute top-4 right-5">
-          <SelectedIcon stroke="#f8fafc" />
-        </div>
+        <p className="text-sm text-slate-light400">{tooltip}</p>
+        <StartButton />
       </div>
       <div className="absolute -left-[100px] top-[220px] h-[280px] w-[280px] rounded-full bg-[#87BF92]"></div>
       <div className="absolute left-[230px] top-[330px] h-[160px] w-[160px] rounded-full bg-[#709A69]"></div>
-    </button>
+    </div>
   );
 };
 
 const AddingForm = ({
   idleState,
-  handleAddWorkout,
+  addWorkout,
   tempWorkout,
   modifyTempWorkout,
   modifyTempWorkoutProp,
@@ -181,7 +159,7 @@ const AddingForm = ({
           className="grid max-w-[550px] grid-cols-5 items-center gap-4"
           onSubmit={(e) => {
             e.preventDefault();
-            handleAddWorkout(tempWorkout.name, tempWorkout.tooltip);
+            addWorkout(tempWorkout.name, tempWorkout.tooltip);
             modifyTempWorkout(initialWorkout);
             idleState();
           }}
@@ -218,7 +196,7 @@ const ChangingForm = ({
   idleState,
   tempWorkout,
   modifyTempWorkout,
-  handleChangeWorkout,
+  changeWorkout,
   modifyTempWorkoutProp,
   clearField,
 }: ChangingFormProps) => {
@@ -240,7 +218,7 @@ const ChangingForm = ({
           className="grid max-w-[550px] grid-cols-5 items-center gap-4"
           onSubmit={(e) => {
             e.preventDefault();
-            handleChangeWorkout(tempWorkout);
+            changeWorkout(tempWorkout);
             modifyTempWorkout(initialWorkout);
             idleState();
           }}
