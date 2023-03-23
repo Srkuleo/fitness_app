@@ -2,7 +2,6 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import { useWorkouts } from "../hooks/useWorkouts";
 import { useEdit } from "../hooks/useEdit";
-import { useHandleId } from "../hooks/useHandleId";
 import type { WorkoutProps } from "../types/types";
 import BackgroundPattern from "../components/svg-components/background-pattern";
 import {
@@ -12,19 +11,17 @@ import {
 import { CardsContentWrapper } from "../components/wrappers";
 import { CardsContainerHeading } from "../components/headings";
 import CardsContainer from "../components/signed-in-components/cards-container";
-import { StartButton } from "../components/buttons";
 
 const initialWorkouts: WorkoutProps[] = [
-  // { id: 1, name: "Upper 1", tooltip: "Good one, could be better." },
-  // { id: 2, name: "Upper 2", tooltip: "A little bit better, imo." },
-  // { id: 3, name: "Lower 1", tooltip: "The best one so far!" },
+  { id: 1, name: "Upper 1", tooltip: "Good one, could be better." },
+  { id: 2, name: "Upper 2", tooltip: "A little bit better, imo." },
+  { id: 3, name: "Lower 1", tooltip: "The best one so far!" },
 ];
 
 const SignedIn: NextPage = () => {
   const { workouts, addWorkout, changeWorkout, removeWorkout } =
     useWorkouts(initialWorkouts);
   const { isEditing, toggleEdit } = useEdit();
-  const { selectedId, addSelectedId, removeSelectedId } = useHandleId();
 
   return (
     <>
@@ -38,7 +35,6 @@ const SignedIn: NextPage = () => {
         <FixedLogo />
         <OptionsMenu
           toggleEdit={toggleEdit}
-          removeSelectedId={removeSelectedId}
         />
         <CardsContentWrapper>
           <CardsContainerHeading workouts={workouts} />
@@ -49,10 +45,7 @@ const SignedIn: NextPage = () => {
             removeWorkout={removeWorkout}
             isEditing={isEditing}
             toggleEdit={toggleEdit}
-            selectedId={selectedId}
-            addSelectedId={addSelectedId}
           />
-          {workouts.length > 0 && <StartButton />}
         </CardsContentWrapper>
       </main>
     </>
