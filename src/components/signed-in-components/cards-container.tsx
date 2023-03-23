@@ -44,13 +44,11 @@ const CardsContainer = ({
           >
             Prev
           </button>
-
           <WorkoutCard
             id={currWorkout.id}
             name={currWorkout.name}
             tooltip={currWorkout.tooltip}
           />
-
           <button
             className="rounded-full border-2 border-orange-button600 bg-slate-light100 p-3 text-slate-main600 hover:bg-green-light300/30 disabled:pointer-events-none disabled:opacity-40"
             onClick={handleNextIndex}
