@@ -11,7 +11,7 @@ const EditBar = ({
   toggleEdit,
 }: EditBarProps) => {
   return (
-    <div className="flex justify-between">
+    <div className="relative flex justify-between">
       <div className="space-x-2">
         <button
           className="rounded-full bg-green-light300 p-2 text-slate-main600 transition-all duration-200 ease-in hover:translate-y-1"
