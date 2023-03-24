@@ -11,7 +11,7 @@ export const oAuthButtons: OAuthBtnProps[] = [
   { buttonSvg: DiscordSvg, buttonText: "Discord" },
 ];
 
-export const initialWorkout: WorkoutProps = {
+export const initWorkout: WorkoutProps = {
   id: -1,
   name: "",
   tooltip: "",
