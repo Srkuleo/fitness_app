@@ -2,33 +2,28 @@ import { useState } from "react";
 import type { WorkoutProps } from "../types/types";
 
 export const useCurrIndex = (workouts: WorkoutProps[]) => {
-  const [currIndex, setCurrentIndex] = useState(0);
-  const last = currIndex === workouts.length - 1;
-  const first = currIndex === 0;
+  const [currIndex, setCurrIndex] = useState(0);
 
-  function handleNextIndex() {
-    if (last) {
-      setCurrentIndex(0);
-    } else {
-      setCurrentIndex(currIndex + 1);
-    }
+  const isFirstCard = currIndex === 0;
+  const isLastCard = currIndex === workouts.length - 1;
+
+  function prevCard() {
+    const newIndex = isFirstCard ? workouts.length - 1 : currIndex - 1;
+    setCurrIndex(newIndex);
   }
 
-  function handlePrevIndex() {
-    if (first) {
-      setCurrentIndex(workouts.length - 1);
-    } else {
-      setCurrentIndex(currIndex - 1);
-    }
+  function nextCard() {
+    const newIndex = isLastCard ? 0 : currIndex + 1;
+    setCurrIndex(newIndex);
   }
 
   function switchOnRemove() {
-    if (last) {
-      setCurrentIndex(currIndex - 1);
+    if (isLastCard) {
+      setCurrIndex(currIndex - 1);
     } else {
-      setCurrentIndex(currIndex);
+      setCurrIndex(currIndex);
     }
   }
 
-  return { currIndex, handleNextIndex, handlePrevIndex, switchOnRemove };
+  return { currIndex, prevCard, nextCard, switchOnRemove };
 };
