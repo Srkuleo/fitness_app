@@ -32,26 +32,39 @@ export type WorkoutsAction =
   | { type: "editing"; workout: WorkoutProps }
   | { type: "removing"; id: number };
 
+export type FormStateTuple = "idle" | "adding" | "changing";
 
 export interface AddingFormProps {
-  idleState: () => void;
   tempWorkout: WorkoutProps;
+  idleState: () => void;
   modifyTempWorkout: (tempWorkout: WorkoutProps) => void;
   addWorkout: (name: string, tooltip: string) => void;
-  modifyTempWorkoutProp: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  modifyProp: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface ChangingFormProps {
-  idleState: () => void;
   tempWorkout: WorkoutProps;
+  workoutName: string;
+  idleState: () => void;
   modifyTempWorkout: (workout: WorkoutProps) => void;
   changeWorkout: (workout: WorkoutProps) => void;
-  modifyTempWorkoutProp: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  modifyProp: (e: React.ChangeEvent<HTMLInputElement>) => void;
   clearField: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
+export interface EmptyCardsContainerProps extends AddingFormProps {
+  addingState: () => void;
+  formState: FormStateTuple;
+}
+
+export interface CardsNavigationProps {
+  workouts: WorkoutProps[];
+  handlePrevIndex: () => void;
+  handleNextIndex: () => void;
+}
+
 export interface EditBarProps {
-  workout: WorkoutProps;
+  currWorkout: WorkoutProps;
   modifyTempWorkout: (workout: WorkoutProps) => void;
   changingState: () => void;
   removeWorkout: (id: number) => void;
@@ -59,5 +72,3 @@ export interface EditBarProps {
   addingState: () => void;
   toggleEdit: () => void;
 }
-
-export type FormStateTuple = "idle" | "adding" | "changing";
