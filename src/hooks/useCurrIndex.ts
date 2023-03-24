@@ -25,5 +25,9 @@ export const useCurrIndex = (workouts: WorkoutProps[]) => {
     }
   }
 
-  return { currIndex, prevCard, nextCard, switchOnRemove };
+  function jumpToCard(index: number) {
+    setCurrIndex(index);
+  }
+
+  return { currIndex, prevCard, nextCard, switchOnRemove, jumpToCard };
 };
