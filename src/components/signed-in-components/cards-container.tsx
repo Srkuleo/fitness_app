@@ -45,7 +45,7 @@ const CardsContainer = ({
   }
 
   return (
-    <div className="relative flex flex-col gap-2">
+    <div className="flex flex-col gap-2">
       <WorkoutCard
         id={currWorkout.id}
         name={currWorkout.name}
