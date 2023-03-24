@@ -8,7 +8,7 @@ export const useTempWorkout = (initialWorkout: WorkoutProps) => {
     setTempWorkout(selectedWorkout);
   }, []);
 
-  const modifyTempWorkoutProp = useCallback(
+  const modifyProp = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setTempWorkout({
         ...tempWorkout,
@@ -28,5 +28,5 @@ export const useTempWorkout = (initialWorkout: WorkoutProps) => {
     [tempWorkout]
   );
 
-  return { tempWorkout, modifyTempWorkout, modifyTempWorkoutProp, clearField };
+  return { tempWorkout, modifyTempWorkout, modifyProp, clearField };
 };
