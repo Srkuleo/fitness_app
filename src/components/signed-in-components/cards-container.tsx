@@ -51,8 +51,8 @@ const CardsContainer = ({
         name={currWorkout.name}
         tooltip={currWorkout.tooltip}
         workouts={workouts}
-        handlePrevIndex={prevCard}
-        handleNextIndex={nextCard}
+        prevCard={prevCard}
+        nextCard={nextCard}
       />
       {isEditing && (
         <EditBar
@@ -94,15 +94,20 @@ const WorkoutCard = ({
   name,
   tooltip,
   workouts,
-  handlePrevIndex,
-  handleNextIndex,
+  prevCard,
+  nextCard,
 }: WorkoutProps & CardsNavigationProps) => {
   return (
     <div
-      className="relative flex h-[500px] w-[380px] flex-col overflow-hidden rounded-[24px] border-4 border-orange-button600 bg-slate-light50
-      p-4 dark:border-orange-button500 dark:bg-gradient-to-tr dark:from-slate-dark700 dark:to-slate-dark800"
+      className="relative h-[500px] w-[380px] overflow-hidden rounded-[24px] border-4 border-orange-button600 
+      bg-slate-light50 dark:border-orange-button500 dark:bg-gradient-to-tr dark:from-slate-dark700 dark:to-slate-dark800"
     >
-      <div key={id} className="flex flex-col items-center gap-4">
+      <CardsNavigation
+        workouts={workouts}
+        prevCard={prevCard}
+        nextCard={nextCard}
+      />
+      <div key={id} className="relative flex flex-col items-center gap-4 p-4">
         <p className="text-2xl font-medium text-slate-main600 dark:text-slate-light200">
           {name}
         </p>
@@ -111,11 +116,6 @@ const WorkoutCard = ({
       </div>
       <div className="absolute -left-[75px] top-[310px] h-[290px] w-[290px] rounded-full bg-[#caeed2] dark:bg-[#69ab69]/70"></div>
       <div className="absolute left-[280px] top-[394px] h-[160px] w-[160px] rounded-full bg-[#b4c6b1] dark:bg-[#4a784a]/80"></div>
-      <CardsNavigation
-        workouts={workouts}
-        handlePrevIndex={handlePrevIndex}
-        handleNextIndex={handleNextIndex}
-      />
     </div>
   );
 };
