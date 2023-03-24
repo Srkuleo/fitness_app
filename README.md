@@ -10,7 +10,7 @@ Stay tuned for future updates!
 
 #### Priority
 
-- _Finish refactoring workout card. Extract both workoutcard's button to be separate components, finish setting UI and add animation when trasitioning from one workout to another._
+- _Finish refactoring workout card. Change prop names in workout card component, finish setting UI and add animation when trasitioning from one workout to another._
 - _Add alert before deleting w/o and disable edit button if there is no w/os rendered. Also add alert message before closing add or change form._
 - _Make start button a link component that leads to new page with workout details._
 - _Work around setting planetscale db and prisma schema._
