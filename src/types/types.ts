@@ -59,8 +59,8 @@ export interface EmptyCardsContainerProps extends AddingFormProps {
 
 export interface CardsNavigationProps {
   workouts: WorkoutProps[];
-  handlePrevIndex: () => void;
-  handleNextIndex: () => void;
+  prevCard: () => void;
+  nextCard: () => void;
 }
 
 export interface EditBarProps {
