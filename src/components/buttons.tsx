@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { ModeButtonProps } from "../types/types";
 import {
-  StartIcon,
   DarkModeIcon,
   LightModeIcon,
   AddIcon,
@@ -56,15 +55,14 @@ export const SignButton = ({ page }: { page: "sign in" | "sign up" }) => {
   );
 };
 
-export const StartButton = () => {
+export const StartBtn = () => {
   return (
     <button
-      className="flex items-center gap-1 rounded-xl bg-gradient-to-r 
-      from-orange-button500 via-orange-button500 to-red-button500 px-4 py-2 
-      font-semibold uppercase text-yellow-text50 hover:from-orange-button600 hover:to-red-button700"
+      className="rounded-xl bg-gradient-to-r from-orange-button500
+      to-red-button500 px-6 py-2 font-semibold uppercase text-slate-light200
+      hover:from-orange-button600 hover:to-red-button700"
     >
       Start
-      {StartIcon}
     </button>
   );
 };
@@ -81,7 +79,7 @@ export const NewWorkoutBtn = ({ addingState }: { addingState: () => void }) => {
   );
 };
 
-export const SubmitWorkoutButton = () => {
+export const SubmitWorkoutBtn = () => {
   return (
     <button
       type="submit"
