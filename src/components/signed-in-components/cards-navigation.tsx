@@ -9,14 +9,14 @@ const CardsNavigation = ({
   return (
     <div className="absolute inset-0 flex items-center justify-between">
       <button
-        className="relative p-1 text-slate-main600 transition-all ease-out hover:-translate-x-1 disabled:pointer-events-none disabled:opacity-20 dark:text-slate-light100"
+        className="relative p-1 text-slate-main600 opacity-0 transition-all ease-out hover:-translate-x-1 disabled:pointer-events-none disabled:opacity-20 group-hover:opacity-100 dark:text-slate-light100"
         onClick={prevCard}
         disabled={workouts.length < 2}
       >
         {PrevIcon}
       </button>
       <button
-        className="relative p-1 text-slate-main600 transition-all ease-out hover:translate-x-1 disabled:pointer-events-none disabled:opacity-20 dark:text-slate-light100"
+        className="relative p-1 text-slate-main600 opacity-0 transition-all ease-out hover:translate-x-1 disabled:pointer-events-none disabled:opacity-20 group-hover:opacity-100 dark:text-slate-light100"
         onClick={nextCard}
         disabled={workouts.length < 2}
       >
