@@ -25,7 +25,7 @@ const CardsContainer = ({
   const { tempWorkout, modifyTempWorkout, modifyProp, clearField } =
     useTempWorkout(initWorkout);
   const { formState, addingState, changingState, idleState } = useFormState();
-  const { currIndex, prevCard, nextCard, switchOnRemove } =
+  const { currIndex, prevCard, nextCard, switchOnRemove, jumpToCard } =
     useCurrIndex(workouts);
 
   const currWorkout = workouts[currIndex];
@@ -54,6 +54,18 @@ const CardsContainer = ({
         prevCard={prevCard}
         nextCard={nextCard}
       />
+      <div className="flex items-center justify-center gap-smallButton">
+        {workouts.map((workout, i) => (
+          <div
+            key={workout.id}
+            role="button"
+            className={`rounded-full bg-slate-light400 dark:bg-slate-light100 ${
+              currIndex === i ? "h-4 w-4" : "opacity-50 h-3 w-3"
+            }`}
+            onClick={() => jumpToCard(i)}
+          ></div>
+        ))}
+      </div>
       {isEditing && (
         <EditBar
           currWorkout={currWorkout}
@@ -98,10 +110,7 @@ const WorkoutCard = ({
   nextCard,
 }: WorkoutProps & CardsNavigationProps) => {
   return (
-    <div
-      className="relative h-[500px] w-[380px] overflow-hidden rounded-[24px] border-4 border-orange-button600 
-      bg-slate-light50 dark:border-orange-button500 dark:bg-gradient-to-tr dark:from-slate-dark700 dark:to-slate-dark800"
-    >
+    <div className="group relative h-[500px] w-[380px] overflow-hidden rounded-[24px] border-4 border-orange-button600 bg-slate-light50 dark:border-orange-button500 dark:bg-gradient-to-tr dark:from-slate-dark700 dark:to-slate-dark800">
       <CardsNavigation
         workouts={workouts}
         prevCard={prevCard}
