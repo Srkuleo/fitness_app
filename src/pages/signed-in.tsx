@@ -16,6 +16,8 @@ const initialWorkouts: WorkoutProps[] = [
   { id: 1, name: "Upper 1", tooltip: "Good one, could be better." },
   { id: 2, name: "Upper 2", tooltip: "A little bit better, imo." },
   { id: 3, name: "Lower 1", tooltip: "The best one so far!" },
+  { id: 4, name: "Lower 2", tooltip: "The best one so far!" },
+  { id: 5, name: "Lower 3", tooltip: "The best one so far!" },
 ];
 
 const SignedIn: NextPage = () => {
@@ -33,9 +35,7 @@ const SignedIn: NextPage = () => {
       <main>
         <BackgroundPattern />
         <FixedLogo />
-        <OptionsMenu
-          toggleEdit={toggleEdit}
-        />
+        <OptionsMenu toggleEdit={toggleEdit} />
         <CardsContentWrapper>
           <CardsContainerHeading workouts={workouts} />
           <CardsContainer
