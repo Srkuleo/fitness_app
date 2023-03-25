@@ -1,12 +1,19 @@
 import Link from "next/link";
-import type { ModeButtonProps } from "../types/types";
+import type {
+  ModeButtonProps,
+  NextCardBtnProps,
+  PrevCardBtnProps,
+} from "../types/types";
 import {
   DarkModeIcon,
   LightModeIcon,
   AddIcon,
   DoneIcon,
+  PrevIcon,
+  NextIcon,
 } from "./svg-components/svg";
 
+//Sign pages buttons
 export const GitHubButton = ({ color }: { color: string }) => {
   return (
     <a
@@ -52,6 +59,31 @@ export const SignButton = ({ page }: { page: "sign in" | "sign up" }) => {
     <Link href={page === "sign in" ? "/signed-in" : "/"} className="sign-btn">
       {page === "sign in" ? "Sign in" : "Sign up"}
     </Link>
+  );
+};
+
+//Signed in page buttons
+export const PrevCardBtn = ({ prevCard, workouts }: PrevCardBtnProps) => {
+  return (
+    <button
+      className="p-1 text-slate-main600 transition-all ease-out hover:-translate-x-1 disabled:pointer-events-none disabled:opacity-20 dark:text-slate-light100"
+      onClick={prevCard}
+      disabled={workouts.length < 2}
+    >
+      {PrevIcon}
+    </button>
+  );
+};
+
+export const NextCardBtn = ({ nextCard, workouts }: NextCardBtnProps) => {
+  return (
+    <button
+      className="p-1 text-slate-main600 transition-all ease-out hover:translate-x-1 disabled:pointer-events-none disabled:opacity-20 dark:text-slate-light100"
+      onClick={nextCard}
+      disabled={workouts.length < 2}
+    >
+      {NextIcon}
+    </button>
   );
 };
 
