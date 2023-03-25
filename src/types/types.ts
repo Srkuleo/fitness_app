@@ -18,7 +18,7 @@ export interface WorkoutProps {
   name: string;
   tooltip: string;
 }
-export interface CardsContainerProps {
+export interface CardsContentProps {
   workouts: WorkoutProps[];
   addWorkout: (name: string, tooltip: string) => void;
   changeWorkout: (workout: WorkoutProps) => void;
@@ -52,18 +52,34 @@ export interface ChangingFormProps {
   clearField: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
 
-export interface EmptyCardsContainerProps extends AddingFormProps {
+export interface StatelessCardsContainerProps extends AddingFormProps {
   addingState: () => void;
   formState: FormStateTuple;
 }
 
-export interface CardsNavigationProps {
+export interface StatefulCardsContainerProps {
+  currWorkout: WorkoutProps;
   workouts: WorkoutProps[];
   prevCard: () => void;
   nextCard: () => void;
 }
 
-export interface EditBarProps {
+export type PrevCardBtnProps = Pick<
+  StatefulCardsContainerProps,
+  "prevCard" | "workouts"
+>;
+
+export type NextCardBtnProps = Pick<
+  StatefulCardsContainerProps,
+  "nextCard" | "workouts"
+>;
+export interface CardsNavBarProps {
+  workouts: WorkoutProps[];
+  currIndex: number;
+  jumpToCard: (index: number) => void;
+}
+
+export interface CardsEditBarProps {
   currWorkout: WorkoutProps;
   modifyTempWorkout: (workout: WorkoutProps) => void;
   changingState: () => void;
