@@ -62,4 +62,4 @@ const AddingForm = ({
   );
 };
 
-export default AddingForm
+export default AddingForm;
