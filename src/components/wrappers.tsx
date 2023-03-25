@@ -2,9 +2,7 @@ import { type WrapperChild } from "../types/types";
 
 //Wrappers for sign-in and sign-up pages
 export const ContentWrapper = ({ children }: WrapperChild) => {
-  return (
-    <div className="relative z-10 mx-auto flex w-3/6 flex-col">{children}</div>
-  );
+  return <div className="relative mx-auto flex w-3/6 flex-col">{children}</div>;
 };
 
 export const LogoWrapper = ({ children }: WrapperChild) => {
@@ -26,11 +24,11 @@ export const OAuthBtnWrapper = ({ children }: WrapperChild) => {
   );
 };
 
-export const CardsContentWrapper = ({ children }: WrapperChild) => {
-  return <div className="mx-auto flex flex-col items-center">{children}</div>;
+//Wrappers for signed-in page
+export const PageContentWrapper = ({ children }: WrapperChild) => {
+  return <div className="relative flex flex-col items-center">{children}</div>;
 };
 
-//Wrappers for signed-in page
 export const WorkoutFormWrapper = ({ children }: WrapperChild) => {
   return (
     <div
