@@ -21,6 +21,7 @@ Stay tuned for future updates!
 - _Add responsiveness to the UI._
 - _Add animations._
 - _Add profile page with certain type of tracking achievements._
+- _Add Serbian and Japanese language support._
 
 ---
 
