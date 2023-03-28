@@ -1,16 +1,12 @@
 import Link from "next/link";
 import type {
   ModeButtonProps,
-  NextCardBtnProps,
-  PrevCardBtnProps,
 } from "../types/types";
 import {
   DarkModeIcon,
   LightModeIcon,
   AddIcon,
   DoneIcon,
-  PrevIcon,
-  NextIcon,
 } from "./svg-components/svg";
 
 //Sign pages buttons
@@ -63,30 +59,6 @@ export const SignButton = ({ page }: { page: "sign in" | "sign up" }) => {
 };
 
 //Signed in page buttons
-export const PrevCardBtn = ({ prevCard, workouts }: PrevCardBtnProps) => {
-  return (
-    <button
-      className="p-1 text-slate-main600 transition-all ease-out hover:-translate-x-1 disabled:pointer-events-none disabled:opacity-20 dark:text-slate-light100"
-      onClick={prevCard}
-      disabled={workouts.length < 2}
-    >
-      {PrevIcon}
-    </button>
-  );
-};
-
-export const NextCardBtn = ({ nextCard, workouts }: NextCardBtnProps) => {
-  return (
-    <button
-      className="p-1 text-slate-main600 transition-all ease-out hover:translate-x-1 disabled:pointer-events-none disabled:opacity-20 dark:text-slate-light100"
-      onClick={nextCard}
-      disabled={workouts.length < 2}
-    >
-      {NextIcon}
-    </button>
-  );
-};
-
 export const StartBtn = () => {
   return (
     <button
@@ -115,7 +87,7 @@ export const SubmitWorkoutBtn = () => {
   return (
     <button
       type="submit"
-      className="col-start-3 mx-auto max-w-fit rounded-full bg-slate-light400 p-mediumButton text-slate-light50 transition-all ease-out hover:bg-slate-main600"
+      className="col-start-3 mx-auto mt-4 rounded-full bg-slate-light400 p-mediumButton text-slate-light50 transition-all ease-out hover:bg-slate-main600"
     >
       {DoneIcon}
     </button>
