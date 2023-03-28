@@ -18,6 +18,12 @@ export interface WorkoutProps {
   name: string;
   tooltip: string;
 }
+
+export interface OptionsMenuProps {
+  toggleEdit: () => void;
+  workouts: WorkoutProps[];
+}
+
 export interface CardsContentProps {
   workouts: WorkoutProps[];
   addWorkout: (name: string, tooltip: string) => void;
@@ -58,21 +64,16 @@ export interface StatelessCardsContainerProps extends AddingFormProps {
 }
 
 export interface StatefulCardsContainerProps {
-  currWorkout: WorkoutProps;
+  currIndex: number;
+  workouts: WorkoutProps[];
+}
+
+export interface NavButtonsProps {
   workouts: WorkoutProps[];
   prevCard: () => void;
   nextCard: () => void;
 }
 
-export type PrevCardBtnProps = Pick<
-  StatefulCardsContainerProps,
-  "prevCard" | "workouts"
->;
-
-export type NextCardBtnProps = Pick<
-  StatefulCardsContainerProps,
-  "nextCard" | "workouts"
->;
 export interface CardsNavBarProps {
   workouts: WorkoutProps[];
   currIndex: number;
