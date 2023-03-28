@@ -5,6 +5,7 @@ import { useCurrIndex } from "../../hooks/useCurrIndex";
 import { initWorkout } from "../../utils/variables";
 import StatelessCardsContainer from "./stateless-cards-container";
 import StatefulCardsContainer from "./stateful-cards-container";
+import CardsNavButtons from "./cards-nav-buttons";
 import CardsNavBar from "./cards-navbar";
 import CardsEditBar from "./cards-editbar";
 import AddingForm from "./adding-form";
@@ -22,17 +23,17 @@ export const CardsContent = ({
     useTempWorkout(initWorkout);
   const { formState, addingState, changingState, idleState } = useFormState();
   const { currIndex, prevCard, nextCard, switchOnRemove, jumpToCard } =
-    useCurrIndex(workouts);
+    useCurrIndex(0, workouts);
 
   const currWorkout = workouts[currIndex];
 
   if (!currWorkout) {
     return (
       <StatelessCardsContainer
-        addingState={addingState}
         formState={formState}
-        tempWorkout={tempWorkout}
+        addingState={addingState}
         idleState={idleState}
+        tempWorkout={tempWorkout}
         addWorkout={addWorkout}
         modifyTempWorkout={modifyTempWorkout}
         modifyProp={modifyProp}
@@ -41,16 +42,18 @@ export const CardsContent = ({
   }
 
   return (
-    <div className="flex flex-col gap-2">
-      <StatefulCardsContainer
-        currWorkout={currWorkout}
-        workouts={workouts}
-        prevCard={prevCard}
-        nextCard={nextCard}
-      />
+    <div className="relative flex flex-col gap-2">
+      <div className="relative px-8">
+        <CardsNavButtons
+          workouts={workouts}
+          prevCard={prevCard}
+          nextCard={nextCard}
+        />
+        <StatefulCardsContainer currIndex={currIndex} workouts={workouts} />
+      </div>
       <CardsNavBar
-        workouts={workouts}
         currIndex={currIndex}
+        workouts={workouts}
         jumpToCard={jumpToCard}
       />
       {isEditing && (
