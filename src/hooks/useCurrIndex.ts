@@ -1,8 +1,8 @@
 import { useState } from "react";
 import type { WorkoutProps } from "../types/types";
 
-export const useCurrIndex = (workouts: WorkoutProps[]) => {
-  const [currIndex, setCurrIndex] = useState(0);
+export const useCurrIndex = (index: number, workouts: WorkoutProps[]) => {
+  const [currIndex, setCurrIndex] = useState(index);
 
   const isFirstCard = currIndex === 0;
   const isLastCard = currIndex === workouts.length - 1;
