@@ -32,7 +32,7 @@ const SignedIn: NextPage = () => {
       <main>
         <BackgroundPattern />
         <FixedLogo />
-        <OptionsMenu toggleEdit={toggleEdit} />
+        <OptionsMenu toggleEdit={toggleEdit} workouts={workouts} />
         <PageContentWrapper>
           <CardsHeading workouts={workouts} />
           <CardsContent
