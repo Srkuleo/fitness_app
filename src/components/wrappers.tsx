@@ -26,18 +26,25 @@ export const OAuthBtnWrapper = ({ children }: WrapperChild) => {
 
 //Wrappers for signed-in page
 export const PageContentWrapper = ({ children }: WrapperChild) => {
-  return <div className="relative flex flex-col items-center">{children}</div>;
+  return (
+    <div className="fixed inset-0 mt-32 flex justify-center">
+      <div className="flex flex-col gap-6">{children}</div>
+    </div>
+  );
 };
 
-export const WorkoutFormWrapper = ({ children }: WrapperChild) => {
+export const WorkoutCardsCarousel = ({
+  children,
+  currIndex,
+}: WrapperChild & { currIndex: number }) => {
   return (
-    <div
-      className="center fixed top-[50%] left-[50%] z-10 flex 
-    flex-col items-center gap-8 rounded-lg bg-gradient-to-tr 
-    from-slate-light300 to-slate-light50 p-12 text-slate-main600 
-    dark:from-slate-dark900 dark:to-slate-dark800"
-    >
-      {children}
+    <div className="mx-auto max-w-[380px] overflow-hidden">
+      <div
+        className="flex transition-transform duration-500 ease-in-out"
+        style={{ transform: `translateX(-${currIndex * 100}%)` }}
+      >
+        {children}
+      </div>
     </div>
   );
 };
