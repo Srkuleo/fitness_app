@@ -10,7 +10,8 @@ Stay tuned for future updates!
 
 #### Priority
 
-- _Add alert before deleting, confirming changing w/o and disable edit button if there is no w/os rendered. Also add alert message before closing add or change form. Try once again mapped showing of w/os._
+- _Add alert before deleting, confirming changing w/o. Also add alert message before closing add or change form._
+- _Fix bug with adding a new workout if you previously deleted every single one._
 - _Make start button a link component that leads to new page with workout details._
 - _Work around setting planetscale db and prisma schema._
 - _Push newly added workouts from state to db._
