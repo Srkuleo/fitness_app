@@ -3,9 +3,9 @@ import { useCallback, useState } from "react";
 export const useOpen = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleDropDown = useCallback(() => {
-    setIsOpen(!isOpen);
-  }, [isOpen]);
+  const openDropDown = useCallback(() => setIsOpen(true), []);
 
-  return { isOpen, toggleDropDown };
+  const closeDropDown = useCallback(() => setIsOpen(false), []);
+
+  return { isOpen, openDropDown, closeDropDown };
 };
