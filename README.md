@@ -10,7 +10,7 @@ Stay tuned for future updates!
 
 #### Priority
 
-- _Add alert before deleting, confirming changing w/o. Also add alert message before closing add or change form._
+- _Add alert before deleting, confirming changing w/o. Also add alert message before closing add or change form.Try shadows on the workout card and circle pattern not on bg._
 - _Fix bug with adding a new workout if you previously deleted every single one._
 - _Make start button a link component that leads to new page with workout details._
 - _Work around setting planetscale db and prisma schema._
