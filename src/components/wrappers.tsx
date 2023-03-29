@@ -38,10 +38,10 @@ export const WorkoutCardsCarousel = ({
   currIndex,
 }: WrapperChild & { currIndex: number }) => {
   return (
-    <div className="mx-auto max-w-[380px] overflow-hidden">
+    <div className="mx-auto max-w-[400px] overflow-hidden">
       <div
-        className="flex transition-transform duration-500 ease-in-out"
-        style={{ transform: `translateX(-${currIndex * 100}%)` }}
+        className="flex transition-transform duration-500 ease-in-out gap-5"
+        style={{ transform: `translateX(-${currIndex * 105}%)` }}
       >
         {children}
       </div>
