@@ -18,6 +18,7 @@ module.exports = {
         dark700: "#334155",
         dark800: "#1e293b",
         dark900: "#0f172a",
+        dark950: "#020617",
       },
       green: {
         main500: "#22c55e",
@@ -32,6 +33,7 @@ module.exports = {
         text50: "#fefce8",
       },
       orange: {
+        icon300: "#fdba74",
         button500: "#f97316",
         button600: "#ea580c",
       },
@@ -48,6 +50,9 @@ module.exports = {
         18: "4.5rem",
         smallButton: "6px",
         mediumButton: "10px",
+        "option-arrow": "16px",
+        "dropdown-icon": "22px",
+        "auth-svg": "26px",
       },
     },
   },
