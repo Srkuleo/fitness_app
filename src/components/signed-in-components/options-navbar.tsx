@@ -12,7 +12,6 @@ import {
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { useOpen } from "../../hooks/useOpen";
-import { useHover } from "../../hooks/useHover";
 import type { OptionsMenuProps } from "../../types/types";
 
 export const FixedLogo = () => {
@@ -27,7 +26,6 @@ export const OptionsMenu = ({ toggleEdit, workouts }: OptionsMenuProps) => {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
   const { isOpen, openDropDown, closeDropDown } = useOpen();
-  const { isHovered, toggleHover } = useHover();
 
   useEffect(() => {
     setMounted(true);
@@ -79,9 +77,7 @@ export const OptionsMenu = ({ toggleEdit, workouts }: OptionsMenuProps) => {
         </button>
         <button
           onClick={toggleMode}
-          onMouseEnter={toggleHover}
-          onMouseLeave={toggleHover}
-          className="flex items-center gap-2 rounded-md from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:bg-gradient-to-r hover:text-yellow-text50"
+          className="group flex items-center gap-2 rounded-md from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:bg-gradient-to-r hover:text-yellow-text50"
         >
           {resolvedTheme === "dark" ? (
             <>
@@ -90,11 +86,7 @@ export const OptionsMenu = ({ toggleEdit, workouts }: OptionsMenuProps) => {
             </>
           ) : (
             <>
-              {isHovered ? (
-                <DarkModeIcon size={22} color="#cbd5e1" />
-              ) : (
-                <DarkModeIcon size={22} />
-              )}
+              <DarkModeIcon className="h-[22px] w-[22px] text-slate-light500 group-hover:text-slate-light300" />
               Dark mode
             </>
           )}
