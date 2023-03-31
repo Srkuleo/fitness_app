@@ -17,7 +17,7 @@ const AddingForm = ({
       aria-labelledby="adding-form-title"
       aria-modal={true}
     >
-      <div className="fixed inset-0 bg-slate-dark900 bg-opacity-80 dark:bg-black dark:bg-opacity-70" />
+      <div className="fixed inset-0 bg-slate-dark900 bg-opacity-80 dark:bg-slate-dark950 dark:bg-opacity-75" />
       <div
         className="fixed inset-0 overflow-y-auto"
         onClick={() => {
@@ -28,7 +28,7 @@ const AddingForm = ({
         <div className="flex min-h-full items-center justify-center">
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative rounded-lg bg-gradient-to-br from-slate-dark800 to-slate-dark900 px-4 pt-5 pb-4 sm:p-6 sm:pb-4"
+            className="relative mx-2 rounded-lg bg-gradient-to-br from-slate-dark800 to-slate-dark900 px-4 pt-5 pb-4 sm:mx-0 sm:p-6 sm:pb-4"
           >
             <AddingFormIcon />
             <h1
