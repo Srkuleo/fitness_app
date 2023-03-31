@@ -1,17 +1,11 @@
-export const DarkModeIcon = ({
-  size,
-  color = "#64748b",
-}: {
-  size: number;
-  color?: string;
-}) => {
+export const DarkModeIcon = ({ className }: { className: string }) => {
   return (
     <svg
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 20 20"
-      fill={color}
-      width={size}
-      height={size}
+      fill="currentColor"
+      aria-hidden="true"
     >
       <path
         fillRule="evenodd"
@@ -38,6 +32,7 @@ export const LightModeIcon = ({
       stroke={stroke}
       width={size}
       height={size}
+      aria-hidden="true"
     >
       <path
         strokeLinecap="round"
@@ -57,6 +52,7 @@ export const GoogleSvg = (
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     fill="#000000"
+    aria-hidden="true"
   >
     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
     <g
@@ -110,6 +106,7 @@ export const TwitterSvg = (
     viewBox="0 0 16 16"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
+    aria-hidden="true"
   >
     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
     <g
@@ -133,6 +130,7 @@ export const DiscordSvg = (
     viewBox="0 0 1024 1024"
     xmlns="http://www.w3.org/2000/svg"
     fill="#f8fafc"
+    aria-hidden="true"
   >
     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
     <g
@@ -159,6 +157,7 @@ export const NoteSetLogoSvg = (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     transform="rotate(45)"
+    aria-hidden="true"
   >
     <g
       id="SVGRepo_bgCarrier"
@@ -180,7 +179,6 @@ export const NoteSetLogoSvg = (
       strokeWidth="0.048"
     ></g>
     <g id="SVGRepo_iconCarrier">
-      {" "}
       <rect
         x="6"
         y="4"
@@ -191,31 +189,31 @@ export const NoteSetLogoSvg = (
         fillOpacity="0.24"
         stroke="#4ade80"
         strokeWidth="1.2"
-      ></rect>{" "}
+      ></rect>
       <path
         d="M15 10V8"
         stroke="#4ade80"
         strokeWidth="1.2"
         strokeLinecap="round"
-      ></path>{" "}
+      ></path>
       <path
         d="M4 9H8"
         stroke="#4ade80"
         strokeWidth="1.2"
         strokeLinecap="round"
-      ></path>{" "}
+      ></path>
       <path
         d="M4 13H8"
         stroke="#4ade80"
         strokeWidth="1.2"
         strokeLinecap="round"
-      ></path>{" "}
+      ></path>
       <path
         d="M4 17H8"
         stroke="#4ade80"
         strokeWidth="1.2"
         strokeLinecap="round"
-      ></path>{" "}
+      ></path>
     </g>
   </svg>
 );
@@ -229,6 +227,7 @@ export const ArrowDownIcon = (
     stroke="currentColor"
     width={16}
     height={16}
+    aria-hidden="true"
   >
     <path
       strokeLinecap="round"
@@ -247,6 +246,7 @@ export const UserIcon = (
     stroke="currentColor"
     width={22}
     height={22}
+    aria-hidden="true"
   >
     <path
       strokeLinecap="round"
@@ -265,6 +265,7 @@ export const EditIcon = (
     stroke="currentColor"
     width={22}
     height={22}
+    aria-hidden="true"
   >
     <path
       strokeLinecap="round"
@@ -283,6 +284,7 @@ export const LogsIcon = (
     stroke="currentColor"
     width={22}
     height={22}
+    aria-hidden="true"
   >
     <path
       strokeLinecap="round"
@@ -301,6 +303,7 @@ export const SignOutIcon = (
     stroke="currentColor"
     width={22}
     height={22}
+    aria-hidden="true"
   >
     <path
       strokeLinecap="round"
@@ -319,6 +322,7 @@ export const DeleteIcon = (
     stroke="currentColor"
     width={22}
     height={22}
+    aria-hidden="true"
   >
     <path
       strokeLinecap="round"
@@ -337,6 +341,7 @@ export const AddIcon = (
     stroke="currentColor"
     width={22}
     height={22}
+    aria-hidden="true"
   >
     <path
       strokeLinecap="round"
@@ -355,6 +360,7 @@ export const DoneIcon = (
     stroke="currentColor"
     width={22}
     height={22}
+    aria-hidden="true"
   >
     <path
       strokeLinecap="round"
@@ -375,6 +381,7 @@ export const AddingFormIcon = () => {
         stroke="currentColor"
         width={22}
         height={22}
+        aria-hidden="true"
       >
         <path
           strokeLinecap="round"
@@ -397,6 +404,7 @@ export const ChangingFormIcon = () => {
         stroke="currentColor"
         width={22}
         height={22}
+        aria-hidden="true"
       >
         <path
           strokeLinecap="round"
@@ -419,6 +427,7 @@ export const DbIcon = (
     xmlnsXlink="http://www.w3.org/1999/xlink"
     viewBox="0 0 57 57"
     xmlSpace="preserve"
+    aria-hidden="true"
   >
     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
     <g
@@ -445,6 +454,7 @@ export const PrevCardIcon = (
     viewBox="0 0 24 24"
     strokeWidth={2}
     stroke="currentColor"
+    aria-hidden="true"
   >
     <path
       strokeLinecap="round"
@@ -462,6 +472,7 @@ export const NextCardIcon = (
     viewBox="0 0 24 24"
     strokeWidth={2}
     stroke="currentColor"
+    aria-hidden="true"
   >
     <path
       strokeLinecap="round"
