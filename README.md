@@ -10,7 +10,7 @@ Stay tuned for future updates!
 
 #### Priority
 
-- _Add alert before, confirming changing w/o. Also add alert message before closing add or change form. Refactor both forms and add animation with framer motion to carousel, forms and modals._
+- _Add alert before, confirming changing w/o. Also add alert message before closing add or change form. Refactor both forms and add animation with framer motion to carousel, forms and modals. Added group to dropdown buttons for hover options for both text and icons._
 - _Fix bug with adding a new workout if you previously deleted every single one._
 - _Make start button a link component that leads to new page with workout details._
 - _Work around setting planetscale db and prisma schema._
