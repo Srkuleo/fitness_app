@@ -36,8 +36,10 @@ module.exports = {
         button600: "#ea580c",
       },
       red: {
+        removeBtn100: "#fee2e2",
         button400: "#fca5a5",
         button500: "#ef4444",
+        removeBtn600: "#dc2626",
         button700: "#b91c1c",
       },
     },
