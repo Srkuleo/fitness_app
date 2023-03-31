@@ -30,7 +30,7 @@ const ChangingForm = ({
         <div className="flex min-h-full items-center justify-center">
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative rounded-lg bg-gradient-to-br from-slate-dark800 to-slate-dark900 px-4 pt-5 pb-4 sm:p-6 sm:pb-4"
+            className="relative m-2 rounded-lg bg-gradient-to-br from-slate-dark800 to-slate-dark900 px-4 pt-5 pb-4 sm:p-6 sm:pb-4"
           >
             <ChangingFormIcon />
             <h1
