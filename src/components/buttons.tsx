@@ -1,7 +1,5 @@
 import Link from "next/link";
-import type {
-  ModeButtonProps,
-} from "../types/types";
+import type { ModeButtonProps } from "../types/types";
 import {
   DarkModeIcon,
   LightModeIcon,
@@ -10,21 +8,20 @@ import {
 } from "./svg-components/svg";
 
 //Sign pages buttons
-export const GitHubButton = ({ color }: { color: string }) => {
+export const GitHubButton = () => {
   return (
     <a
       href="https://github.com/Srkuleo/noteset"
       target="_blank"
       rel="noreferrer"
-      className="rounded-full p-[6px] hover:bg-slate-light300 dark:hover:bg-slate-light500/50"
+      className="rounded-full p-smallButton hover:bg-slate-light300 dark:hover:bg-slate-light500/50"
     >
       <svg
-        width={28}
-        height={28}
+        className="h-7 w-7 text-slate-main600 dark:text-slate-light50"
         aria-hidden="true"
         version="1.1"
         viewBox="0 0 16 16"
-        fill={color}
+        fill="currentColor"
       >
         <path
           fillRule="evenodd"
@@ -35,16 +32,16 @@ export const GitHubButton = ({ color }: { color: string }) => {
   );
 };
 
-export const ModeButton = ({ size, theme, toggleMode }: ModeButtonProps) => {
+export const ModeButton = ({ theme, toggleMode }: ModeButtonProps) => {
   return (
     <button
       onClick={toggleMode}
       className="rounded-full p-smallButton hover:bg-slate-light300 dark:hover:bg-slate-light500/50"
     >
       {theme === "dark" ? (
-        <LightModeIcon size={size} />
+        <LightModeIcon className="h-7 w-7" />
       ) : (
-        <DarkModeIcon size={size} color="#475569" />
+        <DarkModeIcon className="h-7 w-7 text-slate-main600" />
       )}
     </button>
   );
@@ -64,7 +61,7 @@ export const StartBtn = () => {
     <button
       className="rounded-xl bg-gradient-to-r from-orange-button500
       to-red-button500 px-6 py-2 font-semibold uppercase text-slate-light200
-      hover:from-orange-button600 hover:to-red-button700"
+      shadow-md hover:from-orange-button600 hover:to-red-button700"
     >
       Start
     </button>
