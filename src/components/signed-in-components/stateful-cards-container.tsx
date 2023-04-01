@@ -31,7 +31,7 @@ const WorkoutCard = ({
       <p className="text-2xl font-medium text-slate-main600 dark:text-slate-light200">
         {name}
       </p>
-      <p className="text-sm text-slate-light400">{tooltip}</p>
+      <p className="text-sm text-slate-light500 dark:text-slate-light300/80">{tooltip}</p>
       <StartBtn />
     </WorkoutCardLayout>
   );
