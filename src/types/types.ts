@@ -3,7 +3,6 @@ export interface WrapperChild {
 }
 
 export interface ModeButtonProps {
-  size: number;
   theme: string | undefined;
   toggleMode: () => void;
 }
