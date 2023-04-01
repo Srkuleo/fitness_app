@@ -28,12 +28,8 @@ const NavBarButtons = () => {
 
   return (
     <div className="flex items-center">
-      {resolvedTheme === "dark" ? (
-        <GitHubButton color="#fefce8" />
-      ) : (
-        <GitHubButton color="#475569" />
-      )}
-      <ModeButton size={28} theme={resolvedTheme} toggleMode={toggleMode} />
+      <GitHubButton />
+      <ModeButton theme={resolvedTheme} toggleMode={toggleMode} />
     </div>
   );
 };
