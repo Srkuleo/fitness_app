@@ -4,7 +4,7 @@
 
 @layer base {
   main {
-    @apply light-bg dark:dark-bg h-screen w-screen;
+    @apply from-0% via-50% to-100% h-screen w-screen bg-gradient-to-tr from-slate-light50 via-slate-light200 to-slate-light300 dark:from-slate-dark800 dark:via-slate-dark900 dark:to-slate-dark950;
   }
 }
 
@@ -18,22 +18,6 @@
   .shadow-outline-green {
     box-shadow: 0 0 0 4px #22c55e;
   }
-  .dark-bg {
-    background: linear-gradient(
-      72.44deg,
-      #1e293b 0%,
-      #1e293b 50%,
-      #0f172a 100%
-    );
-  }
-  .light-bg {
-    background: linear-gradient(
-      72.44deg,
-      #f1f5f9 0%,
-      #f1f5f9 50%,
-      #cbd5e1 100%
-    );
-  }
   .center {
     transform: translate(-50%, -50%);
   }
@@ -41,12 +25,24 @@
 
 @layer components {
   .sign-btn {
-    @apply my-2 rounded-3xl border-2 border-green-main500 bg-green-main500 p-2.5 text-center font-semibold text-yellow-text50 transition-all ease-in hover:bg-slate-light50 hover:text-green-main500 dark:hover:border-green-main500 dark:hover:bg-green-main500/50 dark:hover:text-yellow-text50;
+    @apply my-2 rounded-3xl bg-green-main500 p-3 text-center font-semibold text-yellow-text50 transition-all ease-in hover:bg-slate-light50 hover:text-green-main500 hover:ring-2 hover:ring-green-main500 dark:hover:bg-green-dark700 dark:hover:text-yellow-text50;
+  }
+  .editbar-btn {
+    @apply h-dropdown-icon w-dropdown-icon text-slate-main600;
   }
   .input-field {
-    @apply placeholder-italic mb-2 rounded-xl border-2 border-slate-light200/50 p-3 text-sm text-slate-main600 placeholder-slate-main600 focus:border-green-main500 focus:placeholder-slate-light300 focus:outline-0 dark:border-slate-dark800 dark:text-yellow-text50 dark:placeholder-slate-light300 dark:focus:border-green-main500 dark:focus:placeholder-slate-light500;
+    @apply placeholder-italic mb-2 rounded-xl p-3 text-sm text-slate-main600 placeholder-slate-main600 outline-none ring-inset transition-all duration-200 ease-in focus:placeholder-slate-light300 focus:ring-2 focus:ring-green-main500 dark:text-yellow-text50 dark:placeholder-slate-light300 dark:focus:placeholder-slate-light500;
+  }
+  .dropdown-menu-field {
+    @apply flex items-center gap-2 rounded-md py-1 pr-32 pl-2 text-left text-sm uppercase text-slate-main600 transition-all ease-out hover:bg-green-dark600 hover:text-yellow-text50 dark:hover:bg-green-dark700;
+  }
+  .dropdown-menu-icon {
+    @apply h-dropdown-icon w-dropdown-icon text-green-dark600 group-hover:text-orange-icon300 dark:text-green-dark700;
+  }
+  .dropdown-menu-dark-mode-icon {
+    @apply h-dropdown-icon w-dropdown-icon text-slate-light500 group-hover:text-slate-light300;
   }
   .workout-input-field {
-    @apply placeholder-italic rounded-xl border-2 border-slate-light300 p-3 text-sm text-slate-main600 focus:border-green-main500 focus:placeholder-slate-light200 focus:outline-0 dark:border-slate-main600/10 dark:bg-slate-main600 dark:text-slate-light50 dark:placeholder-slate-light50 dark:focus:border-orange-button500 dark:focus:placeholder-slate-light200/30;
+    @apply placeholder-italic rounded-xl p-3 text-sm text-slate-main600 outline-none ring-inset transition-all duration-200 ease-in focus:placeholder-slate-light200 focus:ring-2 focus:ring-green-main500 dark:bg-slate-main600 dark:text-slate-light50 dark:placeholder-slate-light50 dark:focus:placeholder-slate-light200/30 dark:focus:ring-orange-button500;
   }
 }
