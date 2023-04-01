@@ -16,22 +16,15 @@ export const DarkModeIcon = ({ className }: { className: string }) => {
   );
 };
 
-export const LightModeIcon = ({
-  size,
-  stroke = "#fefce8",
-}: {
-  size: number;
-  stroke?: string;
-}) => {
+export const LightModeIcon = ({ className }: { className: string }) => {
   return (
     <svg
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
-      fill="none"
       viewBox="0 0 24 24"
-      strokeWidth={2}
-      stroke={stroke}
-      width={size}
-      height={size}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2.2}
       aria-hidden="true"
     >
       <path
@@ -45,13 +38,12 @@ export const LightModeIcon = ({
 
 export const GoogleSvg = (
   <svg
-    width={26}
-    height={26}
+    className="h-auth-svg w-auth-svg"
     viewBox="-0.5 0 48 48"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
-    fill="#000000"
+    fill="none"
     aria-hidden="true"
   >
     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
@@ -101,8 +93,7 @@ export const GoogleSvg = (
 
 export const TwitterSvg = (
   <svg
-    width={26}
-    height={26}
+    className="h-auth-svg w-auth-svg"
     viewBox="0 0 16 16"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -125,11 +116,10 @@ export const TwitterSvg = (
 
 export const DiscordSvg = (
   <svg
-    width={26}
-    height={26}
+    className="h-auth-svg w-auth-svg"
     viewBox="0 0 1024 1024"
     xmlns="http://www.w3.org/2000/svg"
-    fill="#f8fafc"
+    fill="none"
     aria-hidden="true"
   >
     <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
@@ -139,20 +129,18 @@ export const DiscordSvg = (
       strokeLinejoin="round"
     ></g>
     <g id="SVGRepo_iconCarrier">
-      {" "}
-      <circle cx="512" cy="512" r="512" fill="#5865f2"></circle>{" "}
+      <circle cx="512" cy="512" r="512" fill="#5865f2"></circle>
       <path
         d="M689.43 349a422.21 422.21 0 0 0-104.22-32.32 1.58 1.58 0 0 0-1.68.79 294.11 294.11 0 0 0-13 26.66 389.78 389.78 0 0 0-117.05 0 269.75 269.75 0 0 0-13.18-26.66 1.64 1.64 0 0 0-1.68-.79A421 421 0 0 0 334.44 349a1.49 1.49 0 0 0-.69.59c-66.37 99.17-84.55 195.9-75.63 291.41a1.76 1.76 0 0 0 .67 1.2 424.58 424.58 0 0 0 127.85 64.63 1.66 1.66 0 0 0 1.8-.59 303.45 303.45 0 0 0 26.15-42.54 1.62 1.62 0 0 0-.89-2.25 279.6 279.6 0 0 1-39.94-19 1.64 1.64 0 0 1-.16-2.72c2.68-2 5.37-4.1 7.93-6.22a1.58 1.58 0 0 1 1.65-.22c83.79 38.26 174.51 38.26 257.31 0a1.58 1.58 0 0 1 1.68.2c2.56 2.11 5.25 4.23 8 6.24a1.64 1.64 0 0 1-.14 2.72 262.37 262.37 0 0 1-40 19 1.63 1.63 0 0 0-.87 2.28 340.72 340.72 0 0 0 26.13 42.52 1.62 1.62 0 0 0 1.8.61 423.17 423.17 0 0 0 128-64.63 1.64 1.64 0 0 0 .67-1.18c10.68-110.44-17.88-206.38-75.7-291.42a1.3 1.3 0 0 0-.63-.63zM427.09 582.85c-25.23 0-46-23.16-46-51.6s20.38-51.6 46-51.6c25.83 0 46.42 23.36 46 51.6.02 28.44-20.37 51.6-46 51.6zm170.13 0c-25.23 0-46-23.16-46-51.6s20.38-51.6 46-51.6c25.83 0 46.42 23.36 46 51.6.01 28.44-20.17 51.6-46 51.6z"
         fill="#f8fafc"
-      ></path>{" "}
+      ></path>
     </g>
   </svg>
 );
 
 export const NoteSetLogoSvg = (
   <svg
-    width={48}
-    height={48}
+    className="h-12 w-12"
     viewBox="-2.4 -2.4 28.80 28.80"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -220,13 +208,12 @@ export const NoteSetLogoSvg = (
 
 export const ArrowDownIcon = (
   <svg
+    className="h-option-arrow w-option-arrow transition-all ease-out group-hover:translate-y-0.5"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
     strokeWidth={2}
     stroke="currentColor"
-    width={16}
-    height={16}
     aria-hidden="true"
   >
     <path
@@ -239,13 +226,12 @@ export const ArrowDownIcon = (
 
 export const UserIcon = (
   <svg
+    className="dropdown-menu-icon"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
-    strokeWidth={2}
+    strokeWidth={2.2}
     stroke="currentColor"
-    width={22}
-    height={22}
     aria-hidden="true"
   >
     <path
@@ -256,34 +242,34 @@ export const UserIcon = (
   </svg>
 );
 
-export const EditIcon = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth={2}
-    stroke="currentColor"
-    width={22}
-    height={22}
-    aria-hidden="true"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-    />
-  </svg>
-);
+export const EditIcon = ({ className }: { className: string }) => {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={2.2}
+      stroke="currentColor"
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+      />
+    </svg>
+  );
+};
 
 export const LogsIcon = (
   <svg
+    className="dropdown-menu-icon"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
-    strokeWidth={2}
+    strokeWidth={2.2}
     stroke="currentColor"
-    width={22}
-    height={22}
     aria-hidden="true"
   >
     <path
@@ -296,13 +282,12 @@ export const LogsIcon = (
 
 export const SignOutIcon = (
   <svg
+    className="dropdown-menu-icon"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
-    strokeWidth={2}
+    strokeWidth={2.2}
     stroke="currentColor"
-    width={22}
-    height={22}
     aria-hidden="true"
   >
     <path
@@ -315,13 +300,12 @@ export const SignOutIcon = (
 
 export const DeleteIcon = (
   <svg
+    className="editbar-btn"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
     strokeWidth={2}
     stroke="currentColor"
-    width={22}
-    height={22}
     aria-hidden="true"
   >
     <path
@@ -334,13 +318,12 @@ export const DeleteIcon = (
 
 export const AddIcon = (
   <svg
+    className="h-dropdown-icon w-dropdown-icon"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
     strokeWidth={2}
     stroke="currentColor"
-    width={22}
-    height={22}
     aria-hidden="true"
   >
     <path
@@ -353,13 +336,12 @@ export const AddIcon = (
 
 export const DoneIcon = (
   <svg
+    className="h-dropdown-icon w-dropdown-icon"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
     strokeWidth={2}
     stroke="currentColor"
-    width={22}
-    height={22}
     aria-hidden="true"
   >
     <path
@@ -374,13 +356,12 @@ export const AddingFormIcon = () => {
   return (
     <div className="mx-auto mb-2 max-w-fit rounded-full bg-slate-light500 p-3">
       <svg
+        className="h-dropdown-icon w-dropdown-icon"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={2}
         stroke="currentColor"
-        width={22}
-        height={22}
         aria-hidden="true"
       >
         <path
@@ -397,13 +378,12 @@ export const ChangingFormIcon = () => {
   return (
     <div className="mx-auto mb-2 max-w-fit rounded-full bg-slate-light500 p-3">
       <svg
+        className="h-dropdown-icon w-dropdown-icon"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth={2}
         stroke="currentColor"
-        width={22}
-        height={22}
         aria-hidden="true"
       >
         <path
@@ -418,9 +398,8 @@ export const ChangingFormIcon = () => {
 
 export const DbIcon = (
   <svg
-    fill="#94a3b8"
-    height={60}
-    width={60}
+    className="h-[60px] w-[60px] text-slate-light400"
+    fill="currentColor"
     version="1.1"
     id="Capa_1"
     xmlns="http://www.w3.org/2000/svg"
@@ -446,7 +425,7 @@ export const DbIcon = (
   </svg>
 );
 
-export const PrevCardIcon = (
+export const PrevCardArrow = (
   <svg
     className="h-8 w-8"
     xmlns="http://www.w3.org/2000/svg"
@@ -464,7 +443,7 @@ export const PrevCardIcon = (
   </svg>
 );
 
-export const NextCardIcon = (
+export const NextCardArrow = (
   <svg
     className="h-8 w-8"
     xmlns="http://www.w3.org/2000/svg"
