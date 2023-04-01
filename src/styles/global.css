@@ -4,7 +4,7 @@
 
 @layer base {
   main {
-    @apply from-0% via-50% to-100% h-screen w-screen bg-gradient-to-tr from-slate-light50 via-slate-light200 to-slate-light300 dark:from-slate-dark800 dark:via-slate-dark900 dark:to-slate-dark950;
+    @apply h-screen w-screen bg-gradient-to-tr from-slate-light50 from-0% via-slate-light200 via-50% to-slate-light300 to-100% dark:from-slate-dark800 dark:via-slate-dark900 dark:to-slate-dark950;
   }
 }
 
@@ -25,16 +25,21 @@
 
 @layer components {
   .sign-btn {
-    @apply my-2 rounded-3xl bg-green-main500 p-3 text-center font-semibold text-yellow-text50 transition-all ease-in hover:bg-slate-light50 hover:text-green-main500 hover:ring-2 hover:ring-green-main500 dark:hover:bg-green-dark700 dark:hover:text-yellow-text50;
+    @apply my-2 rounded-3xl bg-green-main500 p-3 text-center font-semibold text-yellow-text50 transition-all ease-in 
+    hover:bg-slate-light50 hover:text-green-main500 hover:ring-2 hover:ring-green-main500 
+    dark:hover:bg-green-dark700 dark:hover:text-yellow-text50;
   }
   .editbar-btn {
     @apply h-dropdown-icon w-dropdown-icon text-slate-main600;
   }
   .input-field {
-    @apply placeholder-italic mb-2 rounded-xl p-3 text-sm text-slate-main600 placeholder-slate-main600 outline-none ring-inset transition-all duration-200 ease-in focus:placeholder-slate-light300 focus:ring-2 focus:ring-green-main500 dark:text-yellow-text50 dark:placeholder-slate-light300 dark:focus:placeholder-slate-light500;
+    @apply placeholder-italic mb-2 rounded-xl p-3 text-sm text-slate-main600 placeholder-slate-main600 outline-none ring-inset 
+    transition-all duration-200 ease-in focus:placeholder-slate-light300 focus:ring-2 focus:ring-green-main500 
+    dark:text-yellow-text50 dark:placeholder-slate-light300 dark:focus:placeholder-slate-light500;
   }
   .dropdown-menu-field {
-    @apply flex items-center gap-2 rounded-md py-1 pr-32 pl-2 text-left text-sm uppercase text-slate-main600 transition-all ease-out hover:bg-green-dark600 hover:text-yellow-text50 dark:hover:bg-green-dark700;
+    @apply flex items-center gap-2 rounded-md py-1 pl-2 pr-32 text-left text-sm uppercase text-slate-main600 transition-all ease-out 
+    hover:bg-green-dark600 hover:text-yellow-text50 dark:hover:bg-green-dark700;
   }
   .dropdown-menu-icon {
     @apply h-dropdown-icon w-dropdown-icon text-green-dark600 group-hover:text-orange-icon300 dark:text-green-dark700;
@@ -43,6 +48,17 @@
     @apply h-dropdown-icon w-dropdown-icon text-slate-light500 group-hover:text-slate-light300;
   }
   .workout-input-field {
-    @apply placeholder-italic rounded-xl p-3 text-sm text-slate-main600 outline-none ring-inset transition-all duration-200 ease-in focus:placeholder-slate-light200 focus:ring-2 focus:ring-green-main500 dark:bg-slate-main600 dark:text-slate-light50 dark:placeholder-slate-light50 dark:focus:placeholder-slate-light200/30 dark:focus:ring-orange-button500;
+    @apply placeholder-italic rounded-xl p-3 text-sm text-slate-main600 outline-none ring-inset transition-all duration-200 
+    ease-in focus:placeholder-slate-light200 focus:ring-2 focus:ring-green-main500 dark:bg-slate-main600 dark:text-slate-light50 
+    dark:placeholder-slate-light50 dark:focus:placeholder-slate-light200/30 dark:focus:ring-orange-button500;
+  }
+  .workout-card-layout {
+    @apply relative min-h-[520px] min-w-[400px] overflow-hidden 
+    rounded-2xl border-4 border-orange-button600 bg-gradient-to-tl 
+  odd:from-slate-light50 odd:from-35% odd:to-slate-light200 odd:to-95% 
+  even:from-slate-light200 even:from-5% even:to-slate-light50 even:to-95% 
+  dark:border-orange-button500 
+  dark:odd:from-slate-main600 dark:odd:from-5% dark:odd:via-slate-dark800 dark:odd:via-50% dark:odd:to-slate-dark900 dark:odd:to-95%
+  dark:even:from-slate-dark900 dark:even:from-5% dark:even:via-slate-dark800 dark:even:via-50% dark:even:to-slate-main600 dark:even:to-95%;
   }
 }
