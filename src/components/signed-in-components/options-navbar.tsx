@@ -41,7 +41,7 @@ export const OptionsMenu = ({ toggleEdit, workouts }: OptionsMenuProps) => {
     <div className="fixed top-9 right-18 z-10 flex flex-col items-end gap-2 pt-2">
       <button
         onClick={openDropDown}
-        className="flex items-center gap-3 text-lg font-medium uppercase text-slate-light50"
+        className="group flex items-center gap-3 text-lg font-medium uppercase text-slate-light50"
       >
         srkuleo
         {ArrowDownIcon}
@@ -49,53 +49,44 @@ export const OptionsMenu = ({ toggleEdit, workouts }: OptionsMenuProps) => {
       <div
         className={`${
           isOpen ? "scale-100" : "scale-0"
-        } flex origin-top-right flex-col rounded-lg bg-slate-light50 p-2 text-green-dark700 transition-all duration-200 ease-out`}
+        } flex origin-top-right flex-col rounded-lg bg-slate-light50 p-2 text-green-dark700 shadow-md transition-all duration-200 ease-out`}
         onMouseLeave={closeDropDown}
       >
-        <Link
-          className="flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50"
-          href="/"
-        >
+        <Link className="dropdown-menu-field group" href="/">
           {UserIcon}
           Profile
         </Link>
         <button
           disabled={workouts.length < 1}
-          className={`flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50 ${
+          className={`dropdown-menu-field group ${
             workouts.length < 1 ? "pointer-events-none opacity-20" : ""
           }`}
           onClick={() => {
             toggleEdit();
           }}
         >
-          {EditIcon}
+          <EditIcon className="dropdown-menu-icon" />
           Edit
         </button>
-        <button className="flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50">
+        <button className="dropdown-menu-field group">
           {LogsIcon}
           View logs
         </button>
-        <button
-          onClick={toggleMode}
-          className="group flex items-center gap-2 rounded-md from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:bg-gradient-to-r hover:text-yellow-text50"
-        >
+        <button onClick={toggleMode} className="dropdown-menu-field group">
           {resolvedTheme === "dark" ? (
             <>
-              <LightModeIcon size={22} stroke="currentColor" />
+              <LightModeIcon className="dropdown-menu-icon" />
               Light mode
             </>
           ) : (
             <>
-              <DarkModeIcon className="h-[22px] w-[22px] text-slate-light500 group-hover:text-slate-light300" />
+              <DarkModeIcon className="dropdown-menu-dark-mode-icon" />
               Dark mode
             </>
           )}
         </button>
-        <div className="my-1 border-b border-green-dark700/20"></div>
-        <Link
-          className="flex items-center gap-2 from-green-dark700 via-green-dark700 to-green-main500 py-1 pr-32 pl-2 text-left text-sm uppercase transition-all ease-out hover:rounded-md hover:bg-gradient-to-r hover:text-yellow-text50"
-          href="/"
-        >
+        <div className="my-1 border-b border-green-light300/70" />
+        <Link className="dropdown-menu-field group" href="/">
           {SignOutIcon}
           Sign out
         </Link>
