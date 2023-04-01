@@ -21,7 +21,7 @@ export const CardsHeading = ({ workouts }: { workouts: WorkoutProps[] }) => {
       <h1 className="mb-18 text-5xl font-bold text-orange-button500">
         Welcome, Srkuleo.
       </h1>
-      <h3 className="text-2xl font-semibold text-slate-main600 dark:text-yellow-text50">
+      <h3 className="text-2xl font-semibold text-slate-dark700 dark:text-yellow-text50">
         {workouts.length > 0 ? "Swipe left or right to choose a workout" : ""}
       </h3>
     </div>
