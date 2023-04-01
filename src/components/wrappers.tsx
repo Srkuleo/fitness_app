@@ -40,11 +40,29 @@ export const WorkoutCardsCarousel = ({
   return (
     <div className="mx-auto max-w-[400px] overflow-hidden">
       <div
-        className="flex transition-transform duration-500 ease-in-out gap-5"
+        className="flex gap-5 transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${currIndex * 105}%)` }}
       >
         {children}
       </div>
+    </div>
+  );
+};
+
+export const WorkoutCardLayout = ({ children }: WrapperChild) => {
+  return (
+    <div
+      className="relative min-h-[520px] min-w-[400px] overflow-hidden 
+      rounded-2xl border-4 border-orange-button600 bg-gradient-to-tl 
+    odd:from-slate-light50 odd:to-slate-light100 
+    even:bg-slate-light50
+    dark:border-orange-button500 
+    dark:odd:from-slate-light500 from-60% dark:odd:to-slate-dark800 to-95%
+    dark:even:bg-slate-dark800"
+    >
+      <div className="flex flex-col items-center gap-4 p-4">{children}</div>
+      <div className="absolute top-[350px] left-[224px] h-[290px] w-[290px] rounded-full bg-[#caeed2] dark:bg-[#69ab69]/70" />
+      <div className="absolute top-[416px] left-[290px] h-[160px] w-[160px] rounded-full bg-[#b6e3ae] dark:bg-[#4a784a]/80" />
     </div>
   );
 };
