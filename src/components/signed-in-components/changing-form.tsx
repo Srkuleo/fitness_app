@@ -1,6 +1,6 @@
 import type { ChangingFormProps } from "../../types/types";
 import { initWorkout } from "../../utils/variables";
-import { SubmitWorkoutBtn } from "../buttons";
+import { SubmitFormBtn } from "../buttons";
 import { ChangingFormIcon } from "../svg-components/svg";
 
 const ChangingForm = ({
@@ -30,7 +30,7 @@ const ChangingForm = ({
         <div className="flex min-h-full items-center justify-center">
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative m-2 rounded-lg bg-gradient-to-br from-slate-dark800 to-slate-dark900 px-4 pt-5 pb-4 sm:p-6 sm:pb-4"
+            className="relative m-2 rounded-lg bg-gradient-to-br from-slate-dark800 to-slate-dark900 px-4 pb-4 pt-5 sm:p-6 sm:pb-4"
           >
             <ChangingFormIcon />
             <h1
@@ -70,7 +70,7 @@ const ChangingForm = ({
                 onFocus={clearField}
                 className="workout-input-field col-span-2 col-start-4"
               />
-              <SubmitWorkoutBtn />
+              <SubmitFormBtn />
             </form>
           </div>
         </div>
