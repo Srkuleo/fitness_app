@@ -68,10 +68,14 @@ export const StartBtn = () => {
   );
 };
 
-export const NewWorkoutBtn = ({ addingState }: { addingState: () => void }) => {
+export const StatelessAddWorkoutBtn = ({
+  addingState,
+}: {
+  addingState: () => void;
+}) => {
   return (
     <button
-      className="flex items-center gap-2 rounded-lg bg-green-dark700 p-2 text-xs italic text-slate-light200 hover:bg-green-dark600"
+      className="flex items-center gap-2 rounded-lg bg-green-dark700 p-2 text-xs italic text-slate-light200 shadow-sm hover:bg-green-dark600"
       onClick={addingState}
     >
       {AddIcon}
@@ -80,7 +84,7 @@ export const NewWorkoutBtn = ({ addingState }: { addingState: () => void }) => {
   );
 };
 
-export const SubmitWorkoutBtn = () => {
+export const SubmitFormBtn = () => {
   return (
     <button
       type="submit"
