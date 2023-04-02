@@ -10,7 +10,7 @@ Stay tuned for future updates!
 
 #### Priority
 
-- _Try new SVG pattern for bg._
+- _Try new SVG pattern for bg and new workout card edit layout._
 - _Extract modal as reusable component using headless ui, add animation with framer motion and then make remove modal, closing change and add modal, confirm change modal.Refactor both forms, add shadows and add animation with framer motion to carousel and forms._
 - _Fix bug with adding a new workout if you previously deleted every single one._
 - _Make start button a link component that leads to new page with workout details._
