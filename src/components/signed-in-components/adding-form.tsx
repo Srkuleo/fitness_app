@@ -1,6 +1,6 @@
 import type { AddingFormProps } from "../../types/types";
 import { initWorkout } from "../../utils/variables";
-import { SubmitWorkoutBtn } from "../buttons";
+import { SubmitFormBtn } from "../buttons";
 import { AddingFormIcon } from "../svg-components/svg";
 
 const AddingForm = ({
@@ -28,7 +28,7 @@ const AddingForm = ({
         <div className="flex min-h-full items-center justify-center">
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative mx-2 rounded-lg bg-gradient-to-br from-slate-dark800 to-slate-dark900 px-4 pt-5 pb-4 sm:mx-0 sm:p-6 sm:pb-4"
+            className="relative mx-2 rounded-lg bg-gradient-to-br from-slate-dark800 to-slate-dark900 px-4 pb-4 pt-5 sm:mx-0 sm:p-6 sm:pb-4"
           >
             <AddingFormIcon />
             <h1
@@ -67,7 +67,7 @@ const AddingForm = ({
                 onChange={modifyProp}
                 className="workout-input-field col-span-2 col-start-4"
               />
-              <SubmitWorkoutBtn />
+              <SubmitFormBtn />
             </form>
           </div>
         </div>
