@@ -18,7 +18,7 @@ const CardsEditBar = ({
       <div className="flex justify-around">
         <div className="space-x-2">
           <button
-            className="rounded-full bg-green-light400/80 p-2 transition-all duration-200 ease-in hover:translate-y-1"
+            className="rounded-full bg-green-light400/80 p-2 shadow-sm transition-all duration-200 ease-in hover:translate-y-1 dark:bg-green-light400"
             onClick={() => {
               modifyTempWorkout(currWorkout);
               changingState();
@@ -27,7 +27,7 @@ const CardsEditBar = ({
             <EditIcon className="editbar-btn" />
           </button>
           <button
-            className="rounded-full bg-red-button400 p-2 text-slate-main600 transition-all duration-200 ease-in hover:translate-y-1"
+            className="rounded-full bg-red-button400 p-2 shadow-sm transition-all duration-200 ease-in hover:translate-y-1"
             onClick={() => setIsRemoving(true)}
           >
             {DeleteIcon}
@@ -35,13 +35,13 @@ const CardsEditBar = ({
         </div>
         <div className="space-x-2">
           <button
-            className="rounded-full bg-slate-light400/90 p-2 text-slate-light50 transition-all ease-out hover:bg-slate-main600"
+            className="rounded-full bg-slate-light400/90 p-2 shadow-sm transition-all ease-out hover:bg-slate-main600"
             onClick={addingState}
           >
             {AddIcon}
           </button>
           <button
-            className="rounded-full bg-slate-light400/90 p-2 text-slate-light50 transition-all ease-out hover:bg-slate-main600"
+            className="rounded-full bg-slate-light400/90 p-2 shadow-sm transition-all ease-out hover:bg-slate-main600"
             onClick={toggleEdit}
           >
             {DoneIcon}
