@@ -38,7 +38,7 @@ export const LightModeIcon = ({ className }: { className: string }) => {
 
 export const GoogleSvg = (
   <svg
-    className="h-auth-svg w-auth-svg"
+    className="h-7 w-7"
     viewBox="-0.5 0 48 48"
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
@@ -93,7 +93,7 @@ export const GoogleSvg = (
 
 export const TwitterSvg = (
   <svg
-    className="h-auth-svg w-auth-svg"
+    className="h-7 w-7"
     viewBox="0 0 16 16"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -116,7 +116,7 @@ export const TwitterSvg = (
 
 export const DiscordSvg = (
   <svg
-    className="h-auth-svg w-auth-svg"
+    className="h-7 w-7"
     viewBox="0 0 1024 1024"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -208,7 +208,7 @@ export const NoteSetLogoSvg = (
 
 export const ArrowDownIcon = (
   <svg
-    className="h-option-arrow w-option-arrow transition-all ease-out group-hover:translate-y-0.5"
+    className="h-4 w-4 transition-all ease-out group-hover:translate-y-0.5"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -318,7 +318,7 @@ export const DeleteIcon = (
 
 export const AddIcon = (
   <svg
-    className="h-dropdown-icon w-dropdown-icon"
+    className="h-6 w-6 text-slate-light50"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -336,7 +336,7 @@ export const AddIcon = (
 
 export const DoneIcon = (
   <svg
-    className="h-dropdown-icon w-dropdown-icon"
+    className="h-6 w-6 text-slate-light50"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
