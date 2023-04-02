@@ -1,6 +1,6 @@
 import type { StatelessCardsContainerProps } from "../../types/types";
 import { DbIcon } from "../svg-components/svg";
-import { NewWorkoutBtn } from "../buttons";
+import { StatelessAddWorkoutBtn } from "../buttons";
 import AddingForm from "./adding-form";
 
 const StatelessCardsContainer = ({
@@ -19,7 +19,7 @@ const StatelessCardsContainer = ({
           You {"don't"} have any existing workout.
         </p>
         <div className="py-4">{DbIcon}</div>
-        <NewWorkoutBtn addingState={addingState} />
+        <StatelessAddWorkoutBtn addingState={addingState} />
       </div>
       {formState === "adding" && (
         <AddingForm
