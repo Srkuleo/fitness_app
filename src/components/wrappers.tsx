@@ -15,7 +15,7 @@ export const OAuthBtnWrapper = ({ children }: WrapperProp) => {
       className="flex w-full items-center justify-center gap-3 
       rounded-xl border-2 border-green-main500 bg-slate-light50 
       py-2 text-sm font-semibold text-slate-main600 
-      shadow-md transition-all ease-in 
+      shadow-sm transition-all ease-in 
       hover:translate-x-1 hover:bg-slate-light200/90 
       dark:bg-slate-dark800 dark:text-yellow-text50 dark:hover:bg-slate-light500/50"
     >
