@@ -1,4 +1,4 @@
-export interface WrapperChild {
+export interface WrapperProp {
   children: React.ReactNode;
 }
 
@@ -19,8 +19,10 @@ export interface WorkoutProps {
 }
 
 export interface OptionsMenuProps {
-  toggleEdit: () => void;
   workouts: WorkoutProps[];
+  isOpen: boolean;
+  openDropDown: () => void;
+  toggleEdit: () => void;
 }
 
 export interface CardsContentProps {
