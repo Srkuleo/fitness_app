@@ -28,10 +28,16 @@ const WorkoutCard = ({
 }: Pick<WorkoutProps, "name" | "tooltip">) => {
   return (
     <WorkoutCardLayout>
-      <p className="text-2xl font-medium text-slate-main600 dark:text-slate-light200">
-        {name}
-      </p>
-      <p className="text-sm text-slate-light500 dark:text-slate-light300/80">{tooltip}</p>
+      <div className="mb-2">
+        <p className="text-2xl font-medium text-slate-main600 dark:text-slate-light200">
+          {name}
+        </p>
+      </div>
+      <div className="mb-4">
+        <p className="text-sm text-slate-light400 dark:text-slate-light300/80">
+          {tooltip}
+        </p>
+      </div>
       <StartBtn />
     </WorkoutCardLayout>
   );
