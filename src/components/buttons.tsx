@@ -59,7 +59,7 @@ export const SignButton = ({ page }: { page: "sign in" | "sign up" }) => {
 export const StartBtn = () => {
   return (
     <button
-      className="rounded-xl bg-gradient-to-r from-orange-button500
+      className="rounded-xl bg-gradient-to-r from-orange-button500 relative z-10
       to-red-button500 px-6 py-2 font-semibold uppercase text-slate-light200
       shadow-md hover:from-orange-button600 hover:to-red-button700"
     >
