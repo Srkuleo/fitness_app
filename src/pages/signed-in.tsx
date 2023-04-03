@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import { useWorkouts } from "../hooks/useWorkouts";
+import { useOpen } from "../hooks/useOpen";
 import { useEdit } from "../hooks/useEdit";
 import BackgroundPattern from "../components/svg-components/background-pattern";
 import {
@@ -20,6 +21,7 @@ const SignedIn: NextPage = () => {
     { id: 5, name: "Lower 3", tooltip: "The best one so far!" },
     { id: 6, name: "Full body", tooltip: "This one is hella hard..." },
   ]);
+  const { isOpen, openDropDown, closeDropDown } = useOpen();
   const { isEditing, toggleEdit } = useEdit();
 
   return (
@@ -32,8 +34,13 @@ const SignedIn: NextPage = () => {
       <main>
         <BackgroundPattern />
         <FixedLogo />
-        <OptionsMenu toggleEdit={toggleEdit} workouts={workouts} />
-        <PageContentWrapper>
+        <OptionsMenu
+          workouts={workouts}
+          isOpen={isOpen}
+          openDropDown={openDropDown}
+          toggleEdit={toggleEdit}
+        />
+        <PageContentWrapper closeDropDown={closeDropDown}>
           <CardsHeading workouts={workouts} />
           <CardsContent
             workouts={workouts}
