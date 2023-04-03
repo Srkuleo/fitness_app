@@ -11,21 +11,24 @@ import {
 } from "../svg-components/svg";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { useOpen } from "../../hooks/useOpen";
 import type { OptionsMenuProps } from "../../types/types";
 
 export const FixedLogo = () => {
   return (
-    <div className="fixed top-9 left-18 z-10">
+    <div className="fixed left-18 top-9 z-10">
       <NoteSetLogo />
     </div>
   );
 };
 
-export const OptionsMenu = ({ toggleEdit, workouts }: OptionsMenuProps) => {
+export const OptionsMenu = ({
+  workouts,
+  isOpen,
+  openDropDown,
+  toggleEdit,
+}: OptionsMenuProps) => {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
-  const { isOpen, openDropDown, closeDropDown } = useOpen();
 
   useEffect(() => {
     setMounted(true);
@@ -38,19 +41,18 @@ export const OptionsMenu = ({ toggleEdit, workouts }: OptionsMenuProps) => {
   if (!mounted) return <></>;
 
   return (
-    <div className="fixed top-9 right-18 z-10 flex flex-col items-end gap-2 pt-2">
+    <div className="fixed right-18 top-9 z-10 flex flex-col items-end gap-2 pt-2">
       <button
         onClick={openDropDown}
-        className="group flex items-center gap-3 text-lg font-medium uppercase text-slate-light50"
+        className="group flex items-center gap-3 text-lg font-medium uppercase text-slate-main600 dark:text-slate-light50"
       >
         srkuleo
-        {ArrowDownIcon}
+        <ArrowDownIcon isOpen={isOpen} />
       </button>
       <div
         className={`${
           isOpen ? "scale-100" : "scale-0"
-        } flex origin-top-right flex-col rounded-lg bg-slate-light50 p-2 text-green-dark700 shadow-md transition-all duration-200 ease-out`}
-        onMouseLeave={closeDropDown}
+        } flex origin-top-right flex-col gap-1 rounded-lg bg-slate-light50 p-2 shadow-md transition-all duration-200 ease-out dark:bg-slate-dark700`}
       >
         <Link className="dropdown-menu-field group" href="/">
           {UserIcon}
@@ -85,7 +87,7 @@ export const OptionsMenu = ({ toggleEdit, workouts }: OptionsMenuProps) => {
             </>
           )}
         </button>
-        <div className="my-1 border-b border-green-light300/70" />
+        <div className="border-b border-green-light300/70 dark:border-green-dark700" />
         <Link className="dropdown-menu-field group" href="/">
           {SignOutIcon}
           Sign out
