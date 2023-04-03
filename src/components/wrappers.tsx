@@ -1,15 +1,15 @@
-import { type WrapperChild } from "../types/types";
+import type { WrapperProp } from "../types/types";
 
 //Wrappers for sign-in and sign-up pages
-export const ContentWrapper = ({ children }: WrapperChild) => {
+export const ContentWrapper = ({ children }: WrapperProp) => {
   return <div className="relative mx-auto flex w-3/6 flex-col">{children}</div>;
 };
 
-export const LogoWrapper = ({ children }: WrapperChild) => {
+export const LogoWrapper = ({ children }: WrapperProp) => {
   return <div className="flex items-center gap-1">{children}</div>;
 };
 
-export const OAuthBtnWrapper = ({ children }: WrapperChild) => {
+export const OAuthBtnWrapper = ({ children }: WrapperProp) => {
   return (
     <button
       className="flex w-full items-center justify-center gap-3 
@@ -25,10 +25,16 @@ export const OAuthBtnWrapper = ({ children }: WrapperChild) => {
 };
 
 //Wrappers for signed-in page
-export const PageContentWrapper = ({ children }: WrapperChild) => {
+export const PageContentWrapper = ({
+  children,
+  closeDropDown,
+}: WrapperProp & { closeDropDown: () => void }) => {
   return (
-    <div className="fixed inset-0 mt-32 flex justify-center">
-      <div className="flex flex-col gap-6">{children}</div>
+    <div
+      className="fixed inset-0 flex justify-center"
+      onMouseEnter={closeDropDown}
+    >
+      <div className="mt-32 flex flex-col gap-6">{children}</div>
     </div>
   );
 };
@@ -36,9 +42,9 @@ export const PageContentWrapper = ({ children }: WrapperChild) => {
 export const WorkoutCardsCarousel = ({
   children,
   currIndex,
-}: WrapperChild & { currIndex: number }) => {
+}: WrapperProp & { currIndex: number }) => {
   return (
-    <div className="mx-auto max-w-[400px] overflow-hidden">
+    <div className="mx-auto max-w-[400px] overflow-hidden bg-slate-light50 dark:bg-slate-dark900 rounded-2xl shadow-xl">
       <div
         className="flex gap-5 transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${currIndex * 105}%)` }}
@@ -49,12 +55,12 @@ export const WorkoutCardsCarousel = ({
   );
 };
 
-export const WorkoutCardLayout = ({ children }: WrapperChild) => {
+export const WorkoutCardLayout = ({ children }: WrapperProp) => {
   return (
     <div className="workout-card-layout">
-      <div className="flex flex-col items-center gap-4 p-4">{children}</div>
-      <div className="absolute left-[224px] top-[350px] h-[290px] w-[290px] rounded-full bg-[#caeed2] dark:bg-[#69ab69]/70" />
-      <div className="absolute left-[290px] top-[416px] h-[160px] w-[160px] rounded-full bg-[#b6e3ae] dark:bg-[#4a784a]/80" />
+      <div className="flex flex-col items-center p-4">{children}</div>
+      <div className="absolute left-[224px] top-[350px] h-[290px] w-[290px] rounded-full bg-[#caeed2] dark:bg-[#629e62]" />
+      <div className="absolute left-[290px] top-[416px] h-[160px] w-[160px] rounded-full bg-[#b6e3ae] dark:bg-[#608160]" />
     </div>
   );
 };
