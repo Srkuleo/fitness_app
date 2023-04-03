@@ -25,7 +25,7 @@
 
 @layer components {
   .sign-btn {
-    @apply my-2 shadow-md rounded-3xl bg-green-main500 p-3 text-center font-semibold text-yellow-text50 transition-all ease-in 
+    @apply my-2 rounded-3xl bg-green-main500 p-3 text-center font-semibold text-yellow-text50 shadow-md ring-1 ring-green-dark600 transition-all ease-in 
     hover:bg-slate-light50 hover:text-green-main500 hover:ring-2 hover:ring-green-main500 
     dark:hover:bg-green-dark700 dark:hover:text-yellow-text50;
   }
@@ -38,11 +38,11 @@
     dark:text-yellow-text50 dark:placeholder-slate-light300 dark:focus:placeholder-slate-light500;
   }
   .dropdown-menu-field {
-    @apply flex items-center gap-2 rounded-md py-1 pl-2 pr-32 text-left text-sm uppercase text-slate-main600 transition-all ease-out 
-    hover:bg-green-dark600 hover:text-yellow-text50 dark:hover:bg-green-dark700;
+    @apply flex items-center gap-2 rounded-md py-1 pl-2 pr-32 text-left text-sm uppercase text-slate-main600 hover:bg-green-dark600 
+    hover:text-yellow-text50 dark:text-slate-light50 dark:hover:bg-green-dark700;
   }
   .dropdown-menu-icon {
-    @apply h-6 w-6 text-green-dark600 group-hover:text-orange-icon300 dark:text-green-dark700;
+    @apply h-6 w-6 text-green-dark600 group-hover:text-orange-icon300 dark:text-green-main500/90;
   }
   .dropdown-menu-dark-mode-icon {
     @apply h-6 w-6 text-slate-light500 group-hover:text-slate-light300;
@@ -55,10 +55,10 @@
   .workout-card-layout {
     @apply relative min-h-[520px] min-w-[400px] overflow-hidden 
     rounded-2xl border-4 border-orange-button600 bg-gradient-to-tl 
-  odd:from-slate-light50 odd:from-35% odd:to-slate-light200 odd:to-95% 
-  even:from-slate-light200 even:from-5% even:to-slate-light50 even:to-95% 
+  odd:from-slate-light50 odd:from-45% odd:to-slate-light200/50 odd:to-95% 
+  even:from-slate-light200/50 even:from-5% even:to-slate-light50 even:to-95% 
   dark:border-orange-button500 
-  dark:odd:from-slate-main600 dark:odd:from-5% dark:odd:via-slate-dark800 dark:odd:via-50% dark:odd:to-slate-dark900 dark:odd:to-95%
-  dark:even:from-slate-dark900 dark:even:from-5% dark:even:via-slate-dark800 dark:even:via-50% dark:even:to-slate-main600 dark:even:to-95%;
+  dark:odd:from-slate-main600 dark:odd:from-5% dark:odd:via-slate-dark700 dark:odd:via-35% dark:odd:to-slate-dark800 dark:odd:to-95%
+  dark:even:from-slate-dark800 dark:even:from-5% dark:even:via-slate-dark700 dark:even:via-65% dark:even:to-slate-main600 dark:even:to-95%;
   }
 }
