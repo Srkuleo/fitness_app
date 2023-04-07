@@ -1,32 +1,12 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import type { WorkoutProps } from "../types/types";
 
-export const useTempWorkout = (initialWorkout: WorkoutProps) => {
-  const [tempWorkout, setTempWorkout] = useState(initialWorkout);
+export const useTempWorkout = (workout: WorkoutProps) => {
+  const [tempWorkout, setTempWorkout] = useState(workout);
 
-  const modifyTempWorkout = useCallback((selectedWorkout: WorkoutProps) => {
-    setTempWorkout(selectedWorkout);
-  }, []);
+  function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
+    setTempWorkout({ ...tempWorkout, [e.target.name]: e.target.value });
+  }
 
-  const modifyProp = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setTempWorkout({
-        ...tempWorkout,
-        [e.target.name]: e.target.value,
-      });
-    },
-    [tempWorkout]
-  );
-
-  const clearField = useCallback(
-    (e: React.FocusEvent<HTMLInputElement>) => {
-      setTempWorkout({
-        ...tempWorkout,
-        [e.target.name]: "",
-      });
-    },
-    [tempWorkout]
-  );
-
-  return { tempWorkout, modifyTempWorkout, modifyProp, clearField };
+  return { tempWorkout, handleInput };
 };
