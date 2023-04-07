@@ -1,64 +1,44 @@
-import { useCallback, useReducer } from "react";
-import type { WorkoutProps, WorkoutsAction } from "../types/types";
-
-let nextId = 4;
+import { useState } from "react";
+import type { WorkoutProps } from "../types/types";
 
 export const useWorkouts = (initialWorkouts: WorkoutProps[]) => {
-  const [workouts, dispatch] = useReducer(workoutsReducer, initialWorkouts);
+  const [workouts, setWorkouts] = useState(initialWorkouts);
 
-  const addWorkout = useCallback((name: string, tooltip: string) => {
-    dispatch({
-      type: "adding",
-      workout: {
-        id: nextId++,
-        name: name,
-        tooltip: tooltip,
-      },
-    });
-  }, []);
+  function addWorkout(workout: WorkoutProps) {
+    const newWorkout = {
+      ...workout,
+    };
+    setWorkouts([...workouts, newWorkout]);
+  }
 
-  const changeWorkout = useCallback((workout: WorkoutProps) => {
-    dispatch({
-      type: "editing",
-      workout: workout,
-    });
-  }, []);
-
-  const removeWorkout = useCallback((id: number) => {
-    dispatch({
-      type: "removing",
-      id: id,
-    });
-  }, []);
-
-  return { workouts, addWorkout, changeWorkout, removeWorkout };
-};
-
-const workoutsReducer = (workouts: WorkoutProps[], action: WorkoutsAction) => {
-  switch (action.type) {
-    case "adding": {
-      const { id, name, tooltip } = action.workout;
-      return [
-        ...workouts,
-        {
-          id: id,
-          name: name,
-          tooltip: tooltip,
-        },
-      ];
-    }
-    case "editing": {
-      const { id } = action.workout;
-      return workouts.map((w) => {
-        if (w.id === id) {
-          return action.workout;
+  function changeWorkout(editedWorkout: WorkoutProps | undefined) {
+    if (editedWorkout) {
+      const newList = workouts.map((workout) => {
+        if (workout.id === editedWorkout.id) {
+          return {
+            ...workout,
+            title: editedWorkout.title,
+            description: editedWorkout.description,
+          };
         } else {
-          return w;
+          return workout;
         }
       });
-    }
-    case "removing": {
-      return workouts.filter((w) => w.id !== action.id);
+      setWorkouts(newList);
+    } else {
+      return undefined
     }
   }
+
+  function removeWorkout(id: number) {
+    const newList = workouts.filter((workout) => workout.id !== id);
+    setWorkouts(newList);
+  }
+
+  return {
+    workouts,
+    addWorkout,
+    changeWorkout,
+    removeWorkout,
+  };
 };
