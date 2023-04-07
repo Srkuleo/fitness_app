@@ -12,7 +12,7 @@ export const circles = (
       <path
         d="M1920 2H0V1080H525.69C1440.46 1040.03 1803.75 909.129 1920 290V2Z"
         fill="url(#pattern0)"
-        fill-opacity="0.07"
+        fillOpacity="0.07"
       />
     </g>
     <defs>
@@ -23,9 +23,9 @@ export const circles = (
         width="1924"
         height="1082"
         filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
+        colorInterpolationFilters="sRGB"
       >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feFlood floodOpacity="0" result="BackgroundImageFix" />
         <feBlend
           mode="normal"
           in="SourceGraphic"
