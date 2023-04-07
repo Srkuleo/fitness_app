@@ -41,26 +41,16 @@ export const PageContentWrapper = ({
 
 export const WorkoutCardsCarousel = ({
   children,
-  currIndex,
-}: WrapperProp & { currIndex: number }) => {
+  InFocus,
+}: WrapperProp & { InFocus: number }) => {
   return (
-    <div className="mx-auto max-w-[400px] overflow-hidden bg-slate-light50 dark:bg-slate-dark900 rounded-2xl shadow-xl">
+    <div className="max-w-[400px] overflow-hidden rounded-2xl shadow-xl">
       <div
         className="flex gap-5 transition-transform duration-500 ease-in-out"
-        style={{ transform: `translateX(-${currIndex * 105}%)` }}
+        style={{ transform: `translateX(-${InFocus * 105}%)` }}
       >
         {children}
       </div>
-    </div>
-  );
-};
-
-export const WorkoutCardLayout = ({ children }: WrapperProp) => {
-  return (
-    <div className="workout-card-layout">
-      <div className="flex flex-col items-center p-4">{children}</div>
-      <div className="absolute left-[224px] top-[350px] h-[290px] w-[290px] rounded-full bg-[#caeed2] dark:bg-[#629e62]" />
-      <div className="absolute left-[290px] top-[416px] h-[160px] w-[160px] rounded-full bg-[#b6e3ae] dark:bg-[#608160]" />
     </div>
   );
 };
