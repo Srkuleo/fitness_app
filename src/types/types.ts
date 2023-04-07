@@ -14,8 +14,8 @@ export interface OAuthBtnProps {
 
 export interface WorkoutProps {
   id: number;
-  name: string;
-  tooltip: string;
+  title: string;
+  description: string;
 }
 
 export interface OptionsMenuProps {
@@ -25,66 +25,47 @@ export interface OptionsMenuProps {
   toggleEdit: () => void;
 }
 
+export interface EditIconProps {
+  className: string;
+  strokeWidth: number;
+}
+
 export interface CardsContentProps {
   workouts: WorkoutProps[];
-  addWorkout: (name: string, tooltip: string) => void;
-  changeWorkout: (workout: WorkoutProps) => void;
+  addWorkout: (workout: WorkoutProps) => void;
+  changeWorkout: (editedWorkout: WorkoutProps | undefined) => void;
   removeWorkout: (id: number) => void;
   isEditing: boolean;
   toggleEdit: () => void;
 }
 
-export type WorkoutsAction =
-  | { type: "adding"; workout: WorkoutProps }
-  | { type: "editing"; workout: WorkoutProps }
-  | { type: "removing"; id: number };
-
-export type FormStateTuple = "idle" | "adding" | "changing";
-
-export interface AddingFormProps {
-  tempWorkout: WorkoutProps;
-  idleState: () => void;
-  modifyTempWorkout: (tempWorkout: WorkoutProps) => void;
-  addWorkout: (name: string, tooltip: string) => void;
-  modifyProp: (e: React.ChangeEvent<HTMLInputElement>) => void;
+export interface StatelessCardContentProps
+  extends Pick<CardsContentProps, "addWorkout" | "toggleEdit"> {
+  handleEditingId: (id: number | undefined) => void;
 }
 
-export interface ChangingFormProps {
-  tempWorkout: WorkoutProps;
-  workoutName: string;
-  idleState: () => void;
-  modifyTempWorkout: (workout: WorkoutProps) => void;
-  changeWorkout: (workout: WorkoutProps) => void;
-  modifyProp: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  clearField: (e: React.FocusEvent<HTMLInputElement>) => void;
+export interface WorkoutCardProps
+  extends Omit<CardsContentProps, "workouts" | "addWorkout"> {
+  workout: WorkoutProps;
+  switchInFocus: () => void;
+  editingId: number | undefined;
+  handleEditingId: (id: number | undefined) => void;
 }
 
-export interface StatelessCardsContainerProps extends AddingFormProps {
-  addingState: () => void;
-  formState: FormStateTuple;
-}
-
-export interface StatefulCardsContainerProps {
-  currIndex: number;
-  workouts: WorkoutProps[];
-}
-
-export interface NavButtonsProps {
+export interface CardNavArrowsProps {
   workouts: WorkoutProps[];
   prevCard: () => void;
   nextCard: () => void;
 }
 
-export interface CardsNavBarProps {
+export interface CardsNavButtonsProps {
   workouts: WorkoutProps[];
-  currIndex: number;
+  InFocus: number;
   jumpToCard: (index: number) => void;
 }
 
 export interface CardsEditBarProps {
   currWorkout: WorkoutProps;
-  modifyTempWorkout: (workout: WorkoutProps) => void;
-  changingState: () => void;
   removeWorkout: (id: number) => void;
   switchOnRemove: () => void;
   addingState: () => void;
