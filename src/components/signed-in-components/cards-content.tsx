@@ -1,15 +1,12 @@
+import { useEditingId } from "../../hooks/useEditingId";
+import { useInFocus } from "../../hooks/useInFocus";
 import type { CardsContentProps } from "../../types/types";
-import { useTempWorkout } from "../../hooks/useTempWorkout";
-import { useFormState } from "../../hooks/useFormState";
-import { useCurrIndex } from "../../hooks/useCurrIndex";
-import { initWorkout } from "../../utils/variables";
-import StatelessCardsContainer from "./stateless-cards-container";
-import StatefulCardsContainer from "./stateful-cards-container";
-import CardsNavButtons from "./cards-nav-buttons";
-import CardsNavBar from "./cards-navbar";
-import CardsEditBar from "./cards-editbar";
-import AddingForm from "./adding-form";
-import ChangingForm from "./changing-form";
+import { WorkoutCardsCarousel } from "../wrappers";
+import { StatelessCardContent } from "./stateless-cards-content";
+import { WorkoutCard } from "./workout-card";
+import { CardNavArrows } from "./card-nav-arrows";
+import { CardsNavButtons } from "./cards-nav-buttons";
+import { CardsEditBtns } from "../buttons";
 
 export const CardsContent = ({
   workouts,
@@ -19,72 +16,58 @@ export const CardsContent = ({
   isEditing,
   toggleEdit,
 }: CardsContentProps) => {
-  const { tempWorkout, modifyTempWorkout, modifyProp, clearField } =
-    useTempWorkout(initWorkout);
-  const { formState, addingState, changingState, idleState } = useFormState();
-  const { currIndex, prevCard, nextCard, switchOnRemove, jumpToCard } =
-    useCurrIndex(0, workouts);
+  const { InFocus, prevCard, nextCard, switchInFocus, jumpToCard } =
+    useInFocus(workouts);
+  const { editingId, handleEditingId } = useEditingId();
 
-  const currWorkout = workouts[currIndex];
+  const currWorkout = workouts[InFocus];
 
   if (!currWorkout) {
     return (
-      <StatelessCardsContainer
-        formState={formState}
-        addingState={addingState}
-        idleState={idleState}
-        tempWorkout={tempWorkout}
+      <StatelessCardContent
         addWorkout={addWorkout}
-        modifyTempWorkout={modifyTempWorkout}
-        modifyProp={modifyProp}
+        handleEditingId={handleEditingId}
+        toggleEdit={toggleEdit}
       />
     );
   }
 
   return (
     <div className="relative flex flex-col gap-2">
-      <div className="relative px-8">
-        <CardsNavButtons
+      <div className="relative px-12">
+        <CardNavArrows
           workouts={workouts}
           prevCard={prevCard}
           nextCard={nextCard}
         />
-        <StatefulCardsContainer currIndex={currIndex} workouts={workouts} />
+        <WorkoutCardsCarousel InFocus={InFocus}>
+          {workouts.map((workout) => (
+            <WorkoutCard
+              key={workout.id}
+              workout={workout}
+              editingId={editingId}
+              handleEditingId={handleEditingId}
+              changeWorkout={changeWorkout}
+              removeWorkout={removeWorkout}
+              switchInFocus={switchInFocus}
+              isEditing={isEditing}
+              toggleEdit={toggleEdit}
+            />
+          ))}
+        </WorkoutCardsCarousel>
       </div>
-      <CardsNavBar
-        currIndex={currIndex}
+      <CardsNavButtons
+        InFocus={InFocus}
         workouts={workouts}
         jumpToCard={jumpToCard}
       />
       {isEditing && (
-        <CardsEditBar
-          currWorkout={currWorkout}
-          changingState={changingState}
-          removeWorkout={removeWorkout}
-          switchOnRemove={switchOnRemove}
-          addingState={addingState}
-          modifyTempWorkout={modifyTempWorkout}
-          toggleEdit={toggleEdit}
-        />
-      )}
-      {formState === "adding" && (
-        <AddingForm
-          tempWorkout={tempWorkout}
-          idleState={idleState}
+        <CardsEditBtns
+          workouts={workouts}
           addWorkout={addWorkout}
-          modifyTempWorkout={modifyTempWorkout}
-          modifyProp={modifyProp}
-        />
-      )}
-      {formState === "changing" && (
-        <ChangingForm
-          tempWorkout={tempWorkout}
-          workoutName={currWorkout.name}
-          idleState={idleState}
-          changeWorkout={changeWorkout}
-          modifyTempWorkout={modifyTempWorkout}
-          modifyProp={modifyProp}
-          clearField={clearField}
+          jumpToCard={jumpToCard}
+          handleEditingId={handleEditingId}
+          toggleEdit={toggleEdit}
         />
       )}
     </div>
