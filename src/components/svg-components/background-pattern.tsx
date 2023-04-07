@@ -31,9 +31,9 @@ const curve = (
         y2="472.756"
         gradientUnits="userSpaceOnUse"
       >
-        <stop offset="0.148087" stop-color="#F97316" stop-opacity="0.7" />
-        <stop offset="0.666185" stop-color="#927A15" stop-opacity="0.7" />
-        <stop offset="1" stop-color="#2D8015" stop-opacity="0.7" />
+        <stop offset="0.148087" stopColor="#F97316" stopOpacity="0.7" />
+        <stop offset="0.666185" stopColor="#927A15" stopOpacity="0.7" />
+        <stop offset="1" stopColor="#2D8015" stopOpacity="0.7" />
       </linearGradient>
     </defs>
   </svg>
