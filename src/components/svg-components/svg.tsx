@@ -1,3 +1,5 @@
+import type { EditIconProps } from "../../types/types";
+
 export const DarkModeIcon = ({ className }: { className: string }) => {
   return (
     <svg
@@ -245,14 +247,14 @@ export const UserIcon = (
   </svg>
 );
 
-export const EditIcon = ({ className }: { className: string }) => {
+export const EditIcon = ({ className, strokeWidth }: EditIconProps) => {
   return (
     <svg
       className={className}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
-      strokeWidth={2.2}
+      strokeWidth={strokeWidth}
       stroke="currentColor"
       aria-hidden="true"
     >
@@ -301,9 +303,9 @@ export const SignOutIcon = (
   </svg>
 );
 
-export const DeleteIcon = (
+export const RemoveIcon = (
   <svg
-    className="editbar-btn"
+    className="h-5 w-5"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -321,7 +323,7 @@ export const DeleteIcon = (
 
 export const AddIcon = (
   <svg
-    className="h-6 w-6 text-slate-light50"
+    className="h-5 w-5"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -339,7 +341,7 @@ export const AddIcon = (
 
 export const DoneIcon = (
   <svg
-    className="h-6 w-6 text-slate-light50"
+    className="h-5 w-5"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -401,7 +403,7 @@ export const ChangingFormIcon = () => {
 
 export const DbIcon = (
   <svg
-    className="h-[60px] w-[60px] text-slate-light400"
+    className="h-[60px] w-[60px] text-slate-light300/70"
     fill="currentColor"
     version="1.1"
     id="Capa_1"
@@ -430,7 +432,7 @@ export const DbIcon = (
 
 export const PrevCardArrow = (
   <svg
-    className="h-8 w-8"
+    className="h-7 w-7 opacity-60 transition-all ease-out group-hover:-translate-x-0.5 group-hover:opacity-100"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -448,7 +450,7 @@ export const PrevCardArrow = (
 
 export const NextCardArrow = (
   <svg
-    className="h-8 w-8"
+    className="h-7 w-7 opacity-60 transition-all ease-out group-hover:translate-x-0.5 group-hover:opacity-100"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
