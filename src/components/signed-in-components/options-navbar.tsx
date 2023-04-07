@@ -67,7 +67,7 @@ export const OptionsMenu = ({
             toggleEdit();
           }}
         >
-          <EditIcon className="dropdown-menu-icon" />
+          <EditIcon className="dropdown-menu-icon" strokeWidth={2.2} />
           Edit
         </button>
         <button className="dropdown-menu-field group">
