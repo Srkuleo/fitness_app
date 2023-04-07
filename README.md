@@ -10,9 +10,9 @@ Stay tuned for future updates!
 
 #### Priority
 
-- _New workout card edit layout._
-- _Extract modal as reusable component using headless ui, add animation with framer motion and then make remove modal, closing change and add modal, confirm change modal.Refactor both forms, add shadows and add animation with framer motion to carousel and forms._
-- _Fix bug with adding a new workout if you previously deleted every single one._
+- _Add animation to edit layout buttons. Finish UI for edit and adding cards._
+- _Extract modal as reusable component using headless ui, add animation with framer motion and then make remove modal, confirming change and done editing. Add animation with framer motion to carousel and new workout slide._
+
 - _Make start button a link component that leads to new page with workout details._
 - _Work around setting planetscale db and prisma schema._
 - _Push newly added workouts from state to db._
