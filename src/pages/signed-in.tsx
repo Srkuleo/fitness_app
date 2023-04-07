@@ -14,12 +14,10 @@ import { CardsContent } from "../components/signed-in-components/cards-content";
 
 const SignedIn: NextPage = () => {
   const { workouts, addWorkout, changeWorkout, removeWorkout } = useWorkouts([
-    { id: 1, name: "Upper 1", tooltip: "Good one, could be better." },
-    { id: 2, name: "Upper 2", tooltip: "A little bit better, imo." },
-    { id: 3, name: "Lower 1", tooltip: "The best one so far!" },
-    { id: 4, name: "Lower 2", tooltip: "The best one so far!" },
-    { id: 5, name: "Lower 3", tooltip: "The best one so far!" },
-    { id: 6, name: "Full body", tooltip: "This one is hella hard..." },
+    { id: 0, title: "Upper 1", description: "Good one, could be better." },
+    { id: 1, title: "Upper 2", description: "A little bit better, imo." },
+    { id: 2, title: "Lower 1", description: "The best one so far!" },
+    { id: 3, title: "Lower 2", description: "The best one so far!" },
   ]);
   const { isOpen, openDropDown, closeDropDown } = useOpen();
   const { isEditing, toggleEdit } = useEdit();
