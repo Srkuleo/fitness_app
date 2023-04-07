@@ -1,5 +1,7 @@
 import Link from "next/link";
-import type { ModeButtonProps } from "../types/types";
+import { useIncrementId } from "../hooks/useIncrementId";
+import { initWorkout } from "../utils/variables";
+import type { ModeButtonProps, WorkoutProps } from "../types/types";
 import {
   DarkModeIcon,
   LightModeIcon,
@@ -14,7 +16,7 @@ export const GitHubButton = () => {
       href="https://github.com/Srkuleo/noteset"
       target="_blank"
       rel="noreferrer"
-      className="rounded-full p-smallButton hover:bg-slate-light300 dark:hover:bg-slate-light500/50"
+      className="rounded-full p-smallButton transition-all ease-out hover:bg-slate-light400/40 dark:hover:bg-slate-light500/50"
     >
       <svg
         className="h-7 w-7 text-slate-main600 dark:text-slate-light50"
@@ -36,7 +38,7 @@ export const ModeButton = ({ theme, toggleMode }: ModeButtonProps) => {
   return (
     <button
       onClick={toggleMode}
-      className="rounded-full p-smallButton hover:bg-slate-light300 dark:hover:bg-slate-light500/50"
+      className="rounded-full p-smallButton transition-all ease-out hover:bg-slate-light400/40 dark:hover:bg-slate-light500/50"
     >
       {theme === "dark" ? (
         <LightModeIcon className="h-7 w-7" />
@@ -59,7 +61,7 @@ export const SignButton = ({ page }: { page: "sign in" | "sign up" }) => {
 export const StartBtn = () => {
   return (
     <button
-      className="rounded-xl bg-gradient-to-r from-orange-button500 relative z-10
+      className="rounded-xl bg-gradient-to-r from-orange-button500
       to-red-button500 px-6 py-2 font-semibold uppercase text-slate-light200
       shadow-md hover:from-orange-button600 hover:to-red-button700"
     >
@@ -68,23 +70,47 @@ export const StartBtn = () => {
   );
 };
 
-export const StatelessAddWorkoutBtn = ({
-  addingState,
+export const CardsEditBtns = ({
+  workouts,
+  addWorkout,
+  toggleEdit,
+  jumpToCard,
+  handleEditingId,
 }: {
-  addingState: () => void;
+  workouts: WorkoutProps[];
+  addWorkout: (workout: WorkoutProps) => void;
+  toggleEdit: () => void;
+  jumpToCard: (index: number) => void;
+  handleEditingId: (id: number | undefined) => void;
 }) => {
+  const { id, incrementId } = useIncrementId();
+
   return (
-    <button
-      className="flex items-center gap-2 rounded-lg bg-green-dark700 p-2 text-xs italic text-slate-light200 shadow-sm hover:bg-green-dark600"
-      onClick={addingState}
-    >
-      {AddIcon}
-      Add a new workout
-    </button>
+    <div className="flex justify-around">
+      <button
+        className="rounded-full bg-slate-light400 p-2 text-slate-light50 shadow-sm transition-all ease-out hover:bg-slate-main600"
+        onClick={() => {
+          toggleEdit();
+          addWorkout({ ...initWorkout, id: id });
+          handleEditingId(id);
+          console.log(id);
+          incrementId();
+          jumpToCard(workouts.length);
+        }}
+      >
+        {AddIcon}
+      </button>
+      <button
+        className="rounded-full bg-slate-light400 p-2 text-slate-light50 shadow-sm transition-all ease-out hover:bg-slate-main600"
+        onClick={toggleEdit}
+      >
+        {DoneIcon}
+      </button>
+    </div>
   );
 };
 
-export const SubmitFormBtn = () => {
+export const DoneEditingBtn = () => {
   return (
     <button
       type="submit"
