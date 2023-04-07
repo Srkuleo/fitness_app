@@ -13,6 +13,6 @@ export const oAuthButtons: OAuthBtnProps[] = [
 
 export const initWorkout: WorkoutProps = {
   id: -1,
-  name: "",
-  tooltip: "",
+  title: "New title",
+  description: "New description",
 };
