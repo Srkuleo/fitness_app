@@ -1,12 +1,19 @@
 import Link from "next/link";
 import { useIncrementId } from "../hooks/useIncrementId";
 import { initWorkout } from "../utils/variables";
-import type { ModeButtonProps, WorkoutProps } from "../types/types";
+import type {
+  CardNavArrowsProps,
+  CardsNavButtonsProps,
+  ModeButtonProps,
+  WorkoutProps,
+} from "../types/types";
 import {
   DarkModeIcon,
   LightModeIcon,
   AddIcon,
   DoneIcon,
+  PrevCardArrow,
+  NextCardArrow,
 } from "./svg-components/svg";
 
 //Sign pages buttons
@@ -67,6 +74,52 @@ export const StartBtn = () => {
     >
       Start
     </button>
+  );
+};
+
+export const CardNavArrows = ({
+  workouts,
+  prevCard,
+  nextCard,
+}: CardNavArrowsProps) => {
+  return (
+    <div className="absolute inset-0 flex items-center justify-between">
+      <button
+        className="group rounded-full bg-slate-light300/80 p-2 text-slate-main600 transition-all ease-out hover:bg-slate-light400/60 disabled:pointer-events-none disabled:opacity-20 dark:bg-slate-dark700/80 dark:text-slate-light50 dark:hover:bg-slate-main600/80"
+        onClick={prevCard}
+        disabled={workouts.length < 2}
+      >
+        {PrevCardArrow}
+      </button>
+      <button
+        className="group rounded-full bg-slate-light300/80 p-2 text-slate-main600 transition-all ease-out hover:bg-slate-light400/60 disabled:pointer-events-none disabled:opacity-20 dark:bg-slate-dark700/80 dark:text-slate-light50 dark:hover:bg-slate-main600/80"
+        onClick={nextCard}
+        disabled={workouts.length < 2}
+      >
+        {NextCardArrow}
+      </button>
+    </div>
+  );
+};
+
+export const CardsNavButtons = ({
+  workouts,
+  InFocus,
+  jumpToCard,
+}: CardsNavButtonsProps) => {
+  return (
+    <div className="flex items-center justify-center gap-smallButton">
+      {workouts.map((workout, i) => (
+        <div
+          key={workout.id}
+          role="button"
+          className={`h-3 w-3 rounded-full bg-slate-light500 dark:bg-slate-light100 ${
+            InFocus === i ? "p-2" : "opacity-40"
+          }`}
+          onClick={() => jumpToCard(i)}
+        ></div>
+      ))}
+    </div>
   );
 };
 
