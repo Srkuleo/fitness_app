@@ -10,13 +10,14 @@ Stay tuned for future updates!
 
 #### Priority
 
-- _Add animation to edit layout buttons. Finish UI for edit and adding cards._
+- _Add animation to edit layout buttons, submit form and cards edit buttos. Finish UI for edit and adding cards._
 - _Extract modal as reusable component using headless ui, add animation with framer motion and then make remove modal, confirming change and done editing. Add animation with framer motion to carousel and new workout slide._
 
 - _Make start button a link component that leads to new page with workout details._
 - _Work around setting planetscale db and prisma schema._
 - _Push newly added workouts from state to db._
 - _Add an active workout page, with proper structure based on database model._
+- _Set a limit on description input field to no longer than 85ch._
 
 #### Later on
 
