@@ -4,9 +4,7 @@ import type { CardsContentProps } from "../../types/types";
 import { WorkoutCardsCarousel } from "../wrappers";
 import { StatelessCardContent } from "./stateless-cards-content";
 import { WorkoutCard } from "./workout-card";
-import { CardNavArrows } from "./card-nav-arrows";
-import { CardsNavButtons } from "./cards-nav-buttons";
-import { CardsEditBtns } from "../buttons";
+import { CardNavArrows, CardsNavButtons, CardsEditBtns } from "../buttons";
 
 export const CardsContent = ({
   workouts,
