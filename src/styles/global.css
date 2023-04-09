@@ -26,7 +26,7 @@
 @layer components {
   .sign-btn {
     @apply my-2 rounded-3xl bg-green-main500 p-3 text-center font-semibold text-yellow-text50 shadow-md 
-    ring-1 ring-green-dark600 transition-all ease-in hover:bg-slate-light50 hover:text-green-main500 
+    transition-all ease-in hover:bg-slate-light50 hover:text-green-main500 
     hover:ring-2 hover:ring-green-main500 dark:bg-green-dark600 dark:ring-green-main500 
     dark:hover:bg-green-dark700 dark:hover:text-yellow-text50;
   }
@@ -38,8 +38,8 @@
     dark:hover:text-yellow-text50;
   }
   .input-field {
-    @apply placeholder-italic mb-2 rounded-xl p-3 text-sm text-slate-main600 placeholder-slate-main600 outline-none 
-    transition-all duration-200 ease-in focus:placeholder-slate-light300 focus:ring-2 focus:ring-green-main500 
+    @apply placeholder-italic mb-2 rounded-xl p-3 text-sm text-slate-main600 placeholder-slate-main600 shadow-md 
+    outline-none transition-all duration-200 ease-in focus:placeholder-slate-light300 focus:ring-2 focus:ring-green-main500 
     dark:text-yellow-text50 dark:placeholder-slate-light300 dark:focus:placeholder-slate-light500;
   }
   .dropdown-menu-field {
@@ -53,8 +53,8 @@
     @apply h-6 w-6 text-slate-light500 group-hover:text-slate-light300;
   }
   .workout-input-field {
-    @apply placeholder-italic mb-2 rounded-lg px-3 py-2 text-sm text-slate-main600 outline-none ring-inset transition-all duration-200 
-    ease-in shadow-md focus:placeholder-slate-light200 focus:ring-2 focus:ring-orange-button500 dark:bg-slate-main600 dark:text-slate-light50 
+    @apply placeholder-italic mb-2 rounded-lg px-3 py-2 text-sm text-slate-main600 shadow-md outline-none ring-inset transition-all 
+    duration-200 ease-in focus:placeholder-slate-light200 focus:ring-2 focus:ring-orange-button500 dark:bg-slate-main600 dark:text-slate-light50 
     dark:placeholder-slate-light200/70 dark:focus:placeholder-slate-light200/30;
   }
   .workout-card-layout {
