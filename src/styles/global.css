@@ -53,9 +53,9 @@
     @apply h-6 w-6 text-slate-light500 group-hover:text-slate-light300;
   }
   .workout-input-field {
-    @apply placeholder-italic rounded-xl p-3 text-sm text-slate-main600 outline-none ring-inset transition-all duration-200 
-    ease-in focus:placeholder-slate-light200 focus:ring-2 focus:ring-green-main500 dark:bg-slate-main600 dark:text-slate-light50 
-    dark:placeholder-slate-light50 dark:focus:placeholder-slate-light200/30 dark:focus:ring-orange-button500;
+    @apply placeholder-italic mb-2 rounded-lg px-3 py-2 text-sm text-slate-main600 outline-none ring-inset transition-all duration-200 
+    ease-in shadow-md focus:placeholder-slate-light200 focus:ring-2 focus:ring-orange-button500 dark:bg-slate-main600 dark:text-slate-light50 
+    dark:placeholder-slate-light200/70 dark:focus:placeholder-slate-light200/30;
   }
   .workout-card-layout {
     @apply relative min-h-[520px] min-w-[400px] overflow-hidden 
