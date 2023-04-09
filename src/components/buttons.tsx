@@ -88,7 +88,7 @@ export const CardsEditBtns = ({
   return (
     <div className="flex justify-around">
       <button
-        className="rounded-full bg-slate-light400 p-2 text-slate-light50 shadow-sm transition-all ease-out hover:bg-slate-main600"
+        className="rounded-full bg-slate-light300 p-2 text-slate-main600 shadow-sm transition-all ease-out hover:-translate-x-1 dark:bg-slate-light400 dark:text-slate-light50"
         onClick={() => {
           toggleEdit();
           addWorkout({ ...initWorkout, id: id });
@@ -101,7 +101,7 @@ export const CardsEditBtns = ({
         {AddIcon}
       </button>
       <button
-        className="rounded-full bg-slate-light400 p-2 text-slate-light50 shadow-sm transition-all ease-out hover:bg-slate-main600"
+        className="rounded-full bg-slate-light300 p-2 text-slate-main600 shadow-sm transition-all ease-out hover:translate-x-1 dark:bg-slate-light400 dark:text-slate-light50"
         onClick={toggleEdit}
       >
         {DoneIcon}
@@ -110,11 +110,11 @@ export const CardsEditBtns = ({
   );
 };
 
-export const DoneEditingBtn = () => {
+export const SubmitFormBtn = () => {
   return (
     <button
       type="submit"
-      className="col-start-3 mx-auto mt-4 rounded-full bg-slate-light400 p-mediumButton text-slate-light50 transition-all ease-out hover:bg-slate-main600"
+      className="rounded-full bg-slate-light300 p-mediumButton text-slate-main600 shadow-sm transition-all ease-out hover:translate-y-1 hover:bg-slate-light400 dark:bg-slate-light400 dark:text-slate-light50"
     >
       {DoneIcon}
     </button>
