@@ -52,19 +52,27 @@ export interface WorkoutCardProps
   handleEditingId: (id: number | undefined) => void;
 }
 
-export interface CardNavArrowsProps {
+export interface CarouselNavArrowsProps {
   workouts: WorkoutProps[];
   prevCard: () => void;
   nextCard: () => void;
 }
 
-export interface CardsNavButtonsProps {
+export interface CarouselNavBtnsProps {
   workouts: WorkoutProps[];
   InFocus: number;
   jumpToCard: (index: number) => void;
 }
 
-export interface CardsEditBarProps {
+export interface CardEditButtonsProps {
+  workouts: WorkoutProps[];
+  addWorkout: (workout: WorkoutProps) => void;
+  toggleEdit: () => void;
+  jumpToCard: (index: number) => void;
+  handleEditingId: (id: number | undefined) => void;
+}
+
+export interface CardEditBarProps {
   currWorkout: WorkoutProps;
   removeWorkout: (id: number) => void;
   switchOnRemove: () => void;
