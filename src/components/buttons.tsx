@@ -1,16 +1,12 @@
 import Link from "next/link";
-import { useIncrementId } from "../hooks/useIncrementId";
-import { initWorkout } from "../utils/variables";
 import type {
-  CardNavArrowsProps,
-  CardsNavButtonsProps,
+  CarouselNavArrowsProps,
+  CarouselNavBtnsProps,
   ModeButtonProps,
-  WorkoutProps,
 } from "../types/types";
 import {
   DarkModeIcon,
   LightModeIcon,
-  AddIcon,
   DoneIcon,
   PrevCardArrow,
   NextCardArrow,
@@ -77,22 +73,22 @@ export const StartBtn = () => {
   );
 };
 
-export const CardNavArrows = ({
+export const CarouselNavArrows = ({
   workouts,
   prevCard,
   nextCard,
-}: CardNavArrowsProps) => {
+}: CarouselNavArrowsProps) => {
   return (
     <div className="absolute inset-0 flex items-center justify-between">
       <button
-        className="group rounded-full bg-slate-light300/80 p-2 text-slate-main600 transition-all ease-out hover:bg-slate-light400/60 disabled:pointer-events-none disabled:opacity-20 dark:bg-slate-dark700/80 dark:text-slate-light50 dark:hover:bg-slate-main600/80"
+        className="text-slate-dark700 disabled:pointer-events-none disabled:opacity-20 dark:text-slate-light50"
         onClick={prevCard}
         disabled={workouts.length < 2}
       >
         {PrevCardArrow}
       </button>
       <button
-        className="group rounded-full bg-slate-light300/80 p-2 text-slate-main600 transition-all ease-out hover:bg-slate-light400/60 disabled:pointer-events-none disabled:opacity-20 dark:bg-slate-dark700/80 dark:text-slate-light50 dark:hover:bg-slate-main600/80"
+        className="text-slate-dark700 disabled:pointer-events-none disabled:opacity-20 dark:text-slate-light50"
         onClick={nextCard}
         disabled={workouts.length < 2}
       >
@@ -102,11 +98,11 @@ export const CardNavArrows = ({
   );
 };
 
-export const CardsNavButtons = ({
+export const CarouselNavBtns = ({
   workouts,
   InFocus,
   jumpToCard,
-}: CardsNavButtonsProps) => {
+}: CarouselNavBtnsProps) => {
   return (
     <div className="flex items-center justify-center gap-smallButton">
       {workouts.map((workout, i) => (
@@ -119,46 +115,6 @@ export const CardsNavButtons = ({
           onClick={() => jumpToCard(i)}
         ></div>
       ))}
-    </div>
-  );
-};
-
-export const CardsEditBtns = ({
-  workouts,
-  addWorkout,
-  toggleEdit,
-  jumpToCard,
-  handleEditingId,
-}: {
-  workouts: WorkoutProps[];
-  addWorkout: (workout: WorkoutProps) => void;
-  toggleEdit: () => void;
-  jumpToCard: (index: number) => void;
-  handleEditingId: (id: number | undefined) => void;
-}) => {
-  const { id, incrementId } = useIncrementId();
-
-  return (
-    <div className="flex justify-around">
-      <button
-        className="rounded-full bg-slate-light300 p-2 text-slate-main600 shadow-sm transition-all ease-out hover:-translate-x-1 dark:bg-slate-light400 dark:text-slate-light50"
-        onClick={() => {
-          toggleEdit();
-          addWorkout({ ...initWorkout, id: id });
-          handleEditingId(id);
-          console.log(id);
-          incrementId();
-          jumpToCard(workouts.length);
-        }}
-      >
-        {AddIcon}
-      </button>
-      <button
-        className="rounded-full bg-slate-light300 p-2 text-slate-main600 shadow-sm transition-all ease-out hover:translate-x-1 dark:bg-slate-light400 dark:text-slate-light50"
-        onClick={toggleEdit}
-      >
-        {DoneIcon}
-      </button>
     </div>
   );
 };
