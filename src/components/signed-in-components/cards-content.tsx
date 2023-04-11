@@ -4,7 +4,8 @@ import type { CardsContentProps } from "../../types/types";
 import { WorkoutCardsCarousel } from "../wrappers";
 import { StatelessCardContent } from "./stateless-cards-content";
 import { WorkoutCard } from "./workout-card";
-import { CardNavArrows, CardsNavButtons, CardsEditBtns } from "../buttons";
+import { CarouselNavArrows, CarouselNavBtns } from "../buttons";
+import { CardEditButttons } from "./card-edit-buttons";
 
 export const CardsContent = ({
   workouts,
@@ -32,8 +33,8 @@ export const CardsContent = ({
 
   return (
     <div className="relative flex flex-col gap-2">
-      <div className="relative px-12">
-        <CardNavArrows
+      <div className="relative px-8">
+        <CarouselNavArrows
           workouts={workouts}
           prevCard={prevCard}
           nextCard={nextCard}
@@ -54,13 +55,13 @@ export const CardsContent = ({
           ))}
         </WorkoutCardsCarousel>
       </div>
-      <CardsNavButtons
+      <CarouselNavBtns
         InFocus={InFocus}
         workouts={workouts}
         jumpToCard={jumpToCard}
       />
       {isEditing && (
-        <CardsEditBtns
+        <CardEditButttons
           workouts={workouts}
           addWorkout={addWorkout}
           jumpToCard={jumpToCard}
