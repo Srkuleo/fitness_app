@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { useTempWorkout } from "../../hooks/useTempWorkout";
 import type { WorkoutCardProps } from "../../types/types";
 import { EditIcon, RemoveIcon } from "../svg-components/svg";
 import { StartBtn, SubmitFormBtn } from "../buttons";
+import { Modal } from "./modal";
 
 export const WorkoutCard = ({
   workout,
@@ -14,6 +16,11 @@ export const WorkoutCard = ({
   toggleEdit,
 }: WorkoutCardProps) => {
   const { tempWorkout, handleInput } = useTempWorkout(workout);
+  const [showModal, setShowModal] = useState(false);
+
+  function openModal() {
+    setShowModal(true);
+  }
 
   return (
     <div className="workout-card-layout">
@@ -23,8 +30,9 @@ export const WorkoutCard = ({
           <button
             className="absolute right-4 top-4 z-10 rounded-full bg-red-removeBtn100 p-2 text-red-button700 shadow-md ring-1 ring-red-button400 transition-all ease-out hover:bg-red-button500 hover:text-slate-light50 hover:ring-red-button700"
             onClick={() => {
-              removeWorkout(workout.id);
-              switchInFocus();
+              // removeWorkout(workout.id);
+              // switchInFocus();
+              openModal();
             }}
           >
             {RemoveIcon}
@@ -38,6 +46,13 @@ export const WorkoutCard = ({
           >
             <EditIcon className="h-8 w-8" strokeWidth={2} />
           </button>
+          {showModal && (
+            <Modal
+              workout={workout}
+              removeWorkout={removeWorkout}
+              switchInFocus={switchInFocus}
+            />
+          )}
         </>
       )}
       {editingId === workout.id ? (
