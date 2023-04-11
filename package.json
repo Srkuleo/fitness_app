@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.13",
     "@prisma/client": "^4.12.0",
     "framer-motion": "^10.10.0",
     "next": "13.2.4",
