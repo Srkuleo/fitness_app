@@ -1,4 +1,7 @@
+import { Dialog } from "@headlessui/react";
 import type { WrapperProp } from "../types/types";
+import { motion } from "framer-motion";
+import React from "react";
 
 //Wrappers for sign-in and sign-up pages
 export const ContentWrapper = ({ children }: WrapperProp) => {
@@ -24,15 +27,9 @@ export const OAuthBtnWrapper = ({ children }: WrapperProp) => {
 };
 
 //Wrappers for signed-in page
-export const PageContentWrapper = ({
-  children,
-  closeDropDown,
-}: WrapperProp & { closeDropDown: () => void }) => {
+export const PageContentWrapper = ({ children }: WrapperProp) => {
   return (
-    <div
-      className="fixed inset-0 flex justify-center"
-      onMouseEnter={closeDropDown}
-    >
+    <div className="fixed inset-0 flex justify-center">
       <div className="mt-32 flex flex-col gap-6">{children}</div>
     </div>
   );
@@ -51,5 +48,39 @@ export const WorkoutCardsCarousel = ({
         {children}
       </div>
     </div>
+  );
+};
+
+export const ModalWrapper = ({
+  children,
+  open,
+  onClose,
+  cancelButtonRef,
+}: WrapperProp & {
+  open: boolean;
+  onClose: () => void;
+  cancelButtonRef: React.MutableRefObject<null>;
+}) => {
+  return (
+    <Dialog
+      as={motion.div}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="relative z-10"
+      onClose={onClose}
+      open={open}
+      initialFocus={cancelButtonRef}
+    >
+      <div className="fixed inset-0 bg-slate-dark800 bg-opacity-75 transition-opacity dark:bg-slate-dark950 dark:bg-opacity-90" />
+
+      <div className="fixed inset-0 overflow-y-auto">
+        <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+          <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-slate-light50 text-left shadow-xl transition-all dark:bg-slate-dark800 sm:my-8 sm:w-full sm:max-w-lg">
+            {children}
+          </Dialog.Panel>
+        </div>
+      </div>
+    </Dialog>
   );
 };
