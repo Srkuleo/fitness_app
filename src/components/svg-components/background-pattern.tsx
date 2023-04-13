@@ -2,7 +2,7 @@ import { circles } from "./circles";
 
 const BackgroundPattern = () => {
   return (
-    <div className="absolute inset-0">
+    <div>
       {circles}
       {curve}
     </div>
