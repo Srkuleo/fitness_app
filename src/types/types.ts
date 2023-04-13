@@ -20,8 +20,6 @@ export interface WorkoutProps {
 
 export interface OptionsMenuProps {
   workouts: WorkoutProps[];
-  isOpen: boolean;
-  openDropDown: () => void;
   toggleEdit: () => void;
 }
 
