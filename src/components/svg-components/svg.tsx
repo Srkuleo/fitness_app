@@ -424,11 +424,11 @@ export const NextCardArrow = (
 
 export const ExclamationTriangleIcon = (
   <svg
-    className="text-red-600 h-6 w-6"
+    className="text-red-removeBtn600 h-6 w-6"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
-    strokeWidth={1.5}
+    strokeWidth={1.7}
     stroke="currentColor"
     aria-hidden="true"
   >
