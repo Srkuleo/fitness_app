@@ -5,13 +5,11 @@ import { ExclamationTriangleIcon } from "../svg-components/svg";
 import { useRef } from "react";
 
 export const RemoveModal = ({
-  open,
   onClose,
   workout,
   removeWorkout,
   switchInFocus,
 }: {
-  open: boolean;
   onClose: () => void;
   workout: WorkoutProps;
   removeWorkout: (id: number) => void;
@@ -20,11 +18,7 @@ export const RemoveModal = ({
   const cancelButtonRef = useRef(null);
 
   return (
-    <ModalWrapper
-      open={open}
-      onClose={onClose}
-      cancelButtonRef={cancelButtonRef}
-    >
+    <ModalWrapper onClose={onClose} cancelButtonRef={cancelButtonRef}>
       <div className="bg-slate-light50 px-4 pb-4 pt-5 dark:bg-slate-dark800 sm:p-6 sm:pb-4">
         <div className="sm:flex sm:items-start">
           <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-removeBtn100 sm:mx-0 sm:h-10 sm:w-10">
