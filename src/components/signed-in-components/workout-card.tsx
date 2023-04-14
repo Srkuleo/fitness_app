@@ -1,9 +1,7 @@
-import { useState } from "react";
 import { useTempWorkout } from "../../hooks/useTempWorkout";
 import type { WorkoutCardProps } from "../../types/types";
-import { EditIcon, RemoveIcon } from "../svg-components/svg";
-import { StartBtn, SubmitFormBtn } from "../buttons";
-import { RemoveModal } from "./remove-modal";
+import { EditOverlay } from "./edit-overlay";
+import { FormBtns, StartBtn } from "../buttons";
 import { AnimatePresence } from "framer-motion";
 
 export const WorkoutCard = ({
@@ -14,54 +12,49 @@ export const WorkoutCard = ({
   removeWorkout,
   switchInFocus,
   isEditing,
-  toggleEdit,
+  closeEdit,
+  isAdding,
+  toggleAdding,
 }: WorkoutCardProps) => {
   const { tempWorkout, handleInput } = useTempWorkout(workout);
-  const [showModal, setShowModal] = useState(false);
+
+  function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (isAdding) {
+      toggleAdding();
+    }
+    changeWorkout(tempWorkout);
+    handleEditingId(undefined);
+  }
+
+  function handleFormReset(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (isAdding) {
+      removeWorkout(workout.id);
+      switchInFocus();
+    } else {
+      handleEditingId(undefined);
+    }
+  }
 
   return (
     <div className="workout-card-layout">
-      {isEditing && (
-        <>
-          <div className="absolute inset-0 z-10 bg-slate-light500/70 dark:bg-slate-dark800/80" />
-          <button
-            className="absolute right-4 top-4 z-10 rounded-full bg-red-removeBtn100 p-2 text-red-button700 shadow-md ring-1 ring-red-button400 transition-all ease-out hover:bg-red-button500 hover:text-slate-light50 hover:ring-red-button700"
-            onClick={() => {
-              setShowModal(true);
-            }}
-          >
-            {RemoveIcon}
-          </button>
-          <button
-            className="center absolute left-[50%] top-[50%] z-10 rounded-full bg-green-light100 p-2 text-green-dark700 shadow-md ring-1 ring-green-light400 transition-all ease-out hover:bg-green-dark600 hover:text-slate-light50 hover:ring-green-dark700"
-            onClick={() => {
-              handleEditingId(workout.id);
-              toggleEdit();
-            }}
-          >
-            <EditIcon className="h-8 w-8" strokeWidth={2} />
-          </button>
-          <AnimatePresence>
-            {showModal && (
-              <RemoveModal
-                open={showModal}
-                onClose={() => setShowModal(false)}
-                workout={workout}
-                removeWorkout={removeWorkout}
-                switchInFocus={switchInFocus}
-              />
-            )}
-          </AnimatePresence>
-        </>
-      )}
+      <AnimatePresence>
+        {isEditing && (
+          <EditOverlay
+            workout={workout}
+            handleEditingId={handleEditingId}
+            removeWorkout={removeWorkout}
+            switchInFocus={switchInFocus}
+            closeEdit={closeEdit}
+          />
+        )}
+      </AnimatePresence>
       {editingId === workout.id ? (
         <form
           className="flex flex-col items-center p-4"
-          onSubmit={(e) => {
-            e.preventDefault();
-            changeWorkout(tempWorkout);
-            handleEditingId(undefined);
-          }}
+          onSubmit={handleFormSubmit}
+          onReset={handleFormReset}
         >
           <div>
             <input
@@ -85,8 +78,7 @@ export const WorkoutCard = ({
               onChange={handleInput}
             />
           </div>
-
-          <SubmitFormBtn />
+          <FormBtns />
         </form>
       ) : (
         <div className="flex flex-col items-center p-4">
