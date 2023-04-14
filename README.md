@@ -10,8 +10,9 @@ Stay tuned for future updates!
 
 #### Priority
 
-- _Add animation to edit layout buttons, submit form and cards edit buttos. Finish UI for edit and adding cards._
-- _Extract modal as reusable component using headless ui, add animation with framer motion and then make remove modal, confirming change and done editing. Add animation with framer motion to carousel and new workout slide._
+- _Finish all errors in cards-content.tsx._
+- _Add animation to edit layout buttons, submit form, cards edit buttos, options menu, carousel - framer motion. Finish UI for edit and adding cards._
+- _Make confirming change, canceling change and cancel adding modal._
 
 - _Make start button a link component that leads to new page with workout details._
 - _Work around setting planetscale db and prisma schema._
@@ -22,7 +23,6 @@ Stay tuned for future updates!
 #### Later on
 
 - _Add responsiveness to the UI._
-- _Add animations._
 - _Add profile page with certain type of tracking achievements._
 - _Add Serbian and Japanese language support._
 
