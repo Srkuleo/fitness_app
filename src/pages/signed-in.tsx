@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useWorkouts } from "../hooks/useWorkouts";
-import { useEdit } from "../hooks/useEdit";
+import { useEditOverlay } from "../hooks/useEditOverlay";
 import BackgroundPattern from "../components/svg-components/background-pattern";
 import {
   FixedLogo,
@@ -18,7 +18,8 @@ const SignedIn: NextPage = () => {
     { id: 2, title: "Lower 1", description: "The best one so far!" },
     { id: 3, title: "Lower 2", description: "The best one so far!" },
   ]);
-  const { isEditing, toggleEdit } = useEdit();
+  const { isOpenEditOverlay, openEditOverlay, closeEditOverlay } =
+    useEditOverlay();
 
   return (
     <>
@@ -30,7 +31,7 @@ const SignedIn: NextPage = () => {
       <main>
         <BackgroundPattern />
         <FixedLogo />
-        <OptionsMenu workouts={workouts} toggleEdit={toggleEdit} />
+        <OptionsMenu workouts={workouts} openEditOverlay={openEditOverlay} />
         <PageContentWrapper>
           <CardsHeading workouts={workouts} />
           <CardsContent
@@ -38,8 +39,8 @@ const SignedIn: NextPage = () => {
             addWorkout={addWorkout}
             changeWorkout={changeWorkout}
             removeWorkout={removeWorkout}
-            isEditing={isEditing}
-            toggleEdit={toggleEdit}
+            isOpenEditOverlay={isOpenEditOverlay}
+            closeEditOverlay={closeEditOverlay}
           />
         </PageContentWrapper>
       </main>
