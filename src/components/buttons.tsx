@@ -10,6 +10,7 @@ import {
   DoneIcon,
   PrevCardArrow,
   NextCardArrow,
+  CancelIcon,
 } from "./svg-components/svg";
 
 //Sign pages buttons
@@ -119,13 +120,21 @@ export const CarouselNavBtns = ({
   );
 };
 
-export const SubmitFormBtn = () => {
+export const FormBtns = () => {
   return (
-    <button
-      type="submit"
-      className="rounded-full bg-slate-light300 p-mediumButton text-slate-main600 shadow-sm transition-all ease-out hover:translate-y-1 hover:bg-slate-light400 dark:bg-slate-light400 dark:text-slate-light50"
-    >
-      {DoneIcon}
-    </button>
+    <div className="mt-2 space-x-2">
+      <button
+        type="reset"
+        className="rounded-full bg-slate-light300 p-2 text-slate-main600 shadow-sm transition-all ease-out hover:translate-y-1 hover:bg-slate-light400 dark:bg-slate-light400 dark:text-slate-light50"
+      >
+        {CancelIcon}
+      </button>
+      <button
+        type="submit"
+        className="rounded-full bg-slate-light300 p-2 text-slate-main600 shadow-sm transition-all ease-out hover:translate-y-1 hover:bg-slate-light400 dark:bg-slate-light400 dark:text-slate-light50"
+      >
+        {DoneIcon}
+      </button>
+    </div>
   );
 };
