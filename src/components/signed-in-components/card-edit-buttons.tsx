@@ -6,9 +6,10 @@ import type { CardEditButtonsProps } from "../../types/types";
 export const CardEditButttons = ({
   workouts,
   addWorkout,
-  toggleEdit,
+  closeEdit,
   jumpToCard,
   handleEditingId,
+  toggleAdding,
 }: CardEditButtonsProps) => {
   const { id, incrementId } = useIncrementId();
 
@@ -17,7 +18,8 @@ export const CardEditButttons = ({
       <button
         className="rounded-full bg-slate-light300 p-2 text-slate-main600 shadow-sm transition-all ease-out hover:-translate-x-1 dark:bg-slate-light400 dark:text-slate-light50"
         onClick={() => {
-          toggleEdit();
+          closeEdit();
+          toggleAdding();
           addWorkout({ ...initWorkout, id: id });
           handleEditingId(id);
           console.log(id);
@@ -29,7 +31,7 @@ export const CardEditButttons = ({
       </button>
       <button
         className="rounded-full bg-slate-light300 p-2 text-slate-main600 shadow-sm transition-all ease-out hover:translate-x-1 dark:bg-slate-light400 dark:text-slate-light50"
-        onClick={toggleEdit}
+        onClick={closeEdit}
       >
         {DoneIcon}
       </button>
