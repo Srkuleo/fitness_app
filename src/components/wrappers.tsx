@@ -40,7 +40,7 @@ export const WorkoutCardsCarousel = ({
   InFocus,
 }: WrapperProp & { InFocus: number }) => {
   return (
-    <div className="max-w-[400px] overflow-hidden rounded-2xl shadow-xl">
+    <div className="max-w-[400px] overflow-hidden shadow-xl rounded-2xl">
       <div
         className="flex gap-5 transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${InFocus * 105}%)` }}
@@ -53,34 +53,52 @@ export const WorkoutCardsCarousel = ({
 
 export const ModalWrapper = ({
   children,
-  open,
   onClose,
   cancelButtonRef,
 }: WrapperProp & {
-  open: boolean;
   onClose: () => void;
   cancelButtonRef: React.MutableRefObject<null>;
 }) => {
   return (
     <Dialog
-      as={motion.div}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
       className="relative z-10"
       onClose={onClose}
-      open={open}
+      open={true}
       initialFocus={cancelButtonRef}
     >
-      <div className="fixed inset-0 bg-slate-dark800 bg-opacity-75 transition-opacity dark:bg-slate-dark950 dark:bg-opacity-90" />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: 1,
+          transition: { duration: 0.4, ease: [0.36, 0.66, 0.04, 1] },
+        }}
+        exit={{
+          opacity: 0,
+          transition: { duration: 0.3, ease: [0.36, 0.66, 0.04, 1] },
+        }}
+        className="fixed inset-0 bg-slate-dark800 bg-opacity-75 dark:bg-slate-dark950 dark:bg-opacity-90"
+      />
 
-      <div className="fixed inset-0 overflow-y-auto">
+      <motion.div
+        initial={{ opacity: 0, y: "25%" }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.4, ease: [0.36, 0.66, 0.04, 1] },
+        }}
+        exit={{
+          opacity: 0,
+          y: "25%",
+          transition: { duration: 0.3, ease: [0.36, 0.66, 0.04, 1] },
+        }}
+        className="fixed inset-0 overflow-y-auto"
+      >
         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-          <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-slate-light50 text-left shadow-xl transition-all dark:bg-slate-dark800 sm:my-8 sm:w-full sm:max-w-lg">
+          <div className="relative transform overflow-hidden rounded-lg bg-slate-light50 text-left shadow-xl transition-all dark:bg-slate-dark800 sm:my-8 sm:w-full sm:max-w-lg">
             {children}
-          </Dialog.Panel>
+          </div>
         </div>
-      </div>
+      </motion.div>
     </Dialog>
   );
 };
