@@ -1,4 +1,8 @@
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+import { useOpenDropDown } from "../../hooks/useOpenDropDown";
+import type { OptionsMenuProps } from "../../types/types";
 import NoteSetLogo from "../svg-components/note-set-logo";
 import {
   LightModeIcon,
@@ -9,10 +13,6 @@ import {
   LogsIcon,
   SignOutIcon,
 } from "../svg-components/svg";
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import type { OptionsMenuProps } from "../../types/types";
-import { useOpen } from "../../hooks/useOpen";
 
 export const FixedLogo = () => {
   return (
@@ -22,10 +22,13 @@ export const FixedLogo = () => {
   );
 };
 
-export const OptionsMenu = ({ workouts, toggleEdit }: OptionsMenuProps) => {
+export const OptionsMenu = ({
+  workouts,
+  openEditOverlay,
+}: OptionsMenuProps) => {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
-  const { isOpen, openDropDown, closeDropDown } = useOpen();
+  const { isOpenDropDown, openDropDown, closeDropDown } = useOpenDropDown();
 
   useEffect(() => {
     setMounted(true);
@@ -39,7 +42,7 @@ export const OptionsMenu = ({ workouts, toggleEdit }: OptionsMenuProps) => {
 
   return (
     <>
-      {isOpen && (
+      {isOpenDropDown && (
         <div onMouseEnter={closeDropDown} className="absolute inset-0 z-10" />
       )}
       <div className="fixed right-18 top-9 z-10 flex flex-col items-end gap-2 pt-2">
@@ -48,11 +51,11 @@ export const OptionsMenu = ({ workouts, toggleEdit }: OptionsMenuProps) => {
           className="group flex items-center gap-3 text-lg font-medium uppercase text-slate-main600 dark:text-slate-light50"
         >
           srkuleo
-          <ArrowDownIcon isOpen={isOpen} />
+          <ArrowDownIcon isOpenDropDown={isOpenDropDown} />
         </button>
         <div
           className={`${
-            isOpen ? "scale-100" : "scale-0"
+            isOpenDropDown ? "scale-100" : "scale-0"
           } flex origin-top-right flex-col gap-1 rounded-lg bg-slate-light50 p-2 shadow-md transition-all duration-200 ease-out dark:bg-slate-dark700`}
         >
           <Link className="dropdown-menu-field group" href="/">
@@ -65,7 +68,7 @@ export const OptionsMenu = ({ workouts, toggleEdit }: OptionsMenuProps) => {
               workouts.length < 1 ? "pointer-events-none opacity-20" : ""
             }`}
             onClick={() => {
-              toggleEdit();
+              openEditOverlay();
             }}
           >
             <EditIcon className="dropdown-menu-icon" strokeWidth={2.2} />
