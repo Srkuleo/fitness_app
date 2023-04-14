@@ -20,7 +20,7 @@ export interface WorkoutProps {
 
 export interface OptionsMenuProps {
   workouts: WorkoutProps[];
-  toggleEdit: () => void;
+  openEditOverlay: () => void;
 }
 
 export interface EditIconProps {
@@ -33,13 +33,14 @@ export interface CardsContentProps {
   addWorkout: (workout: WorkoutProps) => void;
   changeWorkout: (editedWorkout: WorkoutProps | undefined) => void;
   removeWorkout: (id: number) => void;
-  isEditing: boolean;
-  toggleEdit: () => void;
+  isOpenEditOverlay: boolean;
+  closeEditOverlay: () => void;
 }
 
 export interface StatelessCardContentProps
-  extends Pick<CardsContentProps, "addWorkout" | "toggleEdit"> {
-  handleEditingId: (id: number | undefined) => void;
+  extends Pick<CardsContentProps, "addWorkout" | "closeEditOverlay"> {
+  handleEditingForm: (id: number | undefined) => void;
+  toggleAdding: () => void;
 }
 
 export interface WorkoutCardProps
@@ -48,7 +49,14 @@ export interface WorkoutCardProps
   switchInFocus: () => void;
   editingId: number | undefined;
   handleEditingId: (id: number | undefined) => void;
+  isAdding: boolean;
+  toggleAdding: () => void;
 }
+
+export type EditOverlayProps = Omit<
+  WorkoutCardProps,
+  "changeWorkout" | "editingId" | "isEditing" | "isAdding" | "toggleAdding"
+>;
 
 export interface CarouselNavArrowsProps {
   workouts: WorkoutProps[];
@@ -65,9 +73,10 @@ export interface CarouselNavBtnsProps {
 export interface CardEditButtonsProps {
   workouts: WorkoutProps[];
   addWorkout: (workout: WorkoutProps) => void;
-  toggleEdit: () => void;
+  closeEdit: () => void;
   jumpToCard: (index: number) => void;
   handleEditingId: (id: number | undefined) => void;
+  toggleAdding: () => void;
 }
 
 export interface CardEditBarProps {
