@@ -208,12 +208,16 @@ export const NoteSetLogoSvg = (
   </svg>
 );
 
-export const ArrowDownIcon = ({ isOpen }: { isOpen: boolean }) => (
+export const ArrowDownIcon = ({
+  isOpenDropDown,
+}: {
+  isOpenDropDown: boolean;
+}) => (
   <svg
     className={`
       h-4 w-4 transition-all duration-300
-      ${isOpen && "rotate-180 ease-in"}
-      ${!isOpen && "ease-out group-hover:translate-y-0.5"}`}
+      ${isOpenDropDown && "rotate-180 ease-in"}
+      ${isOpenDropDown && "ease-out group-hover:translate-y-0.5"}`}
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -339,6 +343,24 @@ export const AddIcon = (
   </svg>
 );
 
+export const CancelIcon = (
+  <svg
+    className="h-5 w-5"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    strokeWidth={2}
+    stroke="currentColor"
+    aria-hidden="true"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M6 18L18 6M6 6l12 12"
+    />
+  </svg>
+);
+
 export const DoneIcon = (
   <svg
     className="h-5 w-5"
@@ -424,7 +446,7 @@ export const NextCardArrow = (
 
 export const ExclamationTriangleIcon = (
   <svg
-    className="text-red-removeBtn600 h-6 w-6"
+    className="h-6 w-6 text-red-removeBtn600"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
