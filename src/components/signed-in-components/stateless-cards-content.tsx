@@ -4,9 +4,10 @@ import { initWorkout } from "../../utils/variables";
 import { AddIcon, DbIcon } from "../svg-components/svg";
 
 export const StatelessCardContent = ({
-  toggleEdit,
+  toggleAdding,
+  closeEditOverlay,
   addWorkout,
-  handleEditingId,
+  handleEditingForm,
 }: StatelessCardContentProps) => {
   const { id, incrementId } = useIncrementId();
 
@@ -25,9 +26,10 @@ export const StatelessCardContent = ({
           <button
             className="add-workout-btn"
             onClick={() => {
-              toggleEdit();
+              toggleAdding();
+              closeEditOverlay();
               addWorkout({ ...initWorkout, id: id });
-              handleEditingId(id);
+              handleEditingForm(id);
               incrementId();
             }}
           >
