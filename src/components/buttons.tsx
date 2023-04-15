@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import Link from "next/link";
 import type {
   CarouselNavArrowsProps,
@@ -64,13 +65,14 @@ export const SignButton = ({ page }: { page: "sign in" | "sign up" }) => {
 //Signed in page buttons
 export const StartBtn = () => {
   return (
-    <button
+    <motion.button
+      whileTap={{ scale: 0.95 }}
       className="rounded-xl bg-gradient-to-r from-orange-button500
       to-red-button500 px-6 py-2 font-semibold uppercase text-slate-light200
       shadow-md hover:from-orange-button600 hover:to-red-button700"
     >
       Start
-    </button>
+    </motion.button>
   );
 };
 
@@ -101,7 +103,7 @@ export const CarouselNavArrows = ({
 
 export const CarouselNavBtns = ({
   workouts,
-  InFocus,
+  cardInFocus,
   jumpToCard,
 }: CarouselNavBtnsProps) => {
   return (
@@ -111,7 +113,7 @@ export const CarouselNavBtns = ({
           key={workout.id}
           role="button"
           className={`h-3 w-3 rounded-full bg-slate-light500 dark:bg-slate-light100 ${
-            InFocus === i ? "p-2" : "opacity-40"
+            cardInFocus === i ? "p-2" : "opacity-40"
           }`}
           onClick={() => jumpToCard(i)}
         ></div>
