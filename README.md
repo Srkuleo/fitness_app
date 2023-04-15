@@ -10,8 +10,7 @@ Stay tuned for future updates!
 
 #### Priority
 
-- _Finish all errors in cards-content.tsx._
-- _Add animation to edit layout buttons, submit form, cards edit buttos, options menu, carousel - framer motion. Finish UI for edit and adding cards._
+- _Add animation to edit overlay, submit form, cards edit buttos - framer motion. Finish UI for edit and adding cards._
 - _Make confirming change, canceling change and cancel adding modal._
 
 - _Make start button a link component that leads to new page with workout details._
