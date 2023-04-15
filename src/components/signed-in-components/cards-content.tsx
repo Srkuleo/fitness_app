@@ -1,72 +1,78 @@
-import { useEditingId } from "../../hooks/useEditingId";
-import { useInFocus } from "../../hooks/useInFocus";
+import { useEditForm } from "../../hooks/useEditForm";
+import { useCardInFocus } from "../../hooks/useCardInFocus";
 import type { CardsContentProps } from "../../types/types";
 import { WorkoutCardsCarousel } from "../wrappers";
 import { StatelessCardContent } from "./stateless-cards-content";
 import { WorkoutCard } from "./workout-card";
 import { CarouselNavArrows, CarouselNavBtns } from "../buttons";
 import { CardEditButttons } from "./card-edit-buttons";
+import { useState } from "react";
 
 export const CardsContent = ({
   workouts,
   addWorkout,
   changeWorkout,
   removeWorkout,
-  isEditing,
-  toggleEdit,
+  isOpenEditOverlay,
+  closeEditOverlay,
 }: CardsContentProps) => {
-  const { InFocus, prevCard, nextCard, switchInFocus, jumpToCard } =
-    useInFocus(workouts);
-  const { editingId, handleEditingId } = useEditingId();
+  const [isAdding, setIsAdding] = useState(false);
+  const { cardInFocus, prevCard, nextCard, switchInFocus, jumpToCard } =
+    useCardInFocus(workouts);
+  const { editForm, handleEditForm } = useEditForm();
 
-  const currWorkout = workouts[InFocus];
+  const currWorkout = workouts[cardInFocus];
 
   if (!currWorkout) {
     return (
       <StatelessCardContent
         addWorkout={addWorkout}
-        handleEditingId={handleEditingId}
-        toggleEdit={toggleEdit}
+        handleEditForm={handleEditForm}
+        closeEditOverlay={closeEditOverlay}
+        toggleAdding={() => setIsAdding(true)}
       />
     );
   }
 
   return (
-    <div className="relative flex flex-col gap-2">
+    <div className="flex flex-col gap-2">
       <div className="relative px-8">
         <CarouselNavArrows
           workouts={workouts}
           prevCard={prevCard}
           nextCard={nextCard}
         />
-        <WorkoutCardsCarousel InFocus={InFocus}>
+        <WorkoutCardsCarousel cardInFocus={cardInFocus}>
           {workouts.map((workout) => (
             <WorkoutCard
               key={workout.id}
               workout={workout}
-              editingId={editingId}
-              handleEditingId={handleEditingId}
+              editForm={editForm}
+              handleEditForm={handleEditForm}
               changeWorkout={changeWorkout}
               removeWorkout={removeWorkout}
               switchInFocus={switchInFocus}
-              isEditing={isEditing}
-              toggleEdit={toggleEdit}
+              isOpenEditOverlay={isOpenEditOverlay}
+              closeEditOverlay={closeEditOverlay}
+              isAdding={isAdding}
+              toggleAdding={() => setIsAdding(false)}
             />
           ))}
         </WorkoutCardsCarousel>
       </div>
       <CarouselNavBtns
-        InFocus={InFocus}
+        cardInFocus={cardInFocus}
         workouts={workouts}
         jumpToCard={jumpToCard}
       />
-      {isEditing && (
+      {isOpenEditOverlay && (
         <CardEditButttons
           workouts={workouts}
           addWorkout={addWorkout}
           jumpToCard={jumpToCard}
-          handleEditingId={handleEditingId}
-          toggleEdit={toggleEdit}
+          closeEditOverlay={closeEditOverlay}
+          handleEditForm={handleEditForm}
+          toggleAdding={() => setIsAdding(true)}
         />
       )}
     </div>
