@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useIncrementId } from "../../hooks/useIncrementId";
 import type { StatelessCardContentProps } from "../../types/types";
 import { initWorkout } from "../../utils/variables";
@@ -23,7 +24,8 @@ export const StatelessCardContent = ({
           {DbIcon}
         </div>
         <div className="absolute bottom-12 right-4">
-          <button
+          <motion.button
+            whileTap={{ scale: 0.95 }}
             className="add-workout-btn"
             onClick={() => {
               toggleAdding();
@@ -35,7 +37,7 @@ export const StatelessCardContent = ({
           >
             {AddIcon}
             New workout
-          </button>
+          </motion.button>
         </div>
       </div>
     </div>
