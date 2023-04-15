@@ -5,40 +5,42 @@ import { AnimatePresence, motion } from "framer-motion";
 import { RemoveModal } from "./remove-modal";
 
 export const EditOverlay = ({
-  handleEditingId,
+  handleEditForm,
+  closeEditOverlay,
   workout,
   removeWorkout,
   switchInFocus,
-  closeEdit,
 }: EditOverlayProps) => {
   const [showModal, setShowModal] = useState(false);
+
+  const overlayVariant = {
+    hidden: {
+      opacity: 0,
+    },
+    "fade-in": {
+      opacity: 1,
+      transition: { duration: 0.2, ease: "easeOut" },
+    },
+    "fade-out": {
+      opacity: 0,
+      transition: { duration: 0.1, ease: "easeIn" },
+    },
+  };
 
   return (
     <>
       <motion.div
-        initial={{ opacity: 0, x: "-100%" }}
-        animate={{
-          opacity: 1,
-          x: 0,
-          transition: { duration: 0.2, ease: "easeOut" },
-        }}
-        exit={{
-          opacity: 0,
-          x: "100%",
-          transition: { duration: 0.1, ease: "easeIn" },
-        }}
+        variants={overlayVariant}
+        initial="hidden"
+        animate="fade-in"
+        exit="fade-out"
         className="absolute inset-0 z-10 bg-slate-light500/70 dark:bg-slate-dark800/80"
       />
       <motion.button
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: 1,
-          transition: { duration: 0.2, ease: "easeOut" },
-        }}
-        exit={{
-          opacity: 0,
-          transition: { duration: 0.1, ease: "easeIn" },
-        }}
+        variants={overlayVariant}
+        initial="hidden"
+        animate="fade-in"
+        exit="fade-out"
         className="absolute right-4 top-4 z-10 rounded-full bg-red-removeBtn100 p-2 text-red-button700 shadow-md ring-1 ring-red-button400 transition-all ease-out hover:bg-red-button500 hover:text-slate-light50 hover:ring-red-button700"
         onClick={() => {
           setShowModal(true);
@@ -47,19 +49,14 @@ export const EditOverlay = ({
         {RemoveIcon}
       </motion.button>
       <motion.button
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: 1,
-          transition: { duration: 0.2, ease: "easeOut" },
-        }}
-        exit={{
-          opacity: 0,
-          transition: { duration: 0.1, ease: "easeIn" },
-        }}
+        variants={overlayVariant}
+        initial="hidden"
+        animate="fade-in"
+        exit="fade-out"
         className="center absolute left-[50%] top-[50%] z-10 rounded-full bg-green-light100 p-2 text-green-dark700 shadow-md ring-1 ring-green-light400 transition-all ease-out hover:bg-green-dark600 hover:text-slate-light50 hover:ring-green-dark700"
         onClick={() => {
-          handleEditingId(workout.id);
-          closeEdit();
+          handleEditForm(workout.id);
+          closeEditOverlay();
         }}
       >
         <EditIcon className="h-8 w-8" strokeWidth={2} />
