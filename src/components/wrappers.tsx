@@ -37,16 +37,20 @@ export const PageContentWrapper = ({ children }: WrapperProp) => {
 
 export const WorkoutCardsCarousel = ({
   children,
-  InFocus,
-}: WrapperProp & { InFocus: number }) => {
+  cardInFocus,
+}: WrapperProp & { cardInFocus: number }) => {
+  const variant = {
+    slide: {
+      x: `-${cardInFocus * 105}%`,
+      transition: { duration: 0.4, ease: "easeOut" },
+    },
+  };
+
   return (
-    <div className="max-w-[400px] overflow-hidden shadow-xl rounded-2xl">
-      <div
-        className="flex gap-5 transition-transform duration-500 ease-in-out"
-        style={{ transform: `translateX(-${InFocus * 105}%)` }}
-      >
+    <div className="max-w-[400px] overflow-hidden rounded-2xl shadow-xl">
+      <motion.div variants={variant} animate="slide" className="flex gap-5">
         {children}
-      </div>
+      </motion.div>
     </div>
   );
 };
