@@ -31,6 +31,18 @@ export const OptionsMenu = ({
   const { resolvedTheme, setTheme } = useTheme();
   const { isOpenDropDown, openDropDown, closeDropDown } = useOpenDropDown();
 
+  const variant = {
+    "slide-in": {
+      y: [-12, 0],
+      transition: { duration: 0.175, ease: "easeOut" },
+    },
+    "fade-out": {
+      opacity: 0,
+      y: -4,
+      transition: { duration: 0.125, ease: "easeIn" },
+    },
+  };
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -57,15 +69,9 @@ export const OptionsMenu = ({
         <AnimatePresence>
           {isOpenDropDown && (
             <motion.div
-              animate={{
-                y: [-12, 0],
-                transition: { duration: 0.2, ease: "easeOut" },
-              }}
-              exit={{
-                y: -4,
-                opacity: 0,
-                transition: { duration: 0.15, ease: "easeIn" },
-              }}
+              animate="slide-in"
+              exit="fade-out"
+              variants={variant}
               className="flex flex-col gap-1 rounded-lg bg-slate-light50 p-2 shadow-md dark:bg-slate-dark700"
             >
               <Link className="dropdown-menu-field group" href="/">
