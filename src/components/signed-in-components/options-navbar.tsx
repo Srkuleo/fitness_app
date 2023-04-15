@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { useOpenDropDown } from "../../hooks/useOpenDropDown";
+import { AnimatePresence, motion } from "framer-motion";
 import type { OptionsMenuProps } from "../../types/types";
 import NoteSetLogo from "../svg-components/note-set-logo";
 import {
@@ -53,50 +54,64 @@ export const OptionsMenu = ({
           srkuleo
           <ArrowDownIcon isOpenDropDown={isOpenDropDown} />
         </button>
-        <div
-          className={`${
-            isOpenDropDown ? "scale-100" : "scale-0"
-          } flex origin-top-right flex-col gap-1 rounded-lg bg-slate-light50 p-2 shadow-md transition-all duration-200 ease-out dark:bg-slate-dark700`}
-        >
-          <Link className="dropdown-menu-field group" href="/">
-            {UserIcon}
-            Profile
-          </Link>
-          <button
-            disabled={workouts.length < 1}
-            className={`dropdown-menu-field group ${
-              workouts.length < 1 ? "pointer-events-none opacity-20" : ""
-            }`}
-            onClick={() => {
-              openEditOverlay();
-            }}
-          >
-            <EditIcon className="dropdown-menu-icon" strokeWidth={2.2} />
-            Edit
-          </button>
-          <button className="dropdown-menu-field group">
-            {LogsIcon}
-            View logs
-          </button>
-          <button onClick={toggleMode} className="dropdown-menu-field group">
-            {resolvedTheme === "dark" ? (
-              <>
-                <LightModeIcon className="dropdown-menu-icon" />
-                Light mode
-              </>
-            ) : (
-              <>
-                <DarkModeIcon className="dropdown-menu-dark-mode-icon" />
-                Dark mode
-              </>
-            )}
-          </button>
-          <div className="border-b border-green-light300/70 dark:border-green-dark700" />
-          <Link className="dropdown-menu-field group" href="/">
-            {SignOutIcon}
-            Sign out
-          </Link>
-        </div>
+        <AnimatePresence>
+          {isOpenDropDown && (
+            <motion.div
+              animate={{
+                y: [-12, 0],
+                transition: { duration: 0.2, ease: "easeOut" },
+              }}
+              exit={{
+                y: -4,
+                opacity: 0,
+                transition: { duration: 0.15, ease: "easeIn" },
+              }}
+              className="flex flex-col gap-1 rounded-lg bg-slate-light50 p-2 shadow-md dark:bg-slate-dark700"
+            >
+              <Link className="dropdown-menu-field group" href="/">
+                {UserIcon}
+                Profile
+              </Link>
+              <button
+                disabled={workouts.length < 1}
+                className={`dropdown-menu-field group ${
+                  workouts.length < 1 ? "pointer-events-none opacity-20" : ""
+                }`}
+                onClick={() => {
+                  openEditOverlay();
+                }}
+              >
+                <EditIcon className="dropdown-menu-icon" strokeWidth={2.2} />
+                Edit
+              </button>
+              <button className="dropdown-menu-field group">
+                {LogsIcon}
+                View logs
+              </button>
+              <button
+                onClick={toggleMode}
+                className="dropdown-menu-field group"
+              >
+                {resolvedTheme === "dark" ? (
+                  <>
+                    <LightModeIcon className="dropdown-menu-icon" />
+                    Light mode
+                  </>
+                ) : (
+                  <>
+                    <DarkModeIcon className="dropdown-menu-dark-mode-icon" />
+                    Dark mode
+                  </>
+                )}
+              </button>
+              <div className="border-b border-green-light300/70 dark:border-green-dark700" />
+              <Link className="dropdown-menu-field group" href="/">
+                {SignOutIcon}
+                Sign out
+              </Link>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </>
   );
