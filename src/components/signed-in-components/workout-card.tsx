@@ -1,85 +1,45 @@
-import { useTempWorkout } from "../../hooks/useTempWorkout";
+import { AnimatePresence } from "framer-motion";
 import type { WorkoutCardProps } from "../../types/types";
 import { EditOverlay } from "./edit-overlay";
-import { FormBtns, StartBtn } from "../buttons";
-import { AnimatePresence } from "framer-motion";
+import { EditForm } from "./edit-form";
+import { StartBtn } from "../buttons";
 
 export const WorkoutCard = ({
   workout,
-  editingId,
-  handleEditingId,
+  editForm,
+  handleEditForm,
   changeWorkout,
   removeWorkout,
   switchInFocus,
-  isEditing,
-  closeEdit,
+  isOpenEditOverlay,
+  closeEditOverlay,
   isAdding,
   toggleAdding,
 }: WorkoutCardProps) => {
-  const { tempWorkout, handleInput } = useTempWorkout(workout);
-
-  function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (isAdding) {
-      toggleAdding();
-    }
-    changeWorkout(tempWorkout);
-    handleEditingId(undefined);
-  }
-
-  function handleFormReset(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (isAdding) {
-      removeWorkout(workout.id);
-      switchInFocus();
-    } else {
-      handleEditingId(undefined);
-    }
-  }
-
   return (
     <div className="workout-card-layout">
       <AnimatePresence>
-        {isEditing && (
+        {isOpenEditOverlay && (
           <EditOverlay
             workout={workout}
-            handleEditingId={handleEditingId}
+            handleEditForm={handleEditForm}
             removeWorkout={removeWorkout}
             switchInFocus={switchInFocus}
-            closeEdit={closeEdit}
+            closeEditOverlay={closeEditOverlay}
           />
         )}
       </AnimatePresence>
-      {editingId === workout.id ? (
-        <form
-          className="flex flex-col items-center p-4"
-          onSubmit={handleFormSubmit}
-          onReset={handleFormReset}
-        >
-          <div>
-            <input
-              className="workout-input-field"
-              required
-              type="text"
-              name="title"
-              placeholder={workout.title}
-              value={tempWorkout.title}
-              onChange={handleInput}
-            />
-          </div>
-          <div>
-            <input
-              className="workout-input-field"
-              required
-              type="text"
-              name="description"
-              placeholder={workout.description}
-              value={tempWorkout.description}
-              onChange={handleInput}
-            />
-          </div>
-          <FormBtns />
-        </form>
+
+      {editForm === workout.id ? (
+        <EditForm
+          workout={workout}
+          isAdding={isAdding}
+          toggleAdding={toggleAdding}
+          changeWorkout={changeWorkout}
+          handleEditForm={handleEditForm}
+          removeWorkout={removeWorkout}
+          switchInFocus={switchInFocus}
+        />
       ) : (
         <div className="flex flex-col items-center p-4">
           <div className="mb-2">
