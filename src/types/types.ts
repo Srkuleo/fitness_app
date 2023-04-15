@@ -39,7 +39,7 @@ export interface CardsContentProps {
 
 export interface StatelessCardContentProps
   extends Pick<CardsContentProps, "addWorkout" | "closeEditOverlay"> {
-  handleEditingForm: (id: number | undefined) => void;
+  handleEditForm: (id: number | undefined) => void;
   toggleAdding: () => void;
 }
 
@@ -47,42 +47,43 @@ export interface WorkoutCardProps
   extends Omit<CardsContentProps, "workouts" | "addWorkout"> {
   workout: WorkoutProps;
   switchInFocus: () => void;
-  editingId: number | undefined;
-  handleEditingId: (id: number | undefined) => void;
+  editForm: number | undefined;
+  handleEditForm: (id: number | undefined) => void;
   isAdding: boolean;
   toggleAdding: () => void;
 }
 
-export type EditOverlayProps = Omit<
+export type EditOverlayProps = Pick<
   WorkoutCardProps,
-  "changeWorkout" | "editingId" | "isEditing" | "isAdding" | "toggleAdding"
+  | "workout"
+  | "removeWorkout"
+  | "switchInFocus"
+  | "closeEditOverlay"
+  | "handleEditForm"
 >;
 
-export interface CarouselNavArrowsProps {
-  workouts: WorkoutProps[];
+export type EditFormProps = Omit<
+  WorkoutCardProps,
+  "editForm" | "isOpenEditOverlay" | "closeEditOverlay"
+>;
+
+export interface CarouselNavArrowsProps
+  extends Pick<CardsContentProps, "workouts"> {
   prevCard: () => void;
   nextCard: () => void;
 }
 
-export interface CarouselNavBtnsProps {
-  workouts: WorkoutProps[];
-  InFocus: number;
+export interface CarouselNavBtnsProps
+  extends Pick<CardsContentProps, "workouts"> {
+  cardInFocus: number;
   jumpToCard: (index: number) => void;
 }
 
-export interface CardEditButtonsProps {
-  workouts: WorkoutProps[];
-  addWorkout: (workout: WorkoutProps) => void;
-  closeEdit: () => void;
+export type CardEditButtonsProps = Pick<
+  CardsContentProps,
+  "workouts" | "addWorkout" | "closeEditOverlay"
+> & {
   jumpToCard: (index: number) => void;
-  handleEditingId: (id: number | undefined) => void;
+  handleEditForm: (id: number | undefined) => void;
   toggleAdding: () => void;
-}
-
-export interface CardEditBarProps {
-  currWorkout: WorkoutProps;
-  removeWorkout: (id: number) => void;
-  switchOnRemove: () => void;
-  addingState: () => void;
-  toggleEdit: () => void;
-}
+};
