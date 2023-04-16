@@ -10,8 +10,7 @@ Stay tuned for future updates!
 
 #### Priority
 
-- _Add animation to edit overlay, submit form, cards edit buttos - framer motion. Finish UI for edit and adding cards._
-- _Make confirming change, canceling change and cancel adding modal._
+- _Finish submit and discard modals UI, find a way to fix submit and reset form event listener not triggering._
 
 - _Make start button a link component that leads to new page with workout details._
 - _Work around setting planetscale db and prisma schema._
