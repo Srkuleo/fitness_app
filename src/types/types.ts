@@ -87,3 +87,10 @@ export type CardEditButtonsProps = Pick<
   handleEditForm: (id: number | undefined) => void;
   toggleAdding: () => void;
 };
+
+export interface RemoveModalProps {
+  workout: WorkoutProps;
+  onClose: () => void;
+  removeWorkout: (id: number) => void;
+  switchInFocus: () => void;
+}
