@@ -1,10 +1,11 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import type {
   CarouselNavArrowsProps,
   CarouselNavBtnsProps,
   ModeButtonProps,
 } from "../types/types";
+import { buttonsVariant } from "../utils/variables";
 import {
   DarkModeIcon,
   LightModeIcon,
@@ -13,6 +14,8 @@ import {
   NextCardArrow,
   CancelIcon,
 } from "./svg-components/svg";
+import { useState } from "react";
+import { DiscardModal, SubmitModal } from "./signed-in-components/modals";
 
 //Sign pages buttons
 export const GitHubButton = () => {
@@ -123,20 +126,61 @@ export const CarouselNavBtns = ({
 };
 
 export const FormBtns = () => {
+  const [showCancel, setShowCancel] = useState(false);
+  const [showDone, setShowDone] = useState(false);
+  const [discardModal, setDiscardModal] = useState(false);
+  const [submitModal, setSubmitModal] = useState(false);
+
   return (
-    <div className="mt-2 space-x-2">
-      <button
-        type="reset"
-        className="rounded-full bg-slate-light300 p-2 text-slate-main600 shadow-sm transition-all ease-out hover:translate-y-1 hover:bg-slate-light400 dark:bg-slate-light400 dark:text-slate-light50"
-      >
-        {CancelIcon}
-      </button>
-      <button
-        type="submit"
-        className="rounded-full bg-slate-light300 p-2 text-slate-main600 shadow-sm transition-all ease-out hover:translate-y-1 hover:bg-slate-light400 dark:bg-slate-light400 dark:text-slate-light50"
-      >
-        {DoneIcon}
-      </button>
-    </div>
+    <>
+      <div className="mt-2 flex gap-2">
+        <motion.button
+          type="button"
+          onClick={() => setDiscardModal(true)}
+          className="flex items-center gap-1 rounded-full bg-slate-light300 p-2 text-slate-main600 shadow-sm hover:bg-slate-light400 dark:bg-slate-light400 dark:text-slate-light50"
+          onHoverStart={() => setShowCancel(true)}
+          onHoverEnd={() => setShowCancel(false)}
+        >
+          <AnimatePresence>
+            {showCancel && (
+              <motion.span
+                variants={buttonsVariant}
+                initial="hidden"
+                animate="show"
+                exit="hide"
+                className="overflow-hidden pl-2"
+              >
+                Cancel
+              </motion.span>
+            )}
+          </AnimatePresence>
+          {CancelIcon}
+        </motion.button>
+        <motion.button
+          type="button"
+          onClick={() => setSubmitModal(true)}
+          className="flex items-center gap-1 rounded-full bg-slate-light300 p-2 text-slate-main600 shadow-sm hover:bg-slate-light400 dark:bg-slate-light400 dark:text-slate-light50"
+          onHoverStart={() => setShowDone(true)}
+          onHoverEnd={() => setShowDone(false)}
+        >
+          {DoneIcon}
+          <AnimatePresence>
+            {showDone && (
+              <motion.span
+                variants={buttonsVariant}
+                initial="hidden"
+                animate="show"
+                exit="hide"
+                className="overflow-hidden pr-2"
+              >
+                Done
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </motion.button>
+      </div>
+      {discardModal && <DiscardModal onClose={() => setDiscardModal(false)} />}
+      {submitModal && <SubmitModal onClose={() => setSubmitModal(false)} />}
+    </>
   );
 };
