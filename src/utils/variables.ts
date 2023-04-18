@@ -32,3 +32,17 @@ export const buttonsVariant = {
     transition: { duration: 0.02, ease: "easeIn" },
   },
 };
+
+export const editOverlayVariant = {
+  hidden: {
+    opacity: 0,
+  },
+  "fade-in": {
+    opacity: 1,
+    transition: { duration: 0.1, ease: "easeOut" },
+  },
+  "fade-out": {
+    opacity: 0,
+    transition: { duration: 0.05, ease: "easeIn" },
+  },
+};
