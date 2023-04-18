@@ -32,10 +32,5 @@ export const useWorkouts = (initialWorkouts: WorkoutProps[]) => {
     setWorkouts(newList);
   }
 
-  return {
-    workouts,
-    addWorkout,
-    changeWorkout,
-    removeWorkout,
-  };
+  return { workouts, addWorkout, changeWorkout, removeWorkout };
 };
