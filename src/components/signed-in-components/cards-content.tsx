@@ -7,6 +7,7 @@ import { WorkoutCard } from "./workout-card";
 import { CarouselNavArrows, CarouselNavBtns } from "../buttons";
 import { CardEditButttons } from "./card-edit-buttons";
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 export const CardsContent = ({
   workouts,
@@ -65,16 +66,18 @@ export const CardsContent = ({
         workouts={workouts}
         jumpToCard={jumpToCard}
       />
-      {isOpenEditOverlay && (
-        <CardEditButttons
-          workouts={workouts}
-          addWorkout={addWorkout}
-          jumpToCard={jumpToCard}
-          closeEditOverlay={closeEditOverlay}
-          handleEditForm={handleEditForm}
-          toggleAdding={() => setIsAdding(true)}
-        />
-      )}
+      <AnimatePresence>
+        {isOpenEditOverlay && (
+          <CardEditButttons
+            workouts={workouts}
+            addWorkout={addWorkout}
+            jumpToCard={jumpToCard}
+            closeEditOverlay={closeEditOverlay}
+            handleEditForm={handleEditForm}
+            toggleAdding={() => setIsAdding(true)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 };
