@@ -12,22 +12,19 @@ export const useWorkouts = (initialWorkouts: WorkoutProps[]) => {
   }
 
   function changeWorkout(editedWorkout: WorkoutProps | undefined) {
-    if (editedWorkout) {
-      const newList = workouts.map((workout) => {
-        if (workout.id === editedWorkout.id) {
-          return {
-            ...workout,
-            title: editedWorkout.title,
-            description: editedWorkout.description,
-          };
-        } else {
-          return workout;
-        }
-      });
-      setWorkouts(newList);
-    } else {
-      return undefined
-    }
+    if (!editedWorkout) return undefined;
+
+    const newList = workouts.map((workout) => {
+      if (workout.id !== editedWorkout.id) return workout;
+
+      return {
+        ...workout,
+        title: editedWorkout.title,
+        description: editedWorkout.description,
+      };
+    });
+
+    setWorkouts(newList);
   }
 
   function removeWorkout(id: number) {
