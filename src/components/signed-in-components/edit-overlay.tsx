@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { EditOverlayProps } from "../../types/types";
-import { buttonsVariant } from "../../utils/variables";
+import { buttonsVariant, editOverlayVariant } from "../../utils/variables";
 import { EditIcon, RemoveIcon } from "../svg-components/svg";
 import { RemoveModal } from "./modals";
 
@@ -18,31 +18,18 @@ export const EditOverlay = ({
     edit: false,
   });
 
-  const overlayVariant = {
-    hidden: {
-      opacity: 0,
-    },
-    "fade-in": {
-      opacity: 1,
-      transition: { duration: 0.1, ease: "easeOut" },
-    },
-    "fade-out": {
-      opacity: 0,
-      transition: { duration: 0.05, ease: "easeIn" },
-    },
-  };
-
   return (
     <>
       <motion.div
-        variants={overlayVariant}
+        variants={editOverlayVariant}
         initial="hidden"
         animate="fade-in"
         exit="fade-out"
         className="absolute inset-0 z-10 bg-slate-light500/70 dark:bg-slate-dark800/80"
       />
+
       <motion.button
-        variants={overlayVariant}
+        variants={editOverlayVariant}
         initial="hidden"
         animate="fade-in"
         exit="fade-out"
@@ -68,8 +55,9 @@ export const EditOverlay = ({
         </AnimatePresence>
         {RemoveIcon}
       </motion.button>
+
       <motion.button
-        variants={overlayVariant}
+        variants={editOverlayVariant}
         initial="hidden"
         animate="fade-in"
         exit="fade-out"
@@ -96,6 +84,7 @@ export const EditOverlay = ({
           )}
         </AnimatePresence>
       </motion.button>
+
       <AnimatePresence>
         {showRemoveModal && (
           <RemoveModal
