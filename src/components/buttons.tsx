@@ -137,7 +137,7 @@ export const FormBtns = () => {
         <motion.button
           type="button"
           onClick={() => setDiscardModal(true)}
-          className="flex items-center gap-1 rounded-full bg-slate-light300 p-2 text-slate-main600 shadow-sm hover:bg-slate-light400 dark:bg-slate-light400 dark:text-slate-light50"
+          className="flex items-center gap-1 rounded-full bg-slate-light300 p-2 text-sm text-slate-main600 shadow-sm dark:bg-slate-light400 dark:text-slate-light50"
           onHoverStart={() => setShowCancel(true)}
           onHoverEnd={() => setShowCancel(false)}
         >
@@ -156,10 +156,11 @@ export const FormBtns = () => {
           </AnimatePresence>
           {CancelIcon}
         </motion.button>
+
         <motion.button
           type="button"
           onClick={() => setSubmitModal(true)}
-          className="flex items-center gap-1 rounded-full bg-slate-light300 p-2 text-slate-main600 shadow-sm hover:bg-slate-light400 dark:bg-slate-light400 dark:text-slate-light50"
+          className="flex items-center gap-1 rounded-full bg-slate-light300 p-2 text-sm text-slate-main600 shadow-sm dark:bg-slate-light400 dark:text-slate-light50"
           onHoverStart={() => setShowDone(true)}
           onHoverEnd={() => setShowDone(false)}
         >
@@ -179,8 +180,16 @@ export const FormBtns = () => {
           </AnimatePresence>
         </motion.button>
       </div>
-      {discardModal && <DiscardModal onClose={() => setDiscardModal(false)} />}
-      {submitModal && <SubmitModal onClose={() => setSubmitModal(false)} />}
+
+      <AnimatePresence>
+        {discardModal && (
+          <DiscardModal onClose={() => setDiscardModal(false)} />
+        )}
+      </AnimatePresence>
+      
+      <AnimatePresence>
+        {submitModal && <SubmitModal onClose={() => setSubmitModal(false)} />}
+      </AnimatePresence>
     </>
   );
 };
