@@ -63,6 +63,32 @@ export const ModalWrapper = ({
   onClose: () => void;
   cancelButtonRef: React.MutableRefObject<null>;
 }) => {
+  const fadeVariant = {
+    hidden: { opacity: 0 },
+    "fade-in": {
+      opacity: 1,
+      transition: { duration: 0.4, ease: [0.36, 0.66, 0.04, 1] },
+      "fade-out": {
+        opacity: 0,
+        transition: { duration: 0.3, ease: [0.36, 0.66, 0.04, 1] },
+      },
+    },
+  };
+
+  const flyVariant = {
+    lower: { opacity: 0, y: "25%" },
+    "fly-in": {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4, ease: [0.36, 0.66, 0.04, 1] },
+    },
+    "fly-out": {
+      opacity: 0,
+      y: "25%",
+      transition: { duration: 0.3, ease: [0.36, 0.66, 0.04, 1] },
+    },
+  };
+
   return (
     <Dialog
       className="relative z-10"
@@ -71,30 +97,18 @@ export const ModalWrapper = ({
       initialFocus={cancelButtonRef}
     >
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{
-          opacity: 1,
-          transition: { duration: 0.4, ease: [0.36, 0.66, 0.04, 1] },
-        }}
-        exit={{
-          opacity: 0,
-          transition: { duration: 0.3, ease: [0.36, 0.66, 0.04, 1] },
-        }}
+        variants={fadeVariant}
+        initial="hidden"
+        animate="fade-in"
+        exit="fade-out"
         className="fixed inset-0 bg-slate-dark800 bg-opacity-75 dark:bg-slate-dark950 dark:bg-opacity-90"
       />
 
       <motion.div
-        initial={{ opacity: 0, y: "25%" }}
-        animate={{
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.4, ease: [0.36, 0.66, 0.04, 1] },
-        }}
-        exit={{
-          opacity: 0,
-          y: "25%",
-          transition: { duration: 0.3, ease: [0.36, 0.66, 0.04, 1] },
-        }}
+        variants={flyVariant}
+        initial="lower"
+        animate="fly-in"
+        exit="fly-out"
         className="fixed inset-0 overflow-y-auto"
       >
         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
