@@ -23,6 +23,7 @@ module.exports = {
       green: {
         main500: "#22c55e",
         light100: "#dcfce7",
+        light200: "#bbf7d0",
         light300: "#86efac",
         light400: "#4ade80",
         dark600: "#16a34a",
