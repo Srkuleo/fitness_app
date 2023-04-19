@@ -5,7 +5,11 @@ import React from "react";
 
 //Wrappers for sign-in and sign-up pages
 export const ContentWrapper = ({ children }: WrapperProp) => {
-  return <div className="relative mx-auto flex w-3/6 flex-col">{children}</div>;
+  return (
+    <div className="relative mx-auto flex flex-col md:w-4/6 xl:w-3/6 ">
+      {children}
+    </div>
+  );
 };
 
 export const LogoWrapper = ({ children }: WrapperProp) => {
