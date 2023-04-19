@@ -1,6 +1,5 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import BackgroundPattern from "../components/svg-components/background-pattern";
 import { ContentWrapper } from "../components/wrappers";
 import NavBar from "../components/sign-components/nav-bar";
 import SignContent from "../components/sign-components/sign-content";
@@ -17,7 +16,6 @@ const SignUpPage: NextPage = () => {
         />
       </Head>
       <main>
-        <BackgroundPattern />
         <ContentWrapper>
           <NavBar />
           <SignContent page="sign up" />
