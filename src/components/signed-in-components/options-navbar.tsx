@@ -46,7 +46,7 @@ export const OptionsMenu = ({
       {isOpenDropDown && (
         <div onMouseEnter={closeDropDown} className="absolute inset-0 z-10" />
       )}
-      <div className="fixed right-18 top-9 z-10 flex flex-col items-end gap-2 pt-2">
+      <div className="z-10 flex flex-col items-end gap-2">
         <button
           onClick={openDropDown}
           className="group flex items-center gap-3 text-lg font-medium uppercase text-slate-main600 dark:text-slate-light50"
