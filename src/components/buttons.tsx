@@ -1,9 +1,10 @@
-import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useTheme } from "next-themes";
 import type {
   CarouselNavArrowsProps,
   CarouselNavBtnsProps,
-  ModeButtonProps,
 } from "../types/types";
 import { buttonsVariant } from "../utils/variables";
 import {
@@ -14,7 +15,6 @@ import {
   NextCardArrow,
   CancelIcon,
 } from "./svg-components/svg";
-import { useState } from "react";
 import { DiscardModal, SubmitModal } from "./signed-in-components/modals";
 
 //Sign pages buttons
@@ -42,13 +42,26 @@ export const GitHubButton = () => {
   );
 };
 
-export const ModeButton = ({ theme, toggleMode }: ModeButtonProps) => {
+export const ModeButton = () => {
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  function toggleMode() {
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+  }
+
+  if (!mounted) return <></>;
+
   return (
     <button
       onClick={toggleMode}
       className="rounded-full p-smallButton transition-all ease-out hover:bg-slate-light400/40 dark:hover:bg-slate-light500/50"
     >
-      {theme === "dark" ? (
+      {resolvedTheme === "dark" ? (
         <LightModeIcon className="h-7 w-7" />
       ) : (
         <DarkModeIcon className="h-7 w-7 text-slate-main600" />
@@ -186,7 +199,7 @@ export const FormBtns = () => {
           <DiscardModal onClose={() => setDiscardModal(false)} />
         )}
       </AnimatePresence>
-      
+
       <AnimatePresence>
         {submitModal && <SubmitModal onClose={() => setSubmitModal(false)} />}
       </AnimatePresence>
