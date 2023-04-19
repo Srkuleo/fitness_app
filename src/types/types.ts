@@ -2,11 +2,6 @@ export interface WrapperProp {
   children: React.ReactNode;
 }
 
-export interface ModeButtonProps {
-  theme: string | undefined;
-  toggleMode: () => void;
-}
-
 export interface OAuthBtnProps {
   buttonText: string;
   buttonSvg: JSX.Element;
