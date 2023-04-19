@@ -2,7 +2,6 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useWorkouts } from "../hooks/useWorkouts";
 import { useEditOverlay } from "../hooks/useEditOverlay";
-import BackgroundPattern from "../components/svg-components/background-pattern";
 import {
   FixedLogo,
   OptionsMenu,
@@ -29,7 +28,6 @@ const SignedIn: NextPage = () => {
         <meta name="description" content="Personalized workout tracker" />
       </Head>
       <main>
-        <BackgroundPattern />
         <FixedLogo />
         <OptionsMenu workouts={workouts} openEditOverlay={openEditOverlay} />
         <PageContentWrapper>
