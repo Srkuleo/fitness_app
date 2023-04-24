@@ -11,8 +11,11 @@ const NoteSetLogo = () => {
 };
 
 const NoteSetText = (
-  <span className="text-2xl font-medium text-slate-light500 dark:text-slate-light400">
-    <span className="font-bold text-green-main500">Note</span>Set
+  <span className="text-2xl font-medium text-slate-main600/90 md:text-slate-light500">
+    <span className="font-bold text-green-light400 md:text-green-main500">
+      Note
+    </span>
+    Set
   </span>
 );
 
