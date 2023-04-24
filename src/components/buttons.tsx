@@ -24,10 +24,9 @@ export const GitHubButton = () => {
       href="https://github.com/Srkuleo/noteset"
       target="_blank"
       rel="noreferrer"
-      className="rounded-full p-smallButton transition-all ease-out hover:bg-slate-light400/40 dark:hover:bg-slate-light500/50"
     >
       <svg
-        className="h-7 w-7 text-slate-main600 dark:text-slate-light50"
+        className="h-7 w-7 text-slate-light50 hover:text-slate-light300 dark:hover:text-slate-light400 md:text-slate-main600 md:hover:text-slate-light500 md:dark:text-slate-light50"
         aria-hidden="true"
         version="1.1"
         viewBox="0 0 16 16"
@@ -57,14 +56,11 @@ export const ModeButton = () => {
   if (!mounted) return <></>;
 
   return (
-    <button
-      onClick={toggleMode}
-      className="rounded-full p-smallButton transition-all ease-out hover:bg-slate-light400/40 dark:hover:bg-slate-light500/50"
-    >
+    <button onClick={toggleMode}>
       {resolvedTheme === "dark" ? (
-        <LightModeIcon className="h-7 w-7" />
+        <LightModeIcon className="h-7 w-7 text-slate-light50 hover:text-slate-light300 dark:hover:text-slate-light400" />
       ) : (
-        <DarkModeIcon className="h-7 w-7 text-slate-main600" />
+        <DarkModeIcon className="h-7 w-7 text-slate-main600 hover:text-slate-main600/60" />
       )}
     </button>
   );
@@ -123,7 +119,7 @@ export const CarouselNavBtns = ({
   jumpToCard,
 }: CarouselNavBtnsProps) => {
   return (
-    <div className="flex items-center justify-center gap-smallButton">
+    <div className="gap-carouselNavBtns flex items-center justify-center">
       {workouts.map((workout, i) => (
         <div
           key={workout.id}
