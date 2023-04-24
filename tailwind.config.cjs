@@ -37,6 +37,7 @@ module.exports = {
         icon300: "#fdba74",
         button500: "#f97316",
         button600: "#ea580c",
+        dark700: "#c2410c",
       },
       red: {
         removeBtn100: "#fee2e2",
@@ -49,7 +50,7 @@ module.exports = {
     extend: {
       spacing: {
         18: "4.5rem",
-        smallButton: "6px",
+        carouselNavBtns: "6px",
         mediumButton: "10px",
       },
     },
