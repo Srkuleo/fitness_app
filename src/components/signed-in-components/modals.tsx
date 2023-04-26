@@ -1,11 +1,7 @@
+import { useRef } from "react";
 import { ModalWrapper } from "../wrappers";
 import type { RemoveModalProps } from "../../types/types";
-import { Dialog } from "@headlessui/react";
-import {
-  ExclamationTriangleIcon,
-  InformationCircleIcon,
-} from "../svg-components/svg";
-import { useRef } from "react";
+import { ExclamationTriangleIcon, InformationCircleIcon } from "../svg";
 
 export const RemoveModal = ({
   workout,
@@ -16,19 +12,16 @@ export const RemoveModal = ({
   const cancelButtonRef = useRef(null);
 
   return (
-    <ModalWrapper onClose={onClose} cancelButtonRef={cancelButtonRef}>
+    <ModalWrapper>
       <div className="bg-slate-light50 px-4 pb-4 pt-5 dark:bg-slate-dark800 sm:p-6 sm:pb-4">
         <div className="sm:flex sm:items-start">
           <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-removeBtn100 sm:mx-0 sm:h-10 sm:w-10">
             {ExclamationTriangleIcon}
           </div>
           <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-            <Dialog.Title
-              as="h3"
-              className="text-base font-semibold leading-6 text-slate-dark950 dark:text-slate-light50"
-            >
+            <h3 className="text-base font-semibold leading-6 text-slate-dark950 dark:text-slate-light50">
               Remove &quot;{workout.title}&quot; workout
-            </Dialog.Title>
+            </h3>
             <div className="mt-2">
               <p className="text-sm text-slate-main600 dark:text-slate-light300">
                 Are you sure you want to remove this workout? You won&apos;t be
@@ -68,19 +61,16 @@ export const DiscardModal = ({ onClose }: { onClose: () => void }) => {
   const cancelButtonRef = useRef(null);
 
   return (
-    <ModalWrapper onClose={onClose} cancelButtonRef={cancelButtonRef}>
+    <ModalWrapper>
       <div className="bg-slate-light50 px-4 pb-4 pt-5 dark:bg-slate-dark800 sm:p-6 sm:pb-4">
         <div className="sm:flex sm:items-start">
           <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-removeBtn100 sm:mx-0 sm:h-10 sm:w-10">
             {ExclamationTriangleIcon}
           </div>
           <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-            <Dialog.Title
-              as="h3"
-              className="text-base font-semibold leading-6 text-slate-dark950 dark:text-slate-light50"
-            >
+            <h3 className="text-base font-semibold leading-6 text-slate-dark950 dark:text-slate-light50">
               Discard changes
-            </Dialog.Title>
+            </h3>
             <div className="mt-2">
               <p className="text-sm text-slate-main600 dark:text-slate-light300">
                 Are you sure you want to proceed?
@@ -117,19 +107,16 @@ export const SubmitModal = ({ onClose }: { onClose: () => void }) => {
   const cancelButtonRef = useRef(null);
 
   return (
-    <ModalWrapper onClose={onClose} cancelButtonRef={cancelButtonRef}>
+    <ModalWrapper>
       <div className="bg-slate-light50 px-4 pb-4 pt-5 dark:bg-slate-dark800 sm:p-6 sm:pb-4">
         <div className="sm:flex sm:items-start">
           <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-green-light200/80 dark:bg-green-light100 sm:mx-0 sm:h-10 sm:w-10">
             {InformationCircleIcon}
           </div>
           <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-            <Dialog.Title
-              as="h3"
-              className="text-base font-semibold leading-6 text-slate-dark950 dark:text-slate-light50"
-            >
+            <h3 className="text-base font-semibold leading-6 text-slate-dark950 dark:text-slate-light50">
               Submit workout form
-            </Dialog.Title>
+            </h3>
             <div className="mt-2">
               <p className="text-sm text-slate-main600 dark:text-slate-light300">
                 Clicking &quot;Submit&quot; button will save all the changes
