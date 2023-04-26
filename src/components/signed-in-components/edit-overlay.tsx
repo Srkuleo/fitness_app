@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { EditOverlayProps } from "../../types/types";
 import { buttonsVariant, editOverlayVariant } from "../../utils/variables";
-import { EditIcon, RemoveIcon } from "../svg-components/svg";
+import { EditIcon, RemoveIcon } from "../svg";
 import { RemoveModal } from "./modals";
 
 export const EditOverlay = ({
