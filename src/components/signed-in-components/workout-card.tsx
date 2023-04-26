@@ -17,7 +17,14 @@ export const WorkoutCard = ({
   toggleAdding,
 }: WorkoutCardProps) => {
   return (
-    <div className="workout-card-layout">
+    <div
+      className="min-h-[540px] min-w-full rounded-lg border-2 
+      border-orange-dark700 bg-white 
+      dark:border-orange-button600 dark:bg-gradient-to-br
+      dark:odd:from-slate-dark800 dark:odd:to-slate-dark700 
+      dark:even:from-slate-dark700 dark:even:to-slate-dark800
+        md:rounded-xl md:border-4"
+    >
       <AnimatePresence>
         {isOpenEditOverlay && (
           <EditOverlay
@@ -55,8 +62,6 @@ export const WorkoutCard = ({
           <StartBtn />
         </div>
       )}
-      <div className="absolute left-[224px] top-[350px] h-[290px] w-[290px] rounded-full bg-[#caeed2] dark:bg-[#629e62]" />
-      <div className="absolute left-[290px] top-[416px] h-[160px] w-[160px] rounded-full bg-[#b6e3ae] dark:bg-[#608160]" />
     </div>
   );
 };
