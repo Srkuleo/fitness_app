@@ -4,7 +4,6 @@ import { useTheme } from "next-themes";
 import { useOpenDropDown } from "../../hooks/useOpenDropDown";
 import { AnimatePresence, motion } from "framer-motion";
 import type { OptionsMenuProps } from "../../types/types";
-import NoteSetLogo from "../svg-components/note-set-logo";
 import {
   LightModeIcon,
   DarkModeIcon,
@@ -13,15 +12,7 @@ import {
   EditIcon,
   LogsIcon,
   SignOutIcon,
-} from "../svg-components/svg";
-
-export const FixedLogo = () => {
-  return (
-    <div className="fixed left-18 top-9 z-10">
-      <NoteSetLogo />
-    </div>
-  );
-};
+} from "../svg";
 
 export const OptionsMenu = ({
   workouts,
@@ -46,10 +37,10 @@ export const OptionsMenu = ({
       {isOpenDropDown && (
         <div onMouseEnter={closeDropDown} className="absolute inset-0 z-10" />
       )}
-      <div className="z-10 flex flex-col items-end gap-2">
+      <div className="flex flex-col items-end gap-2">
         <button
           onClick={openDropDown}
-          className="group flex items-center gap-3 text-lg font-medium uppercase text-slate-main600 dark:text-slate-light50"
+          className="group flex items-center gap-3 text-base font-medium uppercase text-slate-light50 md:text-lg md:text-slate-main600 dark:md:text-slate-light50"
         >
           srkuleo
           <ArrowDownIcon isOpenDropDown={isOpenDropDown} />
