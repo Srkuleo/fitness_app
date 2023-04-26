@@ -4,7 +4,9 @@
 
 @layer base {
   main {
-    @apply h-screen w-screen bg-gradient-to-tr from-slate-light50 from-0% via-slate-light200 via-50% to-slate-light300 to-100% dark:from-slate-dark800 dark:via-slate-dark900 dark:to-slate-dark950;
+    @apply h-screen w-screen overflow-hidden bg-gradient-to-tr 
+    from-white via-slate-light200 to-slate-light300 
+    dark:from-slate-dark800 dark:via-slate-dark900 dark:to-slate-dark950;
   }
 }
 
@@ -56,14 +58,5 @@
     @apply placeholder-italic mb-2 rounded-lg px-3 py-2 text-sm text-slate-main600 shadow-md outline-none ring-inset transition-all 
     duration-200 ease-out focus:placeholder-slate-light200 focus:ring-2 focus:ring-orange-button500 dark:bg-slate-main600 dark:text-slate-light50 
     dark:placeholder-slate-light200/70 dark:focus:placeholder-slate-light200/30;
-  }
-  .workout-card-layout {
-    @apply relative min-h-[520px] min-w-[400px] overflow-hidden 
-    rounded-2xl border-4 border-orange-button600 bg-gradient-to-tl 
-  odd:from-slate-light50 odd:from-45% odd:to-slate-light100 odd:to-95% 
-  even:from-slate-light100 even:from-5% even:to-slate-light50 even:to-95% 
-  dark:border-orange-button500 
-  dark:odd:from-slate-main600 dark:odd:from-5% dark:odd:via-slate-dark700 dark:odd:via-35% dark:odd:to-slate-dark800 dark:odd:to-95%
-  dark:even:from-slate-dark800 dark:even:from-5% dark:even:via-slate-dark700 dark:even:via-65% dark:even:to-slate-main600 dark:even:to-95%;
   }
 }
