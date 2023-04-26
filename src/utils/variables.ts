@@ -1,9 +1,5 @@
 import type { OAuthBtnProps, WorkoutProps } from "../types/types";
-import {
-  GoogleSvg,
-  TwitterSvg,
-  DiscordSvg,
-} from "../components/svg-components/svg";
+import { GoogleSvg, TwitterSvg, DiscordSvg } from "../components/svg";
 
 export const oAuthButtons: OAuthBtnProps[] = [
   { buttonSvg: GoogleSvg, buttonText: "Google" },
