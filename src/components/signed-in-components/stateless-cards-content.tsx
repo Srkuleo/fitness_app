@@ -2,13 +2,13 @@ import { motion } from "framer-motion";
 import { useIncrementId } from "../../hooks/useIncrementId";
 import type { StatelessCardContentProps } from "../../types/types";
 import { initWorkout } from "../../utils/variables";
-import { AddIcon, DbIcon } from "../svg-components/svg";
+import { AddIcon, DbIcon } from "../svg";
 
 export const StatelessCardContent = ({
   toggleAdding,
   closeEditOverlay,
   addWorkout,
-  handleEditingForm,
+  handleEditForm,
 }: StatelessCardContentProps) => {
   const { id, incrementId } = useIncrementId();
 
@@ -31,7 +31,7 @@ export const StatelessCardContent = ({
               toggleAdding();
               closeEditOverlay();
               addWorkout({ ...initWorkout, id: id });
-              handleEditingForm(id);
+              handleEditForm(id);
               incrementId();
             }}
           >
