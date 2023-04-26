@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useIncrementId } from "../../hooks/useIncrementId";
 import type { CardEditButtonsProps } from "../../types/types";
-import { initWorkout, buttonsVariant, editOverlayVariant} from "../../utils/variables";
-import { AddIcon, DoneIcon } from "../svg-components/svg";
-import { useState } from "react";
+import {
+  initWorkout,
+  buttonsVariant,
+  editOverlayVariant,
+} from "../../utils/variables";
+import { AddIcon, DoneIcon } from "../svg";
 
 export const CardEditButttons = ({
   workouts,
