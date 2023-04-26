@@ -4,7 +4,7 @@ import type { CardsContentProps } from "../../types/types";
 import { WorkoutCardsCarousel } from "../wrappers";
 import { StatelessCardContent } from "./stateless-cards-content";
 import { WorkoutCard } from "./workout-card";
-import { CarouselNavArrows, CarouselNavBtns } from "../buttons";
+import { CarouselNavigation } from "../buttons";
 import { CardEditButttons } from "./card-edit-buttons";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
@@ -37,34 +37,29 @@ export const CardsContent = ({
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="relative px-8">
-        <CarouselNavArrows
-          workouts={workouts}
-          prevCard={prevCard}
-          nextCard={nextCard}
-        />
-        <WorkoutCardsCarousel cardInFocus={cardInFocus}>
-          {workouts.map((workout) => (
-            <WorkoutCard
-              key={workout.id}
-              workout={workout}
-              editForm={editForm}
-              handleEditForm={handleEditForm}
-              changeWorkout={changeWorkout}
-              removeWorkout={removeWorkout}
-              switchInFocus={switchInFocus}
-              isOpenEditOverlay={isOpenEditOverlay}
-              closeEditOverlay={closeEditOverlay}
-              isAdding={isAdding}
-              toggleAdding={() => setIsAdding(false)}
-            />
-          ))}
-        </WorkoutCardsCarousel>
-      </div>
-      <CarouselNavBtns
+      <WorkoutCardsCarousel cardInFocus={cardInFocus}>
+        {workouts.map((workout) => (
+          <WorkoutCard
+            key={workout.id}
+            workout={workout}
+            editForm={editForm}
+            handleEditForm={handleEditForm}
+            changeWorkout={changeWorkout}
+            removeWorkout={removeWorkout}
+            switchInFocus={switchInFocus}
+            isOpenEditOverlay={isOpenEditOverlay}
+            closeEditOverlay={closeEditOverlay}
+            isAdding={isAdding}
+            toggleAdding={() => setIsAdding(false)}
+          />
+        ))}
+      </WorkoutCardsCarousel>
+      <CarouselNavigation
         cardInFocus={cardInFocus}
         workouts={workouts}
         jumpToCard={jumpToCard}
+        prevCard={prevCard}
+        nextCard={nextCard}
       />
       <AnimatePresence>
         {isOpenEditOverlay && (
