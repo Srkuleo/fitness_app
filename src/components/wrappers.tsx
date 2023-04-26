@@ -1,21 +1,7 @@
-import { Dialog } from "@headlessui/react";
-import type { WrapperProp } from "../types/types";
 import { motion } from "framer-motion";
-import React from "react";
+import type { WrapperProp } from "../types/types";
 
 //Wrappers for sign-in and sign-up pages
-export const ContentWrapper = ({ children }: WrapperProp) => {
-  return (
-    <div className="relative mx-auto flex flex-col md:w-4/6 xl:w-3/6 ">
-      {children}
-    </div>
-  );
-};
-
-export const LogoWrapper = ({ children }: WrapperProp) => {
-  return <div className="flex items-center gap-1">{children}</div>;
-};
-
 export const OAuthBtnWrapper = ({ children }: WrapperProp) => {
   return (
     <button
@@ -33,8 +19,8 @@ export const OAuthBtnWrapper = ({ children }: WrapperProp) => {
 //Wrappers for signed-in page
 export const PageContentWrapper = ({ children }: WrapperProp) => {
   return (
-    <div className="fixed inset-0 flex justify-center">
-      <div className="mt-32 flex flex-col gap-6">{children}</div>
+    <div className="mt-12 max-w-fit px-2 text-center xs:mx-auto xs:max-w-[450px] xs:px-0 md:mt-24">
+      {children}
     </div>
   );
 };
@@ -45,28 +31,25 @@ export const WorkoutCardsCarousel = ({
 }: WrapperProp & { cardInFocus: number }) => {
   const variant = {
     slide: {
-      x: `-${cardInFocus * 105}%`,
+      x: `-${cardInFocus * 100}%`,
       transition: { duration: 0.4, ease: "easeOut" },
     },
   };
 
   return (
-    <div className="max-w-[400px] overflow-hidden rounded-2xl shadow-xl">
-      <motion.div variants={variant} animate="slide" className="flex gap-5">
+    <div className="min-h-[540px] max-w-fit overflow-hidden xs:mx-auto xs:max-w-[400px]">
+      <motion.div
+        variants={variant}
+        animate="slide"
+        className="flex min-h-full"
+      >
         {children}
       </motion.div>
     </div>
   );
 };
 
-export const ModalWrapper = ({
-  children,
-  onClose,
-  cancelButtonRef,
-}: WrapperProp & {
-  onClose: () => void;
-  cancelButtonRef: React.MutableRefObject<null>;
-}) => {
+export const ModalWrapper = ({ children }: WrapperProp) => {
   const fadeVariant = {
     hidden: { opacity: 0 },
     "fade-in": {
@@ -94,12 +77,7 @@ export const ModalWrapper = ({
   };
 
   return (
-    <Dialog
-      className="relative z-10"
-      onClose={onClose}
-      open={true}
-      initialFocus={cancelButtonRef}
-    >
+    <div>
       <motion.div
         variants={fadeVariant}
         initial="hidden"
@@ -121,6 +99,6 @@ export const ModalWrapper = ({
           </div>
         </div>
       </motion.div>
-    </Dialog>
+    </div>
   );
 };
