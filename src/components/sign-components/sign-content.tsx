@@ -4,9 +4,9 @@ import Separator from "./separator";
 import Form from "./form";
 import LinkQuestions from "./link-questions";
 
-const SignContent = ({ page }: { page: "sign in" | "sign up" }) => {
+export const SignContent = ({ page }: { page: "sign in" | "sign up" }) => {
   return (
-    <div className="mx-auto w-[305px]">
+    <div className="mx-auto mt-24 max-w-[260px] xs:mt-28 xs:max-w-[295px]">
       <SignContentHeading page={page} />
       <OAuth />
       <Separator />
@@ -15,5 +15,3 @@ const SignContent = ({ page }: { page: "sign in" | "sign up" }) => {
     </div>
   );
 };
-
-export default SignContent;
