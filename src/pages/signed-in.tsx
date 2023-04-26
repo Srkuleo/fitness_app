@@ -2,13 +2,11 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useWorkouts } from "../hooks/useWorkouts";
 import { useEditOverlay } from "../hooks/useEditOverlay";
-import {
-  FixedLogo,
-  OptionsMenu,
-} from "../components/signed-in-components/options-navbar";
+import { OptionsMenu } from "../components/signed-in-components/options-navbar";
 import { PageContentWrapper } from "../components/wrappers";
 import { CardsHeading } from "../components/headings";
 import { CardsContent } from "../components/signed-in-components/cards-content";
+import { NavBar } from "../components/sign-components/nav-bar";
 
 const SignedIn: NextPage = () => {
   const { workouts, addWorkout, changeWorkout, removeWorkout } = useWorkouts([
@@ -28,8 +26,9 @@ const SignedIn: NextPage = () => {
         <meta name="description" content="Personalized workout tracker" />
       </Head>
       <main>
-        <FixedLogo />
-        <OptionsMenu workouts={workouts} openEditOverlay={openEditOverlay} />
+        <NavBar>
+          <OptionsMenu workouts={workouts} openEditOverlay={openEditOverlay} />
+        </NavBar>
         <PageContentWrapper>
           <CardsHeading workouts={workouts} />
           <CardsContent
