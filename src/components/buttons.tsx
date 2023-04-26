@@ -2,10 +2,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTheme } from "next-themes";
-import type {
-  CarouselNavArrowsProps,
-  CarouselNavBtnsProps,
-} from "../types/types";
+import type { CarouselNavigationProps } from "../types/types";
 import { buttonsVariant } from "../utils/variables";
 import {
   DarkModeIcon,
@@ -14,7 +11,7 @@ import {
   PrevCardArrow,
   NextCardArrow,
   CancelIcon,
-} from "./svg-components/svg";
+} from "./svg";
 import { DiscardModal, SubmitModal } from "./signed-in-components/modals";
 
 //Sign pages buttons
@@ -26,7 +23,7 @@ export const GitHubButton = () => {
       rel="noreferrer"
     >
       <svg
-        className="h-7 w-7 text-slate-light50 hover:text-slate-light300 dark:hover:text-slate-light400 md:text-slate-main600 md:hover:text-slate-light500 md:dark:text-slate-light50"
+        className="h-6 w-6 text-slate-light50 hover:text-slate-light300 dark:hover:text-slate-light400 sm:h-7 sm:w-7 md:text-slate-main600 md:hover:text-slate-light500 md:dark:text-slate-light50"
         aria-hidden="true"
         version="1.1"
         viewBox="0 0 16 16"
@@ -58,9 +55,9 @@ export const ModeButton = () => {
   return (
     <button onClick={toggleMode}>
       {resolvedTheme === "dark" ? (
-        <LightModeIcon className="h-7 w-7 text-slate-light50 hover:text-slate-light300 dark:hover:text-slate-light400" />
+        <LightModeIcon className="h-6 w-6 text-slate-light50 hover:text-slate-light300 dark:hover:text-slate-light400 sm:h-7 sm:w-7" />
       ) : (
-        <DarkModeIcon className="h-7 w-7 text-slate-main600 hover:text-slate-main600/60" />
+        <DarkModeIcon className="h-6 w-6 text-slate-main600 hover:text-slate-main600/60 sm:h-7 sm:w-7" />
       )}
     </button>
   );
@@ -88,13 +85,15 @@ export const StartBtn = () => {
   );
 };
 
-export const CarouselNavArrows = ({
+export const CarouselNavigation = ({
   workouts,
   prevCard,
   nextCard,
-}: CarouselNavArrowsProps) => {
+  cardInFocus,
+  jumpToCard,
+}: CarouselNavigationProps) => {
   return (
-    <div className="absolute inset-0 flex items-center justify-between">
+    <div className="flex items-center justify-center gap-12">
       <button
         className="text-slate-dark700 disabled:pointer-events-none disabled:opacity-20 dark:text-slate-light50"
         onClick={prevCard}
@@ -102,6 +101,20 @@ export const CarouselNavArrows = ({
       >
         {PrevCardArrow}
       </button>
+
+      <div className="flex items-center justify-center gap-carouselNavBtns">
+        {workouts.map((workout, i) => (
+          <div
+            key={workout.id}
+            role="button"
+            className={`h-3 w-3 rounded-full bg-slate-light500 dark:bg-slate-light100 ${
+              cardInFocus === i ? "p-2" : "opacity-40"
+            }`}
+            onClick={() => jumpToCard(i)}
+          ></div>
+        ))}
+      </div>
+
       <button
         className="text-slate-dark700 disabled:pointer-events-none disabled:opacity-20 dark:text-slate-light50"
         onClick={nextCard}
@@ -109,27 +122,6 @@ export const CarouselNavArrows = ({
       >
         {NextCardArrow}
       </button>
-    </div>
-  );
-};
-
-export const CarouselNavBtns = ({
-  workouts,
-  cardInFocus,
-  jumpToCard,
-}: CarouselNavBtnsProps) => {
-  return (
-    <div className="gap-carouselNavBtns flex items-center justify-center">
-      {workouts.map((workout, i) => (
-        <div
-          key={workout.id}
-          role="button"
-          className={`h-3 w-3 rounded-full bg-slate-light500 dark:bg-slate-light100 ${
-            cardInFocus === i ? "p-2" : "opacity-40"
-          }`}
-          onClick={() => jumpToCard(i)}
-        ></div>
-      ))}
     </div>
   );
 };
