@@ -11,7 +11,7 @@ Stay tuned for future updates!
 #### Priority
 
 - _Lift modal state up to the form, put setter for modal inside onSubmit and onreset handler and refactor modal wrapper to not use headless ui._
-- _Finish new nav bar: Modify options menu, font size._
+- _Finish new nav bar: Modify options menu, try to figure out min-h for card, gap for carousel._
 
 - _Make start button a link component that leads to new page with workout details._
 - _Work around setting planetscale db and prisma schema._
