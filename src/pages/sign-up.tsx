@@ -1,8 +1,7 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { ContentWrapper } from "../components/wrappers";
-import NavBar from "../components/sign-components/nav-bar";
-import SignContent from "../components/sign-components/sign-content";
+import { NavBar } from "../components/sign-components/nav-bar";
+import { SignContent } from "../components/sign-components/sign-content";
 
 const SignUpPage: NextPage = () => {
   return (
@@ -16,10 +15,8 @@ const SignUpPage: NextPage = () => {
         />
       </Head>
       <main>
-        <ContentWrapper>
-          <NavBar />
-          <SignContent page="sign up" />
-        </ContentWrapper>
+        <NavBar />
+        <SignContent page="sign up" />
       </main>
     </>
   );
