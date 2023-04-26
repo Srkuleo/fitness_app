@@ -62,16 +62,12 @@ export type EditFormProps = Omit<
   "editForm" | "isOpenEditOverlay" | "closeEditOverlay"
 >;
 
-export interface CarouselNavArrowsProps
-  extends Pick<CardsContentProps, "workouts"> {
-  prevCard: () => void;
-  nextCard: () => void;
-}
-
-export interface CarouselNavBtnsProps
+export interface CarouselNavigationProps
   extends Pick<CardsContentProps, "workouts"> {
   cardInFocus: number;
   jumpToCard: (index: number) => void;
+  prevCard: () => void;
+  nextCard: () => void;
 }
 
 export type CardEditButtonsProps = Pick<
