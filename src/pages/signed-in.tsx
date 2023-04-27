@@ -1,8 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useWorkouts } from "../hooks/useWorkouts";
-import { useEditOverlay } from "../hooks/useEditOverlay";
-import { OptionsMenu } from "../components/signed-in-components/options-navbar";
+import { OptionsMenu } from "../components/signed-in-components/options-menu";
 import { PageContentWrapper } from "../components/wrappers";
 import { CardsHeading } from "../components/headings";
 import { CardsContent } from "../components/signed-in-components/cards-content";
@@ -15,8 +14,6 @@ const SignedIn: NextPage = () => {
     { id: 2, title: "Lower 1", description: "The best one so far!" },
     { id: 3, title: "Lower 2", description: "The best one so far!" },
   ]);
-  const { isOpenEditOverlay, openEditOverlay, closeEditOverlay } =
-    useEditOverlay();
 
   return (
     <>
@@ -27,7 +24,7 @@ const SignedIn: NextPage = () => {
       </Head>
       <main>
         <NavBar>
-          <OptionsMenu workouts={workouts} openEditOverlay={openEditOverlay} />
+          <OptionsMenu />
         </NavBar>
         <PageContentWrapper>
           <CardsHeading workouts={workouts} />
@@ -36,8 +33,6 @@ const SignedIn: NextPage = () => {
             addWorkout={addWorkout}
             changeWorkout={changeWorkout}
             removeWorkout={removeWorkout}
-            isOpenEditOverlay={isOpenEditOverlay}
-            closeEditOverlay={closeEditOverlay}
           />
         </PageContentWrapper>
       </main>
