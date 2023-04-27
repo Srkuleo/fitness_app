@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import type { CarouselNavigationProps } from "../types/types";
-import { buttonsVariant } from "../utils/variables";
 import {
   DarkModeIcon,
   LightModeIcon,
@@ -12,9 +11,8 @@ import {
   NextCardArrow,
   CancelIcon,
 } from "./svg";
-import { DiscardModal, SubmitModal } from "./signed-in-components/modals";
 
-//Sign pages buttons
+//Navbar buttons
 export const GitHubButton = () => {
   return (
     <a
@@ -63,6 +61,42 @@ export const ModeButton = () => {
   );
 };
 
+export const OptionsMenuButton = ({ openMenu }: { openMenu: () => void }) => {
+  return (
+    <button onClick={openMenu}>
+      <svg
+        className="h-6 w-6 text-slate-light50 hover:text-slate-light300 dark:hover:text-slate-light400 sm:h-7 sm:w-7 md:text-slate-main600 md:hover:text-slate-light500 md:dark:text-slate-light50"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={2.2}
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
+        />
+      </svg>
+    </button>
+  );
+};
+
+export const CloseButton = ({ closeMenu }: { closeMenu: () => void }) => {
+  return (
+    <button
+      onClick={closeMenu}
+      className="fixed left-8 top-8 rounded-xl bg-white p-1 dark:bg-slate-main600"
+    >
+      <CancelIcon
+        className="h-7 w-7 text-slate-main600 dark:text-white"
+        strokeWidth={1.8}
+      />
+    </button>
+  );
+};
+
+//Sign button
 export const SignButton = ({ page }: { page: "sign in" | "sign up" }) => {
   return (
     <Link href={page === "sign in" ? "/signed-in" : "/"} className="sign-btn">
@@ -93,7 +127,7 @@ export const CarouselNavigation = ({
   jumpToCard,
 }: CarouselNavigationProps) => {
   return (
-    <div className="flex items-center justify-center gap-12">
+    <div className="mb-2 flex items-center justify-center gap-8">
       <button
         className="text-slate-dark700 disabled:pointer-events-none disabled:opacity-20 dark:text-slate-light50"
         onClick={prevCard}
@@ -127,70 +161,23 @@ export const CarouselNavigation = ({
 };
 
 export const FormBtns = () => {
-  const [showCancel, setShowCancel] = useState(false);
-  const [showDone, setShowDone] = useState(false);
-  const [discardModal, setDiscardModal] = useState(false);
-  const [submitModal, setSubmitModal] = useState(false);
-
   return (
-    <>
-      <div className="mt-2 flex gap-2">
-        <motion.button
-          type="button"
-          onClick={() => setDiscardModal(true)}
-          className="flex items-center gap-1 rounded-full bg-slate-light300 p-2 text-sm text-slate-main600 shadow-sm dark:bg-slate-light400 dark:text-slate-light50"
-          onHoverStart={() => setShowCancel(true)}
-          onHoverEnd={() => setShowCancel(false)}
-        >
-          <AnimatePresence>
-            {showCancel && (
-              <motion.span
-                variants={buttonsVariant}
-                initial="hidden"
-                animate="show"
-                exit="hide"
-                className="overflow-hidden pl-2"
-              >
-                Cancel
-              </motion.span>
-            )}
-          </AnimatePresence>
-          {CancelIcon}
-        </motion.button>
+    <div className="mt-2 flex gap-2">
+      <motion.button
+        whileTap={{ scale: 0.95 }}
+        type="reset"
+        className="rounded-full bg-slate-light300 p-2 text-sm text-slate-main600 shadow-sm dark:bg-slate-light400 dark:text-slate-light50"
+      >
+        <CancelIcon className="h-5 w-5" strokeWidth={2} />
+      </motion.button>
 
-        <motion.button
-          type="button"
-          onClick={() => setSubmitModal(true)}
-          className="flex items-center gap-1 rounded-full bg-slate-light300 p-2 text-sm text-slate-main600 shadow-sm dark:bg-slate-light400 dark:text-slate-light50"
-          onHoverStart={() => setShowDone(true)}
-          onHoverEnd={() => setShowDone(false)}
-        >
-          {DoneIcon}
-          <AnimatePresence>
-            {showDone && (
-              <motion.span
-                variants={buttonsVariant}
-                initial="hidden"
-                animate="show"
-                exit="hide"
-                className="overflow-hidden pr-2"
-              >
-                Done
-              </motion.span>
-            )}
-          </AnimatePresence>
-        </motion.button>
-      </div>
-
-      <AnimatePresence>
-        {discardModal && (
-          <DiscardModal onClose={() => setDiscardModal(false)} />
-        )}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {submitModal && <SubmitModal onClose={() => setSubmitModal(false)} />}
-      </AnimatePresence>
-    </>
+      <motion.button
+        whileTap={{ scale: 0.95 }}
+        type="submit"
+        className="rounded-full bg-slate-light300 p-2 text-sm text-slate-main600 shadow-sm dark:bg-slate-light400 dark:text-slate-light50"
+      >
+        {DoneIcon}
+      </motion.button>
+    </div>
   );
 };
