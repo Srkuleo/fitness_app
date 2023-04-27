@@ -20,7 +20,7 @@ const LinkQuestions = ({ page }: { page: "sign in" | "sign up" }) => {
       </p>
     </>
   ) : (
-    <p className="text-xs text-slate-main600 dark:text-slate-light300">
+    <p className="mb-4 text-xs text-slate-main600 dark:text-slate-light300">
       Already have an acount?{" "}
       <Link href="/" className="border-b font-semibold text-green-main500">
         Sign in here.
