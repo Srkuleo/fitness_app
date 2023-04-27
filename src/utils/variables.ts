@@ -13,23 +13,8 @@ export const initWorkout: WorkoutProps = {
   description: "New description",
 };
 
-//Variant for framer motion animations - buttons signed in page
-export const buttonsVariant = {
-  hidden: { width: 0, opacity: 0 },
-  show: {
-    width: "auto",
-    opacity: 1,
-    originX: 0,
-    transition: { duration: 0.05, ease: "easeOut" },
-  },
-  hide: {
-    width: 0,
-    opacity: 0,
-    transition: { duration: 0.02, ease: "easeIn" },
-  },
-};
-
-export const editOverlayVariant = {
+//Variant for framer motion animations
+export const optionsMenuVariant = {
   hidden: {
     opacity: 0,
   },
@@ -39,6 +24,17 @@ export const editOverlayVariant = {
   },
   "fade-out": {
     opacity: 0,
-    transition: { duration: 0.05, ease: "easeIn" },
+    transition: { delay: 0.15, duration: 0.15, ease: "easeIn" },
+  },
+
+  "most-right": { x: "100%" },
+  "slide-in": {
+    x: 0,
+    transition: { duration: 0.2, ease: "easeOut" },
+  },
+  "slide-out": {
+    x: "100%",
+    transition: { delay: 0.15, duration: 0.15, ease: "easeIn" },
   },
 };
+
