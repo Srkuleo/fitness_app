@@ -60,6 +60,7 @@ module.exports = {
       spacing: {
         18: "4.5rem",
         carouselNavBtns: "6px",
+        carousel: "18.5px",
         mediumButton: "10px",
       },
     },
