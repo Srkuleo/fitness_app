@@ -1,4 +1,4 @@
-import type { EditIconProps } from "../types/types";
+import type { IconProps } from "../types/types";
 
 export const DarkModeIcon = ({ className }: { className: string }) => {
   return (
@@ -208,34 +208,9 @@ export const NoteSetLogoSvg = (
   </svg>
 );
 
-export const ArrowDownIcon = ({
-  isOpenDropDown,
-}: {
-  isOpenDropDown: boolean;
-}) => (
-  <svg
-    className={`
-      h-4 w-4 transition-all duration-300
-      ${isOpenDropDown && "rotate-180 ease-in"}
-      ${!isOpenDropDown && "ease-out group-hover:translate-y-0.5"}`}
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth={2}
-    stroke="currentColor"
-    aria-hidden="true"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-    />
-  </svg>
-);
-
 export const UserIcon = (
   <svg
-    className="dropdown-menu-icon"
+    className="options-menu-icon"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -251,7 +226,7 @@ export const UserIcon = (
   </svg>
 );
 
-export const EditIcon = ({ className, strokeWidth }: EditIconProps) => {
+export const EditIcon = ({ className, strokeWidth }: IconProps) => {
   return (
     <svg
       className={className}
@@ -273,7 +248,7 @@ export const EditIcon = ({ className, strokeWidth }: EditIconProps) => {
 
 export const LogsIcon = (
   <svg
-    className="dropdown-menu-icon"
+    className="options-menu-icon"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -291,7 +266,7 @@ export const LogsIcon = (
 
 export const SignOutIcon = (
   <svg
-    className="dropdown-menu-icon"
+    className="options-menu-icon"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -343,23 +318,25 @@ export const AddIcon = (
   </svg>
 );
 
-export const CancelIcon = (
-  <svg
-    className="h-5 w-5"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth={2}
-    stroke="currentColor"
-    aria-hidden="true"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M6 18L18 6M6 6l12 12"
-    />
-  </svg>
-);
+export const CancelIcon = ({ className, strokeWidth }: IconProps) => {
+  return (
+    <svg
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={strokeWidth}
+      stroke="currentColor"
+      aria-hidden="true"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M6 18L18 6M6 6l12 12"
+      />
+    </svg>
+  );
+};
 
 export const DoneIcon = (
   <svg
