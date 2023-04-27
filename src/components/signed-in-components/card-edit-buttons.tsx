@@ -1,12 +1,7 @@
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useIncrementId } from "../../hooks/useIncrementId";
 import type { CardEditButtonsProps } from "../../types/types";
-import {
-  initWorkout,
-  buttonsVariant,
-  editOverlayVariant,
-} from "../../utils/variables";
+import { initWorkout } from "../../utils/variables";
 import { AddIcon, DoneIcon } from "../svg";
 
 export const CardEditButttons = ({
@@ -17,22 +12,19 @@ export const CardEditButttons = ({
   handleEditForm,
   toggleAdding,
 }: CardEditButtonsProps) => {
-  const [expandAddBtn, setExpandAddBtn] = useState(false);
-  const [expandDoneBtn, setExpandDoneBtn] = useState(false);
   const { id, incrementId } = useIncrementId();
 
   return (
     <motion.div
-      variants={editOverlayVariant}
-      initial="hidden"
-      animate="fade-in"
-      exit="fade-out"
-      className="flex justify-around"
+      exit={{
+        opacity: 0,
+        transition: { delay: 0.1, duration: 0.05, ease: "easeIn" },
+      }}
+      className="flex justify-around xs:justify-center xs:gap-48"
     >
       <motion.button
-        className="flex items-center gap-2 rounded-full bg-slate-light300 p-2 text-slate-main600 shadow-sm dark:bg-slate-light400 dark:text-slate-light50"
-        onHoverStart={() => setExpandAddBtn(true)}
-        onHoverEnd={() => setExpandAddBtn(false)}
+        whileTap={{ scale: 0.95 }}
+        className="rounded-full bg-slate-light300 p-2 text-slate-main600 shadow-sm dark:bg-slate-light400 dark:text-slate-light50"
         onClick={() => {
           closeEditOverlay();
           toggleAdding();
@@ -44,41 +36,14 @@ export const CardEditButttons = ({
         }}
       >
         {AddIcon}
-        <AnimatePresence>
-          {expandAddBtn && (
-            <motion.span
-              variants={buttonsVariant}
-              initial="hidden"
-              animate="show"
-              exit="hide"
-              className="overflow-hidden pr-2 text-sm"
-            >
-              Add
-            </motion.span>
-          )}
-        </AnimatePresence>
       </motion.button>
 
       <motion.button
-        className="flex items-center gap-2 rounded-full bg-slate-light300 p-2 text-slate-main600 shadow-sm dark:bg-slate-light400 dark:text-slate-light50"
-        onHoverStart={() => setExpandDoneBtn(true)}
-        onHoverEnd={() => setExpandDoneBtn(false)}
+        whileTap={{ scale: 0.95 }}
+        className="rounded-full bg-slate-light300 p-2 text-slate-main600 shadow-sm dark:bg-slate-light400 dark:text-slate-light50"
         onClick={closeEditOverlay}
       >
         {DoneIcon}
-        <AnimatePresence>
-          {expandDoneBtn && (
-            <motion.span
-              variants={buttonsVariant}
-              initial="hidden"
-              animate="show"
-              exit="hide"
-              className="overflow-hidden pr-2 text-sm"
-            >
-              Done
-            </motion.span>
-          )}
-        </AnimatePresence>
       </motion.button>
     </motion.div>
   );
