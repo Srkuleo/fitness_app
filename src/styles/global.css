@@ -4,7 +4,7 @@
 
 @layer base {
   main {
-    @apply h-screen w-screen overflow-hidden bg-gradient-to-tr 
+    @apply h-screen w-screen overflow-y-auto overflow-x-hidden bg-gradient-to-tr
     from-white via-slate-light200 to-slate-light300 
     dark:from-slate-dark800 dark:via-slate-dark900 dark:to-slate-dark950;
   }
@@ -44,15 +44,12 @@
     outline-none transition-all duration-200 ease-out focus:placeholder-slate-light300 focus:ring-2 focus:ring-green-main500 
     dark:text-yellow-text50 dark:placeholder-slate-light300 dark:focus:placeholder-slate-light500;
   }
-  .dropdown-menu-field {
-    @apply flex items-center gap-2 rounded-md py-1 pl-2 pr-32 text-left text-sm text-slate-main600 hover:bg-green-dark600 
+  .options-menu-field {
+    @apply flex items-center uppercase gap-2 rounded-md py-2 pl-2 text-left text-slate-main600 hover:bg-green-dark600 
     hover:text-yellow-text50 dark:text-slate-light50 dark:hover:bg-green-dark700;
   }
-  .dropdown-menu-icon {
-    @apply h-6 w-6 text-green-dark600 group-hover:text-orange-icon300 dark:text-green-main500/90;
-  }
-  .dropdown-menu-dark-mode-icon {
-    @apply h-6 w-6 text-slate-light500 group-hover:text-slate-light300;
+  .options-menu-icon {
+    @apply h-7 w-7 text-green-dark600 group-hover:text-orange-icon300 dark:text-green-main500/90;
   }
   .workout-input-field {
     @apply placeholder-italic mb-2 rounded-lg px-3 py-2 text-sm text-slate-main600 shadow-md outline-none ring-inset transition-all 
