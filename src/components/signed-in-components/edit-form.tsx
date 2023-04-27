@@ -15,7 +15,6 @@ export const EditForm = ({
 
   function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log("Action inside form");
     if (isAdding) {
       toggleAdding();
     }
@@ -25,7 +24,6 @@ export const EditForm = ({
 
   function handleFormReset(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log("Action inside form");
     if (isAdding) {
       removeWorkout(workout.id);
       switchInFocus();
@@ -33,6 +31,7 @@ export const EditForm = ({
       handleEditForm(undefined);
     }
   }
+
   return (
     <form
       className="flex flex-col items-center p-4"
