@@ -6,7 +6,7 @@ import LinkQuestions from "./link-questions";
 
 export const SignContent = ({ page }: { page: "sign in" | "sign up" }) => {
   return (
-    <div className="mx-auto mt-24 max-w-[260px] xs:mt-28 xs:max-w-[295px]">
+    <div className="mx-auto mt-24 max-w-[260px] xs:mt-44 xs:max-w-[295px] md:mt-28">
       <SignContentHeading page={page} />
       <OAuth />
       <Separator />
