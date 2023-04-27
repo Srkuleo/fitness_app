@@ -10,8 +10,7 @@ Stay tuned for future updates!
 
 #### Priority
 
-- _Lift modal state up to the form, put setter for modal inside onSubmit and onreset handler and refactor modal wrapper to not use headless ui._
-- _Finish new nav bar: Modify options menu, try to figure out min-h for card, gap for carousel._
+- _Refactor edit form, whole editing system (3 separate buttons one for deleting, one for editing and one for adding workout, figure out position for them) and then try to add modals for deleting workouts, submiting or discarding editing form._
 
 - _Make start button a link component that leads to new page with workout details._
 - _Work around setting planetscale db and prisma schema._
@@ -21,7 +20,6 @@ Stay tuned for future updates!
 
 #### Later on
 
-- _Add responsiveness to the UI._
 - _Add profile page with certain type of tracking achievements._
 - _Add Serbian and Japanese language support._
 
