@@ -1,6 +1,4 @@
-import { AnimatePresence } from "framer-motion";
 import type { WorkoutCardProps } from "../../types/types";
-import { EditOverlay } from "./edit-overlay";
 import { EditForm } from "./edit-form";
 import { StartBtn } from "../buttons";
 
@@ -11,32 +9,18 @@ export const WorkoutCard = ({
   changeWorkout,
   removeWorkout,
   switchInFocus,
-  isOpenEditOverlay,
-  closeEditOverlay,
   isAdding,
   toggleAdding,
 }: WorkoutCardProps) => {
   return (
     <div
-      className="min-h-[540px] min-w-full rounded-lg border-2 
+      className="relative min-h-full min-w-full rounded-lg border-2 
       border-orange-dark700 bg-white 
       dark:border-orange-button600 dark:bg-gradient-to-br
       dark:odd:from-slate-dark800 dark:odd:to-slate-dark700 
       dark:even:from-slate-dark700 dark:even:to-slate-dark800
-        md:rounded-xl md:border-4"
+      xs:rounded-xl md:border-4"
     >
-      <AnimatePresence>
-        {isOpenEditOverlay && (
-          <EditOverlay
-            workout={workout}
-            handleEditForm={handleEditForm}
-            removeWorkout={removeWorkout}
-            switchInFocus={switchInFocus}
-            closeEditOverlay={closeEditOverlay}
-          />
-        )}
-      </AnimatePresence>
-
       {editForm === workout.id ? (
         <EditForm
           workout={workout}
