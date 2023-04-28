@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import type { WorkoutCardProps } from "../../types/types";
 import { EditForm } from "./edit-form";
 import { StartBtn } from "../buttons";
@@ -13,13 +14,18 @@ export const WorkoutCard = ({
   toggleAdding,
 }: WorkoutCardProps) => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 1 }}
+      exit={{
+        opacity: 0,
+        transition: { duration: 0.3, ease: "easeIn" },
+      }}
       className="relative min-h-full min-w-full rounded-lg border-2 
-      border-orange-dark700 bg-white 
-      dark:border-orange-button600 dark:bg-gradient-to-br
-      dark:odd:from-slate-dark800 dark:odd:to-slate-dark700 
-      dark:even:from-slate-dark700 dark:even:to-slate-dark800
-      xs:rounded-xl md:border-4"
+            border-orange-dark700 bg-white 
+            dark:border-orange-button600 dark:bg-gradient-to-br
+            dark:odd:from-slate-dark800 dark:odd:to-slate-dark700 
+            dark:even:from-slate-dark700 dark:even:to-slate-dark800
+            xs:rounded-xl md:border-4"
     >
       {editForm === workout.id ? (
         <EditForm
@@ -46,6 +52,6 @@ export const WorkoutCard = ({
           <StartBtn />
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
