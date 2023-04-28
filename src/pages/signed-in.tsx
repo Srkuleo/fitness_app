@@ -1,11 +1,15 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useWorkouts } from "../hooks/useWorkouts";
+import { useOpenOptionsMenu } from "../hooks/useOpenOptionsMenu";
+import { useEditBar } from "../hooks/useEditBar";
+import { NavBar } from "../components/sign-components/nav-bar";
+import { OptionsMenuButton } from "../components/buttons";
 import { OptionsMenu } from "../components/signed-in-components/options-menu";
 import { PageContentWrapper } from "../components/wrappers";
 import { CardsHeading } from "../components/headings";
 import { CardsContent } from "../components/signed-in-components/cards-content";
-import { NavBar } from "../components/sign-components/nav-bar";
+import { AnimatePresence } from "framer-motion";
 
 const SignedIn: NextPage = () => {
   const { workouts, addWorkout, changeWorkout, removeWorkout } = useWorkouts([
@@ -14,6 +18,8 @@ const SignedIn: NextPage = () => {
     { id: 2, title: "Lower 1", description: "The best one so far!" },
     { id: 3, title: "Lower 2", description: "The best one so far!" },
   ]);
+  const { isOpenOptionsMenu, openMenu, closeMenu } = useOpenOptionsMenu();
+  const { editBar, toggleEditBar } = useEditBar();
 
   return (
     <>
@@ -24,8 +30,15 @@ const SignedIn: NextPage = () => {
       </Head>
       <main>
         <NavBar>
-          <OptionsMenu />
+          <OptionsMenuButton openMenu={openMenu} />
         </NavBar>
+
+        <AnimatePresence>
+          {isOpenOptionsMenu && (
+            <OptionsMenu toggleEditBar={toggleEditBar} closeMenu={closeMenu} />
+          )}
+        </AnimatePresence>
+
         <PageContentWrapper>
           <CardsHeading workouts={workouts} />
           <CardsContent
@@ -33,6 +46,8 @@ const SignedIn: NextPage = () => {
             addWorkout={addWorkout}
             changeWorkout={changeWorkout}
             removeWorkout={removeWorkout}
+            editBar={editBar}
+            toggleEditBar={toggleEditBar}
           />
         </PageContentWrapper>
       </main>
