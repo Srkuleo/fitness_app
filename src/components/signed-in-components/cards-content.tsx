@@ -1,18 +1,21 @@
+import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { useEditForm } from "../../hooks/useEditForm";
 import { useCardInFocus } from "../../hooks/useCardInFocus";
 import type { CardsContentProps } from "../../types/types";
-import { WorkoutCardsCarousel } from "../wrappers";
 import { StatelessCardContent } from "./stateless-cards-content";
+import { WorkoutCardsCarousel } from "../wrappers";
 import { WorkoutCard } from "./workout-card";
-import { CarouselNavigation } from "../buttons";
+import { EditBar, CarouselNavigation } from "../buttons";
 
 export const CardsContent = ({
   workouts,
   addWorkout,
   changeWorkout,
   removeWorkout,
-}: CardsContentProps) => {
+  editBar,
+  toggleEditBar,
+}: CardsContentProps & { toggleEditBar: () => void; editBar: boolean }) => {
   const [isAdding, setIsAdding] = useState(false);
   const { cardInFocus, prevCard, nextCard, switchInFocus, jumpToCard } =
     useCardInFocus(workouts);
@@ -33,20 +36,24 @@ export const CardsContent = ({
   return (
     <>
       <WorkoutCardsCarousel cardInFocus={cardInFocus}>
-        {workouts.map((workout) => (
-          <WorkoutCard
-            key={workout.id}
-            workout={workout}
-            editForm={editForm}
-            handleEditForm={handleEditForm}
-            changeWorkout={changeWorkout}
-            removeWorkout={removeWorkout}
-            switchInFocus={switchInFocus}
-            isAdding={isAdding}
-            toggleAdding={() => setIsAdding(false)}
-          />
-        ))}
+        <AnimatePresence>
+          {workouts.map((workout) => (
+            <WorkoutCard
+              key={workout.id}
+              workout={workout}
+              editForm={editForm}
+              handleEditForm={handleEditForm}
+              changeWorkout={changeWorkout}
+              removeWorkout={removeWorkout}
+              switchInFocus={switchInFocus}
+              isAdding={isAdding}
+              toggleAdding={() => setIsAdding(false)}
+            />
+          ))}
+        </AnimatePresence>
       </WorkoutCardsCarousel>
+
+      {editBar && <EditBar toggleEditBar={toggleEditBar} />}
 
       <CarouselNavigation
         cardInFocus={cardInFocus}
