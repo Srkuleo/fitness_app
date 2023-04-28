@@ -9,8 +9,8 @@ export const oAuthButtons: OAuthBtnProps[] = [
 
 export const initWorkout: WorkoutProps = {
   id: -1,
-  title: "New title",
-  description: "New description",
+  title: "",
+  description: "",
 };
 
 //Variant for framer motion animations
