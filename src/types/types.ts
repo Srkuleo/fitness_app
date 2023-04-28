@@ -18,6 +18,11 @@ export interface IconProps {
   strokeWidth: number;
 }
 
+export interface OptionsMenuProps {
+  toggleEditBar: () => void;
+  closeMenu: () => void;
+}
+
 export interface CardsContentProps {
   workouts: WorkoutProps[];
   addWorkout: (workout: WorkoutProps) => void;
