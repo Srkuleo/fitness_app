@@ -6,10 +6,13 @@ import type { CarouselNavigationProps } from "../types/types";
 import {
   DarkModeIcon,
   LightModeIcon,
-  DoneIcon,
   PrevCardArrow,
   NextCardArrow,
   CancelIcon,
+  AddIcon,
+  DoneIcon,
+  EditIcon,
+  RemoveIcon,
 } from "./svg";
 
 //Navbar buttons
@@ -119,6 +122,28 @@ export const StartBtn = () => {
   );
 };
 
+export const EditBar = ({ toggleEditBar }: { toggleEditBar: () => void }) => {
+  return (
+    <div className="my-4 flex justify-center gap-4">
+      <button className="rounded-full bg-red-removeBtn600 p-2 text-red-removeBtn100 shadow-md dark:bg-red-removeBtn100 dark:text-red-removeBtn600">
+        <RemoveIcon className="h-6 w-6" strokeWidth={2} />
+      </button>
+      <button className="rounded-full bg-green-main500 p-2 text-green-light200 shadow-md dark:bg-green-light200 dark:text-green-dark700">
+        <EditIcon className="h-6 w-6" strokeWidth={2} />
+      </button>
+      <button className="rounded-full bg-slate-main600 p-2 text-white shadow-md dark:bg-white dark:text-slate-main600">
+        <AddIcon className="h-6 w-6" strokeWidth={2} />
+      </button>
+      <button
+        onClick={toggleEditBar}
+        className="rounded-full bg-slate-main600 p-2 text-white shadow-md dark:bg-white dark:text-slate-main600"
+      >
+        <DoneIcon className="h-6 w-6" strokeWidth={2} />
+      </button>
+    </div>
+  );
+};
+
 export const CarouselNavigation = ({
   workouts,
   prevCard,
@@ -136,16 +161,15 @@ export const CarouselNavigation = ({
         {PrevCardArrow}
       </button>
 
-      <div className="flex items-center justify-center gap-carouselNavBtns">
+      <div className="flex items-center justify-center gap-1">
         {workouts.map((workout, i) => (
-          <div
+          <button
             key={workout.id}
-            role="button"
             className={`h-3 w-3 rounded-full bg-slate-light500 dark:bg-slate-light100 ${
               cardInFocus === i ? "p-2" : "opacity-40"
             }`}
             onClick={() => jumpToCard(i)}
-          ></div>
+          />
         ))}
       </div>
 
@@ -160,24 +184,3 @@ export const CarouselNavigation = ({
   );
 };
 
-export const FormBtns = () => {
-  return (
-    <div className="mt-2 flex gap-2">
-      <motion.button
-        whileTap={{ scale: 0.95 }}
-        type="reset"
-        className="rounded-full bg-slate-light300 p-2 text-sm text-slate-main600 shadow-sm dark:bg-slate-light400 dark:text-slate-light50"
-      >
-        <CancelIcon className="h-5 w-5" strokeWidth={2} />
-      </motion.button>
-
-      <motion.button
-        whileTap={{ scale: 0.95 }}
-        type="submit"
-        className="rounded-full bg-slate-light300 p-2 text-sm text-slate-main600 shadow-sm dark:bg-slate-light400 dark:text-slate-light50"
-      >
-        {DoneIcon}
-      </motion.button>
-    </div>
-  );
-};
