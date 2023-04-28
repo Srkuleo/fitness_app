@@ -27,7 +27,7 @@ export const OptionsMenu = ({ toggleEditBar, closeMenu }: OptionsMenuProps) => {
       >
         <div className="flex flex-col gap-2">
           <Link
-            className="options-menu-field group bg-slate-light200 dark:bg-slate-dark700/70 dark:hover:bg-green-dark600"
+            className="options-menu-field group bg-slate-light200 dark:bg-slate-dark700/70"
             href="/"
           >
             {UserIcon}
