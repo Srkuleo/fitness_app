@@ -5,7 +5,7 @@ import { NoteSetLogoSvg } from "../svg";
 export const NavBar = ({ children }: Partial<WrapperProp>) => {
   return (
     <div
-      className="fixed left-0 right-0 top-0 z-10 flex justify-between bg-gradient-to-r from-orange-button600 
+      className="fixed left-0 right-0 top-0 flex justify-between bg-gradient-to-r from-orange-button600 
     via-green-main500 to-green-dark600 px-4 py-2 dark:from-orange-dark700 
     dark:to-green-dark700 md:relative 
     md:mx-auto md:w-4/6 md:border-b-2 md:border-slate-light400 
