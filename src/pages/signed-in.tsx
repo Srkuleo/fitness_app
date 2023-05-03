@@ -3,13 +3,11 @@ import Head from "next/head";
 import { useWorkouts } from "../hooks/useWorkouts";
 import { useOpenOptionsMenu } from "../hooks/useOpenOptionsMenu";
 import { useEditBar } from "../hooks/useEditBar";
+import { AnimatePresence } from "framer-motion";
 import { NavBar } from "../components/sign-components/nav-bar";
 import { OptionsMenuButton } from "../components/buttons";
 import { OptionsMenu } from "../components/signed-in-components/options-menu";
-import { PageContentWrapper } from "../components/wrappers";
-import { CardsHeading } from "../components/headings";
-import { CardsContent } from "../components/signed-in-components/cards-content";
-import { AnimatePresence } from "framer-motion";
+import { PageContent } from "../components/signed-in-components/page-content";
 
 const SignedIn: NextPage = () => {
   const { workouts, addWorkout, changeWorkout, removeWorkout } = useWorkouts([
@@ -39,17 +37,14 @@ const SignedIn: NextPage = () => {
           )}
         </AnimatePresence>
 
-        <PageContentWrapper>
-          <CardsHeading workouts={workouts} />
-          <CardsContent
-            workouts={workouts}
-            addWorkout={addWorkout}
-            changeWorkout={changeWorkout}
-            removeWorkout={removeWorkout}
-            editBar={editBar}
-            toggleEditBar={toggleEditBar}
-          />
-        </PageContentWrapper>
+        <PageContent
+          workouts={workouts}
+          addWorkout={addWorkout}
+          changeWorkout={changeWorkout}
+          removeWorkout={removeWorkout}
+          editBar={editBar}
+          toggleEditBar={toggleEditBar}
+        />
       </main>
     </>
   );
