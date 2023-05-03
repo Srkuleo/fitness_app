@@ -4,14 +4,12 @@ import { OAuthBtnWrapper } from "../wrappers";
 const OAuth = () => {
   return (
     <div className="space-y-2">
-      {oAuthButtons.map((oAuth) => {
-        return (
-          <OAuthBtnWrapper key={oAuth.buttonText}>
-            {oAuth.buttonSvg}
-            {oAuth.buttonText}
-          </OAuthBtnWrapper>
-        );
-      })}
+      {oAuthButtons.map((oAuth) => (
+        <OAuthBtnWrapper key={oAuth.buttonText}>
+          {oAuth.buttonSvg}
+          {oAuth.buttonText}
+        </OAuthBtnWrapper>
+      ))}
     </div>
   );
 };
