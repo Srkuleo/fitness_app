@@ -10,7 +10,8 @@ Stay tuned for future updates!
 
 #### Priority
 
-- _Refactor edit form, add animation to editbar (delay same as delay on closing sidebar) and buttons inside (whiletap), add events to buttons and add remove modal._
+- _Add whileTap to options menu, Figure out a way to swipe card with touch._
+- _Make new add and edit forms, add animation to editbar (delay same as delay on closing sidebar) and buttons inside (whiletap), add events to buttons (edit bar, empty page) and add remove modal._
 
 - _Make start button a link component that leads to new page with workout details._
 - _Work around setting planetscale db and prisma schema._
