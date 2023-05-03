@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import type { IconProps } from "../types/types";
 
 export const DarkModeIcon = ({ className }: { className: string }) => {
@@ -364,7 +365,7 @@ export const CancelIcon = ({ className, strokeWidth }: IconProps) => {
 
 export const DbIcon = (
   <svg
-    className="h-[60px] w-[60px] text-slate-light300/70"
+    className="h-[60px] w-[60px] text-slate-light400/50 dark:text-slate-main600/70"
     fill="currentColor"
     version="1.1"
     id="Capa_1"
@@ -392,8 +393,9 @@ export const DbIcon = (
 );
 
 export const PrevCardArrow = (
-  <svg
-    className="h-6 w-6 opacity-50 transition-all ease-out hover:-translate-x-0.5 hover:opacity-100"
+  <motion.svg
+    whileTap={{ scale: 0.85, outline: "none" }}
+    className="h-6 w-6 "
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -406,12 +408,13 @@ export const PrevCardArrow = (
       strokeLinejoin="round"
       d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5"
     />
-  </svg>
+  </motion.svg>
 );
 
 export const NextCardArrow = (
-  <svg
-    className="h-6 w-6 opacity-50 transition-all ease-out hover:translate-x-0.5 hover:opacity-100"
+  <motion.svg
+    whileTap={{ scale: 0.85, outline: "none" }}
+    className="h-6 w-6"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -424,7 +427,7 @@ export const NextCardArrow = (
       strokeLinejoin="round"
       d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"
     />
-  </svg>
+  </motion.svg>
 );
 
 export const ExclamationTriangleIcon = (
