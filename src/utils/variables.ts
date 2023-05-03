@@ -24,7 +24,7 @@ export const optionsMenuVariant = {
   },
   "fade-out": {
     opacity: 0,
-    transition: { delay: 0.15, duration: 0.15, ease: "easeIn" },
+    transition: { delay: 0.1, duration: 0.15, ease: "easeIn" },
   },
 
   "most-right": { x: "100%" },
@@ -34,7 +34,8 @@ export const optionsMenuVariant = {
   },
   "slide-out": {
     x: "100%",
-    transition: { delay: 0.15, duration: 0.15, ease: "easeIn" },
+    opacity: 0,
+    transition: { delay: 0.1, duration: 0.15, ease: "easeIn" },
   },
 };
 
