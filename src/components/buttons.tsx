@@ -18,13 +18,14 @@ import {
 //Navbar buttons
 export const GitHubButton = () => {
   return (
-    <a
+    <motion.a
+      whileTap={{ scale: 0.95 }}
       href="https://github.com/Srkuleo/noteset"
       target="_blank"
       rel="noreferrer"
     >
       <svg
-        className="h-6 w-6 text-slate-light50 hover:text-slate-light300 dark:hover:text-slate-light400 sm:h-7 sm:w-7 md:text-slate-main600 md:hover:text-slate-light500 md:dark:text-slate-light50"
+        className="h-6 w-6 text-slate-light50  sm:h-7 sm:w-7 md:text-slate-main600 md:dark:text-slate-light50"
         aria-hidden="true"
         version="1.1"
         viewBox="0 0 16 16"
@@ -35,13 +36,13 @@ export const GitHubButton = () => {
           d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"
         ></path>
       </svg>
-    </a>
+    </motion.a>
   );
 };
 
 export const ModeButton = () => {
-  const { resolvedTheme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
@@ -56,9 +57,9 @@ export const ModeButton = () => {
   return (
     <button onClick={toggleMode}>
       {resolvedTheme === "dark" ? (
-        <LightModeIcon className="h-6 w-6 text-slate-light50 hover:text-slate-light300 dark:hover:text-slate-light400 sm:h-7 sm:w-7" />
+        <LightModeIcon className="h-6 w-6 text-slate-light50 sm:h-7 sm:w-7" />
       ) : (
-        <DarkModeIcon className="h-6 w-6 text-slate-main600 hover:text-slate-main600/60 sm:h-7 sm:w-7" />
+        <DarkModeIcon className="h-6 w-6 text-slate-main600 sm:h-7 sm:w-7" />
       )}
     </button>
   );
@@ -87,22 +88,27 @@ export const OptionsMenuButton = ({ openMenu }: { openMenu: () => void }) => {
 
 export const CloseButton = ({ closeMenu }: { closeMenu: () => void }) => {
   return (
-    <button
+    <motion.button
+      whileTap={{ scale: 0.95 }}
+      autoFocus={true}
       onClick={closeMenu}
-      className="fixed left-8 top-8 rounded-xl bg-white p-1 dark:bg-slate-main600"
+      className="fixed left-8 top-8 rounded-xl bg-slate-light100 p-1 dark:bg-slate-dark700 dark:ring-1 dark:ring-slate-light500"
     >
       <CancelIcon
-        className="h-7 w-7 text-slate-main600 dark:text-white"
+        className="h-7 w-7 text-slate-dark700 dark:text-slate-light100"
         strokeWidth={1.8}
       />
-    </button>
+    </motion.button>
   );
 };
 
 //Sign button
 export const SignButton = ({ page }: { page: "sign in" | "sign up" }) => {
   return (
-    <Link href={page === "sign in" ? "/signed-in" : "/"} className="sign-btn">
+    <Link
+      href={page === "sign in" ? "/signed-in" : "/"}
+      className="rounded-3xl bg-green-main500 p-3 text-center font-semibold text-yellow-text50 shadow-md ring-inset dark:bg-green-dark600 dark:ring-2 dark:ring-green-main500"
+    >
       {page === "sign in" ? "Sign in" : "Sign up"}
     </Link>
   );
@@ -124,7 +130,7 @@ export const StartBtn = () => {
 
 export const EditBar = ({ toggleEditBar }: { toggleEditBar: () => void }) => {
   return (
-    <div className="my-4 flex justify-center gap-4">
+    <div className="mb-8 flex justify-center gap-4">
       <button className="rounded-full bg-red-removeBtn600 p-2 text-red-removeBtn100 shadow-md dark:bg-red-removeBtn100 dark:text-red-removeBtn600">
         <RemoveIcon className="h-6 w-6" strokeWidth={2} />
       </button>
@@ -149,10 +155,9 @@ export const CarouselNavigation = ({
   prevCard,
   nextCard,
   cardInFocus,
-  jumpToCard,
 }: CarouselNavigationProps) => {
   return (
-    <div className="mb-2 flex items-center justify-center gap-8">
+    <div className="mb-8 flex items-center justify-center gap-8">
       <button
         className="text-slate-dark700 disabled:pointer-events-none disabled:opacity-20 dark:text-slate-light50"
         onClick={prevCard}
@@ -163,12 +168,13 @@ export const CarouselNavigation = ({
 
       <div className="flex items-center justify-center gap-1">
         {workouts.map((workout, i) => (
-          <button
+          <div
             key={workout.id}
-            className={`h-3 w-3 rounded-full bg-slate-light500 dark:bg-slate-light100 ${
-              cardInFocus === i ? "p-2" : "opacity-40"
+            className={`rounded-full bg-slate-light500 dark:bg-slate-light100 ${
+              cardInFocus === i
+                ? "h-3 w-3 opacity-100 xs:h-4 xs:w-4"
+                : "h-2 w-2 opacity-40 xs:h-3 xs:w-3"
             }`}
-            onClick={() => jumpToCard(i)}
           />
         ))}
       </div>
@@ -183,4 +189,3 @@ export const CarouselNavigation = ({
     </div>
   );
 };
-
