@@ -5,7 +5,7 @@ const Form = ({ page }: { page: "sign in" | "sign up" }) => {
   return (
     <form
       action="#"
-      className="flex flex-col"
+      className="flex flex-col gap-2"
       id={page === "sign in" ? "sign-in" : "sign-up"}
     >
       {page === "sign up" && (
