@@ -9,7 +9,8 @@ export const OptionsMenu = ({ toggleEditBar, closeMenu }: OptionsMenuProps) => {
   return (
     <>
       <motion.div
-        className="fixed inset-0 z-10 bg-slate-dark950/90"
+        onClick={closeMenu}
+        className="fixed inset-0 z-10 bg-slate-dark950/95"
         variants={optionsMenuVariant}
         initial="hidden"
         animate="fade-in"
@@ -23,32 +24,40 @@ export const OptionsMenu = ({ toggleEditBar, closeMenu }: OptionsMenuProps) => {
         initial="most-right"
         animate="slide-in"
         exit="slide-out"
-        className="fixed inset-y-0 right-0 z-10 flex min-w-[250px] flex-col justify-between bg-gradient-to-b from-white to-slate-light300 p-2 dark:from-slate-main600 dark:to-slate-dark800 sm:min-w-[300px]"
+        className="fixed inset-y-0 right-0 z-10 flex min-w-[250px] flex-col justify-between bg-slate-light100 p-2 dark:bg-slate-dark800 sm:min-w-[300px]"
       >
         <div className="flex flex-col gap-2">
-          <Link
-            className="options-menu-field group bg-slate-light200 dark:bg-slate-dark700/70"
-            href="/"
-          >
-            {UserIcon}
-            Srkuleo
-          </Link>
-          <button
+          <motion.div whileTap={{ scale: 0.9 }}>
+            <Link
+              className="options-menu-field bg-slate-light300/70 dark:bg-slate-dark900/50"
+              href="/"
+            >
+              {UserIcon}
+              Srkuleo
+            </Link>
+          </motion.div>
+
+          <motion.button
+            whileTap={{ scale: 0.9 }}
             onClick={() => {
               closeMenu();
               toggleEditBar();
             }}
-            className="options-menu-field group"
+            className="options-menu-field"
           >
             <EditIcon className="options-menu-icon" strokeWidth={2.2} />
             Edit
-          </button>
-          <button className="options-menu-field group">
+          </motion.button>
+
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            className="options-menu-field"
+          >
             {LogsIcon}
             View logs
-          </button>
-          <div className="border-b border-green-light300/70 dark:border-green-dark700" />
-          <Link className="options-menu-field group" href="/">
+          </motion.button>
+          <div className="border-b border-green-light300/80 dark:border-green-dark700/70" />
+          <Link className="options-menu-field" href="/">
             {SignOutIcon}
             Sign out
           </Link>
@@ -59,7 +68,7 @@ export const OptionsMenu = ({ toggleEditBar, closeMenu }: OptionsMenuProps) => {
           rel="noreferrer"
           className="text-sm italic text-slate-light500"
         >
-          Developed by Srdan Milicevic
+          Developed by Srdjan Milicevic
         </a>
       </motion.div>
     </>
