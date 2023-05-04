@@ -39,11 +39,7 @@ module.exports = {
         dark700: "#15803d",
         dark800: "#166534",
       },
-      yellow: {
-        text50: "#fefce8",
-      },
       orange: {
-        icon300: "#fdba74",
         button500: "#f97316",
         button600: "#ea580c",
         dark700: "#c2410c",
@@ -59,7 +55,6 @@ module.exports = {
     extend: {
       spacing: {
         18: "4.5rem",
-        carousel: "18.5px",
         mediumButton: "10px",
       },
     },
