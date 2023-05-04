@@ -3,52 +3,54 @@ import { SignButton } from "../buttons";
 
 const Form = ({ page }: { page: "sign in" | "sign up" }) => {
   return (
-    <form
-      action="#"
-      className="flex flex-col gap-2"
-      id={page === "sign in" ? "sign-in" : "sign-up"}
-    >
-      {page === "sign up" && (
+    <>
+      <form
+        action="#"
+        className="flex flex-col gap-2"
+        id={page === "sign in" ? "sign-in" : "sign-up"}
+      >
+        {page === "sign up" && (
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Username"
+            autoFocus
+            required
+            className="input-field"
+          />
+        )}
         <input
-          type="text"
-          name="username"
-          id="username"
-          placeholder="Username"
-          autoFocus
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Email"
+          autoFocus={page === "sign in" && true}
           required
           className="input-field"
         />
-      )}
-      <input
-        type="email"
-        name="email"
-        id="email"
-        placeholder="Email"
-        autoFocus={page === "sign in" && true}
-        required
-        className="input-field"
-      />
-      <input
-        type="password"
-        name="password"
-        id="password"
-        placeholder="Password"
-        required
-        className="input-field"
-      />
-      {page === "sign up" && (
         <input
           type="password"
-          name="confirm"
-          id="confirm"
-          placeholder="Confirm password"
+          name="password"
+          id="password"
+          placeholder="Password"
           required
           className="input-field"
         />
-      )}
-      <CheckBox page={page} />
+        {page === "sign up" && (
+          <input
+            type="password"
+            name="confirm"
+            id="confirm"
+            placeholder="Confirm password"
+            required
+            className="input-field"
+          />
+        )}
+        <CheckBox page={page} />
+      </form>
       <SignButton page={page} />
-    </form>
+    </>
   );
 };
 
