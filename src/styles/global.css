@@ -14,12 +14,6 @@
   .placeholder-italic::placeholder {
     font-style: italic;
   }
-  .shadow-outline-blue {
-    box-shadow: 0 0 0 4px #7dd3fc;
-  }
-  .shadow-outline-green {
-    box-shadow: 0 0 0 4px #22c55e;
-  }
   .center {
     transform: translate(-50%, -50%);
   }
@@ -30,17 +24,16 @@
     @apply flex items-center gap-2 rounded-lg bg-green-dark600 p-2 text-sm font-semibold text-slate-light50
     shadow-lg ring-1 ring-green-main500 transition-all ease-in hover:bg-slate-light50
     hover:text-green-dark600 hover:ring-2 hover:ring-green-dark600 dark:bg-green-dark700 
-    dark:shadow-slate-dark700 dark:ring-green-dark600 dark:hover:bg-green-dark800 dark:hover:text-yellow-text50
-    xs:text-xs;
+    dark:shadow-slate-dark700 dark:ring-green-dark600 dark:hover:bg-green-dark800 xs:text-xs;
   }
   .input-field {
     @apply placeholder-italic rounded-xl p-3 text-sm text-slate-main600 placeholder-slate-main600 shadow-md 
     outline-none transition-all duration-200 ease-out focus:placeholder-slate-light300 focus:ring-2 focus:ring-green-main500 
-    dark:text-yellow-text50 dark:placeholder-slate-light300 dark:focus:placeholder-slate-light500;
+    dark:text-slate-light50 dark:placeholder-slate-light300/90 dark:focus:placeholder-slate-light500;
   }
   .options-menu-field {
     @apply flex items-center gap-2 rounded-md py-2 pl-2 text-left uppercase 
-    text-slate-main600 dark:text-slate-light50 ;
+    text-slate-main600 dark:text-slate-light50;
   }
   .options-menu-icon {
     @apply h-7 w-7 text-green-dark600 dark:text-green-main500/90;
