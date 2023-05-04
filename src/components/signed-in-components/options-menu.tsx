@@ -57,19 +57,22 @@ export const OptionsMenu = ({ toggleEditBar, closeMenu }: OptionsMenuProps) => {
             View logs
           </motion.button>
           <div className="border-b border-green-light300/80 dark:border-green-dark700/70" />
-          <Link className="options-menu-field" href="/">
-            {SignOutIcon}
-            Sign out
-          </Link>
+          <motion.div whileTap={{ scale: 0.9 }}>
+            <Link className="options-menu-field" href="/">
+              {SignOutIcon}
+              Sign out
+            </Link>
+          </motion.div>
         </div>
-        <a
+        <motion.a
+          whileTap={{ translateX: 4 }}
           href="https://www.linkedin.com/in/srkuleo/"
           target="_blank"
           rel="noreferrer"
           className="text-sm italic text-slate-light500"
         >
           Developed by Srdjan Milicevic
-        </a>
+        </motion.a>
       </motion.div>
     </>
   );
