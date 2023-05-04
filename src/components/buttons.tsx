@@ -105,12 +105,14 @@ export const CloseButton = ({ closeMenu }: { closeMenu: () => void }) => {
 //Sign button
 export const SignButton = ({ page }: { page: "sign in" | "sign up" }) => {
   return (
-    <Link
-      href={page === "sign in" ? "/signed-in" : "/"}
-      className="rounded-3xl bg-green-main500 p-3 text-center font-semibold text-yellow-text50 shadow-md ring-inset dark:bg-green-dark600 dark:ring-2 dark:ring-green-main500"
-    >
-      {page === "sign in" ? "Sign in" : "Sign up"}
-    </Link>
+    <motion.div className="flex" whileTap={{scale: 0.95}}>
+      <Link
+        href={page === "sign in" ? "/signed-in" : "/"}
+        className="min-w-full rounded-3xl bg-green-main500 p-3 text-center font-semibold text-slate-light50 shadow-md ring-inset dark:bg-green-dark600 dark:ring-2 dark:ring-green-main500"
+      >
+        {page === "sign in" ? "Sign in" : "Sign up"}
+      </Link>
+    </motion.div>
   );
 };
 
