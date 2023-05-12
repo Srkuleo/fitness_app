@@ -22,32 +22,28 @@ const SignedIn: NextPage = () => {
         <title>NoteSet</title>
         <meta name="description" content="Personalized workout tracker" />
       </Head>
-      <main>
-        <NavBar>
-          <OptionsMenuButton openMenu={openMenu} />
-          <AnimatePresence>
-            {isOpenOptionsMenu && (
-              <OptionsMenu
-                toggleEditBar={toggleEditBar}
-                closeMenu={closeMenu}
-              />
-            )}
-          </AnimatePresence>
-        </NavBar>
+      
+      <NavBar>
+        <OptionsMenuButton openMenu={openMenu} />
+        <AnimatePresence>
+          {isOpenOptionsMenu && (
+            <OptionsMenu toggleEditBar={toggleEditBar} closeMenu={closeMenu} />
+          )}
+        </AnimatePresence>
+      </NavBar>
 
-        <Helpers reset={reset} initial={initial} />
+      <Helpers reset={reset} initial={initial} />
 
-        {!workouts ? (
-          <EmptyPage />
-        ) : (
-          <PageContent
-            workouts={workouts}
-            addWorkout={addWorkout}
-            editBar={editBar}
-            toggleEditBar={toggleEditBar}
-          />
-        )}
-      </main>
+      {!workouts ? (
+        <EmptyPage />
+      ) : (
+        <PageContent
+          workouts={workouts}
+          addWorkout={addWorkout}
+          editBar={editBar}
+          toggleEditBar={toggleEditBar}
+        />
+      )}
     </>
   );
 };
