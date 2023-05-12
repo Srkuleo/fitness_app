@@ -14,11 +14,11 @@ export const Workouts = ({
   };
 
   return (
-    <div className="my-auto overflow-hidden xs:mx-auto xs:max-w-[370px]">
+    <div className="h-full overflow-hidden xs:max-w-[370px]">
       <motion.div
         variants={variant}
         animate="slide"
-        className="flex xs:min-h-[540px]"
+        className="flex h-full"
       >
         {workouts.map((workout) => (
           <div
