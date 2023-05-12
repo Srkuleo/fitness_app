@@ -14,10 +14,8 @@ const Home: NextPage = () => {
           content="Personalized workout tracker - sign in"
         />
       </Head>
-      <main>
-        <NavBar />
-        <SignContent page="sign in" />
-      </main>
+      <NavBar />
+      <SignContent page="sign in" />
     </>
   );
 };

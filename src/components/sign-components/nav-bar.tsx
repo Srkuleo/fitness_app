@@ -7,6 +7,7 @@ export const NavBar = ({ children }: Partial<WrapperProp>) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   function scrolled() {
+    console.log("Triggered");
     if (window.scrollY >= 60) {
       setIsScrolled(true);
     } else {
@@ -14,9 +15,10 @@ export const NavBar = ({ children }: Partial<WrapperProp>) => {
     }
   }
 
+  window.addEventListener("scroll", scrolled);
+
   return (
     <div
-      onScroll={scrolled}
       className={`${
         isScrolled && "bg-opacity-80 backdrop-blur-sm dark:bg-opacity-80"
       } sticky top-0 bg-green-main500 shadow-sm  dark:bg-green-dark800 `}

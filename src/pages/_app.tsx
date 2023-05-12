@@ -6,6 +6,7 @@ import "../styles/global.css";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   const [id, setId] = useState(4);
+  
   return (
     <IdContext.Provider value={{ id, setId }}>
       <ThemeProvider attribute="class">
