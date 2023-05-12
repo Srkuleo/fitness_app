@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const LinkQuestions = ({ page }: { page: "sign in" | "sign up" }) => {
   return page === "sign in" ? (
-    <div className="mt-4 space-y-2 text-xs text-slate-main600 dark:text-slate-light300">
+    <div className="my-4 space-y-2 text-xs text-slate-main600 dark:text-slate-light300">
       <p>
         Forgot your{" "}
         <Link
@@ -23,7 +23,7 @@ const LinkQuestions = ({ page }: { page: "sign in" | "sign up" }) => {
       </p>
     </div>
   ) : (
-    <p className="mt-4 text-xs text-slate-main600 dark:text-slate-light300">
+    <p className="my-4 text-xs text-slate-main600 dark:text-slate-light300">
       Already have an acount?{" "}
       <Link
         href="/"
