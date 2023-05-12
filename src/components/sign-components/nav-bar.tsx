@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { WrapperProp } from "../../types/types";
 import { GitHubButton, ModeButton } from "../buttons";
 import { NoteSetLogoSvg } from "../svg";
@@ -6,21 +6,29 @@ import { NoteSetLogoSvg } from "../svg";
 export const NavBar = ({ children }: Partial<WrapperProp>) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
+  useEffect(() => {
+    window.addEventListener("load", scrolled);
+    window.addEventListener("scroll", scrolled);
+
+    return () => {
+      window.removeEventListener("load", scrolled);
+      window.removeEventListener("scroll", scrolled);
+    };
+  }, []);
+
   function scrolled() {
-    console.log("Triggered");
-    if (window.scrollY >= 60) {
+    if (window.scrollY >= 70) {
       setIsScrolled(true);
     } else {
       setIsScrolled(false);
     }
   }
 
-  window.addEventListener("scroll", scrolled);
-
   return (
     <div
       className={`${
-        isScrolled && "bg-opacity-80 backdrop-blur-sm dark:bg-opacity-80"
+        isScrolled &&
+        "bg-opacity-80 backdrop-blur-sm transition duration-300 ease-out dark:bg-opacity-80"
       } sticky top-0 bg-green-main500 shadow-sm  dark:bg-green-dark800 `}
     >
       <nav className="flex justify-between px-2 py-2 md:mx-auto md:w-2/3 md:px-0 xl:w-1/2">
