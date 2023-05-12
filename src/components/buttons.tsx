@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
-import type { CarouselNavigationProps } from "../types/types";
+import type { CarouselNavigationProps, OptionsMenuProps } from "../types/types";
 import {
   DarkModeIcon,
   LightModeIcon,
@@ -86,7 +86,9 @@ export const OptionsMenuButton = ({ openMenu }: { openMenu: () => void }) => {
   );
 };
 
-export const CloseButton = ({ closeMenu }: { closeMenu: () => void }) => {
+export const CloseButton = ({
+  closeMenu,
+}: Pick<OptionsMenuProps, "closeMenu">) => {
   return (
     <motion.button
       whileTap={{ scale: 0.95 }}
@@ -105,7 +107,7 @@ export const CloseButton = ({ closeMenu }: { closeMenu: () => void }) => {
 //Sign button
 export const SignButton = ({ page }: { page: "sign in" | "sign up" }) => {
   return (
-    <motion.div className="flex" whileTap={{scale: 0.95}}>
+    <motion.div className="flex" whileTap={{ scale: 0.95 }}>
       <Link
         href={page === "sign in" ? "/signed-in" : "/"}
         className="min-w-full rounded-3xl bg-green-main500 p-3 text-center font-semibold text-slate-light50 shadow-md ring-inset dark:bg-green-dark600 dark:ring-2 dark:ring-green-main500"
