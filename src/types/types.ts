@@ -26,8 +26,6 @@ export interface OptionsMenuProps {
 export interface PageContentProps {
   workouts: WorkoutProps[];
   addWorkout: (workout: WorkoutProps) => void;
-  changeWorkout: (editedWorkout: WorkoutProps | undefined) => void;
-  removeWorkout: (id: number) => void;
   editBar: boolean;
   toggleEditBar: () => void;
 }
