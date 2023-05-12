@@ -22,7 +22,7 @@ const SignedIn: NextPage = () => {
         <title>NoteSet</title>
         <meta name="description" content="Personalized workout tracker" />
       </Head>
-      
+
       <NavBar>
         <OptionsMenuButton openMenu={openMenu} />
         <AnimatePresence>
@@ -56,7 +56,7 @@ const Helpers = ({
   initial: () => void;
 }) => {
   return (
-    <div className="absolute flex flex-col gap-2 xs:right-2 xs:top-16 md:right-20 md:top-20">
+    <div className="absolute left-2 top-64 flex flex-col gap-2 xs:right-2 xs:top-16 md:right-20 md:top-20">
       <button
         onClick={reset}
         className="rounded-full bg-white p-3 text-xs text-slate-main600"
