@@ -1,36 +1,29 @@
 import { useState } from "react";
 import type { WorkoutProps } from "../types/types";
 
-export const useWorkouts = (initialWorkouts: WorkoutProps[]) => {
-  const [workouts, setWorkouts] = useState(initialWorkouts);
+export const useWorkouts = () => {
+  const [workouts, setWorkouts] = useState<WorkoutProps[] | undefined>();
 
   function addWorkout(workout: WorkoutProps) {
-    const newWorkout = {
-      ...workout,
-    };
-    setWorkouts([...workouts, newWorkout]);
+    if (!workouts) {
+      setWorkouts([workout]);
+    } else {
+      setWorkouts([...workouts, workout]);
+    }
   }
 
-  function changeWorkout(editedWorkout: WorkoutProps | undefined) {
-    if (!editedWorkout) return undefined;
-
-    const newList = workouts.map((workout) => {
-      if (workout.id !== editedWorkout.id) return workout;
-
-      return {
-        ...workout,
-        title: editedWorkout.title,
-        description: editedWorkout.description,
-      };
-    });
-
-    setWorkouts(newList);
+  function reset() {
+    setWorkouts(undefined);
+  }
+  
+  function initial() {
+    setWorkouts([
+      { id: 0, title: "Upper 1", description: "Good one, could be better." },
+      { id: 1, title: "Upper 2", description: "A little bit better, imo." },
+      { id: 2, title: "Lower 1", description: "The best one so far!" },
+      { id: 3, title: "Lower 2", description: "The best one so far!" },
+    ]);
   }
 
-  function removeWorkout(id: number) {
-    const newList = workouts.filter((workout) => workout.id !== id);
-    setWorkouts(newList);
-  }
-
-  return { workouts, addWorkout, changeWorkout, removeWorkout };
+  return { workouts, addWorkout, reset, initial };
 };
