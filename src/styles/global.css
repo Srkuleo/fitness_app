@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-  main {
-    @apply h-screen overflow-x-hidden scroll-smooth
-    bg-gradient-to-r from-white via-slate-light200 to-slate-light300 
+  body {
+    @apply scroll-smooth
+    bg-gradient-to-tr from-white via-slate-light200 to-slate-light300 
     dark:from-slate-dark800 dark:via-slate-dark900 dark:to-slate-dark950;
   }
 }
