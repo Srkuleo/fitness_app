@@ -7,15 +7,11 @@ import { AnimatePresence } from "framer-motion";
 import { NavBar } from "../components/sign-components/nav-bar";
 import { OptionsMenuButton } from "../components/buttons";
 import { OptionsMenu } from "../components/signed-in-components/options-menu";
+import { EmptyPage } from "../components/signed-in-components/empty-page";
 import { PageContent } from "../components/signed-in-components/page-content";
 
 const SignedIn: NextPage = () => {
-  const { workouts, addWorkout, changeWorkout, removeWorkout } = useWorkouts([
-    { id: 0, title: "Upper 1", description: "Good one, could be better." },
-    { id: 1, title: "Upper 2", description: "A little bit better, imo." },
-    { id: 2, title: "Lower 1", description: "The best one so far!" },
-    { id: 3, title: "Lower 2", description: "The best one so far!" },
-  ]);
+  const { workouts, addWorkout, reset, initial } = useWorkouts();
   const { isOpenOptionsMenu, openMenu, closeMenu } = useOpenOptionsMenu();
   const { editBar, toggleEditBar } = useEditBar();
 
@@ -29,24 +25,55 @@ const SignedIn: NextPage = () => {
       <main>
         <NavBar>
           <OptionsMenuButton openMenu={openMenu} />
+          <AnimatePresence>
+            {isOpenOptionsMenu && (
+              <OptionsMenu
+                toggleEditBar={toggleEditBar}
+                closeMenu={closeMenu}
+              />
+            )}
+          </AnimatePresence>
         </NavBar>
 
-        <AnimatePresence>
-          {isOpenOptionsMenu && (
-            <OptionsMenu toggleEditBar={toggleEditBar} closeMenu={closeMenu} />
-          )}
-        </AnimatePresence>
+        <Helpers reset={reset} initial={initial} />
 
-        <PageContent
-          workouts={workouts}
-          addWorkout={addWorkout}
-          changeWorkout={changeWorkout}
-          removeWorkout={removeWorkout}
-          editBar={editBar}
-          toggleEditBar={toggleEditBar}
-        />
+        {!workouts ? (
+          <EmptyPage />
+        ) : (
+          <PageContent
+            workouts={workouts}
+            addWorkout={addWorkout}
+            editBar={editBar}
+            toggleEditBar={toggleEditBar}
+          />
+        )}
       </main>
     </>
+  );
+};
+
+const Helpers = ({
+  reset,
+  initial,
+}: {
+  reset: () => void;
+  initial: () => void;
+}) => {
+  return (
+    <div className="absolute flex flex-col gap-2 xs:right-2 xs:top-16 md:right-20 md:top-20">
+      <button
+        onClick={reset}
+        className="rounded-full bg-white p-3 text-xs text-slate-main600"
+      >
+        Reset
+      </button>
+      <button
+        onClick={initial}
+        className="rounded-full bg-white p-3 text-xs text-slate-main600"
+      >
+        Initial
+      </button>
+    </div>
   );
 };
 
