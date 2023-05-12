@@ -3,7 +3,7 @@ import { OAuthBtnWrapper } from "../wrappers";
 
 const OAuth = () => {
   return (
-    <div className="space-y-2">
+    <div className="flex-1 space-y-2">
       {oAuthButtons.map((oAuth) => (
         <OAuthBtnWrapper key={oAuth.buttonText}>
           {oAuth.buttonSvg}
