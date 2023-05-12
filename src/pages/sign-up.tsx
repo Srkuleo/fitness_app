@@ -14,10 +14,8 @@ const SignUpPage: NextPage = () => {
           content="Personalized workout tracker - sign up"
         />
       </Head>
-      <main>
-        <NavBar />
-        <SignContent page="sign up" />
-      </main>
+      <NavBar />
+      <SignContent page="sign up" />
     </>
   );
 };
