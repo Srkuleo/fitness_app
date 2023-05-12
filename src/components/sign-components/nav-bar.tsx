@@ -1,21 +1,34 @@
+import { useState } from "react";
 import type { WrapperProp } from "../../types/types";
 import { GitHubButton, ModeButton } from "../buttons";
 import { NoteSetLogoSvg } from "../svg";
 
 export const NavBar = ({ children }: Partial<WrapperProp>) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  function scrolled() {
+    if (window.scrollY >= 60) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  }
+
   return (
     <div
-      className="flex w-full justify-between bg-gradient-to-r from-orange-button600 
-    via-green-main500 to-green-dark600 px-4 py-2 dark:from-orange-dark700 
-    dark:to-green-dark700 
-    md:w-4/6 md:border-b-2 md:border-slate-light400 md:bg-none md:px-0 lg:w-3/6 "
+      onScroll={scrolled}
+      className={`${
+        isScrolled && "bg-opacity-80 backdrop-blur-sm dark:bg-opacity-80"
+      } sticky top-0 bg-green-main500 shadow-sm  dark:bg-green-dark800 `}
     >
-      <NoteSet />
-      <div className="flex items-center gap-2">
-        <GitHubButton />
-        <ModeButton />
-        {children}
-      </div>
+      <nav className="flex justify-between px-2 py-2 md:mx-auto md:w-2/3 md:px-0 xl:w-1/2">
+        <NoteSet />
+        <div className="flex items-center gap-2">
+          <GitHubButton />
+          <ModeButton />
+          {children}
+        </div>
+      </nav>
     </div>
   );
 };
@@ -24,9 +37,11 @@ const NoteSet = () => {
   return (
     <div className="flex items-center gap-1">
       <div className="hidden md:block">{NoteSetLogoSvg}</div>
-      <span className="text-xl font-bold text-slate-light50 sm:text-2xl md:text-green-main500">
+      <span className="text-xl font-bold text-white dark:text-green-light400 sm:text-2xl">
         Note
-        <span className="font-medium md:text-slate-light500">Set</span>
+        <span className="font-medium text-slate-main600 dark:text-slate-light400">
+          Set
+        </span>
       </span>
     </div>
   );
