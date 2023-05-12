@@ -4,8 +4,8 @@
 
 @layer base {
   main {
-    @apply flex min-h-screen flex-col items-center overflow-hidden
-    bg-gradient-to-tr from-white via-slate-light200 to-slate-light300 
+    @apply h-screen overflow-x-hidden scroll-smooth
+    bg-gradient-to-r from-white via-slate-light200 to-slate-light300 
     dark:from-slate-dark800 dark:via-slate-dark900 dark:to-slate-dark950;
   }
 }
@@ -21,10 +21,8 @@
 
 @layer components {
   .add-workout-btn {
-    @apply flex items-center gap-2 rounded-lg bg-green-dark600 p-2 text-sm font-semibold text-slate-light50
-    shadow-lg ring-1 ring-green-main500 transition-all ease-in hover:bg-slate-light50
-    hover:text-green-dark600 hover:ring-2 hover:ring-green-dark600 dark:bg-green-dark700 
-    dark:shadow-slate-dark700 dark:ring-green-dark600 dark:hover:bg-green-dark800 xs:text-xs;
+    @apply flex items-center gap-2 rounded-lg bg-green-dark600 p-3 text-sm font-semibold text-slate-light50
+    shadow-lg ring-1 ring-green-main500 dark:bg-green-dark700 xs:p-2.5 xs:text-xs;
   }
   .input-field {
     @apply placeholder-italic rounded-xl p-3 text-sm text-slate-main600 placeholder-slate-main600 shadow-md 
