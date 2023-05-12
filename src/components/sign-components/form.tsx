@@ -47,8 +47,8 @@ const Form = ({ page }: { page: "sign in" | "sign up" }) => {
             className="input-field"
           />
         )}
-        <CheckBox page={page} />
       </form>
+      <CheckBox page={page} />
       <SignButton page={page} />
     </>
   );
@@ -56,7 +56,7 @@ const Form = ({ page }: { page: "sign in" | "sign up" }) => {
 
 const CheckBox = ({ page }: { page: "sign in" | "sign up" }) => {
   return (
-    <div className="my-3 flex gap-1">
+    <div className="my-4 flex gap-2">
       <input
         type="checkbox"
         id={page === "sign in" ? "remember-me" : "tos"}
