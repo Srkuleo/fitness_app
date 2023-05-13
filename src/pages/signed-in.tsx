@@ -22,28 +22,32 @@ const SignedIn: NextPage = () => {
         <title>NoteSet</title>
         <meta name="description" content="Personalized workout tracker" />
       </Head>
+      <main className="main">
+        <NavBar>
+          <OptionsMenuButton openMenu={openMenu} />
+          <AnimatePresence>
+            {isOpenOptionsMenu && (
+              <OptionsMenu
+                toggleEditBar={toggleEditBar}
+                closeMenu={closeMenu}
+              />
+            )}
+          </AnimatePresence>
+        </NavBar>
 
-      <NavBar>
-        <OptionsMenuButton openMenu={openMenu} />
-        <AnimatePresence>
-          {isOpenOptionsMenu && (
-            <OptionsMenu toggleEditBar={toggleEditBar} closeMenu={closeMenu} />
-          )}
-        </AnimatePresence>
-      </NavBar>
+        <Helpers reset={reset} initial={initial} />
 
-      <Helpers reset={reset} initial={initial} />
-
-      {!workouts ? (
-        <EmptyPage />
-      ) : (
-        <PageContent
-          workouts={workouts}
-          addWorkout={addWorkout}
-          editBar={editBar}
-          toggleEditBar={toggleEditBar}
-        />
-      )}
+        {!workouts ? (
+          <EmptyPage />
+        ) : (
+          <PageContent
+            workouts={workouts}
+            addWorkout={addWorkout}
+            editBar={editBar}
+            toggleEditBar={toggleEditBar}
+          />
+        )}
+      </main>
     </>
   );
 };
@@ -56,7 +60,7 @@ const Helpers = ({
   initial: () => void;
 }) => {
   return (
-    <div className="absolute left-2 top-64 flex flex-col gap-2 xs:right-2 xs:top-16 md:right-20 md:top-20">
+    <div className="absolute bottom-16 left-2 flex max-h-[150px] max-w-[70px] flex-col items-start gap-2 xs:right-2 xs:top-16 md:right-20 md:top-20">
       <button
         onClick={reset}
         className="rounded-full bg-white p-3 text-xs text-slate-main600"

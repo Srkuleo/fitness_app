@@ -14,7 +14,7 @@ export const Workouts = ({
   };
 
   return (
-    <div className="h-full overflow-hidden xs:max-w-[370px]">
+    <div className="m-auto h-full overflow-hidden xs:max-w-[370px]">
       <motion.div
         variants={variant}
         animate="slide"

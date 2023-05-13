@@ -13,7 +13,7 @@ export const PageContent = ({
     useCardInFocus(workouts);
 
   return (
-    <>
+    <div className="h-full">
       <Workouts workouts={workouts} cardInFocus={cardInFocus} />
 
       {editBar && <EditBar toggleEditBar={toggleEditBar} />}
@@ -24,6 +24,6 @@ export const PageContent = ({
         prevCard={prevCard}
         nextCard={nextCard}
       />
-    </>
+    </div>
   );
 };

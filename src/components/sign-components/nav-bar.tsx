@@ -17,7 +17,7 @@ export const NavBar = ({ children }: Partial<WrapperProp>) => {
   }, []);
 
   function scrolled() {
-    if (window.scrollY >= 70) {
+    if (window.scrollY >= 1) {
       setIsScrolled(true);
     } else {
       setIsScrolled(false);
@@ -29,7 +29,7 @@ export const NavBar = ({ children }: Partial<WrapperProp>) => {
       className={`${
         isScrolled &&
         "bg-opacity-80 backdrop-blur-sm transition duration-300 ease-out dark:bg-opacity-80"
-      } sticky top-0 bg-green-main500 shadow-sm  dark:bg-green-dark800 `}
+      } sticky z-10 top-0 bg-green-main500 shadow-sm  dark:bg-green-dark800 `}
     >
       <nav className="flex justify-between px-2 py-2 md:mx-auto md:w-2/3 md:px-0 xl:w-1/2">
         <NoteSet />

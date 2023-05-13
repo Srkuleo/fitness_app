@@ -10,7 +10,7 @@ export const OptionsMenu = ({ toggleEditBar, closeMenu }: OptionsMenuProps) => {
     <>
       <motion.div
         onClick={closeMenu}
-        className="fixed inset-0 z-10 bg-slate-dark950/95"
+        className="fixed inset-0 bg-slate-dark950/95"
         variants={optionsMenuVariant}
         initial="hidden"
         animate="fade-in"
@@ -24,9 +24,9 @@ export const OptionsMenu = ({ toggleEditBar, closeMenu }: OptionsMenuProps) => {
         initial="most-right"
         animate="slide-in"
         exit="slide-out"
-        className="fixed inset-y-0 right-0 z-10 flex min-w-[250px] flex-col justify-between bg-slate-light100 p-2 dark:bg-slate-dark800 sm:min-w-[300px]"
+        className="fixed inset-y-0 right-0 flex min-w-[250px] flex-col justify-between bg-slate-light100 p-2 dark:bg-slate-dark800 sm:min-w-[300px]"
       >
-        <div className="flex flex-col gap-2">
+        <div className="mt-2 flex flex-col gap-2">
           <motion.div whileTap={{ scale: 0.9 }}>
             <Link
               className="options-menu-field bg-slate-light300/70 dark:bg-slate-dark900/50"
