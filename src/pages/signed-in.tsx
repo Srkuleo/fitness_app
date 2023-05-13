@@ -8,7 +8,6 @@ import { NavBar } from "../components/sign-components/nav-bar";
 import { OptionsMenuButton } from "../components/buttons";
 import { OptionsMenu } from "../components/signed-in-components/options-menu";
 import { EmptyPage } from "../components/signed-in-components/empty-page";
-import { PageContent } from "../components/signed-in-components/page-content";
 
 const SignedIn: NextPage = () => {
   const { workouts, addWorkout, reset, initial } = useWorkouts();
@@ -22,7 +21,7 @@ const SignedIn: NextPage = () => {
         <title>NoteSet</title>
         <meta name="description" content="Personalized workout tracker" />
       </Head>
-      <main className="main">
+      <main className="h-screen flex flex-col">
         <NavBar>
           <OptionsMenuButton openMenu={openMenu} />
           <AnimatePresence>
@@ -37,16 +36,7 @@ const SignedIn: NextPage = () => {
 
         <Helpers reset={reset} initial={initial} />
 
-        {!workouts ? (
-          <EmptyPage />
-        ) : (
-          <PageContent
-            workouts={workouts}
-            addWorkout={addWorkout}
-            editBar={editBar}
-            toggleEditBar={toggleEditBar}
-          />
-        )}
+        {!workouts ? <EmptyPage /> : <></>}
       </main>
     </>
   );
@@ -60,7 +50,7 @@ const Helpers = ({
   initial: () => void;
 }) => {
   return (
-    <div className="absolute bottom-16 left-2 flex max-h-[150px] max-w-[70px] flex-col items-start gap-2 xs:right-2 xs:top-16 md:right-20 md:top-20">
+    <div className="absolute bottom-16 left-2 z-10 flex max-h-[150px] max-w-[70px] flex-col items-start gap-2 xs:right-2 xs:top-16 md:right-20 md:top-20">
       <button
         onClick={reset}
         className="rounded-full bg-white p-3 text-xs text-slate-main600"

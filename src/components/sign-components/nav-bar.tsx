@@ -29,9 +29,9 @@ export const NavBar = ({ children }: Partial<WrapperProp>) => {
       className={`${
         isScrolled &&
         "bg-opacity-80 backdrop-blur-sm transition duration-300 ease-out dark:bg-opacity-80"
-      } sticky z-10 top-0 bg-green-main500 shadow-sm  dark:bg-green-dark800 `}
+      } sticky z-10 top-0 inset-x-0 bg-green-main500 shadow-sm  dark:bg-green-dark800 `}
     >
-      <nav className="flex justify-between px-2 py-2 md:mx-auto md:w-2/3 md:px-0 xl:w-1/2">
+      <nav className="flex justify-between px-4 py-2 md:mx-auto md:w-2/3 md:px-0 xl:w-1/2">
         <NoteSet />
         <div className="flex items-center gap-2">
           <GitHubButton />

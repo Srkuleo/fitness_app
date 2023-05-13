@@ -14,6 +14,7 @@ const Home: NextPage = () => {
           content="Personalized workout tracker - sign in"
         />
       </Head>
+
       <NavBar />
       <SignContent page="sign in" />
     </>
