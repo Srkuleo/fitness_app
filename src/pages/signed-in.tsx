@@ -21,7 +21,8 @@ const SignedIn: NextPage = () => {
         <title>NoteSet</title>
         <meta name="description" content="Personalized workout tracker" />
       </Head>
-      <main className="h-screen flex flex-col">
+
+      <main className="flex h-screen flex-col">
         <NavBar>
           <OptionsMenuButton openMenu={openMenu} />
           <AnimatePresence>
@@ -34,9 +35,9 @@ const SignedIn: NextPage = () => {
           </AnimatePresence>
         </NavBar>
 
-        <Helpers reset={reset} initial={initial} />
-
         {!workouts ? <EmptyPage /> : <></>}
+
+        <Helpers reset={reset} initial={initial} />
       </main>
     </>
   );
