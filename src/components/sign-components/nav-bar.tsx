@@ -29,7 +29,7 @@ export const NavBar = ({ children }: Partial<WrapperProp>) => {
       className={`${
         isScrolled &&
         "bg-opacity-80 backdrop-blur-sm transition duration-300 ease-out dark:bg-opacity-80"
-      } sticky z-10 top-0 inset-x-0 bg-green-main500 shadow-sm  dark:bg-green-dark800 `}
+      } sticky inset-x-0 top-0 z-10 bg-green-dark600 shadow-sm dark:bg-green-dark800 `}
     >
       <nav className="flex justify-between px-4 py-2 md:mx-auto md:w-2/3 md:px-0 xl:w-1/2">
         <NoteSet />
@@ -47,11 +47,9 @@ const NoteSet = () => {
   return (
     <div className="flex items-center gap-1">
       <div className="hidden md:block">{NoteSetLogoSvg}</div>
-      <span className="text-xl font-bold text-white dark:text-green-light400 sm:text-2xl">
+      <span className="text-2xl font-bold text-slate-light50 dark:text-green-light400">
         Note
-        <span className="font-medium text-slate-main600 dark:text-slate-light400">
-          Set
-        </span>
+        <span className="font-semibold dark:text-slate-light400">Set</span>
       </span>
     </div>
   );
