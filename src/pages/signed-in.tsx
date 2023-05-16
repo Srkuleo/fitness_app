@@ -51,7 +51,7 @@ const Helpers = ({
   initial: () => void;
 }) => {
   return (
-    <div className="absolute bottom-16 left-2 z-10 flex max-h-[150px] max-w-[70px] flex-col items-start gap-2 xs:right-2 xs:top-16 md:right-20 md:top-20">
+    <div className="absolute bottom-16 left-2 flex max-h-[150px] max-w-[70px] flex-col items-start gap-2 xs:right-2 xs:top-16 md:right-20 md:top-20">
       <button
         onClick={reset}
         className="rounded-full bg-white p-3 text-xs text-slate-main600"
