@@ -23,8 +23,9 @@
 
 @layer components {
   .add-workout-btn {
-    @apply flex items-center gap-2 rounded-lg bg-green-dark600 p-3 text-sm font-semibold text-slate-light50 shadow-lg ring-1 ring-green-main500
-    dark:bg-green-dark700 dark:ring-green-dark600 xs:text-xs xs:p-2.5;
+    @apply flex items-center gap-2 rounded-lg bg-green-dark600 p-3 
+    text-sm font-semibold text-slate-light50 shadow-lg
+    dark:bg-green-dark700 dark:ring-1 dark:ring-green-dark600 md:p-2.5 md:text-xs;
   }
   .input-field {
     @apply placeholder-italic rounded-xl p-3 text-sm text-slate-main600 placeholder-slate-main600 shadow-md 
