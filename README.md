@@ -12,7 +12,7 @@ Stay tuned for future updates!
 
 - _Add whileTap to options menu using useAnimate hook, Figure out a way to swipe card with touch._
 - _Make new add and edit forms, add animation to editbar (make edit button which when pressed slides up the menu with options to add, remove or edit workout) and buttons inside (whiletap), add events to buttons (edit bar, empty page) and add, remove modal._
-- _Make changes to layout change main to not be flex, make content container with flex property._
+- _Make changes to layout change main to not be flex, make content container with flex property. Find a way to make xxs screen to be max-width 270px to scale navbar properly._
 
 - _Make start button a link component that leads to new page with workout details._
 - _Work around setting planetscale db and prisma schema._
