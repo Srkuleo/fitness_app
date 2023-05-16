@@ -25,7 +25,7 @@ export const GitHubButton = () => {
       rel="noreferrer"
     >
       <svg
-        className="h-6 w-6 text-slate-light50  sm:h-7 sm:w-7 md:text-slate-main600 md:dark:text-slate-light50"
+        className="h-7 w-7 text-slate-light50"
         aria-hidden="true"
         version="1.1"
         viewBox="0 0 16 16"
@@ -57,9 +57,9 @@ export const ModeButton = () => {
   return (
     <button onClick={toggleMode}>
       {resolvedTheme === "dark" ? (
-        <LightModeIcon className="h-6 w-6 text-slate-light50 sm:h-7 sm:w-7" />
+        <LightModeIcon className="h-7 w-7 text-slate-light50" />
       ) : (
-        <DarkModeIcon className="h-6 w-6 text-slate-main600 sm:h-7 sm:w-7" />
+        <DarkModeIcon className="h-7 w-7 text-slate-main600" />
       )}
     </button>
   );
@@ -69,7 +69,7 @@ export const OptionsMenuButton = ({ openMenu }: { openMenu: () => void }) => {
   return (
     <button onClick={openMenu}>
       <svg
-        className="h-6 w-6 text-slate-light50 hover:text-slate-light300 dark:hover:text-slate-light400 sm:h-7 sm:w-7 md:text-slate-main600 md:hover:text-slate-light500 md:dark:text-slate-light50"
+        className="h-7 w-7 text-slate-light50"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
