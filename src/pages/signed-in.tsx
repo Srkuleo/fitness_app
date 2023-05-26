@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { AnimatePresence } from "framer-motion";
 import { useWorkouts } from "../hooks/useWorkouts";
 import { useOpenOptionsMenu } from "../hooks/useOpenOptionsMenu";
-import { AnimatePresence } from "framer-motion";
 import { NavBar } from "../components/sign-components/nav-bar";
 import { OptionsMenuButton } from "../components/buttons";
 import { OptionsMenu } from "../components/signed-in-components/options-menu";
