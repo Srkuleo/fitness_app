@@ -15,7 +15,7 @@ export const useWorkouts = () => {
   function reset() {
     setWorkouts(undefined);
   }
-  
+
   function initial() {
     setWorkouts([
       { id: 0, title: "Upper 1", description: "Good one, could be better." },
