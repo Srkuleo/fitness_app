@@ -4,8 +4,8 @@
 
 @layer base {
   body {
-    @apply scroll-smooth bg-gradient-to-tr from-white via-slate-light200 to-slate-light300 bg-fixed 
-    dark:from-slate-dark800 dark:via-slate-dark900 dark:to-slate-dark950;
+    @apply scroll-smooth bg-gradient-to-tr from-white to-slate-light300 bg-fixed 
+    dark:from-slate-dark800 dark:to-slate-dark950;
   }
 }
 
@@ -23,25 +23,22 @@
 
 @layer components {
   .add-workout-btn {
-    @apply flex items-center gap-2 rounded-lg bg-green-dark600 p-3 
-    text-sm font-semibold text-slate-light50 shadow-lg
-    dark:bg-green-dark700 dark:ring-1 dark:ring-green-dark600 md:p-2.5 md:text-xs;
+    @apply flex items-center gap-2 rounded-3xl bg-green-dark600 p-3 text-sm font-semibold text-slate-light50 shadow-lg dark:bg-green-dark700 dark:shadow-black md:rounded-xl md:p-2.5 md:text-xs md:dark:shadow-slate-dark900;
   }
+
   .input-field {
-    @apply placeholder-italic rounded-xl p-3 text-sm text-slate-main600 placeholder-slate-main600 shadow-md 
-    outline-none transition-all duration-200 ease-out focus:placeholder-slate-light300 focus:ring-2 focus:ring-green-main500 
-    dark:text-slate-light50 dark:placeholder-slate-light300/90 dark:focus:placeholder-slate-light500;
+    @apply placeholder-italic rounded-xl p-3 text-sm text-slate-main600 placeholder-slate-main600 shadow-md outline-none transition-all duration-200 ease-out focus:placeholder-slate-light300 focus:ring-2 focus:ring-green-main500 dark:text-slate-light50 dark:placeholder-slate-light300/90 dark:focus:placeholder-slate-light500;
   }
+
   .options-menu-field {
-    @apply flex items-center gap-2 rounded-md py-2 pl-2 text-left uppercase 
-    text-slate-main600 dark:text-slate-light50;
+    @apply flex items-center gap-2 rounded-md py-2 pl-2 text-left uppercase text-slate-main600 dark:text-slate-light50;
   }
+
   .options-menu-icon {
     @apply h-7 w-7 text-green-dark600 dark:text-green-main500/90;
   }
+
   .workout-input-field {
-    @apply placeholder-italic mb-2 rounded-lg px-3 py-2 text-sm text-slate-main600 shadow-md outline-none ring-inset transition-all 
-    duration-200 ease-out focus:placeholder-slate-light200 focus:ring-2 focus:ring-orange-button500 dark:bg-slate-main600 dark:text-slate-light50 
-    dark:placeholder-slate-light200/70 dark:focus:placeholder-slate-light200/30;
+    @apply placeholder-italic mb-2 rounded-lg px-3 py-2 text-sm text-slate-main600 shadow-md outline-none ring-inset transition-all duration-200 ease-out focus:placeholder-slate-light200 focus:ring-2 focus:ring-orange-button500 dark:bg-slate-main600 dark:text-slate-light50 dark:placeholder-slate-light200/70 dark:focus:placeholder-slate-light200/30;
   }
 }
