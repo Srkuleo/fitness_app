@@ -1,14 +1,12 @@
 /**  @type {import('tailwindcss').Config} */
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const defaultTheme = require("tailwindcss/defaultTheme");
+import defaultTheme from "tailwindcss/defaultTheme";
 
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
     screens: {
-      xxs: "270px",
       xs: "475px",
       ...defaultTheme.screens,
     },
