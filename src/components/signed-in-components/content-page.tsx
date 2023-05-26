@@ -54,7 +54,7 @@ export const ContentPage = ({ workouts }: { workouts: WorkoutProps[] }) => {
       <div className="absolute bottom-20 right-4 flex flex-col-reverse items-center gap-2 xs:right-8 sm:right-16 lg:right-24 2xl:right-28">
         <button
           onClick={() => setShowEditMenu(!showEditMenu)}
-          className="rounded-full bg-green-main500 p-3 dark:bg-green-dark600"
+          className="rounded-full bg-green-main500 p-3 shadow-lg dark:bg-green-dark600 dark:shadow-black"
         >
           <EditBarIcon
             className="h-7 w-7 text-slate-light50"
@@ -73,7 +73,7 @@ export const ContentPage = ({ workouts }: { workouts: WorkoutProps[] }) => {
                 height: 0,
                 transition: { duration: 0.1, ease: "easeIn" },
               }}
-              className="flex flex-col-reverse gap-4 rounded-full bg-white px-2 py-4 dark:bg-slate-dark700/90"
+              className="flex flex-col-reverse gap-4 rounded-full bg-white px-2 py-4 shadow-sm dark:bg-slate-dark700/90 dark:shadow-black"
             >
               <AddIcon
                 className="h-7 w-7 text-slate-light500 dark:text-slate-light50"
