@@ -1,11 +1,10 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
-import type { OptionsMenuProps } from "../../types/types";
 import { optionsMenuVariant } from "../../utils/variables";
 import { CloseButton } from "../buttons";
-import { UserIcon, LogsIcon, SignOutIcon, EditIcon } from "../svg";
+import { UserIcon, LogsIcon, SignOutIcon} from "../svg";
 
-export const OptionsMenu = ({ toggleEditBar, closeMenu }: OptionsMenuProps) => {
+export const OptionsMenu = ({ closeMenu }: { closeMenu: () => void }) => {
   return (
     <>
       <motion.div
@@ -39,24 +38,14 @@ export const OptionsMenu = ({ toggleEditBar, closeMenu }: OptionsMenuProps) => {
 
           <motion.button
             whileTap={{ scale: 0.9 }}
-            onClick={() => {
-              closeMenu();
-              toggleEditBar();
-            }}
-            className="options-menu-field"
-          >
-            <EditIcon className="options-menu-icon" strokeWidth={2.2} />
-            Edit
-          </motion.button>
-
-          <motion.button
-            whileTap={{ scale: 0.9 }}
             className="options-menu-field"
           >
             {LogsIcon}
             View logs
           </motion.button>
+
           <div className="border-b border-green-light300/80 dark:border-green-dark700/70" />
+
           <motion.div whileTap={{ scale: 0.9 }}>
             <Link className="options-menu-field" href="/">
               {SignOutIcon}
