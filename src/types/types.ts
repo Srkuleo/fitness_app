@@ -11,6 +11,8 @@ export interface WorkoutProps {
   id: number;
   title: string;
   description: string;
+  mainBlock: string[];
+  superSets: string[];
 }
 
 export interface IconProps {
@@ -25,8 +27,7 @@ export interface PageContentProps {
   toggleEditBar: () => void;
 }
 
-export interface CarouselNavigationProps
-  extends Pick<PageContentProps, "workouts"> {
+export interface CarouselNavProps extends Pick<PageContentProps, "workouts"> {
   cardInFocus: number;
   prevCard: () => void;
   nextCard: () => void;
