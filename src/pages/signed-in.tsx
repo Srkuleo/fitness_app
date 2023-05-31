@@ -21,7 +21,7 @@ const SignedIn: NextPage = () => {
         <meta name="description" content="Personalized workout tracker" />
       </Head>
 
-      <main className="flex h-screen flex-col">
+      <main className="flex min-h-screen flex-col">
         <NavBar>
           <OptionsMenuButton openMenu={openMenu} />
           <AnimatePresence>
