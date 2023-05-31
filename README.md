@@ -10,8 +10,9 @@ Stay tuned for future updates!
 
 #### Priority
 
-- _Figure out a way to swipe card with touch._
+- _Finish layout for workout content (dark mode, on desktop)._
 - _Make new add and edit forms, add events to buttons (editbar, empty page) and add, remove modals. Figure out position for new edit button with editbar._
+- _Figure out a way to swipe card with touch._
 
 - _Make start button a link component that leads to new page with workout details._
 - _Work around setting planetscale db and prisma schema._
