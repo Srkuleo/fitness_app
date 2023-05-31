@@ -1,16 +1,9 @@
+import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useCardInFocus } from "../../hooks/useCardInFocus";
 import type { WorkoutProps } from "../../types/types";
-import { StartBtn } from "../buttons";
-import {
-  AddIcon,
-  EditBarIcon,
-  EditIcon,
-  NextCardArrow,
-  PrevCardArrow,
-  RemoveIcon,
-} from "../svg";
-import { useState } from "react";
+import { EditMenuWrapper } from "../wrappers";
+import { CarouselNav, EditMenu, EditMenuButton, StartBtn } from "../buttons";
 
 export const ContentPage = ({ workouts }: { workouts: WorkoutProps[] }) => {
   const { cardInFocus, prevCard, nextCard, jumpToCard, switchInFocus } =
@@ -19,13 +12,13 @@ export const ContentPage = ({ workouts }: { workouts: WorkoutProps[] }) => {
 
   return (
     <>
-      <div className="m-auto max-w-full overflow-x-hidden md:max-w-[380px] md:rounded-xl md:border-2 md:border-orange-button500 md:bg-white md:dark:bg-slate-dark800">
+      <div className="m-auto max-w-full overflow-x-hidden px-2 xs:max-w-sm md:rounded-xl md:border-2 md:border-orange-button500 md:bg-white md:px-0 md:dark:bg-slate-dark800">
         <motion.div
           animate={{
             transition: { duration: 0.4, ease: "easeOut" },
             transform: `translateX(-${cardInFocus * 100}%)`,
           }}
-          className="flex"
+          className="flex items-center"
         >
           {workouts.map((workout) => (
             <div
@@ -35,93 +28,69 @@ export const ContentPage = ({ workouts }: { workouts: WorkoutProps[] }) => {
               <p className="mb-2 text-2xl font-semibold text-slate-main600 dark:text-slate-light200">
                 {workout.title}
               </p>
-              <p className="mb-4 text-slate-light500 dark:text-slate-light300/90">
+              <p className="mb-8 text-slate-light500 dark:text-slate-light300/90">
                 {workout.description}
               </p>
+              <div className="mb-8 flex flex-col gap-2 text-center">
+                <div className="flex gap-4">
+                  <p className="flex-1 px-2 text-sm font-semibold uppercase text-slate-dark700">
+                    Main block
+                  </p>
+                  <p className="flex-1 px-2 text-sm font-semibold uppercase text-slate-dark700">
+                    Supersets
+                  </p>
+                </div>
+
+                <div className="flex gap-4 italic text-slate-light500">
+                  <ul className="flex flex-1 flex-col justify-center rounded-xl  bg-white/90 p-2 text-sm">
+                    {workout.mainBlock.map((exercise) => (
+                      <li key={exercise}>{exercise}</li>
+                    ))}
+                  </ul>
+                  <ul className="flex flex-1 flex-col justify-center rounded-xl bg-white/90 p-2 text-sm">
+                    {workout.superSets.map((exercise) => (
+                      <li key={exercise}>{exercise}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
               <StartBtn />
             </div>
           ))}
         </motion.div>
       </div>
 
-      {showEditMenu && (
-        <div
-          className="absolute inset-0 "
-          onClick={() => setShowEditMenu(false)}
-        />
-      )}
+      <AnimatePresence>
+        {showEditMenu && (
+          <EditMenuBackdrop closeMenu={() => setShowEditMenu(false)} />
+        )}
+      </AnimatePresence>
+      <EditMenuWrapper>
+        <EditMenuButton openMenu={() => setShowEditMenu(true)} />
+        <AnimatePresence>{showEditMenu && <EditMenu />}</AnimatePresence>
+      </EditMenuWrapper>
 
-      <div className="absolute bottom-20 right-4 flex flex-col-reverse items-center gap-2 xs:right-8 sm:right-16 lg:right-24 2xl:right-28">
-        <button
-          onClick={() => setShowEditMenu(!showEditMenu)}
-          className="rounded-full bg-green-main500 p-3 shadow-lg dark:bg-green-dark600 dark:shadow-black"
-        >
-          <EditBarIcon
-            className="h-7 w-7 text-slate-light50"
-            strokeWidth={1.3}
-          />
-        </button>
-        <AnimatePresence>
-          {showEditMenu && (
-            <motion.div
-              initial={{ height: 0 }}
-              animate={{
-                height: "auto",
-                transition: { duration: 0.15, ease: "easeOut" },
-              }}
-              exit={{
-                height: 0,
-                transition: { duration: 0.1, ease: "easeIn" },
-              }}
-              className="flex flex-col-reverse gap-4 rounded-full bg-white px-2 py-4 shadow-sm dark:bg-slate-dark700/90 dark:shadow-black"
-            >
-              <AddIcon
-                className="h-7 w-7 text-slate-light500 dark:text-slate-light50"
-                strokeWidth={1.7}
-              />
-              <RemoveIcon
-                className="h-7 w-7 text-red-removeBtn600 dark:text-red-button400"
-                strokeWidth={1.7}
-              />
-              <EditIcon
-                className="h-7 w-7 text-green-main500 dark:text-green-light400"
-                strokeWidth={1.7}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-
-      <div className="mb-8 flex justify-center gap-8">
-        <button
-          onClick={prevCard}
-          className={`${
-            workouts.length === 1 && "pointer-events-none opacity-30"
-          } text-slate-light500 dark:text-slate-light300`}
-        >
-          {PrevCardArrow}
-        </button>
-        <div className="flex items-center gap-1">
-          {workouts.map((workout, i) => (
-            <div
-              key={workout.id}
-              className={
-                cardInFocus === i
-                  ? "h-4 w-4 rounded-full bg-slate-light500 dark:bg-slate-light300"
-                  : "h-3 w-3 rounded-full bg-slate-light300 dark:bg-slate-light500"
-              }
-            />
-          ))}
-        </div>
-        <button
-          onClick={nextCard}
-          className={`${
-            workouts.length === 1 && "pointer-events-none opacity-30"
-          } text-slate-light500 dark:text-slate-light300`}
-        >
-          {NextCardArrow}
-        </button>
-      </div>
+      <CarouselNav
+        workouts={workouts}
+        cardInFocus={cardInFocus}
+        prevCard={prevCard}
+        nextCard={nextCard}
+      />
     </>
+  );
+};
+
+const EditMenuBackdrop = ({ closeMenu }: { closeMenu: () => void }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{
+        opacity: 1,
+        transition: { duration: 0.15, ease: "easeOut" },
+      }}
+      exit={{ opacity: 0, transition: { duration: 0.1, ease: "easeIn" } }}
+      className="absolute inset-0 bg-slate-dark950/40"
+      onClick={closeMenu}
+    />
   );
 };
