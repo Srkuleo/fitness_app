@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
-import type { CarouselNavigationProps, OptionsMenuProps } from "../types/types";
+import type { CarouselNavProps } from "../types/types";
 import {
   DarkModeIcon,
   LightModeIcon,
@@ -10,9 +10,9 @@ import {
   NextCardArrow,
   CancelIcon,
   AddIcon,
-  DoneIcon,
   EditIcon,
   RemoveIcon,
+  EditBarIcon,
 } from "./svg";
 
 //Navbar buttons
@@ -86,9 +86,7 @@ export const OptionsMenuButton = ({ openMenu }: { openMenu: () => void }) => {
   );
 };
 
-export const CloseButton = ({
-  closeMenu,
-}: Pick<OptionsMenuProps, "closeMenu">) => {
+export const CloseButton = ({ closeMenu }: { closeMenu: () => void }) => {
   return (
     <motion.button
       whileTap={{ scale: 0.95 }}
@@ -132,61 +130,79 @@ export const StartBtn = () => {
   );
 };
 
-export const EditBar = ({ toggleEditBar }: { toggleEditBar: () => void }) => {
+export const EditMenuButton = ({ openMenu }: { openMenu: () => void }) => {
   return (
-    <div className="mb-8 flex justify-center gap-4">
-      <button className="rounded-full bg-red-removeBtn600 p-2 text-red-removeBtn100 shadow-md dark:bg-red-removeBtn100 dark:text-red-removeBtn600">
-        <RemoveIcon className="h-6 w-6" strokeWidth={2} />
-      </button>
-      <button className="rounded-full bg-green-main500 p-2 text-green-light200 shadow-md dark:bg-green-light200 dark:text-green-dark700">
-        <EditIcon className="h-6 w-6" strokeWidth={2} />
-      </button>
-      <button className="rounded-full bg-slate-main600 p-2 text-white shadow-md dark:bg-white dark:text-slate-main600">
-        <AddIcon className="h-6 w-6" strokeWidth={2} />
-      </button>
-      <button
-        onClick={toggleEditBar}
-        className="rounded-full bg-slate-main600 p-2 text-white shadow-md dark:bg-white dark:text-slate-main600"
-      >
-        <DoneIcon className="h-6 w-6" strokeWidth={2} />
-      </button>
-    </div>
+    <button
+      onClick={openMenu}
+      className="rounded-full bg-green-main500 p-3 shadow-lg dark:bg-green-dark600 dark:shadow-black"
+    >
+      <EditBarIcon className="h-7 w-7 text-slate-light50" strokeWidth={1.3} />
+    </button>
   );
 };
 
-export const CarouselNavigation = ({
+export const EditMenu = () => {
+  return (
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{
+        width: "auto",
+        transition: { duration: 0.15, ease: "easeOut" },
+      }}
+      exit={{
+        width: 0,
+        transition: { duration: 0.1, ease: "easeIn" },
+      }}
+      className="flex flex-row-reverse gap-4 rounded-full bg-white px-4 py-2  shadow-sm dark:bg-slate-dark700/90 dark:shadow-black"
+    >
+      <AddIcon
+        className="h-7 w-7 text-slate-light500 dark:text-slate-light50"
+        strokeWidth={1.7}
+      />
+      <RemoveIcon
+        className="h-7 w-7 text-red-removeBtn600 dark:text-red-button400"
+        strokeWidth={1.7}
+      />
+      <EditIcon
+        className="h-7 w-7 text-green-main500 dark:text-green-light400"
+        strokeWidth={1.7}
+      />
+    </motion.div>
+  );
+};
+
+export const CarouselNav = ({
   workouts,
+  cardInFocus,
   prevCard,
   nextCard,
-  cardInFocus,
-}: CarouselNavigationProps) => {
+}: CarouselNavProps) => {
   return (
-    <div className="mb-8 flex items-center justify-center gap-8">
+    <div className="mb-8 flex justify-center gap-8">
       <button
-        className="text-slate-dark700 disabled:pointer-events-none disabled:opacity-20 dark:text-slate-light50"
+        disabled={workouts.length === 1}
         onClick={prevCard}
-        disabled={workouts.length < 2}
+        className="text-slate-light500 
+        disabled:opacity-30 dark:text-slate-light300"
       >
         {PrevCardArrow}
       </button>
-
-      <div className="flex items-center justify-center gap-1">
+      <div className="flex items-center gap-1">
         {workouts.map((workout, i) => (
           <div
             key={workout.id}
-            className={`rounded-full bg-slate-light500 dark:bg-slate-light100 ${
+            className={
               cardInFocus === i
-                ? "h-3 w-3 opacity-100 xs:h-4 xs:w-4"
-                : "h-2 w-2 opacity-40 xs:h-3 xs:w-3"
-            }`}
+                ? "h-4 w-4 rounded-full bg-slate-light500 dark:bg-slate-light300"
+                : "h-3 w-3 rounded-full bg-slate-light300 dark:bg-slate-light500"
+            }
           />
         ))}
       </div>
-
       <button
-        className="text-slate-dark700 disabled:pointer-events-none disabled:opacity-20 dark:text-slate-light50"
+        disabled={workouts.length === 1}
         onClick={nextCard}
-        disabled={workouts.length < 2}
+        className="text-slate-light500 disabled:pointer-events-none disabled:opacity-30 dark:text-slate-light300"
       >
         {NextCardArrow}
       </button>
