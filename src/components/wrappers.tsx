@@ -22,7 +22,7 @@ export const OAuthBtnWrapper = ({ children }: WrapperProp) => {
 //Wrappers for signed-in page
 export const EditMenuWrapper = ({ children }: WrapperProp) => {
   return (
-    <div className="absolute bottom-20 right-4 flex flex-row-reverse items-center gap-2 xs:right-8 sm:right-16 lg:right-24 2xl:right-28">
+    <div className="absolute right-4 top-18 flex flex-col items-center gap-3 xs:right-8 sm:right-16 md:top-24 lg:right-24 2xl:right-28">
       {children}
     </div>
   );
