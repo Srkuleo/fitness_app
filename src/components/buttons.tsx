@@ -123,7 +123,7 @@ export const StartBtn = () => {
       whileTap={{ scale: 0.9 }}
       className="rounded-xl bg-gradient-to-r from-orange-button500
       to-red-button500 px-6 py-2 font-semibold uppercase text-slate-light200
-      shadow-md dark:shadow-slate-dark950"
+      shadow-md dark:shadow-slate-dark900"
     >
       Start
     </motion.button>
@@ -144,29 +144,38 @@ export const EditMenuButton = ({ openMenu }: { openMenu: () => void }) => {
 export const EditMenu = () => {
   return (
     <motion.div
-      initial={{ width: 0 }}
+      initial={{ y: -48, opacity: 0 }}
       animate={{
-        width: "auto",
+        y: 0,
+        opacity: 1,
         transition: { duration: 0.15, ease: "easeOut" },
       }}
       exit={{
-        width: 0,
+        opacity: 0,
         transition: { duration: 0.1, ease: "easeIn" },
       }}
-      className="flex flex-row-reverse gap-4 rounded-full bg-white px-4 py-2  shadow-sm dark:bg-slate-dark700/90 dark:shadow-black"
+      className="flex flex-col gap-4 rounded-full bg-white px-2 py-4 shadow-sm dark:bg-slate-dark700/90 dark:shadow-black"
     >
-      <AddIcon
-        className="h-7 w-7 text-slate-light500 dark:text-slate-light50"
-        strokeWidth={1.7}
-      />
-      <RemoveIcon
-        className="h-7 w-7 text-red-removeBtn600 dark:text-red-button400"
-        strokeWidth={1.7}
-      />
-      <EditIcon
-        className="h-7 w-7 text-green-main500 dark:text-green-light400"
-        strokeWidth={1.7}
-      />
+      <button>
+        <AddIcon
+          className="h-7 w-7 text-slate-light500 dark:text-slate-light50"
+          strokeWidth={1.7}
+        />
+      </button>
+
+      <button>
+        <EditIcon
+          className="h-7 w-7 text-green-main500 dark:text-green-light400"
+          strokeWidth={1.7}
+        />
+      </button>
+
+      <button>
+        <RemoveIcon
+          className="h-7 w-7 text-red-removeBtn600 dark:text-red-button400"
+          strokeWidth={1.7}
+        />
+      </button>
     </motion.div>
   );
 };
