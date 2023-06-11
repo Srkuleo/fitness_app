@@ -10,7 +10,6 @@ Stay tuned for future updates!
 
 #### Priority
 
-- _Finish layout for workout content (dark mode, on desktop)._
 - _Make new add and edit forms, add events to buttons (editbar, empty page) and add, remove modals. Figure out position for new edit button with editbar._
 - _Figure out a way to swipe card with touch._
 
