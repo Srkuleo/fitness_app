@@ -81,6 +81,18 @@ export const ContentPage = ({ workouts }: { workouts: WorkoutProps[] }) => {
         prevCard={prevCard}
         nextCard={nextCard}
       />
+
+      <div className="absolute inset-0 z-10 flex bg-black/80">
+        <div className="mt-4 flex-1 rounded-t-2xl bg-slate-light50 text-slate-main600">
+          <div className="mx-4 py-2 flex justify-between border-b border-slate-light300 text-sm font-bold">
+            <button className="py-2">Cancel</button>
+            <button className="py-2">Submit</button>
+          </div>
+          <p className="mt-4 text-center text-lg font-semibold">
+            Add a new workout form
+          </p>
+        </div>
+      </div>
     </>
   );
 };
