@@ -141,7 +141,13 @@ export const EditMenuButton = ({ openMenu }: { openMenu: () => void }) => {
   );
 };
 
-export const EditMenu = () => {
+export const EditMenu = ({
+  showForm,
+  hideEditMenu,
+}: {
+  showForm: () => void;
+  hideEditMenu: () => void;
+}) => {
   return (
     <motion.div
       initial={{ y: -48, opacity: 0 }}
@@ -156,14 +162,24 @@ export const EditMenu = () => {
       }}
       className="flex flex-col gap-4 rounded-full bg-white px-2 py-4 shadow-sm dark:bg-slate-dark700/90 dark:shadow-black"
     >
-      <button>
+      <button
+        onClick={() => {
+          hideEditMenu();
+          showForm();
+        }}
+      >
         <AddIcon
           className="h-7 w-7 text-slate-light500 dark:text-slate-light50"
           strokeWidth={1.7}
         />
       </button>
 
-      <button>
+      <button
+        onClick={() => {
+          hideEditMenu();
+          showForm();
+        }}
+      >
         <EditIcon
           className="h-7 w-7 text-green-main500 dark:text-green-light400"
           strokeWidth={1.7}
