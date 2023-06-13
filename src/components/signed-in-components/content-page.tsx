@@ -9,6 +9,7 @@ export const ContentPage = ({ workouts }: { workouts: WorkoutProps[] }) => {
   const { cardInFocus, prevCard, nextCard, jumpToCard, switchInFocus } =
     useCardInFocus(workouts);
   const [showEditMenu, setShowEditMenu] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
   return (
     <>
@@ -72,7 +73,14 @@ export const ContentPage = ({ workouts }: { workouts: WorkoutProps[] }) => {
       )}
       <EditMenuWrapper>
         <EditMenuButton openMenu={() => setShowEditMenu(true)} />
-        <AnimatePresence>{showEditMenu && <EditMenu />}</AnimatePresence>
+        <AnimatePresence>
+          {showEditMenu && (
+            <EditMenu
+              showForm={() => setShowForm(true)}
+              hideEditMenu={() => setShowEditMenu(false)}
+            />
+          )}
+        </AnimatePresence>
       </EditMenuWrapper>
 
       <CarouselNav
@@ -82,17 +90,35 @@ export const ContentPage = ({ workouts }: { workouts: WorkoutProps[] }) => {
         nextCard={nextCard}
       />
 
-      <div className="absolute inset-0 z-10 flex bg-black/80">
-        <div className="mt-4 flex-1 rounded-t-2xl bg-slate-light50 text-slate-main600">
-          <div className="mx-4 py-2 flex justify-between border-b border-slate-light300 text-sm font-bold">
-            <button className="py-2">Cancel</button>
-            <button className="py-2">Submit</button>
-          </div>
-          <p className="mt-4 text-center text-lg font-semibold">
-            Add a new workout form
-          </p>
+      {showForm && (
+        <div className="absolute inset-0 z-10 flex bg-black/80">
+          <form
+            action="/"
+            onSubmit={() => {
+              console.log("Submitted");
+              setShowForm(false);
+            }}
+            onReset={() => {
+              console.log("Cancelled.");
+              setShowForm(false);
+            }}
+            className="mt-8 flex-1 rounded-t-2xl bg-slate-light50 dark:bg-slate-dark800"
+          >
+            <div className="mx-4 my-2 flex items-center justify-between">
+              <button
+                type="reset"
+                className="py-2 text-sm font-bold text-green-main500"
+              >
+                Cancel
+              </button>
+              <p className="font-semibold">Add a new workout form</p>
+              <button className="py-2 text-sm font-bold text-green-main500">
+                Submit
+              </button>
+            </div>
+          </form>
         </div>
-      </div>
+      )}
     </>
   );
 };
