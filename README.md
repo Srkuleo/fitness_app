@@ -10,7 +10,7 @@ Stay tuned for future updates!
 
 #### Priority
 
-- _Make new add and edit forms, add events to buttons (editbar, empty page) and add, remove modals. Figure out position for new edit button with editbar._
+- _Make new add and edit forms (figure out a way to make modal behave differently on animating, using radix ui dialog), add events to buttons (editbar, empty page) and add, remove modals. Figure out position for new edit button with editbar. Change side menu to slide from bottom like on iphone._
 - _Figure out a way to swipe card with touch._
 
 - _Make start button a link component that leads to new page with workout details._
