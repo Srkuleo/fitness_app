@@ -10,6 +10,7 @@ Stay tuned for future updates!
 
 #### Priority
 
+- _Migrate from pages to app folder structure._
 - _Make new add and edit forms (figure out a way to make modal behave differently on animating, using radix ui dialog), add events to buttons (editbar, empty page) and add, remove modals. Figure out position for new edit button with editbar. Change side menu to slide from bottom like on iphone._
 - _Figure out a way to swipe card with touch._
 
