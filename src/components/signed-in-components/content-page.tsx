@@ -1,9 +1,9 @@
-import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 import { useCardInFocus } from "../../hooks/useCardInFocus";
 import type { WorkoutProps } from "../../types/types";
-import { EditMenuWrapper } from "../wrappers";
 import { CarouselNav, EditMenu, EditMenuButton, StartBtn } from "../buttons";
+import { EditMenuWrapper } from "../wrappers";
 
 export const ContentPage = ({ workouts }: { workouts: WorkoutProps[] }) => {
   const { cardInFocus, prevCard, nextCard, jumpToCard, switchInFocus } =
@@ -90,35 +90,45 @@ export const ContentPage = ({ workouts }: { workouts: WorkoutProps[] }) => {
         nextCard={nextCard}
       />
 
-      {showForm && (
-        <div className="absolute inset-0 z-10 flex bg-black/80">
-          <form
-            action="/"
-            onSubmit={() => {
-              console.log("Submitted");
-              setShowForm(false);
-            }}
-            onReset={() => {
-              console.log("Cancelled.");
-              setShowForm(false);
-            }}
-            className="mt-8 flex-1 rounded-t-2xl bg-slate-light50 dark:bg-slate-dark800"
-          >
-            <div className="mx-4 my-2 flex items-center justify-between">
-              <button
-                type="reset"
-                className="py-2 text-sm font-bold text-green-main500"
-              >
-                Cancel
-              </button>
-              <p className="font-semibold">Add a new workout form</p>
-              <button className="py-2 text-sm font-bold text-green-main500">
-                Submit
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
+      <AnimatePresence>
+        {showForm && (
+          
+            <motion.form
+              initial={{ y: "100%" }}
+              animate={{
+                y: 0,
+                transition: { duration: 0.2, ease: "easeOut" },
+              }}
+              exit={{
+                y: "100%",
+                transition: { duration: 0.2, ease: "easeOut" },
+              }}
+              action="/"
+              onSubmit={() => {
+                console.log("Submitted");
+                setShowForm(false);
+              }}
+              onReset={() => {
+                console.log("Cancelled.");
+                setShowForm(false);
+              }}
+              className="mt-8 h-full w-full mx-2 rounded-t-2xl bg-slate-light50 dark:bg-slate-dark800"
+            >
+              <div className="mx-4 my-2 flex items-center justify-between">
+                <button
+                  type="reset"
+                  className="py-2 text-sm font-bold text-green-main500"
+                >
+                  Cancel
+                </button>
+                <p className="font-semibold">Add a new workout form</p>
+                <button className="py-2 text-sm font-bold text-green-main500">
+                  Submit
+                </button>
+              </div>
+            </motion.form>
+        )}
+      </AnimatePresence>
     </>
   );
 };
