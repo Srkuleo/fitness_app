@@ -1,16 +1,17 @@
 import type { OAuthBtnProps, WorkoutProps } from "../types/types";
-import { GoogleSvg, TwitterSvg, DiscordSvg } from "../components/svg";
+import { GoogleSvg, AppleSvg } from "../components/svg";
 
 export const oAuthButtons: OAuthBtnProps[] = [
   { buttonSvg: GoogleSvg, buttonText: "Google" },
-  { buttonSvg: TwitterSvg, buttonText: "Twitter" },
-  { buttonSvg: DiscordSvg, buttonText: "Discord" },
+  { buttonSvg: AppleSvg, buttonText: "Apple ID" },
 ];
 
 export const initWorkout: WorkoutProps = {
   id: -1,
   title: "",
   description: "",
+  mainBlock: [],
+  superSets: [],
 };
 
 //Variant for framer motion animations
@@ -38,4 +39,3 @@ export const optionsMenuVariant = {
     transition: { delay: 0.1, duration: 0.15, ease: "easeIn" },
   },
 };
-
