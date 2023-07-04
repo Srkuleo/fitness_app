@@ -8,11 +8,11 @@ import {
   LightModeIcon,
   PrevCardArrow,
   NextCardArrow,
-  CancelIcon,
   AddIcon,
   EditIcon,
   RemoveIcon,
   EditBarIcon,
+  PreviewIcon,
 } from "./svg";
 
 //Navbar buttons
@@ -65,43 +65,6 @@ export const ModeButton = () => {
   );
 };
 
-export const OptionsMenuButton = ({ openMenu }: { openMenu: () => void }) => {
-  return (
-    <button onClick={openMenu}>
-      <svg
-        className="h-7 w-7 text-slate-light50"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={2.2}
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
-        />
-      </svg>
-    </button>
-  );
-};
-
-export const CloseButton = ({ closeMenu }: { closeMenu: () => void }) => {
-  return (
-    <motion.button
-      whileTap={{ scale: 0.95 }}
-      autoFocus={true}
-      onClick={closeMenu}
-      className="fixed left-8 top-8 rounded-xl bg-slate-light100 p-1 dark:bg-slate-dark700 dark:ring-1 dark:ring-slate-light500"
-    >
-      <CancelIcon
-        className="h-7 w-7 text-slate-dark700 dark:text-slate-light100"
-        strokeWidth={1.8}
-      />
-    </motion.button>
-  );
-};
-
 //Sign button
 export const SignButton = ({ page }: { page: "sign in" | "sign up" }) => {
   return (
@@ -117,16 +80,23 @@ export const SignButton = ({ page }: { page: "sign in" | "sign up" }) => {
 };
 
 //Signed in page buttons
-export const StartBtn = () => {
+export const WorkoutButtons = () => {
   return (
-    <motion.button
-      whileTap={{ scale: 0.9 }}
-      className="rounded-xl bg-gradient-to-r from-orange-button500
-      to-red-button500 px-6 py-2 font-semibold uppercase text-slate-light200
-      shadow-md dark:shadow-slate-dark900"
-    >
-      Start
-    </motion.button>
+    <div className="flex gap-2">
+      <motion.button
+        whileTap={{ scale: 0.9 }}
+        className="rounded-xl bg-white px-3 py-2 text-slate-main600 shadow-md dark:shadow-slate-dark900"
+      >
+        {PreviewIcon}
+      </motion.button>
+      <motion.button
+        whileTap={{ scale: 0.9 }}
+        className="rounded-xl bg-gradient-to-r from-orange-button500
+      to-red-button500 px-6 py-2 font-semibold uppercase text-slate-light200 shadow-md dark:shadow-slate-dark900"
+      >
+        Start
+      </motion.button>
+    </div>
   );
 };
 
@@ -136,7 +106,7 @@ export const EditMenuButton = ({ openMenu }: { openMenu: () => void }) => {
       onClick={openMenu}
       className="rounded-full bg-green-main500 p-3 shadow-lg dark:bg-green-dark600 dark:shadow-black"
     >
-      <EditBarIcon className="h-7 w-7 text-slate-light50" strokeWidth={1.3} />
+      <EditBarIcon className="h-6 w-6 text-slate-light50" strokeWidth={1.3} />
     </button>
   );
 };
@@ -160,35 +130,35 @@ export const EditMenu = ({
         opacity: 0,
         transition: { duration: 0.1, ease: "easeIn" },
       }}
-      className="flex flex-col gap-4 rounded-full bg-white px-2 py-4 shadow-sm dark:bg-slate-dark700/90 dark:shadow-black"
+      className="flex flex-col rounded-full bg-white py-2 shadow-sm dark:bg-slate-dark700/90 dark:shadow-black"
     >
       <button
+        className="p-2"
         onClick={() => {
           hideEditMenu();
-          showForm();
         }}
       >
         <AddIcon
-          className="h-7 w-7 text-slate-light500 dark:text-slate-light50"
+          className="h-6 w-6 text-slate-light500 dark:text-slate-light50"
           strokeWidth={1.7}
         />
       </button>
 
       <button
+        className="p-2"
         onClick={() => {
           hideEditMenu();
-          showForm();
         }}
       >
         <EditIcon
-          className="h-7 w-7 text-green-main500 dark:text-green-light400"
+          className="h-6 w-6 text-green-main500 dark:text-green-light400"
           strokeWidth={1.7}
         />
       </button>
 
-      <button>
+      <button className="p-2">
         <RemoveIcon
-          className="h-7 w-7 text-red-removeBtn600 dark:text-red-button400"
+          className="h-6 w-6 text-red-removeBtn600 dark:text-red-button400"
           strokeWidth={1.7}
         />
       </button>
