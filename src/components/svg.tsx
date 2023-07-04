@@ -194,7 +194,7 @@ export const NoteSetLogoSvg = (
 
 export const UserIcon = (
   <svg
-    className="options-menu-icon"
+    className="footer-icon"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -212,7 +212,7 @@ export const UserIcon = (
 
 export const LogsIcon = (
   <svg
-    className="options-menu-icon"
+    className="footer-icon"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
@@ -230,7 +230,7 @@ export const LogsIcon = (
 
 export const SignOutIcon = (
   <svg
-    className="options-menu-icon"
+    className="footer-icon"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
