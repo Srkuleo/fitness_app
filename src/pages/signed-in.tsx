@@ -1,17 +1,14 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { AnimatePresence } from "framer-motion";
 import { useWorkouts } from "../hooks/useWorkouts";
-import { useOpenOptionsMenu } from "../hooks/useOpenOptionsMenu";
 import { NavBar } from "../components/sign-components/nav-bar";
-import { OptionsMenuButton } from "../components/buttons";
-import { OptionsMenu } from "../components/signed-in-components/options-menu";
 import { EmptyPage } from "../components/signed-in-components/empty-page";
 import { ContentPage } from "../components/signed-in-components/content-page";
+import Link from "next/link";
+import { LogsIcon, SignOutIcon, UserIcon } from "../components/svg";
 
 const SignedIn: NextPage = () => {
   const { workouts, addWorkout, reset, initial } = useWorkouts();
-  const { isOpenOptionsMenu, openMenu, closeMenu } = useOpenOptionsMenu();
 
   return (
     <>
@@ -22,18 +19,44 @@ const SignedIn: NextPage = () => {
       </Head>
 
       <main className="flex min-h-screen flex-col">
-        <NavBar>
-          <OptionsMenuButton openMenu={openMenu} />
-          <AnimatePresence>
-            {isOpenOptionsMenu && <OptionsMenu closeMenu={closeMenu} />}
-          </AnimatePresence>
-        </NavBar>
-
+        <NavBar />
         {!workouts ? <EmptyPage /> : <ContentPage workouts={workouts} />}
+        <Footer />
 
         <Helpers reset={reset} initial={initial} />
       </main>
     </>
+  );
+};
+
+const Footer = () => {
+  return (
+    <div className="flex w-full justify-center gap-6 bg-green-dark600 pb-4 dark:bg-green-dark800 md:mx-auto md:w-1/2 md:gap-8 md:rounded-t-xl lg:w-2/5 2xl:w-1/3 md:pb-0">
+      <Link
+        className="flex flex-col items-center p-2 text-slate-light50 dark:text-green-light400"
+        href="/"
+      >
+        {UserIcon}
+        <p className="text-[9px] uppercase leading-4 tracking-wider text-white">
+          profile
+        </p>
+      </Link>
+      <button className="flex flex-col items-center p-2 text-slate-light50 dark:text-slate-light400">
+        {LogsIcon}
+        <p className="text-[9px] uppercase leading-4 tracking-wider text-white">
+          logs
+        </p>
+      </button>
+      <Link
+        className="flex flex-col items-center p-2 text-slate-light50 dark:text-green-light400"
+        href="/"
+      >
+        {SignOutIcon}
+        <p className="text-[9px] uppercase leading-4 tracking-wider text-white">
+          sign out
+        </p>
+      </Link>
+    </div>
   );
 };
 
@@ -45,16 +68,16 @@ const Helpers = ({
   initial: () => void;
 }) => {
   return (
-    <div className="absolute left-4 top-16 flex max-h-[150px] max-w-[70px] flex-col items-start gap-2 md:top-20">
+    <div className="absolute left-4 top-16 flex gap-2 md:top-20">
       <button
         onClick={reset}
-        className="rounded-full bg-slate-light400 p-3 px-4 text-xs text-slate-light50"
+        className="rounded-full bg-slate-light400 p-2 text-xs text-slate-light50"
       >
         R
       </button>
       <button
         onClick={initial}
-        className="rounded-full bg-slate-light400 p-3 px-4 text-xs text-slate-light50"
+        className="rounded-full bg-slate-light400 p-2 text-xs text-slate-light50"
       >
         S
       </button>
