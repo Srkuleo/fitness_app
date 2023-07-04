@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import type { WrapperProp } from "../../types/types";
 import { GitHubButton, ModeButton } from "../buttons";
 import { NoteSetLogoSvg } from "../svg";
 
-export const NavBar = ({ children }: Partial<WrapperProp>) => {
+export const NavBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -25,18 +24,17 @@ export const NavBar = ({ children }: Partial<WrapperProp>) => {
   }
 
   return (
-    <div
-      className={`${
-        isScrolled &&
-        "bg-opacity-80 backdrop-blur-sm transition duration-300 ease-out dark:bg-opacity-80"
-      } sticky inset-x-0 top-0 z-10 bg-green-dark600 shadow-sm dark:bg-green-dark800 `}
-    >
-      <nav className="flex justify-between px-4 py-2 md:mx-auto md:w-2/3 md:px-0 xl:w-1/2">
+    <div className="sticky inset-x-0 top-0 md:z-10">
+      <nav
+        className={`${
+          isScrolled &&
+          "bg-opacity-80 backdrop-blur-sm transition duration-300 ease-out dark:bg-opacity-80"
+        } flex justify-between bg-green-dark600 px-4 py-2 shadow-sm dark:bg-green-dark800 md:mx-auto md:w-3/4 md:rounded-b-xl lg:w-2/3 2xl:w-1/2`}
+      >
         <NoteSet />
         <div className="flex items-center gap-2">
           <GitHubButton />
           <ModeButton />
-          {children}
         </div>
       </nav>
     </div>
