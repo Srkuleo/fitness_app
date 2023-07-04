@@ -13,7 +13,7 @@ export const EmptyPage = () => {
       </p>
       <motion.button
         whileTap={{ scale: 0.95 }}
-        className="add-workout-btn absolute bottom-16 right-8 md:bottom-8 md:right-4"
+        className="add-workout-btn absolute bottom-20 right-8 md:bottom-8 md:right-4"
       >
         <AddIcon className="h-5 w-5" strokeWidth={2} />
         Add workout
