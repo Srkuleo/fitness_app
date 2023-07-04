@@ -4,8 +4,7 @@
 
 @layer base {
   body {
-    @apply scroll-smooth bg-gradient-to-tr from-white to-slate-light300 bg-fixed 
-    dark:from-slate-dark800 dark:to-slate-dark950;
+    @apply scroll-smooth bg-slate-light200 dark:bg-slate-dark950;
   }
 }
 
@@ -30,12 +29,9 @@
     @apply placeholder-italic rounded-xl p-3 text-sm text-slate-main600 placeholder-slate-main600 shadow-md outline-none transition-all duration-200 ease-out focus:placeholder-slate-light300 focus:ring-2 focus:ring-green-main500 dark:text-slate-light50 dark:placeholder-slate-light300/90 dark:focus:placeholder-slate-light500;
   }
 
-  .options-menu-field {
-    @apply flex items-center gap-2 rounded-md py-2 pl-2 text-left uppercase text-slate-main600 dark:text-slate-light50;
-  }
 
   .options-menu-icon {
-    @apply h-7 w-7 text-green-dark600 dark:text-green-main500/90;
+    @apply h-5 w-5 md:h-6 md:w-6;
   }
 
   .workout-input-field {
