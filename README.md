@@ -1,16 +1,10 @@
-# NoteSet - personalized fitness app
+# NoteSet - my own app for tracking fitness results
 
-This is still work in progress, updating everyday (I try to), aiming to go in production in late summer 2023. Application is dedicated to **tracking**,
-**updating**, **checking**, **editing** and **storing** your workout sessions, something like personalized, easy to maneuver in notebook. Aimed to make
-tracking your fitness progress easy.
-
-Stay tuned for future updates!
+Making this app with an idea to use it in the gym instead of a notebook. Still WIP, plan to finish it soon.
 
 ## Future updates and plans:
 
-#### Priority
-
-- _Migrate from pages to app folder structure._
+- _Migrate from pages to app folder structure, where needed._
 - _Work around setting planetscale db and drizzle orm._
 - _Set up fetching and db mutation with server actions and RSC._
 
@@ -21,14 +15,3 @@ Stay tuned for future updates!
 - _Add an active workout page, with proper structure based on database model._
 - _Set a limit on description input field to no longer than 85ch._
 
-#### Later on
-
-- _Add profile page with certain type of tracking achievements._
-- _Add Serbian and Japanese language support._
-
----
-
-For any questions or suggestions you can chat with me on
-[Twitter](https://twitter.com/Srkuleo).
-
-**made using T3 stack.**
