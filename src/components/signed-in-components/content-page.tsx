@@ -15,7 +15,7 @@ export const ContentPage = ({ workouts }: { workouts: WorkoutProps[] }) => {
     useCardInFocus(workouts);
   const [showEditMenu, setShowEditMenu] = useState(false);
   const [showForm, setShowForm] = useState(false);
-
+ 
   return (
     <>
       <div className="m-auto max-w-full overflow-x-hidden px-2 xs:max-w-sm md:rounded-xl md:border-2 md:border-orange-button500 md:bg-white md:px-0 md:dark:bg-slate-dark800">
