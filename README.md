@@ -1,6 +1,7 @@
 # NoteSet - my own app for tracking fitness results
 
-Making this app with an idea to use it in the gym instead of a notebook. Still WIP, plan to finish it soon.
+Making this app with an idea to use it in the gym instead of a notebook. Still WIP, plan to finish it soon. 
+Developing with intent to only use the app on a mobile device, so desktop responsiveness is not my priority (still doing something to make it look bearable).
 
 ## Future updates and plans:
 
