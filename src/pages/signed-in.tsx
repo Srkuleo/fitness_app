@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useWorkouts } from "../hooks/useWorkouts";
-import { NavBar } from "../components/sign-components/nav-bar";
 import { EmptyPage } from "../components/signed-in-components/empty-page";
 import { ContentPage } from "../components/signed-in-components/content-page";
 import Link from "next/link";
@@ -19,9 +18,8 @@ const SignedIn: NextPage = () => {
       </Head>
 
       <main className="flex min-h-screen flex-col">
-        <NavBar />
         {!workouts ? <EmptyPage /> : <ContentPage workouts={workouts} />}
-        <Footer />
+        <BottomNavBar />
 
         <Helpers reset={reset} initial={initial} />
       </main>
@@ -29,9 +27,9 @@ const SignedIn: NextPage = () => {
   );
 };
 
-const Footer = () => {
+const BottomNavBar = () => {
   return (
-    <div className="flex w-full justify-center gap-12 bg-green-dark600 dark:bg-green-dark800 md:mx-auto md:w-1/2 md:rounded-t-xl lg:w-2/5 2xl:w-1/3 md:pb-0">
+    <div className="flex w-full justify-center gap-12 bg-green-dark600 dark:bg-green-dark800 md:mx-auto md:w-1/2 md:rounded-t-xl md:pb-0 lg:w-2/5 2xl:w-1/3">
       <Link
         className="flex flex-col items-center p-2 text-slate-light50 dark:text-green-light400"
         href="/"
