@@ -31,7 +31,7 @@ const SignedIn: NextPage = () => {
 
 const Footer = () => {
   return (
-    <div className="flex w-full justify-center gap-6 bg-green-dark600 pb-4 dark:bg-green-dark800 md:mx-auto md:w-1/2 md:gap-8 md:rounded-t-xl lg:w-2/5 2xl:w-1/3 md:pb-0">
+    <div className="flex w-full justify-center gap-12 bg-green-dark600 dark:bg-green-dark800 md:mx-auto md:w-1/2 md:rounded-t-xl lg:w-2/5 2xl:w-1/3 md:pb-0">
       <Link
         className="flex flex-col items-center p-2 text-slate-light50 dark:text-green-light400"
         href="/"
