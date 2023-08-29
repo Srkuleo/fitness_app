@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import type { CarouselNavProps } from "../types/types";
 import {
@@ -100,69 +100,76 @@ export const WorkoutButtons = () => {
   );
 };
 
-export const EditMenuButton = ({ openMenu }: { openMenu: () => void }) => {
-  return (
-    <button
-      onClick={openMenu}
-      className="rounded-full bg-green-main500 p-3 shadow-lg dark:bg-green-dark600 dark:shadow-black"
-    >
-      <EditBarIcon className="h-6 w-6 text-slate-light50" strokeWidth={1.3} />
-    </button>
-  );
-};
-
 export const EditMenu = ({
+  openMenu,
   showForm,
+  showEditMenu,
   hideEditMenu,
 }: {
+  openMenu: () => void;
   showForm: () => void;
+  showEditMenu: boolean;
   hideEditMenu: () => void;
 }) => {
   return (
-    <motion.div
-      initial={{ y: -48, opacity: 0 }}
-      animate={{
-        y: 0,
-        opacity: 1,
-        transition: { duration: 0.15, ease: "easeOut" },
-      }}
-      exit={{
-        opacity: 0,
-        transition: { duration: 0.1, ease: "easeIn" },
-      }}
-      className="flex flex-col rounded-full bg-white py-2 shadow-sm dark:bg-slate-dark700/90 dark:shadow-black"
-    >
+    <div className="absolute right-4 top-18 flex flex-col items-center gap-3 xs:right-8 sm:right-16 md:top-24 md:z-10 lg:right-24 2xl:right-28">
       <button
-        className="p-2"
-        onClick={() => {
-          hideEditMenu();
-        }}
+        onClick={openMenu}
+        className="rounded-full bg-green-main500 p-3 shadow-lg dark:bg-green-dark600 dark:shadow-slate-dark950"
       >
-        <AddIcon
-          className="h-6 w-6 text-slate-light500 dark:text-slate-light50"
-          strokeWidth={1.7}
-        />
+        <EditBarIcon className="h-6 w-6 text-slate-light50" strokeWidth={1.3} />
       </button>
 
-      <button
-        className="p-2"
-        onClick={() => {
-          hideEditMenu();
-        }}
-      >
-        <EditIcon
-          className="h-6 w-6 text-green-main500 dark:text-green-light400"
-          strokeWidth={1.7}
-        />
-      </button>
+      <AnimatePresence>
+        {showEditMenu && (
+          <motion.div
+            initial={{ y: -48, opacity: 0 }}
+            animate={{
+              y: 0,
+              opacity: 1,
+              transition: { duration: 0.15, ease: "easeOut" },
+            }}
+            exit={{
+              y: -12,
+              opacity: 0,
+              transition: { duration: 0.1, ease: "easeIn" },
+            }}
+            className="flex flex-col rounded-full bg-white py-2 shadow-sm dark:bg-slate-dark700/90 dark:shadow-black"
+          >
+            <button
+              className="p-2"
+              onClick={() => {
+                hideEditMenu();
+              }}
+            >
+              <AddIcon
+                className="h-6 w-6 text-slate-light500 dark:text-slate-light50"
+                strokeWidth={1.7}
+              />
+            </button>
 
-      <button className="p-2">
-        <RemoveIcon
-          className="h-6 w-6 text-red-removeBtn600 dark:text-red-button400"
-          strokeWidth={1.7}
-        />
-      </button>
-    </motion.div>
+            <button
+              className="p-2"
+              onClick={() => {
+                hideEditMenu();
+              }}
+            >
+              <EditIcon
+                className="h-6 w-6 text-green-main500 dark:text-green-light400"
+                strokeWidth={1.7}
+              />
+            </button>
+
+            <button className="p-2">
+              <RemoveIcon
+                className="h-6 w-6 text-red-removeBtn600 dark:text-red-button400"
+                strokeWidth={1.7}
+              />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 
@@ -182,7 +189,7 @@ export const CarouselNav = ({
       >
         {PrevCardArrow}
       </button>
-      <p className="font-medium text-slate-light500">
+      <p className="font-medium text-slate-light400">
         {cardInFocus + 1} / {workouts.length}
       </p>
       <button
