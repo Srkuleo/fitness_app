@@ -2,13 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useCardInFocus } from "../../hooks/useCardInFocus";
 import type { WorkoutProps } from "../../types/types";
-import {
-  CarouselNav,
-  EditMenu,
-  EditMenuButton,
-  WorkoutButtons,
-} from "../buttons";
-import { EditMenuWrapper } from "../wrappers";
+import { CarouselNav, EditMenu, WorkoutButtons } from "../buttons";
 
 export const ContentPage = ({ workouts }: { workouts: WorkoutProps[] }) => {
   const { cardInFocus, prevCard, nextCard, jumpToCard, switchInFocus } =
@@ -61,17 +55,12 @@ export const ContentPage = ({ workouts }: { workouts: WorkoutProps[] }) => {
         )}
       </AnimatePresence>
 
-      <EditMenuWrapper>
-        <EditMenuButton openMenu={() => setShowEditMenu(true)} />
-        <AnimatePresence>
-          {showEditMenu && (
-            <EditMenu
-              showForm={() => setShowForm(true)}
-              hideEditMenu={() => setShowEditMenu(false)}
-            />
-          )}
-        </AnimatePresence>
-      </EditMenuWrapper>
+      <EditMenu
+        openMenu={() => setShowEditMenu(true)}
+        showEditMenu={showEditMenu}
+        hideEditMenu={() => setShowEditMenu(false)}
+        showForm={() => setShowForm(true)}
+      />
 
       <CarouselNav
         workouts={workouts}
