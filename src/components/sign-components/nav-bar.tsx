@@ -24,7 +24,7 @@ export const NavBar = () => {
   }
 
   return (
-    <div className="sticky inset-x-0 top-0 md:z-10">
+    <div className="fixed inset-x-0 top-0 md:z-10">
       <nav
         className={`${
           isScrolled &&
