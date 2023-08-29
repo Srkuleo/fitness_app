@@ -173,7 +173,7 @@ export const CarouselNav = ({
   nextCard,
 }: CarouselNavProps) => {
   return (
-    <div className="mb-8 flex justify-center gap-8">
+    <div className="mb-8 flex justify-center gap-6">
       <button
         disabled={workouts.length === 1}
         onClick={prevCard}
@@ -182,18 +182,9 @@ export const CarouselNav = ({
       >
         {PrevCardArrow}
       </button>
-      <div className="flex items-center gap-1">
-        {workouts.map((workout, i) => (
-          <div
-            key={workout.id}
-            className={
-              cardInFocus === i
-                ? "h-4 w-4 rounded-full bg-slate-light500 dark:bg-slate-light300"
-                : "h-3 w-3 rounded-full bg-slate-light300 dark:bg-slate-light500"
-            }
-          />
-        ))}
-      </div>
+      <p className="font-medium text-slate-light500">
+        {cardInFocus + 1} / {workouts.length}
+      </p>
       <button
         disabled={workouts.length === 1}
         onClick={nextCard}
