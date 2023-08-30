@@ -1,5 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
+import { NavBar } from "../components/sign-components/nav-bar";
 import { SignContent } from "../components/sign-components/sign-content";
 
 const SignUpPage: NextPage = () => {
@@ -13,7 +14,7 @@ const SignUpPage: NextPage = () => {
           content="Personalized workout tracker - sign up"
         />
       </Head>
-
+      <NavBar />
       <SignContent page="sign up" />
     </>
   );
