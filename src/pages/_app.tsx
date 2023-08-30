@@ -1,9 +1,8 @@
+import { ThemeProvider } from "next-themes";
 import { type AppType } from "next/dist/shared/lib/utils";
 import { useState } from "react";
-import { IdContext } from "../utils/idContext";
-import { ThemeProvider } from "next-themes";
 import "../styles/global.css";
-import { NavBar } from "../components/sign-components/nav-bar";
+import { IdContext } from "../utils/idContext";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   const [id, setId] = useState(4);
@@ -11,7 +10,6 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <IdContext.Provider value={{ id, setId }}>
       <ThemeProvider attribute="class">
-        <NavBar />
         <Component {...pageProps} />
       </ThemeProvider>
     </IdContext.Provider>
