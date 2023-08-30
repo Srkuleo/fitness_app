@@ -4,14 +4,6 @@ import type { WorkoutProps } from "../types/types";
 export const useWorkouts = () => {
   const [workouts, setWorkouts] = useState<WorkoutProps[] | undefined>();
 
-  function addWorkout(workout: WorkoutProps) {
-    if (!workouts) {
-      setWorkouts([workout]);
-    } else {
-      setWorkouts([...workouts, workout]);
-    }
-  }
-
   function reset() {
     setWorkouts(undefined);
   }
@@ -62,5 +54,5 @@ export const useWorkouts = () => {
     ]);
   }
 
-  return { workouts, addWorkout, reset, initial };
+  return { workouts, reset, initial };
 };
