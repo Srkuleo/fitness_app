@@ -25,9 +25,5 @@ export const useCardInFocus = (workouts: WorkoutProps[]) => {
     }
   }
 
-  function jumpToCard(index: number) {
-    setInFocus(index);
-  }
-
-  return { cardInFocus, prevCard, nextCard, switchInFocus, jumpToCard };
+  return { cardInFocus, prevCard, nextCard, switchInFocus };
 };
