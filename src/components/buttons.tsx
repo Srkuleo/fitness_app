@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTheme } from "next-themes";
 import type { CarouselNavProps } from "../types/types";
 import {
@@ -8,11 +8,6 @@ import {
   LightModeIcon,
   PrevCardArrow,
   NextCardArrow,
-  AddIcon,
-  EditIcon,
-  RemoveIcon,
-  EditBarIcon,
-  PreviewIcon,
 } from "./svg";
 
 //Navbar buttons
@@ -80,99 +75,6 @@ export const SignButton = ({ page }: { page: "sign in" | "sign up" }) => {
 };
 
 //Signed in page buttons
-export const WorkoutButtons = () => {
-  return (
-    <div className="flex gap-2">
-      <motion.button
-        whileTap={{ scale: 0.9 }}
-        className="rounded-xl bg-white px-3 py-2 text-slate-main600 shadow-md dark:shadow-slate-dark900"
-      >
-        {PreviewIcon}
-      </motion.button>
-      <motion.button
-        whileTap={{ scale: 0.9 }}
-        className="rounded-xl bg-gradient-to-r from-orange-button500
-      to-red-button500 px-6 py-2 font-semibold uppercase text-slate-light200 shadow-md dark:shadow-slate-dark900"
-      >
-        Start
-      </motion.button>
-    </div>
-  );
-};
-
-export const EditMenu = ({
-  openMenu,
-  showForm,
-  showEditMenu,
-  hideEditMenu,
-}: {
-  openMenu: () => void;
-  showForm: () => void;
-  showEditMenu: boolean;
-  hideEditMenu: () => void;
-}) => {
-  return (
-    <div className="absolute right-4 top-18 flex flex-col items-center gap-3 xs:right-8 sm:right-16 md:top-24 md:z-10 lg:right-24 2xl:right-28">
-      <button
-        onClick={openMenu}
-        className="rounded-full bg-green-main500 p-3 shadow-lg dark:bg-green-dark600 dark:shadow-slate-dark950"
-      >
-        <EditBarIcon className="h-6 w-6 text-slate-light50" strokeWidth={1.3} />
-      </button>
-
-      <AnimatePresence>
-        {showEditMenu && (
-          <motion.div
-            initial={{ y: -48, opacity: 0 }}
-            animate={{
-              y: 0,
-              opacity: 1,
-              transition: { duration: 0.15, ease: "easeOut" },
-            }}
-            exit={{
-              y: -12,
-              opacity: 0,
-              transition: { duration: 0.1, ease: "easeIn" },
-            }}
-            className="flex flex-col rounded-full bg-white py-2 shadow-sm dark:bg-slate-dark700/90 dark:shadow-black"
-          >
-            <button
-              className="p-2"
-              onClick={() => {
-                hideEditMenu();
-              }}
-            >
-              <AddIcon
-                className="h-6 w-6 text-slate-light500 dark:text-slate-light50"
-                strokeWidth={1.7}
-              />
-            </button>
-
-            <button
-              className="p-2"
-              onClick={() => {
-                hideEditMenu();
-              }}
-            >
-              <EditIcon
-                className="h-6 w-6 text-green-main500 dark:text-green-light400"
-                strokeWidth={1.7}
-              />
-            </button>
-
-            <button className="p-2">
-              <RemoveIcon
-                className="h-6 w-6 text-red-removeBtn600 dark:text-red-button400"
-                strokeWidth={1.7}
-              />
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
-
 export const CarouselNav = ({
   workouts,
   cardInFocus,
