@@ -5,10 +5,15 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
+    "start": "next start",
     "lint": "next lint",
-    "start": "next start"
+    "migrations:generate": "drizzle-kit generate:mysql",
+    "migrations:push": "drizzle-kit push:mysql"
   },
   "dependencies": {
+    "@planetscale/database": "^1.11.0",
+    "dotenv": "^16.3.1",
+    "drizzle-orm": "^0.28.6",
     "framer-motion": "^10.16.1",
     "next": "13.4.19",
     "next-themes": "^0.2.1",
@@ -23,6 +28,7 @@
     "@typescript-eslint/eslint-plugin": "^6.5.0",
     "@typescript-eslint/parser": "^6.5.0",
     "autoprefixer": "^10.4.15",
+    "drizzle-kit": "^0.19.13",
     "eslint": "^8.48.0",
     "eslint-config-next": "^13.4.19",
     "postcss": "^8.4.28",
